@@ -5,7 +5,7 @@ using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 //[CreateAssetMenu(fileName = "InputRreader", menuName = "Game/Input Reader")] // commented out because we only need one
-public class InputReader : DescriptionBaseSO, GameInput.IRacingActions, GameInput.IUIActions
+public class InputReader : DescriptionBaseSO, GameInput.IRacingActions, GameInput.IBreakRoomActions, GameInput.IUIActions
 {
     private GameInput _gameInput;
 
@@ -35,6 +35,7 @@ public class InputReader : DescriptionBaseSO, GameInput.IRacingActions, GameInpu
             _gameInput = new GameInput();
 
             _gameInput.Racing.SetCallbacks(this);
+            _gameInput.BreakRoom.SetCallbacks(this);
             _gameInput.UI.SetCallbacks(this);
         }
     }

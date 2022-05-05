@@ -9,7 +9,13 @@ public class PlayerController : MonoBehaviour {
 
     [SerializeField] private InputReader _inputReader = default;
 
+    private Rigidbody2D _rigidbody2D;
+    private Collider2D _collider2D;
 
+    void Awake() {
+        _rigidbody2D = GetComponent<Rigidbody2D>();
+        _collider2D = GetComponentInChildren<Collider2D>();
+    }
     // Start is called before the first frame update
     void Start() {
         _inputReader.EnableAllInput();
@@ -32,9 +38,7 @@ public class PlayerController : MonoBehaviour {
 
     void PlayerMovement() {
         moveDir.Normalize();
-        transform.Translate(moveDir.x * moveSpeed * Time.deltaTime,
-                            moveDir.y * moveSpeed * Time.deltaTime,
-                            0);
+        _rigidbody2D.velocity = new Vector2(moveDir.x * moveSpeed, moveDir.y * moveSpeed);
     }
 
 #region Input Events
@@ -43,15 +47,34 @@ public class PlayerController : MonoBehaviour {
         moveDir = value;
         if(Mathf.Abs(moveDir.x) > 0.5f) {
             moveDir.x = Mathf.Sign(moveDir.x) * 1f;
+        } else {
+            moveDir.x = 0f;
         }
         if (Mathf.Abs(moveDir.y) > 0.5f) {
             moveDir.y = Mathf.Sign(moveDir.y) * 1f;
+        } else {
+            moveDir.y = 0f;
         }
     }
 
     private void Interact(float value) {
-
+        CheckInteract();
     }
 
 #endregion
+
+    private void CheckInteract() {
+        // Check is we are overlapped with any interactables
+        ContactFilter2D contactFilter = new ContactFilter2D();
+        contactFilter.useLayerMask = true;
+        contactFilter.useTriggers = true;
+        contactFilter.SetLayerMask(LayerMask.GetMask("Interactable"));
+        List<Collider2D> overlappingColliders = new List<Collider2D>();
+
+        _collider2D.OverlapCollider(contactFilter, overlappingColliders);
+
+        foreach (Collider2D collider in overlappingColliders) {
+            collider.GetComponent<Interactable>().Interact();
+        }
+    }
 }
