@@ -19,6 +19,10 @@ public class InputReader : DescriptionBaseSO, GameInput.IRacingActions, GameInpu
     public event UnityAction StepRightEvent = delegate { };
     public event UnityAction PauseEvent = delegate { };
 
+    // Break room
+    public event UnityAction<Vector2> MovementEvent = delegate { };
+    public event UnityAction<float> InteractEvent = delegate { };
+
     // UI
     public event UnityAction<Vector2> MoveCursorEvent = delegate { };
     public event UnityAction BackEvent = delegate { };
@@ -83,6 +87,17 @@ public class InputReader : DescriptionBaseSO, GameInput.IRacingActions, GameInpu
         if (context.phase == InputActionPhase.Performed)
             PauseEvent.Invoke();
     }
+    #endregion
+
+#region BreakRoomInput
+
+    public void OnMovement(InputAction.CallbackContext context) {
+        MovementEvent.Invoke(context.ReadValue<Vector2>());
+    }
+    public void OnInteract(InputAction.CallbackContext context) {
+        InteractEvent.Invoke(context.ReadValue<float>());
+    }
+
 #endregion
 
 #region UIInput
@@ -107,18 +122,25 @@ public class InputReader : DescriptionBaseSO, GameInput.IRacingActions, GameInpu
     public void EnableAllInput()
     {
         _gameInput.Racing.Enable();
+        _gameInput.BreakRoom.Enable();
         _gameInput.UI.Enable();
     }
 
     public void DisableAllInput()
     {
         _gameInput.Racing.Disable();
+        _gameInput.BreakRoom.Disable();
         _gameInput.UI.Disable();
     }
 
     public void EnableRacingInput()
     {
         _gameInput.Racing.Enable();
+    }
+
+    public void EnableBreakRoomInput() 
+    {
+        _gameInput.BreakRoom.Enable();
     }
 
     public void EnableUIInput()
