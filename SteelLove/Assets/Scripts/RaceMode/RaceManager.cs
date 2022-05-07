@@ -8,10 +8,12 @@ public class RaceManager : MonoBehaviour
 
     [Header("Listening to")]
     [SerializeField] private VoidEventChannelSO _onCountdownFinished = default;
+    [SerializeField] private VoidEventChannelSO _onCrossedFinishLine = default;
 
     private void OnEnable()
     {
         _onCountdownFinished.OnEventRaised += OnCountdownFinished;
+        _onCrossedFinishLine.OnEventRaised += OnCrossedFinishLine;
 
         // input events
         _inputReader.PauseEvent += OnPause;
@@ -20,6 +22,7 @@ public class RaceManager : MonoBehaviour
     private void OnDisable()
     {
         _onCountdownFinished.OnEventRaised -= OnCountdownFinished;
+        _onCrossedFinishLine.OnEventRaised -= OnCrossedFinishLine;
 
         // input events
         _inputReader.PauseEvent -= OnPause;
@@ -33,6 +36,12 @@ public class RaceManager : MonoBehaviour
     private void OnCountdownFinished()
     {
         _RaceStateSO.UpdateState(RaceStateSO.RaceState.Race);
+    }
+
+    private void OnCrossedFinishLine()
+    {
+        Debug.Log("crossed finish");
+        _RaceStateSO.UpdateState(RaceStateSO.RaceState.RaceFinished);
     }
 
     private void OnPause()
