@@ -14,14 +14,21 @@ public class Typewriter : MonoBehaviour
 	[SerializeField] string leadingChar = "";
 	[SerializeField] bool leadingCharBeforeDelay = false;
 
+	public bool isDone;
+
 	// Use this for initialization
 	void Start() {
 		_text = GetComponent<Text>();
 		_tmpProText = GetComponent<TMP_Text>();
 
+		CheckText();
+	}
+
+	void CheckText() {
 		if (_text != null) {
 			writer = _text.text;
 			_text.text = "";
+			isDone = false;
 
 			StartCoroutine("TypeWriterText");
 		}
@@ -29,10 +36,15 @@ public class Typewriter : MonoBehaviour
 		if (_tmpProText != null) {
 			writer = _tmpProText.text;
 			_tmpProText.text = "";
+			isDone = false;
 
 			StartCoroutine("TypeWriterTMP");
 		}
 	}
+
+	void OnEnable() {
+		CheckText();
+    }
 
 	IEnumerator TypeWriterText() {
 		_text.text = leadingCharBeforeDelay ? leadingChar : "";
@@ -40,17 +52,20 @@ public class Typewriter : MonoBehaviour
 		yield return new WaitForSeconds(delayBeforeStart);
 
 		foreach (char c in writer) {
-			if (_text.text.Length > 0) {
-				_text.text = _text.text.Substring(0, _text.text.Length - leadingChar.Length);
+			if (!isDone) {
+				if (_text.text.Length > 0) {
+					_text.text = _text.text.Substring(0, _text.text.Length - leadingChar.Length);
+				}
+				_text.text += c;
+				_text.text += leadingChar;
+				yield return new WaitForSeconds(timeBtwChars);
 			}
-			_text.text += c;
-			_text.text += leadingChar;
-			yield return new WaitForSeconds(timeBtwChars);
 		}
 
 		if (leadingChar != "") {
 			_text.text = _text.text.Substring(0, _text.text.Length - leadingChar.Length);
 		}
+		isDone = true;
 	}
 
 	IEnumerator TypeWriterTMP() {
@@ -59,16 +74,24 @@ public class Typewriter : MonoBehaviour
 		yield return new WaitForSeconds(delayBeforeStart);
 
 		foreach (char c in writer) {
-			if (_tmpProText.text.Length > 0) {
-				_tmpProText.text = _tmpProText.text.Substring(0, _tmpProText.text.Length - leadingChar.Length);
+			if (!isDone) {
+				if (_tmpProText.text.Length > 0) {
+					_tmpProText.text = _tmpProText.text.Substring(0, _tmpProText.text.Length - leadingChar.Length);
+				}
+				_tmpProText.text += c;
+				_tmpProText.text += leadingChar;
+				yield return new WaitForSeconds(timeBtwChars);
 			}
-			_tmpProText.text += c;
-			_tmpProText.text += leadingChar;
-			yield return new WaitForSeconds(timeBtwChars);
 		}
 
 		if (leadingChar != "") {
 			_tmpProText.text = _tmpProText.text.Substring(0, _tmpProText.text.Length - leadingChar.Length);
 		}
+		isDone = true;
+	}
+
+	public void SkipToEnd() {
+		_tmpProText.text = writer;
+		isDone = true;
 	}
 }
