@@ -34,9 +34,6 @@ public class ShipController : MonoBehaviour {
     private void Awake()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
-
-        //TODO: move to a gameplayState manager
-        _inputReader.EnableRacingInput();
     }
 
     private void OnEnable()
