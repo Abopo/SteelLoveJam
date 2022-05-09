@@ -16,6 +16,7 @@ public class Speedometer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _UIText.text = "kph: " + playersRigidBody.velocity.magnitude * 3.6;
+        float velocity = (float)System.Math.Round(playersRigidBody.velocity.magnitude * 3.6f, 2);
+        _UIText.text = "kph: " + velocity;
     }
 }

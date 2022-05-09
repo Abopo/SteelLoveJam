@@ -9,6 +9,7 @@ public class ShipController : MonoBehaviour {
     [SerializeField] private float _reverseThrustForce;
     [SerializeField] private float _horizontalThrustForce;
     [SerializeField] private float _stepForce;
+    [SerializeField] private float _brakeForce;
 
     [SerializeField] private float _rotForce;
 
@@ -27,13 +28,22 @@ public class ShipController : MonoBehaviour {
     private float _leftThrusterInputValue;
     private float _rightThrusterInputValue;
     private Vector2 _rotInputValue;
+    private bool _brake;
 
     private Vector2 _stepDir;
     private bool _speedLimitEnabled = true;
 
+    ShipThrusters _thrusters;
+
+    private float _boostTank = 0f;
+    public float BoostTank { get => _boostTank; }
+    [SerializeField] ParticleSystem _boostParticles;
+
     private void Awake()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
+
+        _thrusters = GetComponentInChildren<ShipThrusters>();
 
         //TODO: move to a gameplayState manager
         _inputReader.EnableRacingInput();
@@ -48,6 +58,9 @@ public class ShipController : MonoBehaviour {
         _inputReader.RotationThrustersEvent += RotationThrustersFired;
         _inputReader.StepLeftEvent += StepLeft;
         _inputReader.StepRightEvent += StepRight;
+        _inputReader.BoostEvent += Boost;
+        _inputReader.QuickTurnEvent += QuickTurn;
+        _inputReader.BrakeEvent += Brake;
     }
 
     private void OnDisable()
@@ -59,11 +72,16 @@ public class ShipController : MonoBehaviour {
         _inputReader.RotationThrustersEvent -= RotationThrustersFired;
         _inputReader.StepLeftEvent -= StepLeft;
         _inputReader.StepRightEvent -= StepRight;
+        _inputReader.BoostEvent -= Boost;
+        _inputReader.QuickTurnEvent -= QuickTurn;
+        _inputReader.BrakeEvent -= Brake;
     }
 
     private void FixedUpdate()
     {
         PerformMovement();
+
+        HandleThrusters();
 
         if(_speedLimitEnabled)
             LimitVelocity();
@@ -73,19 +91,42 @@ public class ShipController : MonoBehaviour {
 
     private void PerformMovement()
     {
-        Vector2 addingForce = transform.up * _mainthrustForce * _mainThrusterInputValue;
-        _rigidbody2D.AddForce(addingForce);
+        if (_brake) 
+        {
+            // Brake in the opposite direction of our velocity
+            Vector2 brakeForce = (_rigidbody2D.velocity * -1) * _brakeForce;
+            _rigidbody2D.AddForce(brakeForce);
 
-        addingForce = -transform.up * _reverseThrustForce * _reverseThrusterInputValue;
-        _rigidbody2D.AddForce(addingForce);
+            // Not sure if it feels right to stop player from rotating while braking
+            /*
+            if (_rigidbody2D.angularVelocity != 0) {
+                _rigidbody2D.AddTorque(-Mathf.Sign(_rigidbody2D.angularVelocity) * _rotForce);
+            }
+            */
+        } 
+        else 
+        {
+            Vector2 addingForce = transform.up * _mainthrustForce * _mainThrusterInputValue;
+            _rigidbody2D.AddForce(addingForce);
 
-        addingForce = transform.right * _horizontalThrustForce * _leftThrusterInputValue;
-        _rigidbody2D.AddForce(addingForce);
+            addingForce = -transform.up * _reverseThrustForce * _reverseThrusterInputValue;
+            _rigidbody2D.AddForce(addingForce);
 
-        addingForce = -transform.right * _horizontalThrustForce * _rightThrusterInputValue;
-        _rigidbody2D.AddForce(addingForce);
+            addingForce = transform.right * _horizontalThrustForce * _leftThrusterInputValue;
+            _rigidbody2D.AddForce(addingForce);
+
+            addingForce = -transform.right * _horizontalThrustForce * _rightThrusterInputValue;
+            _rigidbody2D.AddForce(addingForce);
+        }
 
         _rigidbody2D.AddTorque(_rotForce * -_rotInputValue.x);
+    }
+
+    private void HandleThrusters() {
+        _thrusters.BackThrusters(_mainThrusterInputValue);
+        _thrusters.LeftThrusters(_leftThrusterInputValue);
+        _thrusters.RightThrusters(_rightThrusterInputValue);
+        _thrusters.NoseThrusters(_rotInputValue.x);
     }
 
     /// <summary>
@@ -129,6 +170,18 @@ public class ShipController : MonoBehaviour {
         yield return new WaitForSeconds(_speedLimitEnableAfterStepTime);
         Debug.Log("speed limit enabled");
         _speedLimitEnabled = true;
+    }
+
+    public void RefillBoost(float fillSpeed) {
+        if(_boostTank <= 100) {
+            _boostTank += fillSpeed * Time.deltaTime;
+
+            if(_boostParticles != null && !_boostParticles.isPlaying) {
+                _boostParticles.Play();
+            }
+        } else {
+            _boostTank = 100;
+        }
     }
 
     #region InputEvents
@@ -176,5 +229,29 @@ public class ShipController : MonoBehaviour {
             PerformStepInitial();
         }
     }
-#endregion
+
+    private void Boost(float value) {
+        if(value > 0) {
+            // Activate boost
+
+        } else {
+            // Stop boosting
+
+        }
+    }
+
+    private void QuickTurn() {
+
+    }
+
+    private void Brake(float value) {
+        if (value > 0) {
+            // Brake
+            _brake = true;
+        } else {
+            // Stop braking
+            _brake = false;
+        }
+    }
+    #endregion
 }

@@ -81,6 +81,30 @@ public class @GameInput : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""MultiTap""
+                },
+                {
+                    ""name"": ""Boost"",
+                    ""type"": ""Button"",
+                    ""id"": ""1283ca4d-8b21-4deb-acd4-ad4e4783b766"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""QuickTurn"",
+                    ""type"": ""Button"",
+                    ""id"": ""845cfdb8-64ca-4f6e-a4cc-97c241d4b9f8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Brake"",
+                    ""type"": ""Button"",
+                    ""id"": ""c7bdc70d-01d6-42f9-b80b-79ac77233acd"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -279,6 +303,72 @@ public class @GameInput : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""StepRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cb780378-94fa-44ac-93ba-e2ebd5d19ca7"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Boost"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5e4daec6-36ac-4040-898e-6737ec80910d"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Boost"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""156424dc-2979-45f1-ac97-0ee7a9cd6731"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""QuickTurn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a752bcaf-8cff-4ab8-b752-65265bbabc28"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""QuickTurn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""029194bc-dc8c-4c9f-bbf4-bce70dd59e03"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Brake"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8e765c15-1851-4bfa-9c54-7b52abc241ab"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Brake"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -573,6 +663,9 @@ public class @GameInput : IInputActionCollection, IDisposable
         m_Racing_Pause = m_Racing.FindAction("Pause", throwIfNotFound: true);
         m_Racing_StepLeft = m_Racing.FindAction("StepLeft", throwIfNotFound: true);
         m_Racing_StepRight = m_Racing.FindAction("StepRight", throwIfNotFound: true);
+        m_Racing_Boost = m_Racing.FindAction("Boost", throwIfNotFound: true);
+        m_Racing_QuickTurn = m_Racing.FindAction("QuickTurn", throwIfNotFound: true);
+        m_Racing_Brake = m_Racing.FindAction("Brake", throwIfNotFound: true);
         // BreakRoom
         m_BreakRoom = asset.FindActionMap("BreakRoom", throwIfNotFound: true);
         m_BreakRoom_Movement = m_BreakRoom.FindAction("Movement", throwIfNotFound: true);
@@ -639,6 +732,9 @@ public class @GameInput : IInputActionCollection, IDisposable
     private readonly InputAction m_Racing_Pause;
     private readonly InputAction m_Racing_StepLeft;
     private readonly InputAction m_Racing_StepRight;
+    private readonly InputAction m_Racing_Boost;
+    private readonly InputAction m_Racing_QuickTurn;
+    private readonly InputAction m_Racing_Brake;
     public struct RacingActions
     {
         private @GameInput m_Wrapper;
@@ -651,6 +747,9 @@ public class @GameInput : IInputActionCollection, IDisposable
         public InputAction @Pause => m_Wrapper.m_Racing_Pause;
         public InputAction @StepLeft => m_Wrapper.m_Racing_StepLeft;
         public InputAction @StepRight => m_Wrapper.m_Racing_StepRight;
+        public InputAction @Boost => m_Wrapper.m_Racing_Boost;
+        public InputAction @QuickTurn => m_Wrapper.m_Racing_QuickTurn;
+        public InputAction @Brake => m_Wrapper.m_Racing_Brake;
         public InputActionMap Get() { return m_Wrapper.m_Racing; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -684,6 +783,15 @@ public class @GameInput : IInputActionCollection, IDisposable
                 @StepRight.started -= m_Wrapper.m_RacingActionsCallbackInterface.OnStepRight;
                 @StepRight.performed -= m_Wrapper.m_RacingActionsCallbackInterface.OnStepRight;
                 @StepRight.canceled -= m_Wrapper.m_RacingActionsCallbackInterface.OnStepRight;
+                @Boost.started -= m_Wrapper.m_RacingActionsCallbackInterface.OnBoost;
+                @Boost.performed -= m_Wrapper.m_RacingActionsCallbackInterface.OnBoost;
+                @Boost.canceled -= m_Wrapper.m_RacingActionsCallbackInterface.OnBoost;
+                @QuickTurn.started -= m_Wrapper.m_RacingActionsCallbackInterface.OnQuickTurn;
+                @QuickTurn.performed -= m_Wrapper.m_RacingActionsCallbackInterface.OnQuickTurn;
+                @QuickTurn.canceled -= m_Wrapper.m_RacingActionsCallbackInterface.OnQuickTurn;
+                @Brake.started -= m_Wrapper.m_RacingActionsCallbackInterface.OnBrake;
+                @Brake.performed -= m_Wrapper.m_RacingActionsCallbackInterface.OnBrake;
+                @Brake.canceled -= m_Wrapper.m_RacingActionsCallbackInterface.OnBrake;
             }
             m_Wrapper.m_RacingActionsCallbackInterface = instance;
             if (instance != null)
@@ -712,6 +820,15 @@ public class @GameInput : IInputActionCollection, IDisposable
                 @StepRight.started += instance.OnStepRight;
                 @StepRight.performed += instance.OnStepRight;
                 @StepRight.canceled += instance.OnStepRight;
+                @Boost.started += instance.OnBoost;
+                @Boost.performed += instance.OnBoost;
+                @Boost.canceled += instance.OnBoost;
+                @QuickTurn.started += instance.OnQuickTurn;
+                @QuickTurn.performed += instance.OnQuickTurn;
+                @QuickTurn.canceled += instance.OnQuickTurn;
+                @Brake.started += instance.OnBrake;
+                @Brake.performed += instance.OnBrake;
+                @Brake.canceled += instance.OnBrake;
             }
         }
     }
@@ -816,6 +933,9 @@ public class @GameInput : IInputActionCollection, IDisposable
         void OnPause(InputAction.CallbackContext context);
         void OnStepLeft(InputAction.CallbackContext context);
         void OnStepRight(InputAction.CallbackContext context);
+        void OnBoost(InputAction.CallbackContext context);
+        void OnQuickTurn(InputAction.CallbackContext context);
+        void OnBrake(InputAction.CallbackContext context);
     }
     public interface IBreakRoomActions
     {

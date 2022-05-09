@@ -17,6 +17,9 @@ public class InputReader : DescriptionBaseSO, GameInput.IRacingActions, GameInpu
     public event UnityAction<Vector2> RotationThrustersEvent = delegate { };
     public event UnityAction StepLeftEvent = delegate { };
     public event UnityAction StepRightEvent = delegate { };
+    public event UnityAction<float> BoostEvent = delegate { };
+    public event UnityAction QuickTurnEvent = delegate { };
+    public event UnityAction<float> BrakeEvent = delegate { };
     public event UnityAction PauseEvent = delegate { };
 
     // Break room
@@ -81,6 +84,18 @@ public class InputReader : DescriptionBaseSO, GameInput.IRacingActions, GameInpu
     {
         if (context.phase == InputActionPhase.Performed)
             StepRightEvent.Invoke();
+    }
+
+    public void OnBoost(InputAction.CallbackContext context) {
+        BoostEvent.Invoke(context.ReadValue<float>());
+    }
+
+    public void OnQuickTurn(InputAction.CallbackContext context) {
+        QuickTurnEvent.Invoke();
+    }
+
+    public void OnBrake(InputAction.CallbackContext context) {
+        BrakeEvent.Invoke(context.ReadValue<float>());
     }
 
     public void OnPause(InputAction.CallbackContext context)
