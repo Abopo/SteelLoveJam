@@ -21,6 +21,8 @@ public class ShipController : MonoBehaviour {
 
     [SerializeField] private InputReader _inputReader = default;
 
+    [SerializeField] private VoidEventChannelSO _OnCrossedFinishLine = default;
+
     private Rigidbody2D _rigidbody2D = default;
 
     private float _mainThrusterInputValue;
@@ -89,6 +91,14 @@ public class ShipController : MonoBehaviour {
         LimitRotation();
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "FinishLine")
+        {
+            _OnCrossedFinishLine.RaiseEvent();
+        }
+    }
+
     private void PerformMovement()
     {
         if (_brake) 
@@ -123,10 +133,12 @@ public class ShipController : MonoBehaviour {
     }
 
     private void HandleThrusters() {
-        _thrusters.BackThrusters(_mainThrusterInputValue);
-        _thrusters.LeftThrusters(_leftThrusterInputValue);
-        _thrusters.RightThrusters(_rightThrusterInputValue);
-        _thrusters.NoseThrusters(_rotInputValue.x);
+        if (_thrusters != null) {
+            _thrusters.BackThrusters(_mainThrusterInputValue);
+            _thrusters.LeftThrusters(_leftThrusterInputValue);
+            _thrusters.RightThrusters(_rightThrusterInputValue);
+            _thrusters.NoseThrusters(_rotInputValue.x);
+        }
     }
 
     /// <summary>
