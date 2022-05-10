@@ -23,6 +23,8 @@ public class Door : MonoBehaviour {
             other.transform.parent.position = _pairedDoor.transform.position;
             // Activate the paired room
             _pairedDoor.room.Enter();
+            // Close our room
+            room.Exit();
         }
     }
 }

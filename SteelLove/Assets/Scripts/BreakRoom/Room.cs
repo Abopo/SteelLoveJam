@@ -6,9 +6,11 @@ public class Room : MonoBehaviour {
 
     GameObject _mainCamera;
 
+    void Awake() {
+        _mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+    }
     // Start is called before the first frame update
     void Start() {
-        _mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
     }
 
     // Update is called once per frame
@@ -17,6 +19,11 @@ public class Room : MonoBehaviour {
     }
 
     public void Enter() {
+        gameObject.SetActive(true);
         _mainCamera.transform.position = new Vector3(transform.position.x, transform.position.y, _mainCamera.transform.position.z);
+    }
+
+    public void Exit() {
+        gameObject.SetActive(false);
     }
 }
