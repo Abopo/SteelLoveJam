@@ -72,7 +72,7 @@ public class @GameInput : IInputActionCollection, IDisposable
                     ""id"": ""541db52a-b2c7-4c14-b2f7-31ab53c532c3"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""MultiTap""
+                    ""interactions"": ""MultiTap(tapDelay=0.2)""
                 },
                 {
                     ""name"": ""StepRight"",
@@ -80,7 +80,7 @@ public class @GameInput : IInputActionCollection, IDisposable
                     ""id"": ""cb9fb9a3-bd09-42b8-a1c7-f15795d93385"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""MultiTap""
+                    ""interactions"": ""MultiTap(tapDelay=0.2)""
                 },
                 {
                     ""name"": ""Boost"",

@@ -6,6 +6,7 @@ using UnityEngine;
 public class ShipController : MonoBehaviour {
 
     [SerializeField] private float _mainthrustForce;
+    [SerializeField] private float _boostForceMultiplier;
     [SerializeField] private float _reverseThrustForce;
     [SerializeField] private float _horizontalThrustForce;
     [SerializeField] private float _stepForce;
@@ -17,6 +18,8 @@ public class ShipController : MonoBehaviour {
     [SerializeField] private float _speedLimitEnableAfterStepTime;
 
     [SerializeField] private float _maxSpeed;
+    [SerializeField] private float _maxSpeedBoostModifier;
+    [SerializeField] private float _overSpeedLimitSlowdownForce;
     [SerializeField] private float _maxRotSpeed;
 
     [SerializeField] private InputReader _inputReader = default;
@@ -31,6 +34,7 @@ public class ShipController : MonoBehaviour {
     private float _rightThrusterInputValue;
     private Vector2 _rotInputValue;
     private bool _brake;
+    private bool _boosting;
 
     private Vector2 _stepDir;
     private bool _speedLimitEnabled = true;
@@ -108,15 +112,21 @@ public class ShipController : MonoBehaviour {
             _rigidbody2D.AddForce(brakeForce);
 
             // Not sure if it feels right to stop player from rotating while braking
-            /*
+            
             if (_rigidbody2D.angularVelocity != 0) {
                 _rigidbody2D.AddTorque(-Mathf.Sign(_rigidbody2D.angularVelocity) * _rotForce);
             }
-            */
+            
+
         } 
         else 
         {
-            Vector2 addingForce = transform.up * _mainthrustForce * _mainThrusterInputValue;
+            float forwardForce = _mainthrustForce;
+            if(_boosting)
+            {
+                forwardForce *= _boostForceMultiplier;
+            }
+            Vector2 addingForce = transform.up * forwardForce * _mainThrusterInputValue;
             _rigidbody2D.AddForce(addingForce);
 
             addingForce = -transform.up * _reverseThrustForce * _reverseThrusterInputValue;
@@ -134,10 +144,20 @@ public class ShipController : MonoBehaviour {
 
     private void HandleThrusters() {
         if (_thrusters != null) {
-            _thrusters.BackThrusters(_mainThrusterInputValue);
-            _thrusters.LeftThrusters(_leftThrusterInputValue);
-            _thrusters.RightThrusters(_rightThrusterInputValue);
-            _thrusters.NoseThrusters(_rotInputValue.x);
+            if (_brake)
+            {
+                _thrusters.BackThrusters(1.0f);
+                _thrusters.LeftThrusters(1.0f);
+                _thrusters.RightThrusters(1.0f);
+                //_thrusters.NoseThrusters(1.0f);
+            }
+            else
+            {
+                _thrusters.BackThrusters(_mainThrusterInputValue);
+                _thrusters.LeftThrusters(_leftThrusterInputValue);
+                _thrusters.RightThrusters(_rightThrusterInputValue);
+                _thrusters.NoseThrusters(_rotInputValue.x);
+            }
         }
     }
 
@@ -147,9 +167,20 @@ public class ShipController : MonoBehaviour {
     /// </summary>
     private void LimitVelocity()
     {
-        if(_rigidbody2D.velocity.sqrMagnitude > _maxSpeed * _maxSpeed)
+        float curMaxSpeed = _maxSpeed;
+        if(_boosting)
         {
-            _rigidbody2D.velocity = _rigidbody2D.velocity.normalized * _maxSpeed;
+            curMaxSpeed *= _maxSpeedBoostModifier;
+        }
+
+        if(_rigidbody2D.velocity.sqrMagnitude > curMaxSpeed * curMaxSpeed)
+        {
+            Vector3 slowDownForce = _rigidbody2D.velocity.normalized * -_overSpeedLimitSlowdownForce;
+            _rigidbody2D.AddForce(slowDownForce);
+            if (_rigidbody2D.velocity.sqrMagnitude < curMaxSpeed * curMaxSpeed)
+            {
+                _rigidbody2D.velocity = _rigidbody2D.velocity.normalized * curMaxSpeed;
+            }
         }
     }
 
@@ -244,11 +275,11 @@ public class ShipController : MonoBehaviour {
 
     private void Boost(float value) {
         if(value > 0) {
-            // Activate boost
-
+            Debug.Log("boosting");
+            _boosting = true;
         } else {
-            // Stop boosting
-
+            Debug.Log("stop boosting");
+            _boosting = false;
         }
     }
 
