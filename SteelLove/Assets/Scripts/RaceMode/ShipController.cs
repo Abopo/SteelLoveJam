@@ -115,9 +115,9 @@ public class ShipController : MonoBehaviour {
 
             // Not sure if it feels right to stop player from rotating while braking
             
-            if (_rigidbody2D.angularVelocity != 0) {
-                _rigidbody2D.AddTorque(-Mathf.Sign(_rigidbody2D.angularVelocity) * _rotForce);
-            }
+            //if (_rigidbody2D.angularVelocity != 0) {
+                //_rigidbody2D.AddTorque(-Mathf.Sign(_rigidbody2D.angularVelocity) * _rotForce);
+            //}
             
 
         } 
@@ -187,8 +187,12 @@ public class ShipController : MonoBehaviour {
         }
 
         if(_rigidbody2D.velocity.sqrMagnitude > curMaxSpeed * curMaxSpeed)
-        {
+        { 
             Vector3 slowDownForce = _rigidbody2D.velocity.normalized * -_overSpeedLimitSlowdownForce;
+            if (_boosting)
+            {
+                slowDownForce *= _boostForceMultiplier;
+            }
             _rigidbody2D.AddForce(slowDownForce);
             if (_rigidbody2D.velocity.sqrMagnitude < curMaxSpeed * curMaxSpeed)
             {

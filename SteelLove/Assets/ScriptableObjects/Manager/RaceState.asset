@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: RaceState
   m_EditorClassIdentifier: 
   description: Manages the state of the current race.
-  _currentState: 1
-  _previousState: 0
+  _currentState: 2
+  _previousState: 1
   _inputReader: {fileID: 11400000, guid: 3aad594c8fb5bb44cbff640004584d4d, type: 2}
   _onInitializeStateEvent: {fileID: 11400000, guid: d4fb627773a104e4ea69a2587eecfca1,
     type: 2}
