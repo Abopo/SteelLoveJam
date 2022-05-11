@@ -11,6 +11,8 @@ public class ShipController : MonoBehaviour {
     [SerializeField] private float _horizontalThrustForce;
     [SerializeField] private float _stepForce;
     [SerializeField] private float _brakeForce;
+    [SerializeField] private float _extremeDirChangeAngle;
+    [SerializeField] private float _extremeDirChangeMult;
 
     [SerializeField] private float _rotForce;
 
@@ -121,25 +123,36 @@ public class ShipController : MonoBehaviour {
         } 
         else 
         {
-            float forwardForce = _mainthrustForce;
-            if(_boosting)
-            {
-                forwardForce *= _boostForceMultiplier;
-            }
-            Vector2 addingForce = transform.up * forwardForce * _mainThrusterInputValue;
-            _rigidbody2D.AddForce(addingForce);
-
-            addingForce = -transform.up * _reverseThrustForce * _reverseThrusterInputValue;
-            _rigidbody2D.AddForce(addingForce);
-
-            addingForce = transform.right * _horizontalThrustForce * _leftThrusterInputValue;
-            _rigidbody2D.AddForce(addingForce);
-
-            addingForce = -transform.right * _horizontalThrustForce * _rightThrusterInputValue;
-            _rigidbody2D.AddForce(addingForce);
+            _rigidbody2D.AddForce(CalculateThrustForce(transform.up, _mainthrustForce, _mainThrusterInputValue));
+            _rigidbody2D.AddForce(CalculateThrustForce(-transform.up, _reverseThrustForce, _reverseThrusterInputValue));
+            _rigidbody2D.AddForce(CalculateThrustForce(transform.right, _horizontalThrustForce, _leftThrusterInputValue));
+            _rigidbody2D.AddForce(CalculateThrustForce(-transform.right, _horizontalThrustForce, _rightThrusterInputValue));
         }
 
         _rigidbody2D.AddTorque(_rotForce * -_rotInputValue.x);
+    }
+
+    private Vector2 CalculateThrustForce(Vector2 dir, float thrusterForce, float inputValue)
+    {
+        float finalThrustForce = thrusterForce;
+        if (_boosting)
+        {
+            finalThrustForce *= _boostForceMultiplier;
+        }
+
+        // only apply if we are moving
+        if (_rigidbody2D.velocity != Vector2.zero)
+        {
+            float angleBetween = Vector2.Angle(_rigidbody2D.velocity.normalized, dir.normalized);
+            angleBetween = Mathf.Abs(angleBetween);
+            if (angleBetween > _extremeDirChangeAngle)
+            {
+                float dirMult = angleBetween / 180;
+                finalThrustForce += finalThrustForce * _extremeDirChangeMult * dirMult;
+            }
+        }
+
+        return dir * finalThrustForce * inputValue;
     }
 
     private void HandleThrusters() {
