@@ -14,11 +14,13 @@ public class Character : Interactable {
     [SerializeField] GameObject _dialogueBubble;
     [SerializeField] GameObject _dialogueArrow;
 
+    [SerializeField] Vector2[] _posList = new Vector2[4]; // The 4 positions this character will be in between each race
+
     // Dialogue Lists
-    List<string> race1 = new List<string>();
-    List<string>[] race2 = new List<string>[3];
-    List<string>[] race3 = new List<string>[3];
-    List<string>[] race4 = new List<string>[3];
+    protected List<string> race1 = new List<string>();
+    protected List<string>[] race2 = new List<string>[3];
+    protected List<string>[] race3 = new List<string>[3];
+    protected List<string>[] race4 = new List<string>[3];
 
     public STATE curState;
 
@@ -34,7 +36,7 @@ public class Character : Interactable {
         SetDialogue();
     }
 
-    public virtual void SetDialogue() {
+    protected virtual void SetDialogue() {
         // Race 1
         race1.Add("Welcome to the game!");
         race1.Add("This is a test dialogue. It's very long to test the skip to end functionality.");
