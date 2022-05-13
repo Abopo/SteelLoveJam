@@ -126,7 +126,15 @@ public class ShipController : MonoBehaviour {
         } 
         else 
         {
-            _rigidbody2D.AddForce(CalculateThrustForce(transform.up, _mainthrustForce, _mainThrusterInputValue));
+            float finalMainThrustForce = _mainthrustForce;
+            float finalMainInputValue = _mainThrusterInputValue;
+            if (_boosting && _boostTank > 0f)
+            {
+                finalMainThrustForce *= _boostForceMultiplier;
+                finalMainInputValue = 1f;
+                _boostTank -= _boostCost * Time.deltaTime;
+            }
+            _rigidbody2D.AddForce(CalculateThrustForce(transform.up, finalMainThrustForce, finalMainInputValue));
             _rigidbody2D.AddForce(CalculateThrustForce(-transform.up, _reverseThrustForce, _reverseThrusterInputValue));
             _rigidbody2D.AddForce(CalculateThrustForce(transform.right, _horizontalThrustForce, _leftThrusterInputValue));
             _rigidbody2D.AddForce(CalculateThrustForce(-transform.right, _horizontalThrustForce, _rightThrusterInputValue));
@@ -137,13 +145,6 @@ public class ShipController : MonoBehaviour {
 
     private Vector2 CalculateThrustForce(Vector2 dir, float thrusterForce, float inputValue)
     {
-        float finalThrustForce = thrusterForce;
-        if (_boosting && _boostTank > 0f)
-        {
-            finalThrustForce *= _boostForceMultiplier;
-            _boostTank -= _boostCost * Time.deltaTime;
-        }
-
         // only apply if we are moving
         if (_rigidbody2D.velocity != Vector2.zero)
         {
@@ -152,11 +153,11 @@ public class ShipController : MonoBehaviour {
             if (angleBetween > _extremeDirChangeAngle)
             {
                 float dirMult = angleBetween / 180;
-                finalThrustForce += finalThrustForce * _extremeDirChangeMult * dirMult;
+                thrusterForce += thrusterForce * _extremeDirChangeMult * dirMult;
             }
         }
 
-        return dir * finalThrustForce * inputValue;
+        return dir * thrusterForce * inputValue;
     }
 
     private void HandleThrusters() {
