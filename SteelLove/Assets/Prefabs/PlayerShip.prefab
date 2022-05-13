@@ -4805,22 +4805,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mainthrustForce: 16
-  _boostForceMultiplier: 2
-  _reverseThrustForce: 8
-  _horizontalThrustForce: 8
+  _boostForceMultiplier: 4
+  _reverseThrustForce: 10
+  _horizontalThrustForce: 10
   _stepForce: 1500
-  _brakeForce: 1.25
+  _brakeForce: 1
   _extremeDirChangeAngle: 90
-  _extremeDirChangeMult: 1.75
+  _extremeDirChangeMult: 1.5
   _rotForce: 1
   _stepTime: 0.2
   _speedLimitEnableAfterStepTime: 0.2
-  _maxSpeed: 20
-  _maxSpeedBoostModifier: 3
-  _overSpeedLimitSlowdownForce: 25
-  _maxRotSpeed: 85
+  _maxSpeed: 22
+  _maxSpeedBoostModifier: 1.75
+  _overSpeedLimitSlowdownForce: 20
+  _maxRotSpeed: 95
+  _boostCost: 25
   _inputReader: {fileID: 11400000, guid: 3aad594c8fb5bb44cbff640004584d4d, type: 2}
   _OnCrossedFinishLine: {fileID: 11400000, guid: cd09aa317b22bf64980d7bb094732930,
+    type: 2}
+  _onHealthLevelChanged: {fileID: 11400000, guid: 060e30f2101550f40bf40177caf7cac1,
+    type: 2}
+  _onBoostLevelChanged: {fileID: 11400000, guid: 060e30f2101550f40bf40177caf7cac1,
     type: 2}
   _boostParticles: {fileID: 3688783142975531820}
 --- !u!50 &3710275133932983562
@@ -4926,7 +4931,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
+  m_TargetTexture: {fileID: 8400000, guid: 704a56c328e9f874ba148e408e72e231, type: 2}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1

@@ -38,14 +38,6 @@
                     "interactions": ""
                 },
                 {
-                    "name": "ReverseThruster",
-                    "type": "Button",
-                    "id": "37ee053b-8fbc-4665-bf6c-410aedab0c10",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
                     "name": "Pause",
                     "type": "Button",
                     "id": "a74c7fd5-a293-40ba-9a13-c04b423c3e95",
@@ -59,7 +51,7 @@
                     "id": "541db52a-b2c7-4c14-b2f7-31ab53c532c3",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "MultiTap(tapDelay=0.2)"
+                    "interactions": ""
                 },
                 {
                     "name": "StepRight",
@@ -67,20 +59,12 @@
                     "id": "cb9fb9a3-bd09-42b8-a1c7-f15795d93385",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "MultiTap(tapDelay=0.2)"
+                    "interactions": ""
                 },
                 {
                     "name": "Boost",
                     "type": "Button",
                     "id": "1283ca4d-8b21-4deb-acd4-ad4e4783b766",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "QuickTurn",
-                    "type": "Button",
-                    "id": "845cfdb8-64ca-4f6e-a4cc-97c241d4b9f8",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -98,7 +82,7 @@
                 {
                     "name": "",
                     "id": "7c08930d-5b4c-412e-a3d3-11d7c82896ff",
-                    "path": "<Gamepad>/rightTrigger",
+                    "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -186,7 +170,7 @@
                 {
                     "name": "",
                     "id": "2291f148-fe7b-46a0-a1fc-f117d2092edd",
-                    "path": "<Gamepad>/rightShoulder",
+                    "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -208,7 +192,7 @@
                 {
                     "name": "",
                     "id": "1d2d22c6-cea0-4f6e-b6e8-97ec5ce1e171",
-                    "path": "<Gamepad>/leftShoulder",
+                    "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -224,28 +208,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "RightThruster",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "5286774b-3321-43d0-8467-6fbbe1a2b78e",
-                    "path": "<Gamepad>/leftTrigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ReverseThruster",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "9ffa492f-347b-46ba-8dc1-c92349b05499",
-                    "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ReverseThruster",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -296,7 +258,7 @@
                 {
                     "name": "",
                     "id": "cb780378-94fa-44ac-93ba-e2ebd5d19ca7",
-                    "path": "<Gamepad>/buttonSouth",
+                    "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -312,28 +274,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Boost",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "156424dc-2979-45f1-ac97-0ee7a9cd6731",
-                    "path": "<Gamepad>/buttonWest",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "QuickTurn",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "a752bcaf-8cff-4ab8-b752-65265bbabc28",
-                    "path": "<Keyboard>/leftShift",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "QuickTurn",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

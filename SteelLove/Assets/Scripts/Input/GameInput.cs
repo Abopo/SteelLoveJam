@@ -51,14 +51,6 @@ public class @GameInput : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""ReverseThruster"",
-                    ""type"": ""Button"",
-                    ""id"": ""37ee053b-8fbc-4665-bf6c-410aedab0c10"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
                     ""name"": ""Pause"",
                     ""type"": ""Button"",
                     ""id"": ""a74c7fd5-a293-40ba-9a13-c04b423c3e95"",
@@ -72,7 +64,7 @@ public class @GameInput : IInputActionCollection, IDisposable
                     ""id"": ""541db52a-b2c7-4c14-b2f7-31ab53c532c3"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""MultiTap(tapDelay=0.2)""
+                    ""interactions"": """"
                 },
                 {
                     ""name"": ""StepRight"",
@@ -80,20 +72,12 @@ public class @GameInput : IInputActionCollection, IDisposable
                     ""id"": ""cb9fb9a3-bd09-42b8-a1c7-f15795d93385"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""MultiTap(tapDelay=0.2)""
+                    ""interactions"": """"
                 },
                 {
                     ""name"": ""Boost"",
                     ""type"": ""Button"",
                     ""id"": ""1283ca4d-8b21-4deb-acd4-ad4e4783b766"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""QuickTurn"",
-                    ""type"": ""Button"",
-                    ""id"": ""845cfdb8-64ca-4f6e-a4cc-97c241d4b9f8"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -111,7 +95,7 @@ public class @GameInput : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""7c08930d-5b4c-412e-a3d3-11d7c82896ff"",
-                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -199,7 +183,7 @@ public class @GameInput : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""2291f148-fe7b-46a0-a1fc-f117d2092edd"",
-                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -221,7 +205,7 @@ public class @GameInput : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""1d2d22c6-cea0-4f6e-b6e8-97ec5ce1e171"",
-                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -237,28 +221,6 @@ public class @GameInput : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""RightThruster"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""5286774b-3321-43d0-8467-6fbbe1a2b78e"",
-                    ""path"": ""<Gamepad>/leftTrigger"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ReverseThruster"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""9ffa492f-347b-46ba-8dc1-c92349b05499"",
-                    ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ReverseThruster"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -309,7 +271,7 @@ public class @GameInput : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""cb780378-94fa-44ac-93ba-e2ebd5d19ca7"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""path"": ""<Gamepad>/buttonWest"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -325,28 +287,6 @@ public class @GameInput : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Boost"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""156424dc-2979-45f1-ac97-0ee7a9cd6731"",
-                    ""path"": ""<Gamepad>/buttonWest"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""QuickTurn"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""a752bcaf-8cff-4ab8-b752-65265bbabc28"",
-                    ""path"": ""<Keyboard>/leftShift"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""QuickTurn"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -659,12 +599,10 @@ public class @GameInput : IInputActionCollection, IDisposable
         m_Racing_RotationThrusters = m_Racing.FindAction("RotationThrusters", throwIfNotFound: true);
         m_Racing_LeftThruster = m_Racing.FindAction("LeftThruster", throwIfNotFound: true);
         m_Racing_RightThruster = m_Racing.FindAction("RightThruster", throwIfNotFound: true);
-        m_Racing_ReverseThruster = m_Racing.FindAction("ReverseThruster", throwIfNotFound: true);
         m_Racing_Pause = m_Racing.FindAction("Pause", throwIfNotFound: true);
         m_Racing_StepLeft = m_Racing.FindAction("StepLeft", throwIfNotFound: true);
         m_Racing_StepRight = m_Racing.FindAction("StepRight", throwIfNotFound: true);
         m_Racing_Boost = m_Racing.FindAction("Boost", throwIfNotFound: true);
-        m_Racing_QuickTurn = m_Racing.FindAction("QuickTurn", throwIfNotFound: true);
         m_Racing_Brake = m_Racing.FindAction("Brake", throwIfNotFound: true);
         // BreakRoom
         m_BreakRoom = asset.FindActionMap("BreakRoom", throwIfNotFound: true);
@@ -728,12 +666,10 @@ public class @GameInput : IInputActionCollection, IDisposable
     private readonly InputAction m_Racing_RotationThrusters;
     private readonly InputAction m_Racing_LeftThruster;
     private readonly InputAction m_Racing_RightThruster;
-    private readonly InputAction m_Racing_ReverseThruster;
     private readonly InputAction m_Racing_Pause;
     private readonly InputAction m_Racing_StepLeft;
     private readonly InputAction m_Racing_StepRight;
     private readonly InputAction m_Racing_Boost;
-    private readonly InputAction m_Racing_QuickTurn;
     private readonly InputAction m_Racing_Brake;
     public struct RacingActions
     {
@@ -743,12 +679,10 @@ public class @GameInput : IInputActionCollection, IDisposable
         public InputAction @RotationThrusters => m_Wrapper.m_Racing_RotationThrusters;
         public InputAction @LeftThruster => m_Wrapper.m_Racing_LeftThruster;
         public InputAction @RightThruster => m_Wrapper.m_Racing_RightThruster;
-        public InputAction @ReverseThruster => m_Wrapper.m_Racing_ReverseThruster;
         public InputAction @Pause => m_Wrapper.m_Racing_Pause;
         public InputAction @StepLeft => m_Wrapper.m_Racing_StepLeft;
         public InputAction @StepRight => m_Wrapper.m_Racing_StepRight;
         public InputAction @Boost => m_Wrapper.m_Racing_Boost;
-        public InputAction @QuickTurn => m_Wrapper.m_Racing_QuickTurn;
         public InputAction @Brake => m_Wrapper.m_Racing_Brake;
         public InputActionMap Get() { return m_Wrapper.m_Racing; }
         public void Enable() { Get().Enable(); }
@@ -771,9 +705,6 @@ public class @GameInput : IInputActionCollection, IDisposable
                 @RightThruster.started -= m_Wrapper.m_RacingActionsCallbackInterface.OnRightThruster;
                 @RightThruster.performed -= m_Wrapper.m_RacingActionsCallbackInterface.OnRightThruster;
                 @RightThruster.canceled -= m_Wrapper.m_RacingActionsCallbackInterface.OnRightThruster;
-                @ReverseThruster.started -= m_Wrapper.m_RacingActionsCallbackInterface.OnReverseThruster;
-                @ReverseThruster.performed -= m_Wrapper.m_RacingActionsCallbackInterface.OnReverseThruster;
-                @ReverseThruster.canceled -= m_Wrapper.m_RacingActionsCallbackInterface.OnReverseThruster;
                 @Pause.started -= m_Wrapper.m_RacingActionsCallbackInterface.OnPause;
                 @Pause.performed -= m_Wrapper.m_RacingActionsCallbackInterface.OnPause;
                 @Pause.canceled -= m_Wrapper.m_RacingActionsCallbackInterface.OnPause;
@@ -786,9 +717,6 @@ public class @GameInput : IInputActionCollection, IDisposable
                 @Boost.started -= m_Wrapper.m_RacingActionsCallbackInterface.OnBoost;
                 @Boost.performed -= m_Wrapper.m_RacingActionsCallbackInterface.OnBoost;
                 @Boost.canceled -= m_Wrapper.m_RacingActionsCallbackInterface.OnBoost;
-                @QuickTurn.started -= m_Wrapper.m_RacingActionsCallbackInterface.OnQuickTurn;
-                @QuickTurn.performed -= m_Wrapper.m_RacingActionsCallbackInterface.OnQuickTurn;
-                @QuickTurn.canceled -= m_Wrapper.m_RacingActionsCallbackInterface.OnQuickTurn;
                 @Brake.started -= m_Wrapper.m_RacingActionsCallbackInterface.OnBrake;
                 @Brake.performed -= m_Wrapper.m_RacingActionsCallbackInterface.OnBrake;
                 @Brake.canceled -= m_Wrapper.m_RacingActionsCallbackInterface.OnBrake;
@@ -808,9 +736,6 @@ public class @GameInput : IInputActionCollection, IDisposable
                 @RightThruster.started += instance.OnRightThruster;
                 @RightThruster.performed += instance.OnRightThruster;
                 @RightThruster.canceled += instance.OnRightThruster;
-                @ReverseThruster.started += instance.OnReverseThruster;
-                @ReverseThruster.performed += instance.OnReverseThruster;
-                @ReverseThruster.canceled += instance.OnReverseThruster;
                 @Pause.started += instance.OnPause;
                 @Pause.performed += instance.OnPause;
                 @Pause.canceled += instance.OnPause;
@@ -823,9 +748,6 @@ public class @GameInput : IInputActionCollection, IDisposable
                 @Boost.started += instance.OnBoost;
                 @Boost.performed += instance.OnBoost;
                 @Boost.canceled += instance.OnBoost;
-                @QuickTurn.started += instance.OnQuickTurn;
-                @QuickTurn.performed += instance.OnQuickTurn;
-                @QuickTurn.canceled += instance.OnQuickTurn;
                 @Brake.started += instance.OnBrake;
                 @Brake.performed += instance.OnBrake;
                 @Brake.canceled += instance.OnBrake;
@@ -929,12 +851,10 @@ public class @GameInput : IInputActionCollection, IDisposable
         void OnRotationThrusters(InputAction.CallbackContext context);
         void OnLeftThruster(InputAction.CallbackContext context);
         void OnRightThruster(InputAction.CallbackContext context);
-        void OnReverseThruster(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
         void OnStepLeft(InputAction.CallbackContext context);
         void OnStepRight(InputAction.CallbackContext context);
         void OnBoost(InputAction.CallbackContext context);
-        void OnQuickTurn(InputAction.CallbackContext context);
         void OnBrake(InputAction.CallbackContext context);
     }
     public interface IBreakRoomActions

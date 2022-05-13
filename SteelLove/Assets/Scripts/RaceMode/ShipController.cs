@@ -5,6 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class ShipController : MonoBehaviour {
 
+    [Header("Movement Properties")]
     [SerializeField] private float _mainthrustForce;
     [SerializeField] private float _boostForceMultiplier;
     [SerializeField] private float _reverseThrustForce;
@@ -24,9 +25,22 @@ public class ShipController : MonoBehaviour {
     [SerializeField] private float _overSpeedLimitSlowdownForce;
     [SerializeField] private float _maxRotSpeed;
 
+    [SerializeField] private float _boostCost;
+
+    [Header("Input")]
     [SerializeField] private InputReader _inputReader = default;
 
+    [Header("Broadcasting On")]
     [SerializeField] private VoidEventChannelSO _OnCrossedFinishLine = default;
+    [SerializeField] private FloatEventChannelSO _onHealthLevelChanged = default;
+    [SerializeField] private FloatEventChannelSO _onBoostLevelChanged = default;
+
+    [Header("Effects")]
+    [SerializeField] ParticleSystem _boostParticles;
+
+    // Ship Resources
+    private float _health = 100.0f;
+    private float _boostTank = 0f;
 
     private Rigidbody2D _rigidbody2D = default;
 
@@ -43,18 +57,13 @@ public class ShipController : MonoBehaviour {
 
     ShipThrusters _thrusters;
 
-    private float _boostTank = 0f;
     public float BoostTank { get => _boostTank; }
-    [SerializeField] ParticleSystem _boostParticles;
 
     private void Awake()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
 
         _thrusters = GetComponentInChildren<ShipThrusters>();
-
-        //TODO: move to a gameplayState manager
-        _inputReader.EnableRacingInput();
     }
 
     private void OnEnable()
@@ -103,6 +112,8 @@ public class ShipController : MonoBehaviour {
         {
             _OnCrossedFinishLine.RaiseEvent();
         }
+
+        // TODO: trigger for out of bound areas?
     }
 
     private void PerformMovement()
@@ -112,18 +123,18 @@ public class ShipController : MonoBehaviour {
             // Brake in the opposite direction of our velocity
             Vector2 brakeForce = (_rigidbody2D.velocity * -1) * _brakeForce;
             _rigidbody2D.AddForce(brakeForce);
-
-            // Not sure if it feels right to stop player from rotating while braking
-            
-            if (_rigidbody2D.angularVelocity != 0) {
-                _rigidbody2D.AddTorque(-Mathf.Sign(_rigidbody2D.angularVelocity) * _rotForce);
-            }
-            
-
         } 
         else 
         {
-            _rigidbody2D.AddForce(CalculateThrustForce(transform.up, _mainthrustForce, _mainThrusterInputValue));
+            float finalMainThrustForce = _mainthrustForce;
+            float finalMainInputValue = _mainThrusterInputValue;
+            if (_boosting && _boostTank > 0f)
+            {
+                finalMainThrustForce *= _boostForceMultiplier;
+                finalMainInputValue = 1f;
+                _boostTank -= _boostCost * Time.deltaTime;
+            }
+            _rigidbody2D.AddForce(CalculateThrustForce(transform.up, finalMainThrustForce, finalMainInputValue));
             _rigidbody2D.AddForce(CalculateThrustForce(-transform.up, _reverseThrustForce, _reverseThrusterInputValue));
             _rigidbody2D.AddForce(CalculateThrustForce(transform.right, _horizontalThrustForce, _leftThrusterInputValue));
             _rigidbody2D.AddForce(CalculateThrustForce(-transform.right, _horizontalThrustForce, _rightThrusterInputValue));
@@ -134,12 +145,6 @@ public class ShipController : MonoBehaviour {
 
     private Vector2 CalculateThrustForce(Vector2 dir, float thrusterForce, float inputValue)
     {
-        float finalThrustForce = thrusterForce;
-        if (_boosting)
-        {
-            finalThrustForce *= _boostForceMultiplier;
-        }
-
         // only apply if we are moving
         if (_rigidbody2D.velocity != Vector2.zero)
         {
@@ -148,11 +153,11 @@ public class ShipController : MonoBehaviour {
             if (angleBetween > _extremeDirChangeAngle)
             {
                 float dirMult = angleBetween / 180;
-                finalThrustForce += finalThrustForce * _extremeDirChangeMult * dirMult;
+                thrusterForce += thrusterForce * _extremeDirChangeMult * dirMult;
             }
         }
 
-        return dir * finalThrustForce * inputValue;
+        return dir * thrusterForce * inputValue;
     }
 
     private void HandleThrusters() {
@@ -183,12 +188,24 @@ public class ShipController : MonoBehaviour {
         float curMaxSpeed = _maxSpeed;
         if(_boosting)
         {
-            curMaxSpeed *= _maxSpeedBoostModifier;
+            if (_boostTank > 0)
+            {
+                curMaxSpeed *= _maxSpeedBoostModifier;
+                ReduceBoost();
+            }
+            else
+            {
+                _boosting = false;
+            }
         }
 
         if(_rigidbody2D.velocity.sqrMagnitude > curMaxSpeed * curMaxSpeed)
-        {
+        { 
             Vector3 slowDownForce = _rigidbody2D.velocity.normalized * -_overSpeedLimitSlowdownForce;
+            if (_boosting)
+            {
+                slowDownForce *= _boostForceMultiplier;
+            }
             _rigidbody2D.AddForce(slowDownForce);
             if (_rigidbody2D.velocity.sqrMagnitude < curMaxSpeed * curMaxSpeed)
             {
@@ -203,6 +220,15 @@ public class ShipController : MonoBehaviour {
         {
             _rigidbody2D.angularVelocity = _maxRotSpeed * Mathf.Sign(_rigidbody2D.angularVelocity);
         }    
+    }
+
+    private void ReduceBoost()
+    {
+        if (_boosting)
+        {
+            _boostTank -= _boostCost * Time.deltaTime;
+            _onBoostLevelChanged.RaiseEvent(_boostTank);
+        }
     }
 
     private void PerformStepInitial()
@@ -238,6 +264,7 @@ public class ShipController : MonoBehaviour {
         } else {
             _boostTank = 100;
         }
+        _onBoostLevelChanged.RaiseEvent(_boostTank);
     }
 
     #region InputEvents
@@ -287,11 +314,9 @@ public class ShipController : MonoBehaviour {
     }
 
     private void Boost(float value) {
-        if(value > 0) {
-            Debug.Log("boosting");
+        if(value > 0 && _boostTank > 0f) {
             _boosting = true;
         } else {
-            Debug.Log("stop boosting");
             _boosting = false;
         }
     }

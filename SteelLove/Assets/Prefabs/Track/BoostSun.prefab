@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fd70d501d59d154cb0c1e714935f7be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fillSpeed: 1
+  fillSpeed: 25
   facingAngle: -0.95
   dotResult: 0
   _shipsInRange: []
