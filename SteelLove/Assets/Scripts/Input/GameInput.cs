@@ -453,6 +453,14 @@ public class @GameInput : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Left Click"",
+                    ""type"": ""Button"",
+                    ""id"": ""c6f2fa39-4d6c-47e9-aea5-81903f274c23"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -480,8 +488,8 @@ public class @GameInput : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""53e1deb4-3d45-46f9-9687-66c0c8be2e64"",
-                    ""path"": ""<Keyboard>/enter"",
+                    ""id"": ""d3dc945c-1828-4fba-8151-9430e8323be4"",
+                    ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -503,7 +511,7 @@ public class @GameInput : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""5e19c1f7-c46c-40f4-ba4b-3f417156c6c9"",
-                    ""path"": ""<Keyboard>/backspace"",
+                    ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -587,6 +595,17 @@ public class @GameInput : IInputActionCollection, IDisposable
                     ""action"": ""MoveCursor"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d98d7ca2-bd9e-41c6-89e7-80f4bc1a0206"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Left Click"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -613,6 +632,7 @@ public class @GameInput : IInputActionCollection, IDisposable
         m_UI_Confirm = m_UI.FindAction("Confirm", throwIfNotFound: true);
         m_UI_Back = m_UI.FindAction("Back", throwIfNotFound: true);
         m_UI_MoveCursor = m_UI.FindAction("MoveCursor", throwIfNotFound: true);
+        m_UI_LeftClick = m_UI.FindAction("Left Click", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -803,6 +823,7 @@ public class @GameInput : IInputActionCollection, IDisposable
     private readonly InputAction m_UI_Confirm;
     private readonly InputAction m_UI_Back;
     private readonly InputAction m_UI_MoveCursor;
+    private readonly InputAction m_UI_LeftClick;
     public struct UIActions
     {
         private @GameInput m_Wrapper;
@@ -810,6 +831,7 @@ public class @GameInput : IInputActionCollection, IDisposable
         public InputAction @Confirm => m_Wrapper.m_UI_Confirm;
         public InputAction @Back => m_Wrapper.m_UI_Back;
         public InputAction @MoveCursor => m_Wrapper.m_UI_MoveCursor;
+        public InputAction @LeftClick => m_Wrapper.m_UI_LeftClick;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -828,6 +850,9 @@ public class @GameInput : IInputActionCollection, IDisposable
                 @MoveCursor.started -= m_Wrapper.m_UIActionsCallbackInterface.OnMoveCursor;
                 @MoveCursor.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnMoveCursor;
                 @MoveCursor.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnMoveCursor;
+                @LeftClick.started -= m_Wrapper.m_UIActionsCallbackInterface.OnLeftClick;
+                @LeftClick.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnLeftClick;
+                @LeftClick.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnLeftClick;
             }
             m_Wrapper.m_UIActionsCallbackInterface = instance;
             if (instance != null)
@@ -841,6 +866,9 @@ public class @GameInput : IInputActionCollection, IDisposable
                 @MoveCursor.started += instance.OnMoveCursor;
                 @MoveCursor.performed += instance.OnMoveCursor;
                 @MoveCursor.canceled += instance.OnMoveCursor;
+                @LeftClick.started += instance.OnLeftClick;
+                @LeftClick.performed += instance.OnLeftClick;
+                @LeftClick.canceled += instance.OnLeftClick;
             }
         }
     }
@@ -867,5 +895,6 @@ public class @GameInput : IInputActionCollection, IDisposable
         void OnConfirm(InputAction.CallbackContext context);
         void OnBack(InputAction.CallbackContext context);
         void OnMoveCursor(InputAction.CallbackContext context);
+        void OnLeftClick(InputAction.CallbackContext context);
     }
 }

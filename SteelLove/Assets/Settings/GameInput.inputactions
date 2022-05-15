@@ -440,6 +440,14 @@
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Left Click",
+                    "type": "Button",
+                    "id": "c6f2fa39-4d6c-47e9-aea5-81903f274c23",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -467,8 +475,8 @@
                 },
                 {
                     "name": "",
-                    "id": "53e1deb4-3d45-46f9-9687-66c0c8be2e64",
-                    "path": "<Keyboard>/enter",
+                    "id": "d3dc945c-1828-4fba-8151-9430e8323be4",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -490,7 +498,7 @@
                 {
                     "name": "",
                     "id": "5e19c1f7-c46c-40f4-ba4b-3f417156c6c9",
-                    "path": "<Keyboard>/backspace",
+                    "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -574,6 +582,17 @@
                     "action": "MoveCursor",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "d98d7ca2-bd9e-41c6-89e7-80f4bc1a0206",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Left Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

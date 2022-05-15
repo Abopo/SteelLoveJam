@@ -1,0 +1,55 @@
+title: Jebb_Race1
+position: -185,-17
+---
+<<set $fondness to 0>>
+
+Ahh, I'd heard you were joining the race too Ziv.
+Hard to resist a prize like that, eh?
+You'd best set your hopes aside though, because I will be the one to win this race!
+
+-> I look forward to our race.
+-> Hah! You wish. Everyone knows I'm the fastest racer here.
+-> Very well. Good luck.
+
+Goodbye.
+===
+
+title: Jebb_Race2_Top3
+---
+I'm one step closer to that which I long for...
+===
+
+title: Jebb_Race2_Mid3
+---
+Mmm... not a great start, but nothing I can't handle.
+I've got some tricks up my sleeve for the next race heh heh heh.
+===
+
+title: Jebb_Race2_Bot3
+---
+No...no... I will never feel their love if I continue to lose like this...
+===
+
+title: Jebb_Race3_Top3
+---
+===
+
+title: Jebb_Race3_Mid3
+---
+===
+
+title: Jebb_Race3_Bot3
+---
+===
+
+title: Jebb_Race4_Top3
+---
+===
+
+title: Jebb_Race4_Mid3
+---
+===
+
+title: Jebb_Race4_Bot3
+---
+===

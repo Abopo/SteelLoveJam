@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour {
     private Rigidbody2D _rigidbody2D;
     private Collider2D _collider2D;
 
+    bool _inControl = true;
+
     void Awake() {
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _collider2D = GetComponentInChildren<Collider2D>();
@@ -33,7 +35,9 @@ public class PlayerController : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        PlayerMovement();
+        if (_inControl) {
+            PlayerMovement();
+        }
     }
 
     void PlayerMovement() {
@@ -76,5 +80,13 @@ public class PlayerController : MonoBehaviour {
         foreach (Collider2D collider in overlappingColliders) {
             collider.GetComponent<Interactable>().Interact();
         }
+    }
+
+    public void Freeze() {
+        _inControl = false;
+    }
+
+    public void Unfreeze() {
+        _inControl = true;
     }
 }

@@ -9923,6 +9923,66 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 704123846833252098, guid: bb4bcaa6721c3c640b9ae4d1495288b0,
+        type: 3}
+      propertyPath: m_MoveAction
+      value: 
+      objectReference: {fileID: 4569328882713024715, guid: 82f4736d26f4d584aa6152d572102341,
+        type: 3}
+    - target: {fileID: 704123846833252098, guid: bb4bcaa6721c3c640b9ae4d1495288b0,
+        type: 3}
+      propertyPath: m_PointAction
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 704123846833252098, guid: bb4bcaa6721c3c640b9ae4d1495288b0,
+        type: 3}
+      propertyPath: m_ActionsAsset
+      value: 
+      objectReference: {fileID: -944628639613478452, guid: 82f4736d26f4d584aa6152d572102341,
+        type: 3}
+    - target: {fileID: 704123846833252098, guid: bb4bcaa6721c3c640b9ae4d1495288b0,
+        type: 3}
+      propertyPath: m_CancelAction
+      value: 
+      objectReference: {fileID: -6244451412600806769, guid: 82f4736d26f4d584aa6152d572102341,
+        type: 3}
+    - target: {fileID: 704123846833252098, guid: bb4bcaa6721c3c640b9ae4d1495288b0,
+        type: 3}
+      propertyPath: m_SubmitAction
+      value: 
+      objectReference: {fileID: 2151494848450214194, guid: 82f4736d26f4d584aa6152d572102341,
+        type: 3}
+    - target: {fileID: 704123846833252098, guid: bb4bcaa6721c3c640b9ae4d1495288b0,
+        type: 3}
+      propertyPath: m_LeftClickAction
+      value: 
+      objectReference: {fileID: 4468839735899230821, guid: 82f4736d26f4d584aa6152d572102341,
+        type: 3}
+    - target: {fileID: 704123846833252098, guid: bb4bcaa6721c3c640b9ae4d1495288b0,
+        type: 3}
+      propertyPath: m_RightClickAction
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 704123846833252098, guid: bb4bcaa6721c3c640b9ae4d1495288b0,
+        type: 3}
+      propertyPath: m_MiddleClickAction
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 704123846833252098, guid: bb4bcaa6721c3c640b9ae4d1495288b0,
+        type: 3}
+      propertyPath: m_ScrollWheelAction
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 704123846833252098, guid: bb4bcaa6721c3c640b9ae4d1495288b0,
+        type: 3}
+      propertyPath: m_TrackedDevicePositionAction
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 704123846833252098, guid: bb4bcaa6721c3c640b9ae4d1495288b0,
+        type: 3}
+      propertyPath: m_TrackedDeviceOrientationAction
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 704123846833252109, guid: bb4bcaa6721c3c640b9ae4d1495288b0,
         type: 3}
       propertyPath: m_Name
@@ -13769,6 +13829,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 719650190}
     m_Modifications:
+    - target: {fileID: 5153635455976053345, guid: 5a87123de9abf244182a3273a78f6857,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1128320888}
+    - target: {fileID: 6471944129293815761, guid: 5a87123de9abf244182a3273a78f6857,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8824941373650663402, guid: 5a87123de9abf244182a3273a78f6857,
         type: 3}
       propertyPath: m_RootOrder

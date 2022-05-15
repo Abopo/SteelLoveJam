@@ -135,6 +135,10 @@ public class InputReader : DescriptionBaseSO, GameInput.IRacingActions, GameInpu
         if (context.phase == InputActionPhase.Performed)
             ConfirmEvent.Invoke();
     }
+
+    public void OnLeftClick(InputAction.CallbackContext context) {
+
+    }
 #endregion
 
     public void EnableAllInput()
