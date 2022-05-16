@@ -10,7 +10,15 @@
                     "type": "Value",
                     "id": "d261877e-1dfa-4d8d-869f-f99ef7a4939a",
                     "expectedControlType": "Analog",
-                    "processors": "",
+                    "processors": "AxisDeadzone",
+                    "interactions": ""
+                },
+                {
+                    "name": "ReverseThruster",
+                    "type": "Value",
+                    "id": "b2deeeee-a328-440a-ba1d-4290d8889b2c",
+                    "expectedControlType": "Analog",
+                    "processors": "AxisDeadzone",
                     "interactions": ""
                 },
                 {
@@ -94,6 +102,17 @@
                     "name": "",
                     "id": "afd1e610-8368-43a0-a793-a8889fbef424",
                     "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MainThruster",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2d17ec0d-f969-47a4-8fbf-3cf973397c83",
+                    "path": "<Gamepad>/rightStick/up",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -191,6 +210,17 @@
                 },
                 {
                     "name": "",
+                    "id": "60e7a66f-2c91-469e-b27c-43dc985c8527",
+                    "path": "<Gamepad>/rightStick/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftThruster",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "1d2d22c6-cea0-4f6e-b6e8-97ec5ce1e171",
                     "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
@@ -204,6 +234,17 @@
                     "name": "",
                     "id": "e5ea9cc2-fbd8-4907-8538-925a297cfd5d",
                     "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RightThruster",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fb2db668-6f47-4d33-b744-101c76f081bc",
+                    "path": "<Gamepad>/rightStick/left",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -296,6 +337,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Brake",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2ddc966b-64d6-431e-b265-ff21841d4d1c",
+                    "path": "<Gamepad>/rightStick/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ReverseThruster",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
