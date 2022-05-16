@@ -139,6 +139,9 @@ public class InputReader : DescriptionBaseSO, GameInput.IRacingActions, GameInpu
     public void OnLeftClick(InputAction.CallbackContext context) {
 
     }
+
+    public void OnPoint(InputAction.CallbackContext context) {
+    }
 #endregion
 
     public void EnableAllInput()

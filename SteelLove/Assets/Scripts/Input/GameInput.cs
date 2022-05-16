@@ -461,6 +461,14 @@ public class @GameInput : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Point"",
+                    ""type"": ""Button"",
+                    ""id"": ""a93d74e0-89ee-4fcf-b848-deb13e884445"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -606,6 +614,17 @@ public class @GameInput : IInputActionCollection, IDisposable
                     ""action"": ""Left Click"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""696f7a67-1c5d-40ca-bfa4-7bc5bda89680"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Point"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -633,6 +652,7 @@ public class @GameInput : IInputActionCollection, IDisposable
         m_UI_Back = m_UI.FindAction("Back", throwIfNotFound: true);
         m_UI_MoveCursor = m_UI.FindAction("MoveCursor", throwIfNotFound: true);
         m_UI_LeftClick = m_UI.FindAction("Left Click", throwIfNotFound: true);
+        m_UI_Point = m_UI.FindAction("Point", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -824,6 +844,7 @@ public class @GameInput : IInputActionCollection, IDisposable
     private readonly InputAction m_UI_Back;
     private readonly InputAction m_UI_MoveCursor;
     private readonly InputAction m_UI_LeftClick;
+    private readonly InputAction m_UI_Point;
     public struct UIActions
     {
         private @GameInput m_Wrapper;
@@ -832,6 +853,7 @@ public class @GameInput : IInputActionCollection, IDisposable
         public InputAction @Back => m_Wrapper.m_UI_Back;
         public InputAction @MoveCursor => m_Wrapper.m_UI_MoveCursor;
         public InputAction @LeftClick => m_Wrapper.m_UI_LeftClick;
+        public InputAction @Point => m_Wrapper.m_UI_Point;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -853,6 +875,9 @@ public class @GameInput : IInputActionCollection, IDisposable
                 @LeftClick.started -= m_Wrapper.m_UIActionsCallbackInterface.OnLeftClick;
                 @LeftClick.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnLeftClick;
                 @LeftClick.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnLeftClick;
+                @Point.started -= m_Wrapper.m_UIActionsCallbackInterface.OnPoint;
+                @Point.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnPoint;
+                @Point.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnPoint;
             }
             m_Wrapper.m_UIActionsCallbackInterface = instance;
             if (instance != null)
@@ -869,6 +894,9 @@ public class @GameInput : IInputActionCollection, IDisposable
                 @LeftClick.started += instance.OnLeftClick;
                 @LeftClick.performed += instance.OnLeftClick;
                 @LeftClick.canceled += instance.OnLeftClick;
+                @Point.started += instance.OnPoint;
+                @Point.performed += instance.OnPoint;
+                @Point.canceled += instance.OnPoint;
             }
         }
     }
@@ -896,5 +924,6 @@ public class @GameInput : IInputActionCollection, IDisposable
         void OnBack(InputAction.CallbackContext context);
         void OnMoveCursor(InputAction.CallbackContext context);
         void OnLeftClick(InputAction.CallbackContext context);
+        void OnPoint(InputAction.CallbackContext context);
     }
 }
