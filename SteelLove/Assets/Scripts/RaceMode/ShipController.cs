@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Rigidbody2D), typeof(Animator))]
 public class ShipController : MonoBehaviour {
 
     [Header("Movement Properties")]
@@ -43,6 +43,7 @@ public class ShipController : MonoBehaviour {
     private float _boostTank = 0f;
 
     private Rigidbody2D _rigidbody2D = default;
+    private Animator _animator = default;
 
     private float _mainThrusterInputValue;
     private float _reverseThrusterInputValue;
@@ -62,6 +63,7 @@ public class ShipController : MonoBehaviour {
     private void Awake()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
+        _animator = GetComponent<Animator>();
 
         _thrusters = GetComponentInChildren<ShipThrusters>();
     }
@@ -138,6 +140,10 @@ public class ShipController : MonoBehaviour {
             _rigidbody2D.AddForce(CalculateThrustForce(-transform.up, _reverseThrustForce, _reverseThrusterInputValue));
             _rigidbody2D.AddForce(CalculateThrustForce(transform.right, _horizontalThrustForce, _leftThrusterInputValue));
             _rigidbody2D.AddForce(CalculateThrustForce(-transform.right, _horizontalThrustForce, _rightThrusterInputValue));
+
+            // set animatior
+            _animator.SetFloat("LeftBoostInput", _leftThrusterInputValue);
+            _animator.SetFloat("RightBoostInput", _rightThrusterInputValue);
         }
 
         _rigidbody2D.AddTorque(_rotForce * -_rotInputValue.x);
