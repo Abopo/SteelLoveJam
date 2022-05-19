@@ -737,7 +737,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6362482531421729902}
   - component: {fileID: 5029602759345589869}
-  - component: {fileID: 4705120211197415034}
   m_Layer: 0
   m_Name: Dialogue Bubble
   m_TagString: Untagged
@@ -774,7 +773,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   yarnProject: {fileID: 7545569452688597077, guid: b3693de60084a4041ba7e865f6238cfe,
     type: 3}
-  _variableStorage: {fileID: 4705120211197415034}
+  _variableStorage: {fileID: 0}
   dialogueViews:
   - {fileID: 2275397418236115513}
   - {fileID: 2347397021036160297}
@@ -795,20 +794,6 @@ MonoBehaviour:
   onCommand:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &4705120211197415034
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5932933650434754064}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 610c541718d694070a21327d1ae62e75, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  showDebug: 0
-  debugTextView: {fileID: 0}
 --- !u!1 &6471944129293815762
 GameObject:
   m_ObjectHideFlags: 0

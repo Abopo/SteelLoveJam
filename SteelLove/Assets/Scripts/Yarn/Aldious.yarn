@@ -1,0 +1,52 @@
+﻿title: Aldious_Race1
+tags:
+---
+Well, howdy there! Would you like to pop a squat and share a drink?
+-> I would like nothing less.
+    Okie dokie! See ya around!
+-> I... suppose so.
+    Great! The drinks here are surprisingly good I hear!
+    Where ya from partner?
+    <<set $aldious_fondness to 1>>
+    -> None of your business
+        I get it. See ya around!
+    -> I am from the Metilio region.
+        Wow! Quite a far way from home arentchya?
+        <<set $aldious_fondness to 2>>
+===
+
+title: Aldious_Race2_Top3
+---
+===
+
+title: Aldious_Race2_Mid3
+---
+===
+
+title: Aldious_Race2_Bot3
+---
+===
+
+title: Aldious_Race3_Top3
+---
+===
+
+title: Aldious_Race3_Mid3
+---
+===
+
+title: Aldious_Race3_Bot3
+---
+===
+
+title: Aldious_Race4_Top3
+---
+===
+
+title: Aldious_Race4_Mid3
+---
+===
+
+title: Aldious_Race4_Bot3
+---
+===
