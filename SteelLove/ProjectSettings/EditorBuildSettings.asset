@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/BreakRoom.unity
+    guid: 4a52497f914552e4eac3eb017dfe65ef
+  - enabled: 1
+    path: Assets/Scenes/Track1.unity
+    guid: 9ccfa836f9d7a264998a1f9c4c21bbca
   m_configObjects: {}

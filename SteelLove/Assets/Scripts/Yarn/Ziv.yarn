@@ -1,6 +1,5 @@
 ﻿title: Start
 ---
-
 <<set $jebb_fondness to 0>>
 <<set $trik_fondness to 0>>
 <<set $sumiv_fondness to 0>>

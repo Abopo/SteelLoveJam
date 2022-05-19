@@ -1,5 +1,4 @@
 ﻿title: Trik_Race1
-tags:
 ---
 <<if $has_grazeloid_translator == true>>
     Hello!

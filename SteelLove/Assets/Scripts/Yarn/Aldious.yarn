@@ -1,5 +1,4 @@
 ﻿title: Aldious_Race1
-tags:
 ---
 Well, howdy there! Would you like to pop a squat and share a drink?
 -> I would like nothing less.
@@ -11,20 +10,29 @@ Well, howdy there! Would you like to pop a squat and share a drink?
     -> None of your business
         I get it. See ya around!
     -> I am from the Metilio region.
-        Wow! Quite a far way from home arentchya?
+        Wow! Quite a far way from home aren'tchya?
         <<set $aldious_fondness to 2>>
 ===
 
 title: Aldious_Race2_Top3
 ---
+Oh boy! That last race went just swell!
+This racing thing wasn't as hard as I thought!
+If you need any tips just ask away haha!
 ===
 
 title: Aldious_Race2_Mid3
 ---
+This racing thing is a little tricky,
+but I think I'm getting the hang of it!
 ===
 
 title: Aldious_Race2_Bot3
 ---
+Oopsie! I didn't do so well on the first race did I?
+That's ok though, there's still 3 races to go!
+Could be worse, eh?
+I could be back making those <i>disgusting</i> lovebots...
 ===
 
 title: Aldious_Race3_Top3
