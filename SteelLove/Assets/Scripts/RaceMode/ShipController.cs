@@ -196,12 +196,14 @@ public class ShipController : MonoBehaviour {
         {
             if (_boostTank > 0)
             {
+                _animator.SetBool("isBoosting", true);
                 curMaxSpeed *= _maxSpeedBoostModifier;
                 ReduceBoost();
             }
             else
             {
                 _boosting = false;
+                _animator.SetBool("isBoosting", false);
             }
         }
 
