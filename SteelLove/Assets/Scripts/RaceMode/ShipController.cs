@@ -5,6 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody), typeof(Animator))]
 public class ShipController : MonoBehaviour {
 
+    public bool Boosting => _boosting;
+
     [Header("Movement Properties")]
     [SerializeField] private float _mainthrustForce;
     [SerializeField] private float _boostForceMultiplier;
@@ -19,6 +21,7 @@ public class ShipController : MonoBehaviour {
 
     [SerializeField] private float _stepTime;
     [SerializeField] private float _speedLimitEnableAfterStepTime;
+    [SerializeField] private float _stepCooldown;
 
     [SerializeField] private float _maxSpeed;
     [SerializeField] private float _maxSpeedBoostModifier;
@@ -58,6 +61,7 @@ public class ShipController : MonoBehaviour {
     private bool _boosting;
 
     private Vector2 _stepDir;
+    private bool _canStep = true;
     private bool _speedLimitEnabled = true;
 
     ShipThrusters _thrusters;
@@ -263,16 +267,24 @@ public class ShipController : MonoBehaviour {
     {
         var initialForce = _stepDir * _stepForce;
         _rigidbody.AddForce(initialForce);
+        _canStep = false;
         _speedLimitEnabled = false;
         StartCoroutine(FireCounterStepAfterTimer());
+        StartCoroutine(ReEnableStepAfterTimer());
     }
 
     private IEnumerator FireCounterStepAfterTimer()
     {
         yield return new WaitForSeconds(_stepTime);
-        _rigidbody.AddForce(-_stepDir * _stepForce / 2);
+        _rigidbody.AddForce(-_stepDir * _stepForce * .8f);
         _stepDir = Vector3.zero;
         StartCoroutine(EnableSpeedLimitAfterTimer());
+    }
+
+    private IEnumerator ReEnableStepAfterTimer()
+    {
+        yield return new WaitForSeconds(_stepCooldown);
+        _canStep = true;
     }
 
     private IEnumerator EnableSpeedLimitAfterTimer()
@@ -324,7 +336,7 @@ public class ShipController : MonoBehaviour {
     private void StepLeft()
     {
         Debug.Log("stepLeft");
-        if (_stepDir == Vector2.zero)
+        if (_stepDir == Vector2.zero && _canStep == true)
         {
             _stepDir = -transform.right;
             PerformStepInitial();
@@ -334,7 +346,7 @@ public class ShipController : MonoBehaviour {
     private void StepRight()
     {
         Debug.Log("stepRight");
-        if (_stepDir == Vector2.zero)
+        if (_stepDir == Vector2.zero && _canStep == true)
         {
             _stepDir = transform.right;
             PerformStepInitial();
