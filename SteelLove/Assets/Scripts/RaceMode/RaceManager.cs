@@ -12,6 +12,8 @@ public class RaceManager : MonoBehaviour
 
     private void OnEnable()
     {
+        _RaceStateSO.UpdateState(RaceStateSO.RaceState.Initializing);
+
         _onCountdownFinished.OnEventRaised += OnCountdownFinished;
         _onCrossedFinishLine.OnEventRaised += OnCrossedFinishLine;
 
