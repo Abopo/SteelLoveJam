@@ -28,6 +28,7 @@ public class ShipController : MonoBehaviour {
     [SerializeField] private float _overSpeedLimitSlowdownForce;
     [SerializeField] private float _maxRotSpeed;
 
+    [SerializeField] private float _stepCost;
     [SerializeField] private float _boostCost;
 
     [Header("Input")]
@@ -222,7 +223,7 @@ public class ShipController : MonoBehaviour {
             if (_boostTank > 0)
             {
                 curMaxSpeed *= _maxSpeedBoostModifier;
-                ReduceBoost();
+                ReduceBoost(_boostCost * Time.deltaTime);
             }
             else
             {
@@ -237,6 +238,7 @@ public class ShipController : MonoBehaviour {
             {
                 slowDownForce *= _boostForceMultiplier;
             }
+            Debug.Log("reducing speed");
             _rigidbody.AddForce(slowDownForce);
             if (_rigidbody.velocity.sqrMagnitude < curMaxSpeed * curMaxSpeed)
             {
@@ -254,23 +256,25 @@ public class ShipController : MonoBehaviour {
         }    
     }
 
-    private void ReduceBoost()
+    private void ReduceBoost(float cost)
     {
-        if (_boosting)
-        {
-            _boostTank -= _boostCost * Time.deltaTime;
-            _onBoostLevelChanged.RaiseEvent(_boostTank);
-        }
+        _boostTank -= cost;
+        _onBoostLevelChanged.RaiseEvent(_boostTank);
     }
 
-    private void PerformStepInitial()
+    private void AttemptStepInitial(Vector2 stepDir)
     {
-        var initialForce = _stepDir * _stepForce;
-        _rigidbody.AddForce(initialForce);
-        _canStep = false;
-        _speedLimitEnabled = false;
-        StartCoroutine(FireCounterStepAfterTimer());
-        StartCoroutine(ReEnableStepAfterTimer());
+        if (_stepDir == Vector2.zero && _canStep == true && _boostTank >= _boostCost)
+        {
+            _stepDir = stepDir;
+            ReduceBoost(_stepCost);
+            var initialForce = _stepDir * _stepForce;
+            _rigidbody.AddForce(initialForce);
+            _canStep = false;
+            _speedLimitEnabled = false;
+            StartCoroutine(FireCounterStepAfterTimer());
+            StartCoroutine(ReEnableStepAfterTimer());
+        }
     }
 
     private IEnumerator FireCounterStepAfterTimer()
@@ -335,22 +339,12 @@ public class ShipController : MonoBehaviour {
 
     private void StepLeft()
     {
-        Debug.Log("stepLeft");
-        if (_stepDir == Vector2.zero && _canStep == true)
-        {
-            _stepDir = -transform.right;
-            PerformStepInitial();
-        }
+        AttemptStepInitial(-transform.right);
     }
 
     private void StepRight()
     {
-        Debug.Log("stepRight");
-        if (_stepDir == Vector2.zero && _canStep == true)
-        {
-            _stepDir = transform.right;
-            PerformStepInitial();
-        }
+        AttemptStepInitial(transform.right);
     }
 
     private void Boost(float value) {

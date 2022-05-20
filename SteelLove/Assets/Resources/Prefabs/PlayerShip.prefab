@@ -4814,12 +4814,13 @@ MonoBehaviour:
   _extremeDirChangeMult: 1.5
   _rotForce: 0.15
   _stepTime: 0.2
-  _speedLimitEnableAfterStepTime: 0.2
+  _speedLimitEnableAfterStepTime: 0.22
   _stepCooldown: 1
   _maxSpeed: 22
   _maxSpeedBoostModifier: 1.75
   _overSpeedLimitSlowdownForce: 20
   _maxRotSpeed: 1.5
+  _stepCost: 10
   _boostCost: 25
   _inputReader: {fileID: 11400000, guid: 3aad594c8fb5bb44cbff640004584d4d, type: 2}
   _OnCrossedFinishLine: {fileID: 11400000, guid: cd09aa317b22bf64980d7bb094732930,
