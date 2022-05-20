@@ -11,7 +11,6 @@ public class Character : Interactable {
     [SerializeField] string _charaName;
 
     DialogueRunner _dialogueBubble;
-    [SerializeField] GameObject _dialogueArrow;
 
     [SerializeField] Vector2[] _posList = new Vector2[4]; // The 4 positions this character will be in between each race
 
@@ -26,10 +25,35 @@ public class Character : Interactable {
         _playerController = FindObjectOfType<PlayerController>();
     }
     // Start is called before the first frame update
-    void Start() {
-        curState = STATE.NO_STATE;
+    protected override void Start() {
+        base.Start();
+
+        CheckState();
+
+        // Move to proper position depending on what race is next
+        FindPosition();
 
         _dialogueBubble.onDialogueComplete.AddListener(OnDialogueComplete);
+    }
+
+    private void CheckState() {
+        // If this is the first race
+        if(GameManager.instance.NextRace == 1) {
+            // There aren't any rankings yet, so stay in NO_STATE
+            curState = STATE.NO_STATE;
+        } else {
+            // Check the ranking list for our character and set our state
+            curState = STATE.MID3;
+        }
+
+    }
+
+    void FindPosition() {
+        int nextRace = GameManager.instance.NextRace;
+        Vector3 position = _posList[nextRace-1];
+        position.z = -1;
+
+        transform.localPosition = position;
     }
 
     // Update is called once per frame

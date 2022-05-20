@@ -20,7 +20,9 @@ public class Door : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D other) {
         if(other.tag == "Player") {
             // Warp the player to our paired door
-            other.transform.parent.position = _pairedDoor.transform.position;
+            other.transform.parent.position = new Vector3(_pairedDoor.transform.position.x,
+                                                           _pairedDoor.transform.position.y,
+                                                           other.transform.parent.position.z);
             // Activate the paired room
             _pairedDoor.room.Enter();
             // Close our room

@@ -22,3 +22,36 @@ title: Bed_Ziv
 ---
 Shall I rest until the start of the next race?
 ===
+
+title: Ship_Ziv
+---
+It's my ship, the Iron Talon.
+Fastest ship this side of Cranika.
+===
+
+title: Ship_Jebb
+---
+Jebb's ship.
+===
+
+title: Ship_Frieda
+---
+Ms. Frieda's ship.
+===
+
+title: Ship_Damian
+---
+Damian's ship.
+===
+
+title: Grazeloid_Translator
+---
+
+<<if $has_grazeloid_translator == false>>
+    <<set $has_grazeloid_translator to true>>
+    It's a grazeloid translator.
+    Perhaps I can use this to understand what that grazeloid is saying.
+<<else>>
+    <<jump Nothing>>
+<<endif>>
+===
