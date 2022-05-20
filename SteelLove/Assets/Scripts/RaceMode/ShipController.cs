@@ -38,9 +38,13 @@ public class ShipController : MonoBehaviour {
     [Header("Effects")]
     [SerializeField] ParticleSystem _boostParticles;
 
+    [Header("Ship Stats")]
     // Ship Resources
-    private float _health = 100.0f;
-    private float _boostTank = 0f;
+    [SerializeField] private float _health = 100.0f;
+    [SerializeField] private float _boostTank = 0f;
+    [SerializeField] private float _oustideOfTrackDamage = 5f;
+    
+    private bool _isOutsideOfTrack;
 
     private Rigidbody2D _rigidbody2D = default;
     private Animator _animator = default;
@@ -106,17 +110,34 @@ public class ShipController : MonoBehaviour {
             LimitVelocity();
 
         LimitRotation();
+
+        if(_isOutsideOfTrack) {
+            _health -= _oustideOfTrackDamage * Time.deltaTime;
+            _onHealthLevelChanged.RaiseEvent(_health);
+        }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.tag == "FinishLine")
-        {
+    #region Collisions
+
+    private void OnTriggerEnter2D(Collider2D collision) {
+        if (collision.tag == "FinishLine") {
             _OnCrossedFinishLine.RaiseEvent();
         }
 
         // TODO: trigger for out of bound areas?
+        if (collision.tag == "InsideTrack") {
+            _isOutsideOfTrack = false;
+        }
     }
+
+    private void OnTriggerExit2D(Collider2D other) {
+        if (other.tag == "InsideTrack") {
+            _isOutsideOfTrack = true;
+        }
+    }
+
+    #endregion
+
 
     private void PerformMovement()
     {
@@ -274,6 +295,7 @@ public class ShipController : MonoBehaviour {
         }
         _onBoostLevelChanged.RaiseEvent(_boostTank);
     }
+
 
     #region InputEvents
     private void MainThrusterFired(float value)

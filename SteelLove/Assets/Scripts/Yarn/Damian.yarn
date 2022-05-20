@@ -1,0 +1,70 @@
+﻿title: Damian_Race1
+tags:
+---
+Woah! You're Ziv Chromebeak right?!
+Look man, I don't want any trouble...
+I'm just here to race and get that prize so I can help Singuliera.
+===
+
+title: Damian_Race2_Top3
+---
+Yes! I knew my time warping powers would come in handy.
+If I mess up during the races I can just go back a bit and try again!
+I got this Grand Prix in the bag!
+Just you wait Singuliera, I'm gonna win you that Giant Robot!
+===
+
+title: Damian_Race2_Mid3
+---
+[wave]*whew*[/] OK, that wasn't so bad.
+I need to step it up a notch if I want to win though.
+Hey, Ziv, you got any racing tips?
+
+-> Why would I tell you? This is a competition you fool.
+    Fine, geez! Guess that metal is as cold as they say.
+-> I suppose I could give you some tips...
+    Oh..that makes sense. Thanks man!
+    You're not as bad as you seem!
+    <<set $damian_fondness to 2>>
+===
+
+title: Damian_Race2_Bot3
+---
+Grr...what should I do? Should I go back?
+No...not yet. There's still 3 races to go.
+I don't need to resort to useing my powers just yet.
+Hey, Ziv, you're good at racing right?
+You got any racing tips you could tell me?
+
+-> Why would I tell you? This is a competition you fool.
+    Screw you, man! Don't need you're help anyway...
+-> I suppose I could give you some tips...
+    Oh..that makes sense. Thanks man!
+    You're not as bad as you seem!
+    <<set $damian_fondness to 2>>
+
+===
+
+title: Damian_Race3_Top3
+---
+===
+
+title: Damian_Race3_Mid3
+---
+===
+
+title: Damian_Race3_Bot3
+---
+===
+
+title: Damian_Race4_Top3
+---
+===
+
+title: Damian_Race4_Mid3
+---
+===
+
+title: Damian_Race4_Bot3
+---
+===
