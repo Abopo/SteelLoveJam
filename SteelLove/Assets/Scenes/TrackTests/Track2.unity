@@ -212,7 +212,7 @@ PrefabInstance:
     - target: {fileID: 4350905208650663250, guid: b74bb24d507c32e4aaa80ef82a0486fb,
         type: 3}
       propertyPath: _hightSmoothSpeed
-      value: 15
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4350905208650663250, guid: b74bb24d507c32e4aaa80ef82a0486fb,
         type: 3}
@@ -222,7 +222,7 @@ PrefabInstance:
     - target: {fileID: 4350905208650663250, guid: b74bb24d507c32e4aaa80ef82a0486fb,
         type: 3}
       propertyPath: _normalSmoothSpeed
-      value: 15
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4791383687322729565, guid: b74bb24d507c32e4aaa80ef82a0486fb,
         type: 3}
@@ -233,6 +233,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Radius
       value: 0.1074414
+      objectReference: {fileID: 0}
+    - target: {fileID: 5014360157082166824, guid: b74bb24d507c32e4aaa80ef82a0486fb,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5014360157082166824, guid: b74bb24d507c32e4aaa80ef82a0486fb,
         type: 3}

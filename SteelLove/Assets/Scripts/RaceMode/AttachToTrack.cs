@@ -30,20 +30,20 @@ public class AttachToTrack : MonoBehaviour
         Ray rayForCast = new Ray(transform.position, -transform.up);
         if (Physics.Raycast(rayForCast, out hit, _raycastDist, mask))
         {
-            Debug.Log("hit");
-
             Quaternion fromTo = Quaternion.FromToRotation(_rigidBody.transform.up, hit.normal);
-            
-            _rigidBody.rotation = Quaternion.Lerp(_rigidBody.rotation, fromTo * _rigidBody.rotation, Time.deltaTime * _normalSmoothSpeed);
-            _rigidBody.velocity = Vector3.Lerp(_rigidBody.velocity, fromTo * _rigidBody.velocity, Time.deltaTime * _normalSmoothSpeed);
+
+            var newRot = Quaternion.Lerp(_rigidBody.rotation, fromTo * _rigidBody.rotation, Time.deltaTime * _normalSmoothSpeed);
+            var newVel = Vector3.Lerp(_rigidBody.velocity, fromTo * _rigidBody.velocity, Time.deltaTime * _normalSmoothSpeed);
+
+            _rigidBody.rotation = newRot;
+
+            _rigidBody.velocity = newVel;
+
+
+            //_rigidBody.velocity = Vector3.Lerp(_rigidBody.velocity, fromTo * _rigidBody.velocity, Time.deltaTime * _normalSmoothSpeed);
             _rigidBody.position = Vector3.Lerp(_rigidBody.position, hit.point + transform.up * _floatHight, Time.deltaTime * _hightSmoothSpeed);
 
-            //transform.up = Vector3.Lerp(transform.up, hit.normal, Time.deltaTime * _normalSmoothTime);
-            //transform.position = Vector3.Lerp(transform.position, hit.point + transform.up * _floatHight, Time.deltaTime * _hightSmoothTime);
-            //var hitNormalRot = Quaternion.Euler(hit.normal);
-            //var rotDiff = Quaternion.FromToRotation(transform.up, hit.normal);
-            //transform.rotation = transform.rotation * rotDiff;
-            //transform.position = hit.point + transform.up * _floatHight;
+            // TODO: if track is flat then force the velocity to be flat
         }
     }
 }
