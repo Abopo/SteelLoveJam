@@ -1,6 +1,6 @@
 ﻿title: Start
 ---
-<<set $jebb_fondness to 0>>
+<<set $Ziv_fondness to 0>>
 <<set $trik_fondness to 0>>
 <<set $sumiv_fondness to 0>>
 <<set $frieda_fondness to 0>>
@@ -9,8 +9,61 @@
 <<set $aldious_fondness to 0>>
 
 <<set $has_grazeloid_translator to false>>
+===
 
-I am Ziv Chromebeak. I unknowlingly killed my brother.
+title: Ziv_Race1
+---
+I am Ziv Chromebeak. I unknowingly killed my brother.
 Somehow, we have both been given a second chance.
-I must win this race so I can see my brother again.
+An unknown entity organized this Grand Prix,
+with the apparent prize being a new giant robot built by my brother.
+Everyone here has their own desire for a giant robot.
+Me? I desire win this race so I can see my brother again.
+The ship we are on, "The Break Room", is taking us to our first race.
+There is still quite some time before we will reach our desination.
+===
+
+title: Ziv_Race2_Top3
+---
+As expected, most of the racers here are inexperienced.
+However, there are a few that are close to my skill level.
+I shouldn't let my guard down yet.
+===
+
+title: Ziv_Race2_Mid3
+---
+Hmph, a middling performance in the first race.
+I need to pick up the pace if I'm going to win this prix.
+Maybe my ship needs a tuning...
+===
+
+title: Ziv_Race2_Bot3
+---
+The first race went poorly.
+It seems my racing skills are quite rusty.
+Perhaps I can find a way to...even the odds a bit.
+===
+
+title: Ziv_Race3_Top3
+---
+===
+
+title: Ziv_Race3_Mid3
+---
+===
+
+title: Ziv_Race3_Bot3
+---
+===
+
+title: Ziv_Race4_Top3
+---
+===
+
+title: Ziv_Race4_Mid3
+---
+===
+
+title: Ziv_Race4_Bot3
+---
 ===

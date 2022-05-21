@@ -9,7 +9,7 @@ Well, howdy there! Would you like to pop a squat and share a drink?
     <<set $aldious_fondness to 1>>
     -> None of your business
         I get it. See ya around!
-    -> I am from the Metilio region.
+    -> I am from the Metilio sector.
         Wow! Quite a far way from home aren'tchya?
         <<set $aldious_fondness to 2>>
 ===
