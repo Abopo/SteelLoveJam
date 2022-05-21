@@ -4805,19 +4805,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c062d5e0f1bd3648bb3382082ec24eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mainthrustForce: 16
+  _mainthrustForce: 18
   _boostForceMultiplier: 4
-  _reverseThrustForce: 10
-  _horizontalThrustForce: 10
+  _reverseThrustForce: 14
+  _horizontalThrustForce: 14
   _stepForce: 1500
-  _brakeForce: 1
-  _extremeDirChangeAngle: 90
+  _brakeForce: 2
+  _extremeDirChangeAngle: 100
   _extremeDirChangeMult: 1.5
   _rotForce: 0.15
   _stepTime: 0.2
   _speedLimitEnableAfterStepTime: 0.22
   _stepCooldown: 1
-  _maxSpeed: 22
+  _maxSpeed: 28
   _maxSpeedBoostModifier: 1.75
   _overSpeedLimitSlowdownForce: 20
   _maxRotSpeed: 1.5
@@ -4884,7 +4884,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!114 &4350905208650663250
 MonoBehaviour:
@@ -4900,8 +4900,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _raycastDist: 2
   _floatHight: 0.5
-  _hightSmoothTime: 0
-  _normalSmoothTime: 0
+  _hightSmoothSpeed: 20
+  _normalSmoothSpeed: 20
   _centerPoint: {fileID: 7569402263448971802}
 --- !u!1 &4087366569571933330
 GameObject:
@@ -5002,10 +5002,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.16
+  m_Radius: 0.1074414
   m_Height: 0.85
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0.21}
+  m_Center: {x: 0, y: -1.2725442e-16, z: 0.2410452}
 --- !u!1 &5802127740430884659
 GameObject:
   m_ObjectHideFlags: 0

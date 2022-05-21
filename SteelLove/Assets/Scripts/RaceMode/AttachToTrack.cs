@@ -36,11 +36,7 @@ public class AttachToTrack : MonoBehaviour
             var newVel = Vector3.Lerp(_rigidBody.velocity, fromTo * _rigidBody.velocity, Time.deltaTime * _normalSmoothSpeed);
 
             _rigidBody.rotation = newRot;
-
             _rigidBody.velocity = newVel;
-
-
-            //_rigidBody.velocity = Vector3.Lerp(_rigidBody.velocity, fromTo * _rigidBody.velocity, Time.deltaTime * _normalSmoothSpeed);
             _rigidBody.position = Vector3.Lerp(_rigidBody.position, hit.point + transform.up * _floatHight, Time.deltaTime * _hightSmoothSpeed);
 
             // TODO: if track is flat then force the velocity to be flat
