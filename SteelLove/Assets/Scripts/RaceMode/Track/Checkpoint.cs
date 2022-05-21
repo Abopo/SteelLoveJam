@@ -29,7 +29,7 @@ public class Checkpoint : MonoBehaviour {
         
     }
 
-    void OnTriggerEnter2D(Collider2D other) {
+    void OnTriggerEnter(Collider other) {
         if(other.tag == "Ship") {
             Debug.Log("Player hit checkpoint");
 

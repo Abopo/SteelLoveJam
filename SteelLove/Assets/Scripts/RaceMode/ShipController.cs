@@ -117,14 +117,13 @@ public class ShipController : MonoBehaviour {
         LimitRotation();
 
         if(_isOutsideOfTrack) {
-            _health -= _oustideOfTrackDamage * Time.deltaTime;
-            _onHealthLevelChanged.RaiseEvent(_health);
+            LoseHealth(_oustideOfTrackDamage * Time.deltaTime);
         }
     }
 
     #region Collisions
 
-    private void OnTriggerEnter2D(Collider2D collision) {
+    private void OnTriggerEnter(Collider collision) {
         if (collision.tag == "FinishLine") {
             _OnCrossedFinishLine.RaiseEvent();
         }
@@ -133,9 +132,13 @@ public class ShipController : MonoBehaviour {
         if (collision.tag == "InsideTrack") {
             _isOutsideOfTrack = false;
         }
+
+        if(collision.tag == "Hazard") {
+            LoseHealth(collision.GetComponent<Hazard>().damage);
+        }
     }
 
-    private void OnTriggerExit2D(Collider2D other) {
+    private void OnTriggerExit(Collider other) {
         if (other.tag == "InsideTrack") {
             _isOutsideOfTrack = true;
         }
@@ -306,6 +309,16 @@ public class ShipController : MonoBehaviour {
             _boostTank = 100;
         }
         _onBoostLevelChanged.RaiseEvent(_boostTank);
+    }
+
+    void LoseHealth(float amount) {
+        _health -= amount;
+        if(_health < 0) {
+            // TODO: Explode
+
+            _health = 0;
+        }
+        _onHealthLevelChanged.RaiseEvent(_health);
     }
 
 

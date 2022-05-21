@@ -91,7 +91,9 @@ public class RaceManager : MonoBehaviour
         // Display race finished message
 
         // Let GameManager handle end of race
-        GameManager.instance.RaceFinished();
+        if (GameManager.instance != null) {
+            GameManager.instance.RaceFinished();
+        }
     }
 
     bool AllCheckpointsCrossed() {

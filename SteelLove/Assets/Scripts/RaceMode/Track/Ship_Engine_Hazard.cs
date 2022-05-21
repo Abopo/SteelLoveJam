@@ -6,14 +6,13 @@ public class Ship_Engine_Hazard : MonoBehaviour {
 
     [SerializeField] ParticleSystem[] _particles;
     [SerializeField] float _activeTime;
+    [SerializeField] Collider _hazardCollider;
 
     float _timer;
-    Collider _collider;
 
     bool _isActive = false;
 
     void Awake() {
-        _collider = GetComponentInChildren<Collider>();
     }
 
     // Start is called before the first frame update
@@ -51,14 +50,14 @@ public class Ship_Engine_Hazard : MonoBehaviour {
 
     IEnumerator EnableColliderLater() {
         yield return new WaitForSeconds(1);
-        _collider.enabled = true;
+        _hazardCollider.enabled = true;
     }
 
     void Deactivate() {
         foreach (ParticleSystem particle in _particles) {
             particle.Stop();
         }
-        _collider.enabled = false;
+        _hazardCollider.enabled = false;
         _isActive = false;
     }
 }

@@ -4599,7 +4599,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: 4020986825014722828, guid: e3cc37e8b2526cc4f99fddda5c54618a,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -7426,7 +7426,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 15
+  m_SortingOrder: 6
   m_Sprite: {fileID: 4987016706610404520, guid: e3cc37e8b2526cc4f99fddda5c54618a,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -8991,7 +8991,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 6
   m_Sprite: {fileID: -9086678475797816360, guid: e3cc37e8b2526cc4f99fddda5c54618a,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -10048,7 +10048,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: -6792042540798858765, guid: e3cc37e8b2526cc4f99fddda5c54618a,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -11054,7 +11054,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 6
   m_Sprite: {fileID: -4546567352644005794, guid: e3cc37e8b2526cc4f99fddda5c54618a,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -11167,7 +11167,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 15
+  m_SortingOrder: 6
   m_Sprite: {fileID: -6923491812338578951, guid: e3cc37e8b2526cc4f99fddda5c54618a,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -11390,7 +11390,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: -3123056619460298581, guid: e3cc37e8b2526cc4f99fddda5c54618a,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -15062,7 +15062,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 15
+  m_SortingOrder: 6
   m_Sprite: {fileID: -4421571384234107422, guid: e3cc37e8b2526cc4f99fddda5c54618a,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -15144,7 +15144,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: -3123056619460298581, guid: e3cc37e8b2526cc4f99fddda5c54618a,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -15331,7 +15331,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: -3123056619460298581, guid: e3cc37e8b2526cc4f99fddda5c54618a,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -17733,6 +17733,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1267809652}
     m_Modifications:
+    - target: {fileID: 2275397418236115512, guid: 5a87123de9abf244182a3273a78f6857,
+        type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5029602759345589869, guid: 5a87123de9abf244182a3273a78f6857,
         type: 3}
       propertyPath: _variableStorage
@@ -17743,6 +17748,31 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1128320888}
+    - target: {fileID: 6362482531421729902, guid: 5a87123de9abf244182a3273a78f6857,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.422
+      objectReference: {fileID: 0}
+    - target: {fileID: 6362482531421729902, guid: 5a87123de9abf244182a3273a78f6857,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.422
+      objectReference: {fileID: 0}
+    - target: {fileID: 6362482531421729902, guid: 5a87123de9abf244182a3273a78f6857,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.422
+      objectReference: {fileID: 0}
+    - target: {fileID: 6362482531421729902, guid: 5a87123de9abf244182a3273a78f6857,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.223
+      objectReference: {fileID: 0}
+    - target: {fileID: 6362482531421729902, guid: 5a87123de9abf244182a3273a78f6857,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.691
+      objectReference: {fileID: 0}
     - target: {fileID: 6471944129293815761, guid: 5a87123de9abf244182a3273a78f6857,
         type: 3}
       propertyPath: m_SizeDelta.y
@@ -19187,7 +19217,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 15
+  m_SortingOrder: 6
   m_Sprite: {fileID: -6923491812338578951, guid: e3cc37e8b2526cc4f99fddda5c54618a,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -20660,7 +20690,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: 4934853719083883900, guid: e3cc37e8b2526cc4f99fddda5c54618a,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -20899,7 +20929,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: 4020986825014722828, guid: e3cc37e8b2526cc4f99fddda5c54618a,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -23154,7 +23184,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: -3123056619460298581, guid: e3cc37e8b2526cc4f99fddda5c54618a,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -24573,7 +24603,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 15
+  m_SortingOrder: 6
   m_Sprite: {fileID: 6636892889456787458, guid: e3cc37e8b2526cc4f99fddda5c54618a,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
