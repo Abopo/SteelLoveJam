@@ -66,7 +66,7 @@ public class BoostSun : MonoBehaviour {
     }
 
     void OnTriggerEnter(Collider other) {
-        Debug.Log("Trigger enter sun.");
+        //Debug.Log("Trigger enter sun.");
         if(other.tag == "Ship") {
             _shipsInRange.Add(other.GetComponentInParent<ShipController>());
         }

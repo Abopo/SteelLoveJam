@@ -238,7 +238,6 @@ public class ShipController : MonoBehaviour {
             {
                 slowDownForce *= _boostForceMultiplier;
             }
-            Debug.Log("reducing speed");
             _rigidbody.AddForce(slowDownForce);
             if (_rigidbody.velocity.sqrMagnitude < curMaxSpeed * curMaxSpeed)
             {
@@ -251,7 +250,6 @@ public class ShipController : MonoBehaviour {
     {
         if(Mathf.Abs(_rigidbody.angularVelocity.magnitude) > _maxRotSpeed)
         {
-            Debug.Log("reached max");
             _rigidbody.angularVelocity = _maxRotSpeed * _rigidbody.angularVelocity.normalized;
         }    
     }
