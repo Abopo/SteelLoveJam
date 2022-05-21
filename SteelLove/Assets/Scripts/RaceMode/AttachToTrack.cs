@@ -35,11 +35,18 @@ public class AttachToTrack : MonoBehaviour
             var newRot = Quaternion.Lerp(_rigidBody.rotation, fromTo * _rigidBody.rotation, Time.deltaTime * _normalSmoothSpeed);
             var newVel = Vector3.Lerp(_rigidBody.velocity, fromTo * _rigidBody.velocity, Time.deltaTime * _normalSmoothSpeed);
 
-            _rigidBody.rotation = newRot;
+            _rigidBody.MoveRotation(newRot);
             _rigidBody.velocity = newVel;
-            _rigidBody.position = Vector3.Lerp(_rigidBody.position, hit.point + transform.up * _floatHight, Time.deltaTime * _hightSmoothSpeed);
+            _rigidBody.MovePosition(Vector3.Lerp(_rigidBody.position, hit.point + transform.up * _floatHight, Time.deltaTime * _hightSmoothSpeed));
 
             // TODO: if track is flat then force the velocity to be flat
+            if (hit.normal == Vector3.up)
+            {
+                var flatVel = _rigidBody.velocity;
+                var mag = flatVel.magnitude;
+                flatVel.y = 0f;
+                _rigidBody.velocity = flatVel.normalized * mag;
+            }
         }
     }
 }
