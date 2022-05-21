@@ -8,6 +8,7 @@ TagManager:
   - Ship
   - FinishLine
   - InsideTrack
+  - Hazard
   layers:
   - Default
   - TransparentFX
