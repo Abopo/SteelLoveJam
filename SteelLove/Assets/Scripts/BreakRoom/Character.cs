@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 using Yarn.Unity;
 
-public enum STATE { TOP3 = 0, MID3, BOT3, NO_STATE };
+public enum STATE { NO_STATE, TOP3, MID3, BOT3 };
 
 public class Character : Interactable {
 
@@ -46,7 +46,6 @@ public class Character : Interactable {
             GameManager.instance.GetCharacterState(_charaName);
             curState = STATE.MID3;
         }
-
     }
 
     void FindPosition() {
