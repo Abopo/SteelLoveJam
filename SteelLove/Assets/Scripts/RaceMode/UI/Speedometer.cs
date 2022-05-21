@@ -9,7 +9,7 @@ public class Speedometer : MonoBehaviour
 {
     [SerializeField] private TMPro.TMP_Text _UIText;
 
-    [SerializeField] private Rigidbody2D playersRigidBody;
+    [SerializeField] private Rigidbody playersRigidBody;
 
     private Vector3 _previousPosition;
 

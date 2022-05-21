@@ -43,10 +43,12 @@ public class BoostSun : MonoBehaviour {
     }
 
     bool IsFacingSun(ShipController ship) {
+        // TODO: will need to check if ship is much higher or lower than the sun
+
         bool _isFacing = false;
 
         // Get vector from ship to sun
-        Vector2 toSun = (Vector2)(ship.transform.position - transform.position);
+        Vector3 toSun = ship.transform.position - transform.position;
         
         // Debugging
         Debug.DrawRay(transform.position, toSun, Color.yellow);
@@ -54,7 +56,7 @@ public class BoostSun : MonoBehaviour {
 
         toSun.Normalize();
         // Check it's angle with the facing of the ship
-        dotResult = Vector2.Dot(ship.transform.up, toSun);
+        dotResult = Vector3.Dot(ship.transform.forward, toSun);
 
         if (dotResult < facingAngle) {
             _isFacing = true;
@@ -63,14 +65,14 @@ public class BoostSun : MonoBehaviour {
         return _isFacing;
     }
 
-    void OnTriggerEnter2D(Collider2D other) {
-        Debug.Log("Trigger enter sun.");
+    void OnTriggerEnter(Collider other) {
+        //Debug.Log("Trigger enter sun.");
         if(other.tag == "Ship") {
             _shipsInRange.Add(other.GetComponentInParent<ShipController>());
         }
     }
 
-    void OnTriggerExit2D(Collider2D other) {
+    void OnTriggerExit(Collider other) {
         if (other.tag == "Ship") {
             _shipsInRange.Remove(other.GetComponentInParent<ShipController>());
         }

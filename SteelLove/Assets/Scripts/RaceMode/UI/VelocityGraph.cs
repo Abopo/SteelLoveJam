@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class VelocityGraph : MonoBehaviour
 {
@@ -9,7 +7,7 @@ public class VelocityGraph : MonoBehaviour
     [SerializeField] private float _lineThickness;
     [SerializeField] private float _lineScale;
 
-    [SerializeField] private Rigidbody2D _playerRigidBody;
+    [SerializeField] private Rigidbody _playerRigidBody;
 
     private LineRenderer _lineRenderer;
     private GameObject _currentLineObject;
@@ -27,7 +25,7 @@ public class VelocityGraph : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 velocity = new Vector3(_playerRigidBody.velocity.x, _playerRigidBody.velocity.y, 0.0f);
+        Vector3 velocity = new Vector3(_playerRigidBody.velocity.x, _playerRigidBody.velocity.y, _playerRigidBody.velocity.z);
         Vector3 startPoint = _graph.position;
         Vector3 endPoint = _graph.position + velocity * _lineScale;
         _lineRenderer.SetPositions(new Vector3[] { startPoint, endPoint });

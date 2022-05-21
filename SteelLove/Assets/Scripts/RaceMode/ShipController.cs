@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D), typeof(Animator))]
+[RequireComponent(typeof(Rigidbody), typeof(Animator))]
 public class ShipController : MonoBehaviour {
+
+    public bool Boosting => _boosting;
 
     [Header("Movement Properties")]
     [SerializeField] private float _mainthrustForce;
@@ -19,12 +21,14 @@ public class ShipController : MonoBehaviour {
 
     [SerializeField] private float _stepTime;
     [SerializeField] private float _speedLimitEnableAfterStepTime;
+    [SerializeField] private float _stepCooldown;
 
     [SerializeField] private float _maxSpeed;
     [SerializeField] private float _maxSpeedBoostModifier;
     [SerializeField] private float _overSpeedLimitSlowdownForce;
     [SerializeField] private float _maxRotSpeed;
 
+    [SerializeField] private float _stepCost;
     [SerializeField] private float _boostCost;
 
     [Header("Input")]
@@ -46,7 +50,7 @@ public class ShipController : MonoBehaviour {
     
     private bool _isOutsideOfTrack;
 
-    private Rigidbody2D _rigidbody2D = default;
+    private Rigidbody _rigidbody = default;
     private Animator _animator = default;
 
     private float _mainThrusterInputValue;
@@ -58,6 +62,7 @@ public class ShipController : MonoBehaviour {
     private bool _boosting;
 
     private Vector2 _stepDir;
+    private bool _canStep = true;
     private bool _speedLimitEnabled = true;
 
     ShipThrusters _thrusters;
@@ -66,7 +71,7 @@ public class ShipController : MonoBehaviour {
 
     private void Awake()
     {
-        _rigidbody2D = GetComponent<Rigidbody2D>();
+        _rigidbody = GetComponent<Rigidbody>();
         _animator = GetComponent<Animator>();
 
         _thrusters = GetComponentInChildren<ShipThrusters>();
@@ -144,8 +149,8 @@ public class ShipController : MonoBehaviour {
         if (_brake) 
         {
             // Brake in the opposite direction of our velocity
-            Vector2 brakeForce = (_rigidbody2D.velocity * -1) * _brakeForce;
-            _rigidbody2D.AddForce(brakeForce);
+            Vector3 brakeForce = (_rigidbody.velocity * -1) * _brakeForce;
+            _rigidbody.AddForce(brakeForce);
         } 
         else 
         {
@@ -157,25 +162,25 @@ public class ShipController : MonoBehaviour {
                 finalMainInputValue = 1f;
                 _boostTank -= _boostCost * Time.deltaTime;
             }
-            _rigidbody2D.AddForce(CalculateThrustForce(transform.up, finalMainThrustForce, finalMainInputValue));
-            _rigidbody2D.AddForce(CalculateThrustForce(-transform.up, _reverseThrustForce, _reverseThrusterInputValue));
-            _rigidbody2D.AddForce(CalculateThrustForce(transform.right, _horizontalThrustForce, _leftThrusterInputValue));
-            _rigidbody2D.AddForce(CalculateThrustForce(-transform.right, _horizontalThrustForce, _rightThrusterInputValue));
+
+            _rigidbody.AddForce(CalculateThrustForce(transform.forward, finalMainThrustForce, finalMainInputValue));
+            _rigidbody.AddForce(CalculateThrustForce(-transform.forward, _reverseThrustForce, _reverseThrusterInputValue));
+            _rigidbody.AddForce(CalculateThrustForce(transform.right, _horizontalThrustForce, _leftThrusterInputValue));
+            _rigidbody.AddForce(CalculateThrustForce(-transform.right, _horizontalThrustForce, _rightThrusterInputValue));
 
             // set animatior
             _animator.SetFloat("LeftBoostInput", _leftThrusterInputValue);
             _animator.SetFloat("RightBoostInput", _rightThrusterInputValue);
         }
-
-        _rigidbody2D.AddTorque(_rotForce * -_rotInputValue.x);
+        _rigidbody.AddTorque(-transform.up * _rotForce * -_rotInputValue.x);
     }
 
-    private Vector2 CalculateThrustForce(Vector2 dir, float thrusterForce, float inputValue)
+    private Vector3 CalculateThrustForce(Vector3 dir, float thrusterForce, float inputValue)
     {
         // only apply if we are moving
-        if (_rigidbody2D.velocity != Vector2.zero)
+        if (_rigidbody.velocity != Vector3.zero)
         {
-            float angleBetween = Vector2.Angle(_rigidbody2D.velocity.normalized, dir.normalized);
+            float angleBetween = Vector3.Angle(_rigidbody.velocity.normalized, dir.normalized);
             angleBetween = Mathf.Abs(angleBetween);
             if (angleBetween > _extremeDirChangeAngle)
             {
@@ -217,69 +222,76 @@ public class ShipController : MonoBehaviour {
         {
             if (_boostTank > 0)
             {
-                _animator.SetBool("isBoosting", true);
                 curMaxSpeed *= _maxSpeedBoostModifier;
-                ReduceBoost();
+                ReduceBoost(_boostCost * Time.deltaTime);
             }
             else
             {
                 _boosting = false;
-                _animator.SetBool("isBoosting", false);
             }
         }
 
-        if(_rigidbody2D.velocity.sqrMagnitude > curMaxSpeed * curMaxSpeed)
+        if(_rigidbody.velocity.sqrMagnitude > curMaxSpeed * curMaxSpeed)
         { 
-            Vector3 slowDownForce = _rigidbody2D.velocity.normalized * -_overSpeedLimitSlowdownForce;
+            Vector3 slowDownForce = _rigidbody.velocity.normalized * -_overSpeedLimitSlowdownForce;
             if (_boosting)
             {
                 slowDownForce *= _boostForceMultiplier;
             }
-            _rigidbody2D.AddForce(slowDownForce);
-            if (_rigidbody2D.velocity.sqrMagnitude < curMaxSpeed * curMaxSpeed)
+            _rigidbody.AddForce(slowDownForce);
+            if (_rigidbody.velocity.sqrMagnitude < curMaxSpeed * curMaxSpeed)
             {
-                _rigidbody2D.velocity = _rigidbody2D.velocity.normalized * curMaxSpeed;
+                _rigidbody.velocity = _rigidbody.velocity.normalized * curMaxSpeed;
             }
         }
     }
 
     private void LimitRotation()
     {
-        if(Mathf.Abs(_rigidbody2D.angularVelocity) > _maxRotSpeed)
+        if(Mathf.Abs(_rigidbody.angularVelocity.magnitude) > _maxRotSpeed)
         {
-            _rigidbody2D.angularVelocity = _maxRotSpeed * Mathf.Sign(_rigidbody2D.angularVelocity);
+            _rigidbody.angularVelocity = _maxRotSpeed * _rigidbody.angularVelocity.normalized;
         }    
     }
 
-    private void ReduceBoost()
+    private void ReduceBoost(float cost)
     {
-        if (_boosting)
-        {
-            _boostTank -= _boostCost * Time.deltaTime;
-            _onBoostLevelChanged.RaiseEvent(_boostTank);
-        }
+        _boostTank -= cost;
+        _onBoostLevelChanged.RaiseEvent(_boostTank);
     }
 
-    private void PerformStepInitial()
+    private void AttemptStepInitial(Vector2 stepDir)
     {
-        var initialForce = _stepDir * _stepForce;
-        _rigidbody2D.AddForce(initialForce);
-        _speedLimitEnabled = false;
-        StartCoroutine(FireCounterStepAfterTimer());
+        if (_stepDir == Vector2.zero && _canStep == true && _boostTank >= _boostCost)
+        {
+            _stepDir = stepDir;
+            ReduceBoost(_stepCost);
+            var initialForce = _stepDir * _stepForce;
+            _rigidbody.AddForce(initialForce);
+            _canStep = false;
+            _speedLimitEnabled = false;
+            StartCoroutine(FireCounterStepAfterTimer());
+            StartCoroutine(ReEnableStepAfterTimer());
+        }
     }
 
     private IEnumerator FireCounterStepAfterTimer()
     {
         yield return new WaitForSeconds(_stepTime);
-        _rigidbody2D.AddForce(-_stepDir * _stepForce / 2);
-        _stepDir = Vector2.zero;
+        _rigidbody.AddForce(-_stepDir * _stepForce * .8f);
+        _stepDir = Vector3.zero;
         StartCoroutine(EnableSpeedLimitAfterTimer());
+    }
+
+    private IEnumerator ReEnableStepAfterTimer()
+    {
+        yield return new WaitForSeconds(_stepCooldown);
+        _canStep = true;
     }
 
     private IEnumerator EnableSpeedLimitAfterTimer()
     {
         yield return new WaitForSeconds(_speedLimitEnableAfterStepTime);
-        Debug.Log("speed limit enabled");
         _speedLimitEnabled = true;
     }
 
@@ -325,22 +337,12 @@ public class ShipController : MonoBehaviour {
 
     private void StepLeft()
     {
-        Debug.Log("stepLeft");
-        if (_stepDir == Vector2.zero)
-        {
-            _stepDir = -transform.right;
-            PerformStepInitial();
-        }
+        AttemptStepInitial(-transform.right);
     }
 
     private void StepRight()
     {
-        Debug.Log("stepRight");
-        if (_stepDir == Vector2.zero)
-        {
-            _stepDir = transform.right;
-            PerformStepInitial();
-        }
+        AttemptStepInitial(transform.right);
     }
 
     private void Boost(float value) {
