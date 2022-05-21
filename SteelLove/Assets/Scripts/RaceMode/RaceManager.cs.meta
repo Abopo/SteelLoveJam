@@ -3,7 +3,17 @@ guid: 52e55bd36d3ba2c4caf2af1edd445bbd
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - _RaceStateSO: {fileID: 11400000, guid: cf67de4e450d04b4d9ab14a73e86c363, type: 2}
+  - _inputReader: {fileID: 11400000, guid: 3aad594c8fb5bb44cbff640004584d4d, type: 2}
+  - _onLapIncreased: {fileID: 11400000, guid: 53e7b791cb6dfcc4e9e939a73b820ef6, type: 2}
+  - _onCountdownFinished: {fileID: 11400000, guid: 59a020500020bec4e813d575a31c45c2,
+      type: 2}
+  - _onCrossedActiveCheckpoint: {fileID: 11400000, guid: a08af722bf20bfd40b10e957017d38bc,
+      type: 2}
+  - _onCrossedFinishLine: {fileID: 11400000, guid: cd09aa317b22bf64980d7bb094732930,
+      type: 2}
+  - _onRaceFinished: {fileID: 11400000, guid: cfc78b7350bc8dd4e9a733b45bdb6aa7, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

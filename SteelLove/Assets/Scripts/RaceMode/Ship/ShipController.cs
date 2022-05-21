@@ -77,34 +77,6 @@ public class ShipController : MonoBehaviour {
         _thrusters = GetComponentInChildren<ShipThrusters>();
     }
 
-    private void OnEnable()
-    {
-        _inputReader.MainThrusterEvent += MainThrusterFired;
-        _inputReader.ReverseThrusterEvent += ReverseThrusterFired;
-        _inputReader.LeftThrustEvent += ThrustLeft;
-        _inputReader.RightThrustEvent += ThrustRight;
-        _inputReader.RotationThrustersEvent += RotationThrustersFired;
-        _inputReader.StepLeftEvent += StepLeft;
-        _inputReader.StepRightEvent += StepRight;
-        _inputReader.BoostEvent += Boost;
-        _inputReader.QuickTurnEvent += QuickTurn;
-        _inputReader.BrakeEvent += Brake;
-    }
-
-    private void OnDisable()
-    {
-        _inputReader.MainThrusterEvent -= MainThrusterFired;
-        _inputReader.ReverseThrusterEvent -= ReverseThrusterFired;
-        _inputReader.LeftThrustEvent -= ThrustLeft;
-        _inputReader.RightThrustEvent -= ThrustRight;
-        _inputReader.RotationThrustersEvent -= RotationThrustersFired;
-        _inputReader.StepLeftEvent -= StepLeft;
-        _inputReader.StepRightEvent -= StepRight;
-        _inputReader.BoostEvent -= Boost;
-        _inputReader.QuickTurnEvent -= QuickTurn;
-        _inputReader.BrakeEvent -= Brake;
-    }
-
     private void FixedUpdate()
     {
         PerformMovement();
@@ -146,6 +118,84 @@ public class ShipController : MonoBehaviour {
 
     #endregion
 
+    public void RefillBoost(float fillSpeed)
+    {
+        if (_boostTank <= 100)
+        {
+            _boostTank += fillSpeed * Time.deltaTime;
+
+            if (_boostParticles != null && !_boostParticles.isPlaying)
+            {
+                _boostParticles.Play();
+            }
+        }
+        else
+        {
+            _boostTank = 100;
+        }
+        _onBoostLevelChanged.RaiseEvent(_boostTank);
+    }
+
+    public void ThrustForward(float value)
+    {
+        _mainThrusterInputValue = value;
+    }
+
+    public void ThrustBackwards(float value)
+    {
+        _reverseThrusterInputValue = value;
+    }
+
+    public void ThrustLeft(float value)
+    {
+        _leftThrusterInputValue = value;
+    }
+
+    public void ThrustRight(float value)
+    {
+        _rightThrusterInputValue = value;
+    }
+
+    public void RotationThrust(Vector2 value)
+    {
+        _rotInputValue = value;
+    }
+
+    public void StepLeft()
+    {
+        AttemptStepInitial(-transform.right);
+    }
+
+    public void StepRight()
+    {
+        AttemptStepInitial(transform.right);
+    }
+
+    public void Boost(float value)
+    {
+        if (value > 0 && _boostTank > 0f)
+        {
+            _boosting = true;
+        }
+        else
+        {
+            _boosting = false;
+        }
+    }
+
+    public void Brake(float value)
+    {
+        if (value > 0)
+        {
+            // Brake
+            _brake = true;
+        }
+        else
+        {
+            // Stop braking
+            _brake = false;
+        }
+    }
 
     private void PerformMovement()
     {
@@ -298,20 +348,7 @@ public class ShipController : MonoBehaviour {
         _speedLimitEnabled = true;
     }
 
-    public void RefillBoost(float fillSpeed) {
-        if(_boostTank <= 100) {
-            _boostTank += fillSpeed * Time.deltaTime;
-
-            if(_boostParticles != null && !_boostParticles.isPlaying) {
-                _boostParticles.Play();
-            }
-        } else {
-            _boostTank = 100;
-        }
-        _onBoostLevelChanged.RaiseEvent(_boostTank);
-    }
-
-    void LoseHealth(float amount) {
+    private void LoseHealth(float amount) {
         _health -= amount;
         if(_health < 0) {
             // TODO: Explode
@@ -320,64 +357,4 @@ public class ShipController : MonoBehaviour {
         }
         _onHealthLevelChanged.RaiseEvent(_health);
     }
-
-
-    #region InputEvents
-    private void MainThrusterFired(float value)
-    {
-        _mainThrusterInputValue = value;
-    }
-
-    private void ReverseThrusterFired(float value)
-    {
-        _reverseThrusterInputValue = value;
-    }
-
-    private void ThrustLeft(float value)
-    {
-        _leftThrusterInputValue = value;
-    }
-
-    private void ThrustRight(float value)
-    {
-        _rightThrusterInputValue = value;
-    }
-
-    private void RotationThrustersFired(Vector2 value)
-    {
-        _rotInputValue = value;
-    }
-
-    private void StepLeft()
-    {
-        AttemptStepInitial(-transform.right);
-    }
-
-    private void StepRight()
-    {
-        AttemptStepInitial(transform.right);
-    }
-
-    private void Boost(float value) {
-        if(value > 0 && _boostTank > 0f) {
-            _boosting = true;
-        } else {
-            _boosting = false;
-        }
-    }
-
-    private void QuickTurn() {
-
-    }
-
-    private void Brake(float value) {
-        if (value > 0) {
-            // Brake
-            _brake = true;
-        } else {
-            // Stop braking
-            _brake = false;
-        }
-    }
-    #endregion
 }

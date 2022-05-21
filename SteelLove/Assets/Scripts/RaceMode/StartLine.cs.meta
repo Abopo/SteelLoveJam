@@ -1,10 +1,11 @@
 fileFormatVersion: 2
-guid: 90de1738a9d2297418110fc6a90920b1
+guid: 20b384d3f7e45924b9abfc57f6de3844
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - _onCrossedActiveCheckpoint: {fileID: 11400000, guid: a08af722bf20bfd40b10e957017d38bc,
+  - _raceStateSO: {fileID: 11400000, guid: cf67de4e450d04b4d9ab14a73e86c363, type: 2}
+  - _onInitializeStateEvent: {fileID: 11400000, guid: d4fb627773a104e4ea69a2587eecfca1,
       type: 2}
   executionOrder: 0
   icon: {instanceID: 0}

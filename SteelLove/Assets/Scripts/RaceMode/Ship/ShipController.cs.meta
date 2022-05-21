@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 2c062d5e0f1bd3648bb3382082ec24eb
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - _inputReader: {fileID: 11400000, guid: 3aad594c8fb5bb44cbff640004584d4d, type: 2}
+  - _OnCrossedFinishLine: {fileID: 11400000, guid: cd09aa317b22bf64980d7bb094732930,
+      type: 2}
+  - _onHealthLevelChanged: {fileID: 11400000, guid: 7e49fa6a67c1d1343b586bf2b6203354,
+      type: 2}
+  - _onBoostLevelChanged: {fileID: 11400000, guid: 060e30f2101550f40bf40177caf7cac1,
+      type: 2}
+  - _boostParticles: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

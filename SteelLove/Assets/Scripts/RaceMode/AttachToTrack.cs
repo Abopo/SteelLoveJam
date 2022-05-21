@@ -27,7 +27,6 @@ public class AttachToTrack : MonoBehaviour
 
     private void Attach()
     {
-        Vector3 hitPoint;
         RaycastHit hit;
         int mask = LayerMask.GetMask("TrackFloor");
         Ray rayForCast = new Ray(transform.position, -transform.up);

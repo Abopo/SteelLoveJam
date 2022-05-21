@@ -9,14 +9,22 @@ public class Speedometer : MonoBehaviour
 {
     [SerializeField] private TMPro.TMP_Text _UIText;
 
-    [SerializeField] private Rigidbody playersRigidBody;
+    [SerializeField] private Rigidbody _playersRigidBody;
 
     private Vector3 _previousPosition;
 
     // Update is called once per frame
     void Update()
     {
-        float velocity = (float)System.Math.Round(playersRigidBody.velocity.magnitude * 3.6f, 2);
-        _UIText.text = "kph: " + velocity;
+        if (_playersRigidBody != null)
+        {
+            float velocity = (float)System.Math.Round(_playersRigidBody.velocity.magnitude * 3.6f, 2);
+            _UIText.text = "kph: " + velocity;
+        }
+    }
+
+    public void Init(Rigidbody playersRigidBody)
+    {
+        _playersRigidBody = playersRigidBody;
     }
 }
