@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour {
     public int NextRace { get => nextRace; }
 
     // List of characters sorted by their points
-    List<CharacterRank> _rankingList = new List<CharacterRank>();
+    public List<CharacterRank> rankingList = new List<CharacterRank>();
 
     // Singleton
     public static GameManager instance;
@@ -34,21 +34,21 @@ public class GameManager : MonoBehaviour {
         tempRank.points = 0;
 
         tempRank.charaName = "Ziv Chromebeak";
-        _rankingList.Add(tempRank);
+        rankingList.Add(tempRank);
         tempRank.charaName = "Jebb O' Shenny";
-        _rankingList.Add(tempRank);
+        rankingList.Add(tempRank);
         tempRank.charaName = "Mrs. Frieda";
-        _rankingList.Add(tempRank);
+        rankingList.Add(tempRank);
         tempRank.charaName = "Charlene Chibs";
-        _rankingList.Add(tempRank);
+        rankingList.Add(tempRank);
         tempRank.charaName = "Damian Dubble";
-        _rankingList.Add(tempRank);
+        rankingList.Add(tempRank);
         tempRank.charaName = "Sumiv Warring";
-        _rankingList.Add(tempRank);
+        rankingList.Add(tempRank);
         tempRank.charaName = "Aldious Ripley";
-        _rankingList.Add(tempRank);
+        rankingList.Add(tempRank);
         tempRank.charaName = "Trik";
-        _rankingList.Add(tempRank);
+        rankingList.Add(tempRank);
     }
 
     public int RankCompare(CharacterRank rank1, CharacterRank rank2) {
@@ -62,7 +62,7 @@ public class GameManager : MonoBehaviour {
     }
 
     public void SortRankList() {
-        _rankingList.Sort(RankCompare);
+        rankingList.Sort(RankCompare);
     }
 
     void SingletonCheck() {
@@ -93,8 +93,8 @@ public class GameManager : MonoBehaviour {
         STATE charaState = STATE.NO_STATE;
 
         int i;
-        for(i = 0; i < _rankingList.Count; ++i) {
-            if(_rankingList[i].charaName.Contains(charaName)) {
+        for(i = 0; i < rankingList.Count; ++i) {
+            if(rankingList[i].charaName.Contains(charaName)) {
                 break;
             }
         }
