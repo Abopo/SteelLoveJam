@@ -25,7 +25,7 @@ public class BoostSun : MonoBehaviour {
             // Check if the ship is facing us
             if (ship != null && IsFacingSun(ship)) {
                 // Fill it's boost
-                ship.RefillBoost(fillSpeed);
+                ship.RefillBoost(fillSpeed * Time.deltaTime);
 
                 anyShips = true;
             }

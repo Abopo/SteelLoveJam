@@ -122,7 +122,7 @@ public class ShipController : MonoBehaviour {
     {
         if (_boostTank <= 100)
         {
-            _boostTank += fillSpeed * Time.deltaTime;
+            _boostTank += fillSpeed;
 
             if (_boostParticles != null && !_boostParticles.isPlaying)
             {
