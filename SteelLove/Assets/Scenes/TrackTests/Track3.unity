@@ -1467,10 +1467,25 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: -1563372482657263301, guid: 8539bad7edd45974486bcf9083d04fcc,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -1563372482657263301, guid: 8539bad7edd45974486bcf9083d04fcc,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f36f1cca70d2391459459952fe4b8e7c, type: 2}
     - target: {fileID: 919132149155446097, guid: 8539bad7edd45974486bcf9083d04fcc,
         type: 3}
       propertyPath: m_Name
       value: Track3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5362498402904087234, guid: 8539bad7edd45974486bcf9083d04fcc,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8539bad7edd45974486bcf9083d04fcc, type: 3}

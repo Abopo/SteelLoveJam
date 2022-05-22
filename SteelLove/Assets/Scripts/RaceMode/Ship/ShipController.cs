@@ -46,7 +46,6 @@ public class ShipController : MonoBehaviour {
     // Ship Resources
     [SerializeField] private float _health = 100.0f;
     [SerializeField] private float _boostTank = 0f;
-    [SerializeField] private float _oustideOfTrackDamage = 5f;
     
     private bool _isOutsideOfTrack;
 
@@ -87,10 +86,6 @@ public class ShipController : MonoBehaviour {
             LimitVelocity();
 
         LimitRotation();
-
-        if(_isOutsideOfTrack) {
-            LoseHealth(_oustideOfTrackDamage * Time.deltaTime);
-        }
     }
 
     #region Collisions
@@ -106,7 +101,7 @@ public class ShipController : MonoBehaviour {
         }
 
         if(collision.tag == "Hazard") {
-            LoseHealth(collision.GetComponent<Hazard>().damage);
+            ChangeHealth(-collision.GetComponent<Hazard>().damage);
         }
     }
 
@@ -117,6 +112,24 @@ public class ShipController : MonoBehaviour {
     }
 
     #endregion
+
+    public void ChangeHealth(float amount)
+    {
+        _health += amount;
+        if (_health < 0)
+        {
+            // TODO: Explode
+
+            _health = 0;
+        }
+
+        if (_health > 100)
+        {
+            _health = 100;
+        }
+
+        _onHealthLevelChanged.RaiseEvent(_health);
+    }
 
     public void RefillBoost(float fillSpeed)
     {
@@ -346,15 +359,5 @@ public class ShipController : MonoBehaviour {
     {
         yield return new WaitForSeconds(_speedLimitEnableAfterStepTime);
         _speedLimitEnabled = true;
-    }
-
-    private void LoseHealth(float amount) {
-        _health -= amount;
-        if(_health < 0) {
-            // TODO: Explode
-
-            _health = 0;
-        }
-        _onHealthLevelChanged.RaiseEvent(_health);
     }
 }
