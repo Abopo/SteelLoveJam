@@ -9,6 +9,7 @@ public class RaceStateSO : DescriptionBaseSO
 {
     public enum RaceState
     {
+        None,
         Initializing,
         Countdown,
         Race,
@@ -35,7 +36,7 @@ public class RaceStateSO : DescriptionBaseSO
 
     public void Awake()
     {
-        _currentState = RaceState.Initializing;
+        _currentState = RaceState.None;
     }
 
     public void UpdateState(RaceState newState)

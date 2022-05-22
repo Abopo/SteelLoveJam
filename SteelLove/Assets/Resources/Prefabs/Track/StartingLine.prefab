@@ -614,6 +614,7 @@ MonoBehaviour:
   - {fileID: 3834599892615654272}
   - {fileID: 3995692465065584075}
   _raceStateSO: {fileID: 11400000, guid: cf67de4e450d04b4d9ab14a73e86c363, type: 2}
+  _onSpawnedShips: {fileID: 11400000, guid: 4c03f3fabb82fa04b87bb0a7b7da1bdb, type: 2}
   _onInitializeStateEvent: {fileID: 11400000, guid: d4fb627773a104e4ea69a2587eecfca1,
     type: 2}
 --- !u!1 &8524918722977696780
