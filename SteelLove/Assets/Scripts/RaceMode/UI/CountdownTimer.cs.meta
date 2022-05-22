@@ -3,7 +3,12 @@ guid: 2c554dc6bcf336147b183473b5aa1b97
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - _onCountdownStateEvent: {fileID: 11400000, guid: 5732ed3a44f9cc646aea0d82ea682cd9,
+      type: 2}
+  - _onCountownFinished: {fileID: 11400000, guid: 59a020500020bec4e813d575a31c45c2,
+      type: 2}
+  - _timerText: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

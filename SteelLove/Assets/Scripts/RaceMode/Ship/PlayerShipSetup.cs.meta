@@ -1,11 +1,10 @@
 fileFormatVersion: 2
-guid: f88f4b966c367584badcb2ddc2601b8a
+guid: a16c447eafa2d5840801f3b2799bc0ee
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
-  - _onLapIncreased: {fileID: 11400000, guid: 53e7b791cb6dfcc4e9e939a73b820ef6, type: 2}
-  - _lapText: {instanceID: 0}
+  - _inputReader: {fileID: 11400000, guid: 3aad594c8fb5bb44cbff640004584d4d, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour {
     MainUI _mainUI;
     [SerializeField] STATE _curState; // Ziv's current ranking placement
 
+    public bool InControl => _inControl;
     bool _inControl = true;
 
     void Awake() {
@@ -115,7 +116,9 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void Interact(float value) {
-        CheckInteract();
+        if (_inControl) {
+            CheckInteract();
+        }
     }
 
 #endregion

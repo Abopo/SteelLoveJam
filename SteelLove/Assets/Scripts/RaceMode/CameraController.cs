@@ -20,8 +20,18 @@ public class CameraController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Follow();
-        BoostFOV();
+        if (_playerShipController != null)
+        {
+            Follow();
+            BoostFOV();
+        }
+    }
+
+    public void Init(ShipController shipController, GameObject cameraConstraint, GameObject cameraLookAt)
+    {
+        _playerShipController = shipController;
+        _cameraConstraint = cameraConstraint;
+        _cameraLookAt = cameraLookAt;
     }
 
     private void Follow()

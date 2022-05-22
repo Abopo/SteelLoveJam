@@ -1,6 +1,15 @@
 ﻿title: Jims_Race1
 ---
-Hey there! What can I getchya?
+<<if $got_canteen_drink is false>>
+    Hey there! Welcome to the Canteen!
+    Each of you racers get 1 complimentary drink before each race.
+    Here ya go!
+    <<set $got_canteen_drink to true>>
+    <<get_item CanteenDrink>>
+<<else>>
+    How was your drink?
+    I hope it was good. I'm still kinda new at this.
+<<endif>>
 ===
 
 title: Jims_Race2

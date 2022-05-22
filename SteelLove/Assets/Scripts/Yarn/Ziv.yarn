@@ -1,5 +1,9 @@
 ﻿title: Start
 ---
+===
+
+title: Initialize
+---
 <<set $Ziv_fondness to 0>>
 <<set $trik_fondness to 0>>
 <<set $sumiv_fondness to 0>>
@@ -8,6 +12,9 @@
 <<set $charlene_fondness to 0>>
 <<set $aldious_fondness to 0>>
 
+<<set $got_canteen_drink to false>>
+
+<<set $has_canteen_drink to false>>
 <<set $has_grazeloid_translator to false>>
 ===
 
@@ -25,6 +32,8 @@ There is still quite some time before we will reach our desination.
 
 title: Ziv_Race2_Top3
 ---
+<<set $got_canteen_drink to false>>
+
 As expected, most of the racers here are inexperienced.
 However, there are a few that are close to my skill level.
 I shouldn't let my guard down yet.
@@ -32,6 +41,8 @@ I shouldn't let my guard down yet.
 
 title: Ziv_Race2_Mid3
 ---
+<<set $got_canteen_drink to false>>
+
 Hmph, a middling performance in the first race.
 I need to pick up the pace if I'm going to win this prix.
 Maybe my ship needs a tuning...
@@ -39,6 +50,8 @@ Maybe my ship needs a tuning...
 
 title: Ziv_Race2_Bot3
 ---
+<<set $got_canteen_drink to false>>
+
 The first race went poorly.
 It seems my racing skills are quite rusty.
 Perhaps I can find a way to...even the odds a bit.

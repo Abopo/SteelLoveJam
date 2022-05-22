@@ -738,6 +738,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6362482531421729902}
   - component: {fileID: 5029602759345589869}
+  - component: {fileID: 7828077768080312330}
   m_Layer: 0
   m_Name: Dialogue Bubble
   m_TagString: Untagged
@@ -795,6 +796,20 @@ MonoBehaviour:
   onCommand:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7828077768080312330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5932933650434754064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f82e0a9725d43942a98857b40a79ba4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  relativePos: {x: 0, y: 0, z: 0}
+  background: {fileID: 2275397417612905690}
 --- !u!1 &6471944129293815762
 GameObject:
   m_ObjectHideFlags: 0

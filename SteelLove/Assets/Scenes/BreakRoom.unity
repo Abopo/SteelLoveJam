@@ -4983,11 +4983,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 719650190}
     m_Modifications:
+    - target: {fileID: 2275397417539408264, guid: 5a87123de9abf244182a3273a78f6857,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 540
+      objectReference: {fileID: 0}
+    - target: {fileID: 2275397418236115512, guid: 5a87123de9abf244182a3273a78f6857,
+        type: 3}
+      propertyPath: m_Alpha
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5153635455976053345, guid: 5a87123de9abf244182a3273a78f6857,
         type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1128320888}
+    - target: {fileID: 6362482531421729902, guid: 5a87123de9abf244182a3273a78f6857,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.147
+      objectReference: {fileID: 0}
     - target: {fileID: 6471944129293815761, guid: 5a87123de9abf244182a3273a78f6857,
         type: 3}
       propertyPath: m_SizeDelta.y

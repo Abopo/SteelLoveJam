@@ -21,6 +21,9 @@ public class RaceStateSO : DescriptionBaseSO
     [SerializeField] [ReadOnly] private RaceState _currentState;
     [SerializeField] [ReadOnly] private RaceState _previousState;
 
+    public List<CharacterSO> PolePositions => _polePositions;
+    [SerializeField] private List<CharacterSO> _polePositions;
+
     [SerializeField] InputReader _inputReader;
 
     [Header("Broadcasting on")]

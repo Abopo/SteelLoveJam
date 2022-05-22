@@ -3,6 +3,11 @@
 I see nothing of interest here.
 ===
 
+title: CanteenDrink
+---
+< Got <color=orange>Canteen Drink</color> >
+===
+
 title: Jukebox
 ---
 It's playing a jazzy tune.
@@ -46,11 +51,11 @@ Damian's ship.
 
 title: Grazeloid_Translator
 ---
-
 <<if $has_grazeloid_translator == false>>
     <<set $has_grazeloid_translator to true>>
     It's a grazeloid translator.
     Perhaps I can use this to understand what that grazeloid is saying.
+    <Got <color=orange>Grazeloid Translator</color> >
 <<else>>
     <<jump Nothing>>
 <<endif>>

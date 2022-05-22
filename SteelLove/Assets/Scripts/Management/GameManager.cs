@@ -79,6 +79,17 @@ public class GameManager : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         DontDestroyOnLoad(transform.gameObject);
+
+        StartCoroutine(LateStart());
+    }
+
+    IEnumerator LateStart() {
+        yield return null;
+
+        // This is the first time the game is opened so initialize stuff
+        if (nextRace == 1) {
+            FindObjectOfType<MainUI>().DisplayDialogue("Initialize");
+        }
     }
 
     public void RaceFinished() {
