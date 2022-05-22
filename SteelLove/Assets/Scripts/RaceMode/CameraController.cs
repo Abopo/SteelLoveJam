@@ -37,7 +37,7 @@ public class CameraController : MonoBehaviour
     private void Follow()
     {
         transform.position = Vector3.Lerp(transform.position, _cameraConstraint.transform.position, Time.deltaTime * _speed);
-        transform.LookAt(_cameraLookAt.transform.position);
+        transform.LookAt(_cameraLookAt.transform.position, _cameraConstraint.transform.up);
     }
 
     private void BoostFOV()
