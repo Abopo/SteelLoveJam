@@ -5,10 +5,11 @@ using UnityEngine;
 public class ShipThrusters : MonoBehaviour {
 
     [SerializeField] ParticleSystem[] _backThrusters;
-    [SerializeField] ParticleSystem _leftThruster;
-    [SerializeField] ParticleSystem _rightThruster;
-    [SerializeField] ParticleSystem _leftNoseThruster;
-    [SerializeField] ParticleSystem _rightNoseThruster;
+    [SerializeField] ParticleSystem[] _leftThrusters;
+    [SerializeField] ParticleSystem[] _rightThrusters;
+    [SerializeField] ParticleSystem[] _leftTurnThrusters;
+    [SerializeField] ParticleSystem[] _rightTurnThrusters;
+    [SerializeField] ParticleSystem[] _noseThrusters;
 
 
     // Start is called before the first frame update
@@ -33,30 +34,46 @@ public class ShipThrusters : MonoBehaviour {
 
     public void LeftThrusters(float value) {
         if (value > 0) {
-            _leftThruster.Play();
+            PlayThrusters(_leftThrusters);
         } else {
-            _leftThruster.Stop();
+            StopThrusters(_leftThrusters);
         }
     }
 
     public void RightThrusters(float value) {
         if (value > 0) {
-            _rightThruster.Play();
+            PlayThrusters(_rightThrusters);
         } else {
-            _rightThruster.Stop();
+            StopThrusters(_rightThrusters);
+        }
+    }
+
+    public void TurnThrusters(float value) {
+        if(value > 0) {
+            PlayThrusters(_leftTurnThrusters);
+            StopThrusters(_rightTurnThrusters);
+        } else if(value < 0) {
+            PlayThrusters(_rightTurnThrusters);
+            StopThrusters(_leftTurnThrusters);
+        } else {
+            StopThrusters(_rightTurnThrusters);
+            StopThrusters(_leftTurnThrusters);
         }
     }
 
     public void NoseThrusters(float value) {
-        if(value > 0) {
-            _leftNoseThruster.Play();
-            _rightNoseThruster.Stop();
-        } else if(value < 0) {
-            _rightNoseThruster.Play();
-            _leftNoseThruster.Stop();
-        } else {
-            _rightNoseThruster.Stop();
-            _leftNoseThruster.Stop();
+
+    }
+
+    void PlayThrusters(ParticleSystem[] thrusters) {
+        foreach(ParticleSystem pS in thrusters) {
+            pS.Play();
+        }
+    }
+
+    void StopThrusters(ParticleSystem[] thrusters) {
+        foreach (ParticleSystem pS in thrusters) {
+            pS.Stop();
         }
     }
 }

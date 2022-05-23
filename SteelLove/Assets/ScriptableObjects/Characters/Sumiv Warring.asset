@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Sumiv Warring
   m_EditorClassIdentifier: 
   description: 
-  _shipPrefab: {fileID: 16834316324134429, guid: c040d227a8a3ae34591a721980b2796f,
+  _shipPrefab: {fileID: 7905946393772696569, guid: 68381e6822164e74d8ab621f03437b6b,
     type: 3}
   _seasonPoints: 0

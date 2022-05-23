@@ -259,7 +259,7 @@ public class ShipController : MonoBehaviour {
                 _thrusters.BackThrusters(_mainThrusterInputValue);
                 _thrusters.LeftThrusters(_leftThrusterInputValue);
                 _thrusters.RightThrusters(_rightThrusterInputValue);
-                _thrusters.NoseThrusters(_rotInputValue.x);
+                _thrusters.TurnThrusters(_rotInputValue.x);
             }
         }
     }

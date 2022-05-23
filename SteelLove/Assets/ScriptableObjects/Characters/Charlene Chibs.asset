@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Charlene Chibs
   m_EditorClassIdentifier: 
   description: 
-  _shipPrefab: {fileID: 16834316324134429, guid: c040d227a8a3ae34591a721980b2796f,
+  _shipPrefab: {fileID: 6567690924902640492, guid: a77fac917c2a51e43a2eb9ea92f3b609,
     type: 3}
   _seasonPoints: 0

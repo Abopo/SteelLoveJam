@@ -9,6 +9,7 @@ public class MainUI : MonoBehaviour {
 
     PlayerController _playerController;
 
+    string _dialogueToRun = "";
 
     void Awake() {
         _playerController = FindObjectOfType<PlayerController>();
@@ -38,11 +39,28 @@ public class MainUI : MonoBehaviour {
         if (!_dialogueRunner.IsDialogueRunning) {
             _dialogueRunner.StartDialogue(nodeName);
             _playerController.Freeze();
+        } else {
+            // Hold on to the node until the current dialogue is finished
+            _dialogueToRun = nodeName;
         }
     }
 
     void OnDialogueComplete() {
-        _playerController.Unfreeze();
+        if(_dialogueToRun != "") {
+            StartCoroutine(DisplayDialogueLater(_dialogueToRun));
+            //DisplayDialogue(_dialogueToRun);
+            _dialogueToRun = "";
+        } else {
+            _playerController.Unfreeze();
+        }
+    }
+
+    // Even though the dialogue runner says it's NOT RUNNING, i still get an error when trying to run a new dialogue on the same frame as the last completed.
+    // So wait a frame to make sure it's allllllllll done
+    IEnumerator DisplayDialogueLater(string node) {
+        yield return null;
+
+        DisplayDialogue(node);
     }
 
     [YarnCommand("get_item")]

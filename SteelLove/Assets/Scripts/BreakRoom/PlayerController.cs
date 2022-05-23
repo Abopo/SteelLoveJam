@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour {
     private Rigidbody2D _rigidbody2D;
     private Collider2D _collider2D;
 
+    private SpriteRenderer _sprite;
+
     MainUI _mainUI;
     [SerializeField] STATE _curState; // Ziv's current ranking placement
 
@@ -23,6 +25,8 @@ public class PlayerController : MonoBehaviour {
     void Awake() {
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _collider2D = GetComponentInChildren<Collider2D>();
+
+        _sprite = GetComponentInChildren<SpriteRenderer>();
 
         _mainUI = FindObjectOfType<MainUI>();
     }
@@ -97,6 +101,13 @@ public class PlayerController : MonoBehaviour {
     void PlayerMovement() {
         moveDir.Normalize();
         _rigidbody2D.velocity = new Vector2(moveDir.x * moveSpeed, moveDir.y * moveSpeed);
+
+        // sprite facing
+        if(moveDir.x > 0) {
+            _sprite.flipX = true;
+        } else if(moveDir.x < 0) {
+            _sprite.flipX = false;
+        }
     }
 
 #region Input Events

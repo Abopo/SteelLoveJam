@@ -16,6 +16,9 @@ title: Initialize
 
 <<set $has_canteen_drink to false>>
 <<set $has_grazeloid_translator to false>>
+<<set $got_screwdriver to false>>
+<<set $has_screwdriver to false>>
+<<set $ship_upgrade_parts to 0>>
 ===
 
 title: Ziv_Race1

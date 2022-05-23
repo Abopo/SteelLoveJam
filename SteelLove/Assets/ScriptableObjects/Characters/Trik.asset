@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Trik
   m_EditorClassIdentifier: 
   description: 
-  _shipPrefab: {fileID: 6567690924902640492, guid: bc76636d61fb0724ebdd2876db18f9e0,
+  _shipPrefab: {fileID: 655514986485081057, guid: ce175a715c8fe1646b5b624eb44cbde4,
     type: 3}
   _seasonPoints: 0

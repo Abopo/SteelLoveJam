@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Damian Dubble
   m_EditorClassIdentifier: 
   description: 
-  _shipPrefab: {fileID: 655514986485081057, guid: ce175a715c8fe1646b5b624eb44cbde4,
+  _shipPrefab: {fileID: 6567690924902640492, guid: 311d415740b8d6a42b7064313b11741d,
     type: 3}
   _seasonPoints: 0

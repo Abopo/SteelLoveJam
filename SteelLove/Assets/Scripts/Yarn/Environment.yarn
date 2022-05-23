@@ -34,14 +34,33 @@ It's my ship, the Iron Talon.
 Fastest ship this side of Cranika.
 ===
 
+title: Trik_Ship
+---
+===
+
 title: Ship_Jebb
 ---
 Jebb's ship.
 ===
 
+title: Ship_Sumiv
+---
+Sumiv's Ship
+===
+
 title: Ship_Frieda
 ---
 Ms. Frieda's ship.
+===
+
+title: Ship_Aldious
+---
+Aldious'...ship.
+===
+
+title: Ship_Charlene
+---
+Charlene's ship.
 ===
 
 title: Ship_Damian
@@ -59,4 +78,29 @@ title: Grazeloid_Translator
 <<else>>
     <<jump Nothing>>
 <<endif>>
+===
+
+title: Lockbox_Fail
+---
+The lockbox didn't open.
+===
+
+title: Lockbox_Opened
+---
+It's already open.
+===
+
+title: Triks_Lockbox_Open
+---
+<<if $got_screwdriver is false>>
+    <<set $got_screwdriver to true>>
+    <<set $has_screwdriver to true>>
+    < Got <color=orange>Grazeloid Screwdriver</color> >
+<<endif>>
+===
+
+title: Ship_Upgrade_Parts
+---
+<<set $ship_upgrade_parts to $ship_upgrade_parts+1>>
+< Got <color=orange>Ship Upgrade Parts</color> >
 ===

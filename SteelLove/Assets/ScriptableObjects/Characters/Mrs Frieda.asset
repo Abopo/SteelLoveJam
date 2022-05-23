@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Mrs Frieda
   m_EditorClassIdentifier: 
   description: 
-  _shipPrefab: {fileID: 7905946393772696569, guid: 68381e6822164e74d8ab621f03437b6b,
+  _shipPrefab: {fileID: 6567690924902640492, guid: bc76636d61fb0724ebdd2876db18f9e0,
     type: 3}
   _seasonPoints: 0
