@@ -7,13 +7,7 @@ public class FinishLine : MonoBehaviour {
     [Header("Broadcasting On")]
     [SerializeField] private VoidEventChannelSO _onCrossedFinishLine = default;
 
-
-    // Start is called before the first frame update
-    void Start() {
-        
-    }
-
-    void OnTriggerEnter2D(Collider2D other) {
+    private void OnTriggerEnter(Collider other) {
         if (other.tag == "Ship") {
             Debug.Log("Player hit checkpoint");
 

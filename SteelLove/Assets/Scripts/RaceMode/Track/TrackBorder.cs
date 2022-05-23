@@ -11,29 +11,35 @@ public class TrackBorder : MonoBehaviour
 
     private void Start()
     {
-        _lineObj = new GameObject();
-        _lineObj.transform.parent = transform;
-        _lineObj.transform.localPosition = Vector3.zero;
-
-        float curDist = 0.0f;
-        float distToCover = (_endPoint.position - transform.position).magnitude;
-        Vector3 dirToEnd = (_endPoint.position - transform.position).normalized;
-        while(curDist < distToCover)
+        if (_endPoint != null)
         {
-            var spawnPos = dirToEnd * curDist;
-            var curBorderObj = Instantiate(_borderObject, _lineObj.transform);
-            curBorderObj.transform.localPosition = spawnPos;
+            _lineObj = new GameObject();
+            _lineObj.transform.parent = transform;
+            _lineObj.transform.localPosition = Vector3.zero;
 
-            curDist += _spriteDistance;
+            float curDist = 0.0f;
+            float distToCover = (_endPoint.position - transform.position).magnitude;
+            Vector3 dirToEnd = (_endPoint.position - transform.position).normalized;
+            while (curDist < distToCover)
+            {
+                var spawnPos = dirToEnd * curDist;
+                var curBorderObj = Instantiate(_borderObject, _lineObj.transform);
+                curBorderObj.transform.localPosition = spawnPos;
+
+                curDist += _spriteDistance;
+            }
         }
     }
 
     private void OnDestroy()
     {
-        foreach (Transform child in _lineObj.transform)
+        if (_lineObj != null)
         {
-            GameObject.Destroy(child.gameObject);
+            foreach (Transform child in _lineObj.transform)
+            {
+                GameObject.Destroy(child.gameObject);
+            }
+            Destroy(_lineObj);
         }
-        Destroy(_lineObj);
     }
 }

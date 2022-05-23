@@ -1,5 +1,21 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &6003094911982640078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6001595524325745262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9950da9ef73af74eb6ba47c8661305f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotSpeed: 50
+  xRot: 0.587
+  yRot: 1
+  zRot: 0.202
 --- !u!1 &6003094911038780425
 GameObject:
   m_ObjectHideFlags: 0
@@ -60,22 +76,6 @@ Transform:
   m_Father: {fileID: 6003094912574222355}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6003094911982640078
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6001595524325745262}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9950da9ef73af74eb6ba47c8661305f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotSpeed: 50
-  xRot: 0.587
-  yRot: 1
-  zRot: 0.202
 --- !u!1 &6003094912574222357
 GameObject:
   m_ObjectHideFlags: 0
@@ -123,9 +123,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _asteroid: {fileID: 6007691757849362298}
-  _startPoint: {fileID: 6003094911941595570}
-  _endPoint: {fileID: 6003094911038780424}
-  _moveSpeed: 0.2
+  _path:
+  - {fileID: 6003094911941595570}
+  - {fileID: 6003094911038780424}
+  _loop: 0
+  _faceNextPoint: 0
+  _moveSpeed: 3
+  _rotationSpeed: 0
 --- !u!1001 &6003094912867674992
 PrefabInstance:
   m_ObjectHideFlags: 0

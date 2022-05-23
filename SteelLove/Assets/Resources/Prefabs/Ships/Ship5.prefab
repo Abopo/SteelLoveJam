@@ -96,6 +96,36 @@ Transform:
   m_Father: {fileID: 6567690924902640495}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5947957920717525755
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5111940784257452661}
+  m_Layer: 0
+  m_Name: AttachLeft
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5111940784257452661
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5947957920717525755}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.3, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4824106186507521847}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5973692746636970258
 GameObject:
   m_ObjectHideFlags: 0
@@ -141,6 +171,40 @@ CapsuleCollider:
   m_Height: 0.85
   m_Direction: 1
   m_Center: {x: 0, y: -1.2725442e-16, z: 0.2410452}
+--- !u!1 &6395563601814865223
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4824106186507521847}
+  m_Layer: 0
+  m_Name: AttachPoints
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4824106186507521847
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6395563601814865223}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4092015501546487922}
+  - {fileID: 3692345821437448051}
+  - {fileID: 5111940784257452661}
+  - {fileID: 8544792190367167356}
+  m_Father: {fileID: 6567690924902640495}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6567690924902640492
 GameObject:
   m_ObjectHideFlags: 0
@@ -155,6 +219,7 @@ GameObject:
   - component: {fileID: 2940213114809627421}
   - component: {fileID: 3037327862204088890}
   - component: {fileID: 6068933336262228789}
+  - component: {fileID: 5218534588603498044}
   m_Layer: 0
   m_Name: Ship5
   m_TagString: Ship
@@ -176,6 +241,7 @@ Transform:
   - {fileID: 7014587428132765155}
   - {fileID: 1376650147014880601}
   - {fileID: 6566425136884136475}
+  - {fileID: 4824106186507521847}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -193,20 +259,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mainthrustForce: 18
   _boostForceMultiplier: 4
-  _reverseThrustForce: 14
-  _horizontalThrustForce: 14
+  _reverseThrustForce: 13
+  _horizontalThrustForce: 13
   _stepForce: 1500
   _brakeForce: 2
   _extremeDirChangeAngle: 100
   _extremeDirChangeMult: 1.5
-  _rotForce: 0.15
+  _rotForce: 0.25
   _stepTime: 0.2
   _speedLimitEnableAfterStepTime: 0.22
   _stepCooldown: 1
   _maxSpeed: 28
   _maxSpeedBoostModifier: 1.75
   _overSpeedLimitSlowdownForce: 20
-  _maxRotSpeed: 1.5
+  _maxRotSpeed: 1.75
   _stepCost: 10
   _boostCost: 25
   _inputReader: {fileID: 11400000, guid: 3aad594c8fb5bb44cbff640004584d4d, type: 2}
@@ -219,7 +285,6 @@ MonoBehaviour:
   _boostParticles: {fileID: 6586966576420607307}
   _health: 100
   _boostTank: 0
-  _oustideOfTrackDamage: 5
 --- !u!114 &6567690924902640480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -286,8 +351,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _raycastDist: 2
   _floatHight: 0.5
-  _hightSmoothSpeed: 20
-  _normalSmoothSpeed: 20
+  _hightSmoothSpeed: 8
+  _normalSmoothSpeed: 8
+  _attachPoints:
+  - {fileID: 4092015501546487922}
+  - {fileID: 3692345821437448051}
+  - {fileID: 5111940784257452661}
+  - {fileID: 8544792190367167356}
+--- !u!114 &5218534588603498044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6567690924902640492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5b472f7414b453498513cc09832c9ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _raycastDist: 2
+  _outsideTrackDamageBuildup: 0.1
+  _outsideTrackFullDamage: 1
+  _timeToFullDamage: 10
+  _insideTrackHealingBuildup: 0.1
+  _insideTrackFullHeal: 1
+  _timeToFullHealing: 10
   _centerPoint: {fileID: 2417316724817728671}
 --- !u!1 &8736824957582025264
 GameObject:

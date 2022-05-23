@@ -59,6 +59,7 @@ GameObject:
   - component: {fileID: 8858658744547916688}
   - component: {fileID: 8654575878137825975}
   - component: {fileID: 433706517467509688}
+  - component: {fileID: 3217249723122418826}
   m_Layer: 0
   m_Name: Ship4
   m_TagString: Ship
@@ -80,6 +81,7 @@ Transform:
   - {fileID: 3703411798402512238}
   - {fileID: 4694760112173884884}
   - {fileID: 2547064811698836430}
+  - {fileID: 730993971156983287}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -97,20 +99,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mainthrustForce: 18
   _boostForceMultiplier: 4
-  _reverseThrustForce: 14
-  _horizontalThrustForce: 14
+  _reverseThrustForce: 13
+  _horizontalThrustForce: 13
   _stepForce: 1500
   _brakeForce: 2
   _extremeDirChangeAngle: 100
   _extremeDirChangeMult: 1.5
-  _rotForce: 0.15
+  _rotForce: 0.25
   _stepTime: 0.2
   _speedLimitEnableAfterStepTime: 0.22
   _stepCooldown: 1
   _maxSpeed: 28
   _maxSpeedBoostModifier: 1.75
   _overSpeedLimitSlowdownForce: 20
-  _maxRotSpeed: 1.5
+  _maxRotSpeed: 1.75
   _stepCost: 10
   _boostCost: 25
   _inputReader: {fileID: 11400000, guid: 3aad594c8fb5bb44cbff640004584d4d, type: 2}
@@ -123,7 +125,6 @@ MonoBehaviour:
   _boostParticles: {fileID: 672268084490821062}
   _health: 100
   _boostTank: 0
-  _oustideOfTrackDamage: 5
 --- !u!114 &655514986485081069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,8 +191,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _raycastDist: 2
   _floatHight: 0.5
-  _hightSmoothSpeed: 20
-  _normalSmoothSpeed: 20
+  _hightSmoothSpeed: 8
+  _normalSmoothSpeed: 8
+  _attachPoints:
+  - {fileID: 3059625248615494767}
+  - {fileID: 4622607832206893235}
+  - {fileID: 1195738922468589678}
+  - {fileID: 5797083825625792854}
+--- !u!114 &3217249723122418826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 655514986485081057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5b472f7414b453498513cc09832c9ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _raycastDist: 2
+  _outsideTrackDamageBuildup: 0.1
+  _outsideTrackFullDamage: 1
+  _timeToFullDamage: 10
+  _insideTrackHealingBuildup: 0.1
+  _insideTrackFullHeal: 1
+  _timeToFullHealing: 10
   _centerPoint: {fileID: 2428754446750567109}
 --- !u!1 &1567147527293970627
 GameObject:

@@ -14,6 +14,7 @@ public class RaceManager : MonoBehaviour
     [SerializeField] private VoidEventChannelSO _onCrossedActiveCheckpoint = default;
     [SerializeField] private VoidEventChannelSO _onCrossedFinishLine = default;
     [SerializeField] private VoidEventChannelSO _onRaceFinished = default;
+    [SerializeField] private VoidEventChannelSO _onSpawnedShips = default;
 
     [SerializeField] int _curLap = 1;
 
@@ -22,12 +23,11 @@ public class RaceManager : MonoBehaviour
 
     private void OnEnable()
     {
-        _RaceStateSO.UpdateState(RaceStateSO.RaceState.Initializing);
-
         _onCountdownFinished.OnEventRaised += OnCountdownFinished;
         _onCrossedActiveCheckpoint.OnEventRaised += OnCrossedActiveCheckpoint;
         _onCrossedFinishLine.OnEventRaised += OnCrossedFinishLine;
         _onRaceFinished.OnEventRaised += OnRaceFinished;
+        _onSpawnedShips.OnEventRaised += OnSpawnedShips;
 
         // input events
         _inputReader.PauseEvent += OnPause;
@@ -36,7 +36,10 @@ public class RaceManager : MonoBehaviour
     private void OnDisable()
     {
         _onCountdownFinished.OnEventRaised -= OnCountdownFinished;
+        _onCrossedActiveCheckpoint.OnEventRaised -= OnCrossedActiveCheckpoint;
         _onCrossedFinishLine.OnEventRaised -= OnCrossedFinishLine;
+        _onRaceFinished.OnEventRaised -= OnRaceFinished;
+        _onSpawnedShips.OnEventRaised -= OnSpawnedShips;
 
         // input events
         _inputReader.PauseEvent -= OnPause;
@@ -44,7 +47,7 @@ public class RaceManager : MonoBehaviour
 
     private void Start()
     {
-        _RaceStateSO.UpdateState(RaceStateSO.RaceState.Countdown);
+        _RaceStateSO.UpdateState(RaceStateSO.RaceState.Initializing);
     }
 
     private void OnCountdownFinished()
@@ -83,6 +86,11 @@ public class RaceManager : MonoBehaviour
                 _onLapIncreased.RaiseEvent(_curLap);
             }
         }
+    }
+
+    private void OnSpawnedShips()
+    {
+        _RaceStateSO.UpdateState(RaceStateSO.RaceState.Countdown);
     }
 
     private void OnRaceFinished() {
