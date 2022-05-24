@@ -270,6 +270,7 @@ public class ShipController : MonoBehaviour {
             else
             {
                 _thrusters.BackThrusters(_mainThrusterInputValue);
+                _thrusters.NoseThrusters(_reverseThrustForce);
                 _thrusters.LeftThrusters(_leftThrusterInputValue);
                 _thrusters.RightThrusters(_rightThrusterInputValue);
                 _thrusters.TurnThrusters(_rotInputValue.x);

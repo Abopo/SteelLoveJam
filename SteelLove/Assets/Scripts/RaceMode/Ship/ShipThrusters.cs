@@ -24,11 +24,9 @@ public class ShipThrusters : MonoBehaviour {
 
     public void BackThrusters(float value) {
         if(value > 0) {
-            _backThrusters[0].Play();
-            _backThrusters[1].Play();
+            PlayThrusters(_backThrusters);
         } else {
-            _backThrusters[0].Stop();
-            _backThrusters[1].Stop();
+            StopThrusters(_backThrusters);
         }
     }
 
@@ -62,7 +60,11 @@ public class ShipThrusters : MonoBehaviour {
     }
 
     public void NoseThrusters(float value) {
-
+        if(value > 0) {
+            PlayThrusters(_noseThrusters);
+        } else {
+            StopThrusters(_noseThrusters);
+        }
     }
 
     void PlayThrusters(ParticleSystem[] thrusters) {
