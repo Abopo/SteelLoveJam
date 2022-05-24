@@ -128,20 +128,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mainthrustForce: 18
   _boostForceMultiplier: 4
-  _reverseThrustForce: 14
-  _horizontalThrustForce: 14
+  _reverseThrustForce: 13
+  _horizontalThrustForce: 13
   _stepForce: 1500
   _brakeForce: 2
   _extremeDirChangeAngle: 100
   _extremeDirChangeMult: 1.5
-  _rotForce: 0.15
+  _rotForce: 0.25
   _stepTime: 0.2
   _speedLimitEnableAfterStepTime: 0.22
   _stepCooldown: 1
   _maxSpeed: 28
   _maxSpeedBoostModifier: 1.75
   _overSpeedLimitSlowdownForce: 20
-  _maxRotSpeed: 1.5
+  _maxRotSpeed: 1.75
   _stepCost: 10
   _boostCost: 25
   _inputReader: {fileID: 11400000, guid: 3aad594c8fb5bb44cbff640004584d4d, type: 2}
@@ -154,7 +154,6 @@ MonoBehaviour:
   _boostParticles: {fileID: 6586966576420607307}
   _health: 100
   _boostTank: 0
-  _oustideOfTrackDamage: 5
 --- !u!114 &6567690924902640480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -223,7 +222,7 @@ MonoBehaviour:
   _floatHight: 0.5
   _hightSmoothSpeed: 20
   _normalSmoothSpeed: 20
-  _centerPoint: {fileID: 2417316724817728671}
+  _attachPoints: []
 --- !u!1 &8736824957582025264
 GameObject:
   m_ObjectHideFlags: 0

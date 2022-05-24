@@ -81,7 +81,6 @@ Transform:
   - {fileID: 3703411798402512238}
   - {fileID: 4694760112173884884}
   - {fileID: 2547064811698836430}
-  - {fileID: 730993971156983287}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -194,10 +193,10 @@ MonoBehaviour:
   _hightSmoothSpeed: 8
   _normalSmoothSpeed: 8
   _attachPoints:
-  - {fileID: 3059625248615494767}
-  - {fileID: 4622607832206893235}
-  - {fileID: 1195738922468589678}
-  - {fileID: 5797083825625792854}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &3217249723122418826
 MonoBehaviour:
   m_ObjectHideFlags: 0
