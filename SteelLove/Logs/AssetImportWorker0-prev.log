@@ -15,11 +15,11 @@ C:/Projects/SteelLoveJam/SteelLove
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-64452
+54772
 Successfully changed project path to: C:/Projects/SteelLoveJam/SteelLove
 C:/Projects/SteelLoveJam/SteelLove
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 63.85 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 66.73 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.25f1 (9b9180224418)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.3.25f1/Editor/Data/Resources/UnitySubsystems
@@ -35,37 +35,37 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.3.25f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.3.25f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.3.25f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56276
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56556
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.25f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.001302 seconds.
+Registered in 0.001229 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 59.45 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 59.25 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.502 seconds
+- Completed reload, in  0.508 seconds
 Domain Reload Profiling:
-	ReloadAssembly (502ms)
-		BeginReloadAssembly (41ms)
+	ReloadAssembly (509ms)
+		BeginReloadAssembly (37ms)
 			ExecutionOrderSort (0ms)
 			DisableScriptedObjects (0ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
-		EndReloadAssembly (400ms)
-			LoadAssemblies (39ms)
+		EndReloadAssembly (412ms)
+			LoadAssemblies (35ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (128ms)
+			SetupTypeCache (126ms)
 			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (22ms)
-			SetupLoadedEditorAssemblies (165ms)
+			RebuildScriptCaches (30ms)
+			SetupLoadedEditorAssemblies (170ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (4ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (60ms)
-				BeforeProcessingInitializeOnLoad (13ms)
-				ProcessInitializeOnLoadAttributes (67ms)
+				RefreshPlugins (59ms)
+				BeforeProcessingInitializeOnLoad (14ms)
+				ProcessInitializeOnLoadAttributes (70ms)
 				ProcessInitializeOnLoadMethodAttributes (22ms)
 				AfterProcessingInitializeOnLoad (0ms)
 				EditorAssembliesLoaded (0ms)
@@ -73,411 +73,51 @@ Domain Reload Profiling:
 			AwakeInstancesAfterBackupRestoration (0ms)
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.006291 seconds.
+Registered in 0.006547 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 61.16 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 80.45 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.069 seconds
+- Completed reload, in  1.074 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1069ms)
-		BeginReloadAssembly (110ms)
+	ReloadAssembly (1075ms)
+		BeginReloadAssembly (107ms)
 			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (3ms)
+			DisableScriptedObjects (4ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (17ms)
-		EndReloadAssembly (908ms)
-			LoadAssemblies (81ms)
-			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (311ms)
-			ReleaseScriptCaches (0ms)
-			RebuildScriptCaches (43ms)
-			SetupLoadedEditorAssemblies (368ms)
-				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (3ms)
-				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (61ms)
-				BeforeProcessingInitializeOnLoad (74ms)
-				ProcessInitializeOnLoadAttributes (211ms)
-				ProcessInitializeOnLoadMethodAttributes (14ms)
-				AfterProcessingInitializeOnLoad (5ms)
-				EditorAssembliesLoaded (0ms)
-			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (5ms)
-Platform modules already initialized, skipping
-========================================================================
-Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
-Refreshing native plugins compatible for Editor in 1.19 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2676 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 122.1 MB.
-System memory in use after: 122.3 MB.
-
-Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 3115.
-Total: 3.293300 ms (FindLiveObjects: 0.257600 ms CreateObjectMapping: 0.082000 ms MarkObjects: 2.860600 ms  DeleteObjects: 0.091400 ms)
-
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-========================================================================
-Received Import Request.
-  path: Assets/Resources
-  artifactKey: Guid(3d33499d30b87bf4197ddc505c0f9132) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources using Guid(3d33499d30b87bf4197ddc505c0f9132) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3a3d3f2bc69da84e4922e876b2a175ef') in 0.016594 seconds 
-  Import took 0.023355 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000248 seconds.
-  path: Assets/Resources/Models
-  artifactKey: Guid(b4b22cc33aae3df428affaf5dda4df67) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Models using Guid(b4b22cc33aae3df428affaf5dda4df67) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '89b5b249cfd114e7ade5016e90d257b1') in 0.009963 seconds 
-  Import took 0.016889 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000607 seconds.
-  path: Assets/Resources/Models/Track
-  artifactKey: Guid(bbad3945b7832214199eeafa8a0c4bf0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Models/Track using Guid(bbad3945b7832214199eeafa8a0c4bf0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '928275bf23510c5a44159b5a6dfd8635') in 0.010590 seconds 
-  Import took 0.018234 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 1.633821 seconds.
-  path: Assets/Resources/Models/Track/FullTracks
-  artifactKey: Guid(bb82e42b398b8d842b4b74cfe3f7e763) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Models/Track/FullTracks using Guid(bb82e42b398b8d842b4b74cfe3f7e763) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd899e127fd9eb89c663e15f00cf2f1c3') in 0.006053 seconds 
-  Import took 0.011676 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 67.011612 seconds.
-  path: Assets/Resources/PolygonSciFiSpace/Materials/Planet_Materials/PolygonSpace_Planet_02_F.mat
-  artifactKey: Guid(170254348807f5045abe6dc91fa629db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/PolygonSciFiSpace/Materials/Planet_Materials/PolygonSpace_Planet_02_F.mat using Guid(170254348807f5045abe6dc91fa629db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6da9ed70dcf80e720d14f5e7f90fdd4a') in 0.400655 seconds 
-  Import took 0.407215 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000217 seconds.
-  path: Assets/Resources/PolygonSciFiSpace/Materials/Planet_Materials/PolygonSpace_Planet_Lines_01_E.mat
-  artifactKey: Guid(dfa6de1631e5e0946bb53a3e7510cf41) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/PolygonSciFiSpace/Materials/Planet_Materials/PolygonSpace_Planet_Lines_01_E.mat using Guid(dfa6de1631e5e0946bb53a3e7510cf41) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '03d762d959cd2e768c863e3d7f411a9a') in 0.129392 seconds 
-  Import took 0.133751 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000167 seconds.
-  path: Assets/Resources/PolygonSciFiSpace/Materials/Planet_Materials/PolygonSpace_Planet_Lines_01_B.mat
-  artifactKey: Guid(c79143b0d6739c9448e7836ffbf796ba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/PolygonSciFiSpace/Materials/Planet_Materials/PolygonSpace_Planet_Lines_01_B.mat using Guid(c79143b0d6739c9448e7836ffbf796ba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ed0bd832162b9f7ab25f74b144635842') in 0.016547 seconds 
-  Import took 0.020900 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000213 seconds.
-  path: Assets/Resources/PolygonSciFiSpace/Materials/Planet_Materials/PolygonSpace_Planet_03_E.mat
-  artifactKey: Guid(a2f9e360438836e4680a2bb3c005161c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/PolygonSciFiSpace/Materials/Planet_Materials/PolygonSpace_Planet_03_E.mat using Guid(a2f9e360438836e4680a2bb3c005161c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '31c411db267c9b5c5df6a8d5f9f91975') in 0.020277 seconds 
-  Import took 0.024839 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000206 seconds.
-  path: Assets/Resources/PolygonSciFiSpace/Materials/Planet_Materials/PolygonSpace_Planet_03_F.mat
-  artifactKey: Guid(f250cd59ae5057a459a2ee38ecf11b51) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/PolygonSciFiSpace/Materials/Planet_Materials/PolygonSpace_Planet_03_F.mat using Guid(f250cd59ae5057a459a2ee38ecf11b51) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eb5f56e3ca09f6fb1a83b3bc110fae7d') in 0.016000 seconds 
-  Import took 0.020314 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000253 seconds.
-  path: Assets/Resources/PolygonSciFiSpace/Materials/Planet_Materials/PolygonSpace_Planet_Lines_03_E.mat
-  artifactKey: Guid(f49294da54f38ec4d842929801c5838b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/PolygonSciFiSpace/Materials/Planet_Materials/PolygonSpace_Planet_Lines_03_E.mat using Guid(f49294da54f38ec4d842929801c5838b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '81f4d97c86eee270951c3f5d82e09b96') in 0.017319 seconds 
-  Import took 0.022662 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000200 seconds.
-  path: Assets/Resources/PolygonSciFiSpace/Materials/Planet_Materials/PolygonSpace_Planet_Lines_01_C.mat
-  artifactKey: Guid(00d50f978d01d914e8ef8179fd6eb64a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/PolygonSciFiSpace/Materials/Planet_Materials/PolygonSpace_Planet_Lines_01_C.mat using Guid(00d50f978d01d914e8ef8179fd6eb64a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fd9cd6adc34559a674def24ded461d56') in 0.020626 seconds 
-  Import took 0.024570 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000196 seconds.
-  path: Assets/Resources/PolygonSciFiSpace/Materials/Planet_Materials/PolygonSpace_Planet_Lines_03_B.mat
-  artifactKey: Guid(75b88a7ae0f30754ca4709a6f380d872) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/PolygonSciFiSpace/Materials/Planet_Materials/PolygonSpace_Planet_Lines_03_B.mat using Guid(75b88a7ae0f30754ca4709a6f380d872) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5af6f8d5fa7250aa50484a4f9c07474f') in 0.014611 seconds 
-  Import took 0.018841 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000202 seconds.
-  path: Assets/Resources/Models/Track/FullTracks/TrackHolo.mat
-  artifactKey: Guid(f36f1cca70d2391459459952fe4b8e7c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Models/Track/FullTracks/TrackHolo.mat using Guid(f36f1cca70d2391459459952fe4b8e7c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a0a15aadd0ff0f2e6106feb72735764d') in 0.085498 seconds 
-  Import took 0.090219 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000220 seconds.
-  path: Assets/Resources/PolygonSciFiSpace/Materials/Planet_Materials/PolygonSpace_Planet_Lines_03_F.mat
-  artifactKey: Guid(25cae7cd49ecd234d97d823685fb8aa0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/PolygonSciFiSpace/Materials/Planet_Materials/PolygonSpace_Planet_Lines_03_F.mat using Guid(25cae7cd49ecd234d97d823685fb8aa0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a6323d378194b4913898e88ef689898d') in 0.015294 seconds 
-  Import took 0.019715 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000274 seconds.
-  path: Assets/Resources/PolygonSciFiSpace/Materials/Planet_Materials/PolygonSpace_Planet_Lines_02_C.mat
-  artifactKey: Guid(cf8172e935d39294aa17e9348aa50127) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/PolygonSciFiSpace/Materials/Planet_Materials/PolygonSpace_Planet_Lines_02_C.mat using Guid(cf8172e935d39294aa17e9348aa50127) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dbac245b7608c14a50112edcf38e7066') in 0.019210 seconds 
-  Import took 0.023466 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000234 seconds.
-  path: Assets/Resources/PolygonSciFiSpace/Materials/Planet_Materials/PolygonSpace_Planet_Lines_02_A.mat
-  artifactKey: Guid(4826d451338cccd49befb672cb9c1933) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/PolygonSciFiSpace/Materials/Planet_Materials/PolygonSpace_Planet_Lines_02_A.mat using Guid(4826d451338cccd49befb672cb9c1933) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd155bd32103f1c9d178cd8f4049258a3') in 0.019935 seconds 
-  Import took 0.024591 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000369 seconds.
-  path: Assets/Resources/PolygonSciFiSpace/Materials/Planet_Materials/PolygonSpace_Planet_03_D.mat
-  artifactKey: Guid(68d178ccb7d4c854ab101a41cbd5f649) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/PolygonSciFiSpace/Materials/Planet_Materials/PolygonSpace_Planet_03_D.mat using Guid(68d178ccb7d4c854ab101a41cbd5f649) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '51242664c7b113a6de2e670172a66dc3') in 0.015877 seconds 
-  Import took 0.020970 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000210 seconds.
-  path: Assets/Resources/PolygonSciFiSpace/Materials/Planet_Materials/PolygonSpace_Planet_Lines_01_Sun.mat
-  artifactKey: Guid(c2787d8a0397bc4469845f424df58af2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/PolygonSciFiSpace/Materials/Planet_Materials/PolygonSpace_Planet_Lines_01_Sun.mat using Guid(c2787d8a0397bc4469845f424df58af2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e2f94c94934c674b722e554f1c754900') in 0.015785 seconds 
-  Import took 0.021387 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000278 seconds.
-  path: Assets/Resources/PolygonSciFiSpace/Materials/Planet_Materials/PolygonSpace_Planet_Lines_01_F.mat
-  artifactKey: Guid(b15f4c9eaf1428140a5c7c0cb1fad686) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/PolygonSciFiSpace/Materials/Planet_Materials/PolygonSpace_Planet_Lines_01_F.mat using Guid(b15f4c9eaf1428140a5c7c0cb1fad686) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2ef8b449a83cfb7818544e4b7a89a4fc') in 0.015637 seconds 
-  Import took 0.020356 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000199 seconds.
-  path: Assets/Resources/Models/Test.mat
-  artifactKey: Guid(57a2069e04efffa45a37a7df9669508b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Models/Test.mat using Guid(57a2069e04efffa45a37a7df9669508b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '708d9e5d53872485efca2639d3d514f1') in 0.014443 seconds 
-  Import took 0.018598 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000264 seconds.
-  path: Assets/Resources/PolygonSciFiSpace/Materials/Planet_Materials/PolygonSpace_Planet_03_B.mat
-  artifactKey: Guid(a66e2a128f1a6cf40a2c07ae3c7e9b85) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/PolygonSciFiSpace/Materials/Planet_Materials/PolygonSpace_Planet_03_B.mat using Guid(a66e2a128f1a6cf40a2c07ae3c7e9b85) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5a649bbbf36b7f633e45d6e319da1f9e') in 0.018908 seconds 
-  Import took 0.023886 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000204 seconds.
-  path: Assets/Resources/PolygonSciFiSpace/Materials/Planet_Materials/PolygonSpace_Planet_Lines_02_F.mat
-  artifactKey: Guid(843219c1de3a00c43ae1a19123f5890e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/PolygonSciFiSpace/Materials/Planet_Materials/PolygonSpace_Planet_Lines_02_F.mat using Guid(843219c1de3a00c43ae1a19123f5890e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b32d3c01733c076775cb0220434cda1e') in 0.013288 seconds 
-  Import took 0.018067 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000224 seconds.
-  path: Assets/Resources/PolygonSciFiSpace/Materials/Planet_Materials/PolygonSpace_Planet_Lines_03_A.mat
-  artifactKey: Guid(4321dd3b53da5eb41a38585710f15c97) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/PolygonSciFiSpace/Materials/Planet_Materials/PolygonSpace_Planet_Lines_03_A.mat using Guid(4321dd3b53da5eb41a38585710f15c97) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7e40865c053fd2aacbb3dcb0d41f715f') in 0.019621 seconds 
-  Import took 0.024251 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000259 seconds.
-  path: Assets/Resources/PolygonSciFiSpace/Materials/Planet_Materials/PolygonSpace_Planet_Lines_03_C.mat
-  artifactKey: Guid(07dbc31265bdd59498403bb57aff3705) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/PolygonSciFiSpace/Materials/Planet_Materials/PolygonSpace_Planet_Lines_03_C.mat using Guid(07dbc31265bdd59498403bb57aff3705) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1ecc65c958612426a56f8e5eb42a86ae') in 0.016975 seconds 
-  Import took 0.021806 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000192 seconds.
-  path: Assets/Resources/PolygonSciFiSpace/Materials/Planet_Materials/PolygonSpace_Planet_Lines_01_A.mat
-  artifactKey: Guid(59ddaf0b08137c746bf06ef7ee5f184a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/PolygonSciFiSpace/Materials/Planet_Materials/PolygonSpace_Planet_Lines_01_A.mat using Guid(59ddaf0b08137c746bf06ef7ee5f184a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bff14a790933d8e3a6680b4dfb712db1') in 0.014689 seconds 
-  Import took 0.018757 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000255 seconds.
-  path: Assets/Resources/PolygonSciFiSpace/Materials/Planet_Materials/PolygonSpace_Planet_Lines_03_D.mat
-  artifactKey: Guid(c297a32c3099e07479cfabab9f30732a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/PolygonSciFiSpace/Materials/Planet_Materials/PolygonSpace_Planet_Lines_03_D.mat using Guid(c297a32c3099e07479cfabab9f30732a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'be768a185483acc0df539ac7179b0a8c') in 0.017355 seconds 
-  Import took 0.021748 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000192 seconds.
-  path: Assets/Resources/Models/Track/TrackMaterial.mat
-  artifactKey: Guid(0eafd6c8a4e78fb44ae52efe33b7f940) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Models/Track/TrackMaterial.mat using Guid(0eafd6c8a4e78fb44ae52efe33b7f940) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'abf8abc5bde7b4c2fc1069ad26054c5d') in 0.015127 seconds 
-  Import took 0.019099 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000245 seconds.
-  path: Assets/Resources/PolygonSciFiSpace/Materials/Planet_Materials/PolygonSpace_Planet_Lines_02_D.mat
-  artifactKey: Guid(956699b20f8d66f4da211171e027e938) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/PolygonSciFiSpace/Materials/Planet_Materials/PolygonSpace_Planet_Lines_02_D.mat using Guid(956699b20f8d66f4da211171e027e938) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c73e3ecdd869fb934f1a2d04e09b1af6') in 0.016879 seconds 
-  Import took 0.021257 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000189 seconds.
-  path: Assets/Resources/Models/Track/FullTracks/TrackWalls.mat
-  artifactKey: Guid(6a853dcf0ddd0fb48bbae4ef2c4c691b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/Models/Track/FullTracks/TrackWalls.mat using Guid(6a853dcf0ddd0fb48bbae4ef2c4c691b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '93e0fe89b548c0883193e8d893858084') in 0.017035 seconds 
-  Import took 0.021752 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000182 seconds.
-  path: Assets/Resources/PolygonSciFiSpace/Materials/Misc/Weapons_Energy.mat
-  artifactKey: Guid(ec466da1dba1edc45afc5ede3c7da96e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/PolygonSciFiSpace/Materials/Misc/Weapons_Energy.mat using Guid(ec466da1dba1edc45afc5ede3c7da96e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9c9c7c12b292e762af7d6d90074657ab') in 0.102289 seconds 
-  Import took 0.108103 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000460 seconds.
-  path: Assets/Resources/PolygonSciFiSpace/Materials/Planet_Materials/PolygonSpace_Planet_Lines_01_D.mat
-  artifactKey: Guid(20e4cf057c600f04eb0257bcbc7cfe25) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/PolygonSciFiSpace/Materials/Planet_Materials/PolygonSpace_Planet_Lines_01_D.mat using Guid(20e4cf057c600f04eb0257bcbc7cfe25) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '616b26db882d2d7d2b858cd6dcd2773e') in 0.029656 seconds 
-  Import took 0.036854 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000339 seconds.
-  path: Assets/Resources/PolygonSciFiSpace/Materials/Planet_Materials/PolygonSpace_Planet_Lines_02_B.mat
-  artifactKey: Guid(dc057b31df0f97245ba2e522a1898bed) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/PolygonSciFiSpace/Materials/Planet_Materials/PolygonSpace_Planet_Lines_02_B.mat using Guid(dc057b31df0f97245ba2e522a1898bed) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '46e8d705e13b50401ff06b9c843ca3b4') in 0.019788 seconds 
-  Import took 0.026403 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000246 seconds.
-  path: Assets/PSXStyle/PSXMat.mat
-  artifactKey: Guid(efbf5d756d81de746a49c8ca7e290f21) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/PSXStyle/PSXMat.mat using Guid(efbf5d756d81de746a49c8ca7e290f21) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ce0d16799139f2046f155f3bff0fc4ea') in 0.018460 seconds 
-  Import took 0.022904 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000207 seconds.
-  path: Assets/Resources/PolygonSciFiSpace/Materials/Planet_Materials/PolygonSpace_Planet_Lines_02_E.mat
-  artifactKey: Guid(0d5676d48fb87f14f953e5151571f879) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/PolygonSciFiSpace/Materials/Planet_Materials/PolygonSpace_Planet_Lines_02_E.mat using Guid(0d5676d48fb87f14f953e5151571f879) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '88e217f4a0272798b9f119bb029bc9e5') in 0.015506 seconds 
-  Import took 0.019869 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000255 seconds.
-  path: Assets/Resources/PolygonSciFiSpace/Materials/Planet_Materials/PolygonSpace_Planet_03_A.mat
-  artifactKey: Guid(17899a17ecbc5af458577619706d7119) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/PolygonSciFiSpace/Materials/Planet_Materials/PolygonSpace_Planet_03_A.mat using Guid(17899a17ecbc5af458577619706d7119) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8e2b7bb89034b32584247ada0f8da4b5') in 0.015118 seconds 
-  Import took 0.019678 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000297 seconds.
-  path: Assets/Resources/PolygonSciFiSpace/Materials/Planet_Materials/PolygonSpace_Planet_03_C.mat
-  artifactKey: Guid(73bc46724f8d8004c989cdf92f4a9902) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/PolygonSciFiSpace/Materials/Planet_Materials/PolygonSpace_Planet_03_C.mat using Guid(73bc46724f8d8004c989cdf92f4a9902) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2df48b2bc41e62daa68c6cd6ed45fe91') in 0.014575 seconds 
-  Import took 0.019948 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000231 seconds.
-  path: Assets/Resources/PolygonSciFiSpace/Materials/Planet_Materials/PolygonSpace_Sun.mat
-  artifactKey: Guid(20420331768a35e4db54bac675c22269) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Resources/PolygonSciFiSpace/Materials/Planet_Materials/PolygonSpace_Sun.mat using Guid(20420331768a35e4db54bac675c22269) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cfff1a56efa847a804dcb8de2839facb') in 0.038212 seconds 
-  Import took 0.042691 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 10.917476 seconds.
-  path: ProjectSettings/TagManager.asset
-  artifactKey: Guid(00000000000000003000000000000000) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing ProjectSettings/TagManager.asset using Guid(00000000000000003000000000000000) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '871ce4211c5d24ba53f3b63ab09f7f86') in 0.010325 seconds 
-  Import took 0.016009 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.006326 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.80 ms, found 3 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Mono: successfully reloaded assembly
-- Completed reload, in  1.017 seconds
-Domain Reload Profiling:
-	ReloadAssembly (1017ms)
-		BeginReloadAssembly (105ms)
-			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (4ms)
-			BackupInstance (0ms)
-			ReleaseScriptingObjects (0ms)
-			CreateAndSetChildDomain (37ms)
-		EndReloadAssembly (855ms)
+		EndReloadAssembly (918ms)
 			LoadAssemblies (80ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (341ms)
-			ReleaseScriptCaches (1ms)
-			RebuildScriptCaches (43ms)
-			SetupLoadedEditorAssemblies (307ms)
+			SetupTypeCache (292ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (49ms)
+			SetupLoadedEditorAssemblies (389ms)
 				LogAssemblyErrors (0ms)
 				InitializePlatformSupportModulesInManaged (4ms)
 				SetLoadedEditorAssemblies (0ms)
-				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (80ms)
-				ProcessInitializeOnLoadAttributes (207ms)
-				ProcessInitializeOnLoadMethodAttributes (10ms)
-				AfterProcessingInitializeOnLoad (5ms)
+				RefreshPlugins (81ms)
+				BeforeProcessingInitializeOnLoad (75ms)
+				ProcessInitializeOnLoadAttributes (212ms)
+				ProcessInitializeOnLoadMethodAttributes (13ms)
+				AfterProcessingInitializeOnLoad (4ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
-			AwakeInstancesAfterBackupRestoration (6ms)
+			AwakeInstancesAfterBackupRestoration (4ms)
 Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.70 ms, found 3 plugins.
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.05 seconds
+Refreshing native plugins compatible for Editor in 0.64 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 2646 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 123.1 MB.
-System memory in use after: 123.3 MB.
+Unloading 2676 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 122.2 MB.
+System memory in use after: 122.4 MB.
 
-Unloading 30 unused Assets to reduce memory usage. Loaded Objects now: 3157.
-Total: 3.105500 ms (FindLiveObjects: 0.200800 ms CreateObjectMapping: 0.080400 ms MarkObjects: 2.801100 ms  DeleteObjects: 0.022100 ms)
+Unloading 41 unused Assets to reduce memory usage. Loaded Objects now: 3115.
+Total: 2.998600 ms (FindLiveObjects: 0.174700 ms CreateObjectMapping: 0.077800 ms MarkObjects: 2.674500 ms  DeleteObjects: 0.070500 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
@@ -492,49 +132,200 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Prepare
+Refreshing native plugins compatible for Editor in 4.52 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 27 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 67.7 MB.
+System memory in use after: 67.9 MB.
+
+Unloading 26 unused Assets to reduce memory usage. Loaded Objects now: 3115.
+Total: 3.018800 ms (FindLiveObjects: 0.163900 ms CreateObjectMapping: 0.078100 ms MarkObjects: 2.753900 ms  DeleteObjects: 0.021900 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  path: Assets/Scenes/TrackTests/TrainAI.unity
+  artifactKey: Guid(ea0002467969730478dc5d518af17364) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/TrackTests/TrainAI.unity using Guid(ea0002467969730478dc5d518af17364) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1ad35ae7354fd780c3d873f55ceaacd7') in 0.021707 seconds 
+  Import took 0.025954 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 51.680434 seconds.
+  path: Assets/Scenes/TrackTests/Track4.unity
+  artifactKey: Guid(49b86466816a81f4eb3fed8b9b3cec3d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/TrackTests/Track4.unity using Guid(49b86466816a81f4eb3fed8b9b3cec3d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a2719481e399a76dd1e48e19296ffd65') in 0.005166 seconds 
+  Import took 0.009778 seconds .
+
+========================================================================
+Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.007969 seconds.
+Registered in 0.005018 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.98 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 0.68 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Mono: successfully reloaded assembly
-- Completed reload, in  1.051 seconds
+- Completed reload, in  0.945 seconds
 Domain Reload Profiling:
-	ReloadAssembly (1051ms)
-		BeginReloadAssembly (106ms)
+	ReloadAssembly (946ms)
+		BeginReloadAssembly (98ms)
 			ExecutionOrderSort (0ms)
-			DisableScriptedObjects (4ms)
+			DisableScriptedObjects (5ms)
 			BackupInstance (0ms)
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (36ms)
-		EndReloadAssembly (894ms)
-			LoadAssemblies (78ms)
+		EndReloadAssembly (800ms)
+			LoadAssemblies (67ms)
 			RebuildTransferFunctionScriptingTraits (0ms)
-			SetupTypeCache (312ms)
-			ReleaseScriptCaches (2ms)
-			RebuildScriptCaches (45ms)
-			SetupLoadedEditorAssemblies (352ms)
+			SetupTypeCache (320ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (42ms)
+			SetupLoadedEditorAssemblies (281ms)
 				LogAssemblyErrors (0ms)
-				InitializePlatformSupportModulesInManaged (6ms)
-				SetLoadedEditorAssemblies (1ms)
+				InitializePlatformSupportModulesInManaged (3ms)
+				SetLoadedEditorAssemblies (0ms)
 				RefreshPlugins (1ms)
-				BeforeProcessingInitializeOnLoad (105ms)
-				ProcessInitializeOnLoadAttributes (226ms)
+				BeforeProcessingInitializeOnLoad (75ms)
+				ProcessInitializeOnLoadAttributes (189ms)
 				ProcessInitializeOnLoadMethodAttributes (9ms)
 				AfterProcessingInitializeOnLoad (4ms)
 				EditorAssembliesLoaded (0ms)
 			ExecutionOrderSort2 (0ms)
 			AwakeInstancesAfterBackupRestoration (6ms)
 Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.69 ms, found 3 plugins.
+Refreshing native plugins compatible for Editor in 1.06 ms, found 3 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 2646 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 123.2 MB.
-System memory in use after: 123.4 MB.
+System memory in use before: 119.8 MB.
+System memory in use after: 120.0 MB.
 
-Unloading 29 unused Assets to reduce memory usage. Loaded Objects now: 3159.
-Total: 3.362300 ms (FindLiveObjects: 0.185200 ms CreateObjectMapping: 0.089900 ms MarkObjects: 3.051300 ms  DeleteObjects: 0.034200 ms)
+Unloading 29 unused Assets to reduce memory usage. Loaded Objects now: 3117.
+Total: 3.682600 ms (FindLiveObjects: 0.292900 ms CreateObjectMapping: 0.186800 ms MarkObjects: 3.148600 ms  DeleteObjects: 0.037500 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.006042 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.67 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.005 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1005ms)
+		BeginReloadAssembly (118ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (7ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (38ms)
+		EndReloadAssembly (830ms)
+			LoadAssemblies (78ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (334ms)
+			ReleaseScriptCaches (2ms)
+			RebuildScriptCaches (42ms)
+			SetupLoadedEditorAssemblies (291ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (4ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (76ms)
+				ProcessInitializeOnLoadAttributes (196ms)
+				ProcessInitializeOnLoadMethodAttributes (9ms)
+				AfterProcessingInitializeOnLoad (5ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (8ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.79 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2646 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 119.9 MB.
+System memory in use after: 120.2 MB.
+
+Unloading 29 unused Assets to reduce memory usage. Loaded Objects now: 3119.
+Total: 3.222000 ms (FindLiveObjects: 0.232000 ms CreateObjectMapping: 0.087100 ms MarkObjects: 2.874400 ms  DeleteObjects: 0.027200 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.008544 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.74 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0.998 seconds
+Domain Reload Profiling:
+	ReloadAssembly (998ms)
+		BeginReloadAssembly (109ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (5ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (35ms)
+		EndReloadAssembly (835ms)
+			LoadAssemblies (76ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (318ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (42ms)
+			SetupLoadedEditorAssemblies (303ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (4ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (81ms)
+				ProcessInitializeOnLoadAttributes (203ms)
+				ProcessInitializeOnLoadMethodAttributes (10ms)
+				AfterProcessingInitializeOnLoad (4ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (9ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.81 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 2646 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 120.0 MB.
+System memory in use after: 120.2 MB.
+
+Unloading 29 unused Assets to reduce memory usage. Loaded Objects now: 3121.
+Total: 3.096500 ms (FindLiveObjects: 0.165900 ms CreateObjectMapping: 0.081700 ms MarkObjects: 2.823400 ms  DeleteObjects: 0.024100 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
