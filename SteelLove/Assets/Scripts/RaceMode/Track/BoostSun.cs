@@ -43,8 +43,6 @@ public class BoostSun : MonoBehaviour {
     }
 
     bool IsFacingSun(ShipController ship) {
-        // TODO: will need to check if ship is much higher or lower than the sun
-
         bool _isFacing = false;
 
         // Get vector from ship to sun
