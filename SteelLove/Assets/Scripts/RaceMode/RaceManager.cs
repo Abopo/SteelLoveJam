@@ -7,7 +7,7 @@ public class RaceManager : MonoBehaviour
     [SerializeField] private InputReader _inputReader = default;
 
     [Header("Broadcasting On")]
-    [SerializeField] private FloatEventChannelSO _onLapIncreased = default;
+    [SerializeField] private IntEventChannelSO _onLapFinished = default;
 
     [Header("Listening to")]
     [SerializeField] private VoidEventChannelSO _onCountdownFinished = default;
@@ -70,8 +70,6 @@ public class RaceManager : MonoBehaviour
 
     private void OnCrossedFinishLine()
     {
-        Debug.Log("crossed finish");
-
         if(AllCheckpointsCrossed()) {
             // Reset checkpoints
             ResetCheckpoints();
@@ -80,11 +78,8 @@ public class RaceManager : MonoBehaviour
             if (_curLap >= 3) {
                 _RaceStateSO.UpdateState(RaceStateSO.RaceState.RaceFinished);
             }
-            // else update lap
-            else {
-                _curLap++;
-                _onLapIncreased.RaiseEvent(_curLap);
-            }
+            _onLapFinished.RaiseEvent(_curLap);
+            _curLap++;
         }
     }
 

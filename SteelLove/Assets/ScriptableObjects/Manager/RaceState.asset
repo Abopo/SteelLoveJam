@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: RaceState
   m_EditorClassIdentifier: 
   description: Manages the state of the current race.
-  _currentState: 3
-  _previousState: 2
+  _currentState: 5
+  _previousState: 3
   _polePositions:
   - {fileID: 11400000, guid: 35aa3aac8fc6d9f41bdd9350040ad960, type: 2}
   - {fileID: 11400000, guid: b89b7ce7e367ba648b38da290b16d3cb, type: 2}
@@ -29,7 +29,7 @@ MonoBehaviour:
     type: 2}
   _onCountdownStateEvent: {fileID: 11400000, guid: 5732ed3a44f9cc646aea0d82ea682cd9,
     type: 2}
-  _onRaceStateEvent: {fileID: 11400000, guid: eb9b51f329654b14a9f17e243030ca44, type: 2}
+  _onRaceStartEvent: {fileID: 11400000, guid: eb9b51f329654b14a9f17e243030ca44, type: 2}
   _onPauseStateEvent: {fileID: 11400000, guid: d6e98234e333e674d97374cee0b156f2, type: 2}
   _onRaceFinishedEvent: {fileID: 11400000, guid: cfc78b7350bc8dd4e9a733b45bdb6aa7,
     type: 2}
