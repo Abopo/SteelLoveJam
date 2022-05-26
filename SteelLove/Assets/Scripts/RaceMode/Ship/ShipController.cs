@@ -77,7 +77,6 @@ public class ShipController : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        ReduceBoost(-100);
         PerformMovement();
 
         HandleThrusters();
