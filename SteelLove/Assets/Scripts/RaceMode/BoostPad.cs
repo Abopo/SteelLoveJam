@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class BoostPad : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private float _boostForceMultiplier;
+
+    private void OnTriggerEnter(Collider other)
     {
-        
+        if (other.tag == "Ship")
+        {
+            OnHit(other.transform.parent.GetComponent<ShipController>());
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnHit(ShipController ship)
     {
-        
+        ship.BoostPadActivate(_boostForceMultiplier);
     }
 }

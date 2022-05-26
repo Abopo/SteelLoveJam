@@ -35,8 +35,6 @@ public class PlayerShipSetup : MonoBehaviour
         _inputReader.LeftThrustEvent += _shipController.ThrustLeft;
         _inputReader.RightThrustEvent += _shipController.ThrustRight;
         _inputReader.RotationThrustersEvent += _shipController.RotationThrust;
-        _inputReader.StepLeftEvent += _shipController.StepLeft;
-        _inputReader.StepRightEvent += _shipController.StepRight;
         _inputReader.BoostEvent += _shipController.Boost;
         _inputReader.BrakeEvent += _shipController.Brake;
     }
@@ -48,8 +46,6 @@ public class PlayerShipSetup : MonoBehaviour
         _inputReader.LeftThrustEvent -= _shipController.ThrustLeft;
         _inputReader.RightThrustEvent -= _shipController.ThrustRight;
         _inputReader.RotationThrustersEvent -= _shipController.RotationThrust;
-        _inputReader.StepLeftEvent -= _shipController.StepLeft;
-        _inputReader.StepRightEvent -= _shipController.StepRight;
         _inputReader.BoostEvent -= _shipController.Boost;
         _inputReader.BrakeEvent -= _shipController.Brake;
     }
