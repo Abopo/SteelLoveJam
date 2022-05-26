@@ -222,6 +222,9 @@ public class ShipController : MonoBehaviour {
                 finalMainThrustForce *= _boostForceMultiplier;
                 finalMainInputValue = 1f;
                 ReduceBoost(_boostCost * Time.deltaTime);
+            } else if (_boosting && BoostTank <= 0f)
+            {
+                _boosting = false;
             }
 
             _rigidbody.AddForce(CalculateThrustForce(transform.forward, finalMainThrustForce, finalMainInputValue));
