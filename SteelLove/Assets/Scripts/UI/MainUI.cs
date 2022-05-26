@@ -27,11 +27,11 @@ public class MainUI : MonoBehaviour {
                 _playerController.Freeze();
             }
         // and vice versa
-        } else {
-            if (!_playerController.InControl) {
-                _playerController.Unfreeze();
-            }
-        }
+        }// else {
+        //    if (!_playerController.InControl) {
+        //        _playerController.Unfreeze();
+        //    }
+        //}
     }
 
     // Displays dialogue via YarnSpinner, needs the name of the node to display

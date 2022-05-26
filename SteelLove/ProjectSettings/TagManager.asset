@@ -9,6 +9,8 @@ TagManager:
   - FinishLine
   - InsideTrack
   - Hazard
+  - TrackWallsAI
+  - CheckpointAI
   layers:
   - Default
   - TransparentFX
@@ -22,8 +24,8 @@ TagManager:
   - InsideTrack
   - TrackFloor
   - TrackWallsAI
-  - 
-  - 
+  - CheckpointAI
+  - AI In Training
   - 
   - 
   - 

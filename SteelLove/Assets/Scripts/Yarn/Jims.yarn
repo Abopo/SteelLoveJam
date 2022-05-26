@@ -4,7 +4,10 @@
     Hey there! Welcome to the Canteen!
     Each of you racers get 1 complimentary drink before each race.
     Here ya go!
+    
     <<set $got_canteen_drink to true>>
+    <<set $has_canteen_drink to true>>
+
     <<get_item CanteenDrink>>
 <<else>>
     How was your drink?

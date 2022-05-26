@@ -152,21 +152,25 @@ public class ShipController : MonoBehaviour {
     public void ThrustForward(float value)
     {
         _mainThrusterInputValue = value;
+        _reverseThrusterInputValue = 0;
     }
 
     public void ThrustBackwards(float value)
     {
         _reverseThrusterInputValue = value;
+        _mainThrusterInputValue = 0;
     }
 
     public void ThrustLeft(float value)
     {
         _leftThrusterInputValue = value;
+        _rightThrusterInputValue = 0;
     }
 
     public void ThrustRight(float value)
     {
         _rightThrusterInputValue = value;
+        _leftThrusterInputValue = 0;
     }
 
     public void RotationThrust(Vector2 value)
