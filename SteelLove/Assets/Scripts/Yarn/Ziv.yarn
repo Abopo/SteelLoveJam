@@ -4,7 +4,7 @@
 
 title: Initialize
 ---
-<<set $Ziv_fondness to 0>>
+<<set $jebb_fondness to 0>>
 <<set $trik_fondness to 0>>
 <<set $sumiv_fondness to 0>>
 <<set $frieda_fondness to 0>>
@@ -13,6 +13,13 @@ title: Initialize
 <<set $aldious_fondness to 0>>
 
 <<set $got_canteen_drink to false>>
+
+<<set $jebb_drink to false>>
+<<set $trik_drink to false>>
+<<set $sumiv_drink to false>>
+<<set $frieda_drink to false>>
+<<set $damian_drink to false>>
+<<set $aldious_drink to false>>
 
 <<set $has_canteen_drink to false>>
 <<set $has_grazeloid_translator to false>>

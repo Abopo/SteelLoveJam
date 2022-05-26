@@ -31,8 +31,6 @@ public class Checkpoint : MonoBehaviour {
 
     void OnTriggerEnter(Collider other) {
         if(other.tag == "Ship") {
-            Debug.Log("Player hit checkpoint");
-
             // The player has hit this checkpoint
             Hit();
         }
