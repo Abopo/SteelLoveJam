@@ -12,6 +12,16 @@ PrefabInstance:
       propertyPath: m_Size.x
       value: 31.22
       objectReference: {fileID: 0}
+    - target: {fileID: 2312332085915729340, guid: 4c5076147ce157f4ba3d8a3f807b39ce,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2312332085915729340, guid: 4c5076147ce157f4ba3d8a3f807b39ce,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 0.63
+      objectReference: {fileID: 0}
     - target: {fileID: 8669302583346991334, guid: 4c5076147ce157f4ba3d8a3f807b39ce,
         type: 3}
       propertyPath: m_Name
@@ -108,3 +118,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7504d7ed4bd8a424dbb173b37a7477eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextCheckpoint: {fileID: 0}

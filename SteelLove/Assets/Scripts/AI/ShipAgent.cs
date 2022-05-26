@@ -7,34 +7,53 @@ using Unity.MLAgents.Actuators;
 
 public class ShipAgent : Agent {
 
-    [SerializeField] private FloatEventChannelSO _onHealthChanged;
-
     Rigidbody _rBody;
     ShipController _ship;
 
-    Transform _closestCheckpoint;
+    [SerializeField] AICheckpoint _firstCheckpoint;
+    [SerializeField] AICheckpoint _nextCheckpoint;
+    float _lastCheckpointTime = 0f;
 
-    float _curHealth = 100f;
+    [SerializeField] float _curHealth = 100f;
 
     // Input
     Vector2 _leftControlSignal;
     Vector2 _rightControlSignal;
 
+    [SerializeField] private InputReader _inputReader = default;
+    private float _mainThrusterInputValue;
+    private float _reverseThrusterInputValue;
+    private float _leftThrusterInputValue;
+    private float _rightThrusterInputValue;
+    private Vector2 _rotInputValue;
+
+    AgentManager _agentManager;
+
     // Start is called before the first frame update
     void Start() {
         _rBody = GetComponentInParent<Rigidbody>();
         _ship = GetComponentInParent<ShipController>();
-
+        _agentManager = GetComponentInParent<AgentManager>();
     }
 
     protected override void OnEnable() {
         base.OnEnable();
-        _onHealthChanged.OnEventRaised += OnHealthChanged;
+
+        _inputReader.MainThrusterEvent += GetThrustForward;
+        _inputReader.ReverseThrusterEvent += GetThrustBackwards;
+        _inputReader.LeftThrustEvent += GetThrustLeft;
+        _inputReader.RightThrustEvent += GetThrustRight;
+        _inputReader.RotationThrustersEvent += GetRotationThrust;
     }
 
     protected override void OnDisable() {
         base.OnDisable();
-        _onHealthChanged.OnEventRaised -= OnHealthChanged;
+
+        _inputReader.MainThrusterEvent -= GetThrustForward;
+        _inputReader.ReverseThrusterEvent -= GetThrustBackwards;
+        _inputReader.LeftThrustEvent -= GetThrustLeft;
+        _inputReader.RightThrustEvent -= GetThrustRight;
+        _inputReader.RotationThrustersEvent -= GetRotationThrust;
     }
 
     /*
@@ -68,19 +87,53 @@ public class ShipAgent : Agent {
     public override void OnEpisodeBegin() {
         base.OnEpisodeBegin();
 
-        // Set to start of the track (or a random position on the track?)
-        transform.position = Vector3.zero;
+        if (_curHealth <= 0) {
+            // Set to start of the track (or a random position on the track?)
+            _ship.transform.position = new Vector3(0f, 0.5f, 0f);
+
+            _rBody.velocity = Vector3.zero;
+
+            //ResetAllCheckpoints();
+            _firstCheckpoint = _agentManager.GetRandomCheckpoint();
+            transform.position = new Vector3(_firstCheckpoint.transform.position.x, 0.5f, _firstCheckpoint.transform.position.z);
+            _nextCheckpoint = _firstCheckpoint.nextCheckpoint;
+
+            // Reset health
+            _ship.ChangeHealth(100);
+            _curHealth = 100;
+        }
+    }
+
+    void ResetAllCheckpoints() {
+        AICheckpoint tempCheckpoint = _firstCheckpoint;
+        while (tempCheckpoint.nextCheckpoint != null) {
+            tempCheckpoint.nextCheckpoint.gameObject.SetActive(false);
+            tempCheckpoint = tempCheckpoint.nextCheckpoint;
+        }
+
+        _firstCheckpoint.gameObject.SetActive(true);
+    }
+
+    public override void CollectObservations(VectorSensor sensor) {
+        if (_nextCheckpoint != null) {
+            sensor.AddObservation(_nextCheckpoint.transform.position);
+            sensor.AddObservation(transform.position);
+
+            sensor.AddObservation(_rBody.velocity);        
+            //float distToCheckpoint = Vector3.Distance(transform.position, _nextCheckpoint.position);
+            //sensor.AddObservation(distToCheckpoint);
+        }
     }
 
     public override void OnActionReceived(ActionBuffers actions) {
         // Actions, size 3
 
         // Left stick input
-        Vector2 leftControlSignal = Vector2.zero;
-        leftControlSignal.x = actions.ContinuousActions[0];
-        leftControlSignal.y = actions.ContinuousActions[1];
-        Mathf.Clamp(leftControlSignal.x, -1f, 1f);
-        Mathf.Clamp(leftControlSignal.y, -1f, 1f);
+        _leftControlSignal = Vector2.zero;
+        _leftControlSignal.x = actions.ContinuousActions[0];
+        _leftControlSignal.y = actions.ContinuousActions[1];
+        Mathf.Clamp(_leftControlSignal.x, -1f, 1f);
+        Mathf.Clamp(_leftControlSignal.y, -1f, 1f);
 
         // Right stick input
         _rightControlSignal.x = actions.ContinuousActions[2];
@@ -89,26 +142,24 @@ public class ShipAgent : Agent {
         // Send input data to ShipController
         SendInputToShip();
 
-        // Find closest checkpoint
-
         // Rewards
         GiveRewards();
     }
 
     void SendInputToShip() {
-        if (_leftControlSignal.y >= 0) {
+        if (_leftControlSignal.y > 0) {
             _ship.ThrustForward(_leftControlSignal.y);
         } else {
-            _ship.ThrustBackwards(_leftControlSignal.y);
+            _ship.ThrustBackwards(Mathf.Abs(_leftControlSignal.y));
         }
 
-        if(_leftControlSignal.x >= 0) {
+        if (_leftControlSignal.x > 0) {
             _ship.ThrustRight(_leftControlSignal.x);
         } else {
-            _ship.ThrustLeft(_leftControlSignal.x);
+            _ship.ThrustLeft(Mathf.Abs(_leftControlSignal.x));
         }
 
-        _ship.RotationThrust(_rightControlSignal);
+        //_ship.RotationThrust(_rightControlSignal);
     }
 
     void GiveRewards() {
@@ -117,37 +168,133 @@ public class ShipAgent : Agent {
          * then, increase complexity later.
          */
 
-        // Speed
-        AddReward(_rBody.velocity.magnitude * 0.001f);
+        // Small punishment every tick to encourage moving to checkpoints quickly
+        AddReward(-0.0001f);
 
-        // Checkpoints
+        // Speed
+        //AddReward(_rBody.velocity.magnitude * 0.0002f);
 
         // Lap
 
         // Health
-        // v See below v
-    }
-    
-    void OnHealthChanged(float health) {
-        // Punish based on amount of health lost
-        float healthDif = _curHealth - health;
-        AddReward(healthDif * -0.01f);
-        _curHealth = health;
+        float healthDif = _curHealth - _ship.Health;
+        // If the ship had lost some health
+        if (healthDif > 0) {
+            // Punishment
+            AddReward(-0.01f);
+            _curHealth = _ship.Health;
 
-        if(_curHealth <= 0) {
+            if (_curHealth <= 0) {
+                EndEpisode();
+            }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other) {
+        if(other.tag == "CheckpointAI") {
+            if (other.GetComponent<AICheckpoint>() == _nextCheckpoint) {
+                OnCheckpointPassed();
+
+                // Set next checkpoint
+                _nextCheckpoint = other.GetComponent<AICheckpoint>().nextCheckpoint;
+                if (_nextCheckpoint == null) {
+                    // We've hit the last checkpoint, so reset
+                    Debug.Log("Hit final checkpoint!");
+                    _curHealth = 0f;
+                    SetReward(1);
+                    EndEpisode();
+                } else {
+                    // Deactivate hit checkpoint
+                    //other.gameObject.SetActive(false);
+                    // Activate the next checkpoint
+                    //_nextCheckpoint.gameObject.SetActive(true);
+                }
+            }
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision) {
+        if(collision.collider.tag == "TrackWallsAI") {
+            // Insta wall death
+            _curHealth = 0f;
+            SetReward(-1);
             EndEpisode();
+
+            /*
+            AddReward(_rBody.velocity.magnitude * -0.005f);
+            
+            _curHealth -= 10f;
+            if (_curHealth <= 0) {
+                EndEpisode();
+            }
+            */
+        }
+    }
+
+    private void OnCollisionStay(Collision collision) {
+        if (collision.collider.tag == "TrackWallsAI") {
+            AddReward(-0.001f);
+
+            _curHealth -= 1f;
+            if (_curHealth <= 0) {
+                SetReward(-1);
+                EndEpisode();
+            }
         }
     }
 
     public void OnCheckpointPassed() {
-        // Give reward
+        // Determine time since last checkpoint
+        float timeDelta = Time.time - _lastCheckpointTime;
 
-        // Set next checkpoint
+        // Smaller time equals bigger reward
+        //float reward = 2 / timeDelta;
+        //AddReward(reward);
+        SetReward(1);
 
+        // Record new time
+        _lastCheckpointTime = Time.time;
     }
 
     public override void Heuristic(in ActionBuffers actionsOut) {
         var continuousActionsOut = actionsOut.ContinuousActions;
 
+        if(_mainThrusterInputValue > 0) {
+            continuousActionsOut[1] = _mainThrusterInputValue;
+        } else {
+            continuousActionsOut[1] = -_reverseThrusterInputValue;
+        }
+
+        if(_rightThrusterInputValue > 0) {
+            continuousActionsOut[0] = _rightThrusterInputValue;
+        } else {
+            continuousActionsOut[0] = -_leftThrusterInputValue;
+        }
+
+        //continuousActionsOut[2] = _rotInputValue.x;
+    }
+
+    public void GetThrustForward(float value) {
+        _mainThrusterInputValue = value;
+        _reverseThrusterInputValue = 0;
+    }
+
+    public void GetThrustBackwards(float value) {
+        _reverseThrusterInputValue = value;
+        _mainThrusterInputValue = 0;
+    }
+
+    public void GetThrustLeft(float value) {
+        _leftThrusterInputValue = value;
+        _rightThrusterInputValue = 0;
+    }
+
+    public void GetThrustRight(float value) {
+        _rightThrusterInputValue = value;
+        _leftThrusterInputValue = 0;
+    }
+
+    public void GetRotationThrust(Vector2 value) {
+        _rotInputValue = value;
     }
 }

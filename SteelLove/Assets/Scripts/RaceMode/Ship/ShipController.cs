@@ -46,6 +46,8 @@ public class ShipController : MonoBehaviour {
     // Ship Resources
     [SerializeField] private float _health = 100.0f;
     [SerializeField] private float _boostTank = 0f;
+
+    public float Health => _health;
     
     private bool _isOutsideOfTrack;
 
@@ -128,7 +130,9 @@ public class ShipController : MonoBehaviour {
             _health = 100;
         }
 
-        _onHealthLevelChanged.RaiseEvent(_health);
+        if (_onHealthLevelChanged != null) {
+            _onHealthLevelChanged.RaiseEvent(_health);
+        }
     }
 
     public void RefillBoost(float fillSpeed)
@@ -146,7 +150,10 @@ public class ShipController : MonoBehaviour {
         {
             _boostTank = 100;
         }
-        _onBoostLevelChanged.RaiseEvent(_boostTank);
+
+        if (_onBoostLevelChanged != null) {
+            _onBoostLevelChanged.RaiseEvent(_boostTank);
+        }
     }
 
     public void ThrustForward(float value)
