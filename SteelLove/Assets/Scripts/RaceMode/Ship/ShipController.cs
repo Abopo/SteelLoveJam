@@ -10,6 +10,7 @@ public class ShipController : MonoBehaviour {
     [Header("Movement Properties")]
     [SerializeField] private float _mainthrustForce;
     [SerializeField] private float _boostForceMultiplier;
+    [SerializeField] private float _boostPadForceMultiplier;
     [SerializeField] private float _reverseThrustForce;
     [SerializeField] private float _horizontalThrustForce;
     [SerializeField] private float _stepForce;
@@ -30,6 +31,7 @@ public class ShipController : MonoBehaviour {
 
     [SerializeField] private float _stepCost;
     [SerializeField] private float _boostCost;
+    [SerializeField] private float _boostPadTime;
 
     [Header("Input")]
     [SerializeField] private InputReader _inputReader = default;
@@ -59,6 +61,7 @@ public class ShipController : MonoBehaviour {
     private Vector2 _rotInputValue;
     private bool _brake;
     private bool _boosting;
+    private bool _boostPadActive;
 
     private Vector2 _stepDir;
     private bool _canStep = true;
@@ -208,6 +211,11 @@ public class ShipController : MonoBehaviour {
             // Stop braking
             _brake = false;
         }
+    }
+
+    public void BoostPadActivate()
+    {
+        _boostPadActive = true;
     }
 
     private void PerformMovement()
