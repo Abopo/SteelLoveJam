@@ -82,24 +82,6 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""StepLeft"",
-                    ""type"": ""Button"",
-                    ""id"": ""541db52a-b2c7-4c14-b2f7-31ab53c532c3"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""StepRight"",
-                    ""type"": ""Button"",
-                    ""id"": ""cb9fb9a3-bd09-42b8-a1c7-f15795d93385"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""Boost"",
                     ""type"": ""Button"",
                     ""id"": ""1283ca4d-8b21-4deb-acd4-ad4e4783b766"",
@@ -112,6 +94,15 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                     ""name"": ""Brake"",
                     ""type"": ""Button"",
                     ""id"": ""c7bdc70d-01d6-42f9-b80b-79ac77233acd"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LookBehind"",
+                    ""type"": ""Button"",
+                    ""id"": ""a801b9bc-0a36-402b-966e-1fa878f5506b"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -220,17 +211,6 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""2291f148-fe7b-46a0-a1fc-f117d2092edd"",
-                    ""path"": ""<Gamepad>/rightTrigger"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""LeftThruster"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""0e390258-8212-4d09-bfc3-274e5ed29607"",
                     ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
@@ -248,17 +228,6 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""LeftThruster"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""1d2d22c6-cea0-4f6e-b6e8-97ec5ce1e171"",
-                    ""path"": ""<Gamepad>/leftTrigger"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""RightThruster"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -308,39 +277,6 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""457923c9-c9ca-4f3b-9c9a-42d28e04647f"",
-                    ""path"": ""<Gamepad>/leftShoulder"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""StepLeft"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""df578efb-f61d-4c14-acb6-72ed930cb4e0"",
-                    ""path"": ""<Gamepad>/rightShoulder"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""StepRight"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""cb780378-94fa-44ac-93ba-e2ebd5d19ca7"",
-                    ""path"": ""<Gamepad>/buttonWest"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Boost"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""5e4daec6-36ac-4040-898e-6737ec80910d"",
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
@@ -352,12 +288,12 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""029194bc-dc8c-4c9f-bbf4-bce70dd59e03"",
-                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""id"": ""e27626d8-c6e0-4166-84de-9642860825a6"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Brake"",
+                    ""action"": ""Boost"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -374,12 +310,34 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""b7f80387-5620-4bf7-b993-e32e21f763bb"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Brake"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""2ddc966b-64d6-431e-b265-ff21841d4d1c"",
                     ""path"": ""<Gamepad>/leftStick/down"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""ReverseThruster"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""90858cb7-673c-4fbf-ab83-cd66ec20c830"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LookBehind"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -717,10 +675,9 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         m_Racing_LeftThruster = m_Racing.FindAction("LeftThruster", throwIfNotFound: true);
         m_Racing_RightThruster = m_Racing.FindAction("RightThruster", throwIfNotFound: true);
         m_Racing_Pause = m_Racing.FindAction("Pause", throwIfNotFound: true);
-        m_Racing_StepLeft = m_Racing.FindAction("StepLeft", throwIfNotFound: true);
-        m_Racing_StepRight = m_Racing.FindAction("StepRight", throwIfNotFound: true);
         m_Racing_Boost = m_Racing.FindAction("Boost", throwIfNotFound: true);
         m_Racing_Brake = m_Racing.FindAction("Brake", throwIfNotFound: true);
+        m_Racing_LookBehind = m_Racing.FindAction("LookBehind", throwIfNotFound: true);
         // BreakRoom
         m_BreakRoom = asset.FindActionMap("BreakRoom", throwIfNotFound: true);
         m_BreakRoom_Movement = m_BreakRoom.FindAction("Movement", throwIfNotFound: true);
@@ -797,10 +754,9 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_Racing_LeftThruster;
     private readonly InputAction m_Racing_RightThruster;
     private readonly InputAction m_Racing_Pause;
-    private readonly InputAction m_Racing_StepLeft;
-    private readonly InputAction m_Racing_StepRight;
     private readonly InputAction m_Racing_Boost;
     private readonly InputAction m_Racing_Brake;
+    private readonly InputAction m_Racing_LookBehind;
     public struct RacingActions
     {
         private @GameInput m_Wrapper;
@@ -811,10 +767,9 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         public InputAction @LeftThruster => m_Wrapper.m_Racing_LeftThruster;
         public InputAction @RightThruster => m_Wrapper.m_Racing_RightThruster;
         public InputAction @Pause => m_Wrapper.m_Racing_Pause;
-        public InputAction @StepLeft => m_Wrapper.m_Racing_StepLeft;
-        public InputAction @StepRight => m_Wrapper.m_Racing_StepRight;
         public InputAction @Boost => m_Wrapper.m_Racing_Boost;
         public InputAction @Brake => m_Wrapper.m_Racing_Brake;
+        public InputAction @LookBehind => m_Wrapper.m_Racing_LookBehind;
         public InputActionMap Get() { return m_Wrapper.m_Racing; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -842,18 +797,15 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                 @Pause.started -= m_Wrapper.m_RacingActionsCallbackInterface.OnPause;
                 @Pause.performed -= m_Wrapper.m_RacingActionsCallbackInterface.OnPause;
                 @Pause.canceled -= m_Wrapper.m_RacingActionsCallbackInterface.OnPause;
-                @StepLeft.started -= m_Wrapper.m_RacingActionsCallbackInterface.OnStepLeft;
-                @StepLeft.performed -= m_Wrapper.m_RacingActionsCallbackInterface.OnStepLeft;
-                @StepLeft.canceled -= m_Wrapper.m_RacingActionsCallbackInterface.OnStepLeft;
-                @StepRight.started -= m_Wrapper.m_RacingActionsCallbackInterface.OnStepRight;
-                @StepRight.performed -= m_Wrapper.m_RacingActionsCallbackInterface.OnStepRight;
-                @StepRight.canceled -= m_Wrapper.m_RacingActionsCallbackInterface.OnStepRight;
                 @Boost.started -= m_Wrapper.m_RacingActionsCallbackInterface.OnBoost;
                 @Boost.performed -= m_Wrapper.m_RacingActionsCallbackInterface.OnBoost;
                 @Boost.canceled -= m_Wrapper.m_RacingActionsCallbackInterface.OnBoost;
                 @Brake.started -= m_Wrapper.m_RacingActionsCallbackInterface.OnBrake;
                 @Brake.performed -= m_Wrapper.m_RacingActionsCallbackInterface.OnBrake;
                 @Brake.canceled -= m_Wrapper.m_RacingActionsCallbackInterface.OnBrake;
+                @LookBehind.started -= m_Wrapper.m_RacingActionsCallbackInterface.OnLookBehind;
+                @LookBehind.performed -= m_Wrapper.m_RacingActionsCallbackInterface.OnLookBehind;
+                @LookBehind.canceled -= m_Wrapper.m_RacingActionsCallbackInterface.OnLookBehind;
             }
             m_Wrapper.m_RacingActionsCallbackInterface = instance;
             if (instance != null)
@@ -876,18 +828,15 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                 @Pause.started += instance.OnPause;
                 @Pause.performed += instance.OnPause;
                 @Pause.canceled += instance.OnPause;
-                @StepLeft.started += instance.OnStepLeft;
-                @StepLeft.performed += instance.OnStepLeft;
-                @StepLeft.canceled += instance.OnStepLeft;
-                @StepRight.started += instance.OnStepRight;
-                @StepRight.performed += instance.OnStepRight;
-                @StepRight.canceled += instance.OnStepRight;
                 @Boost.started += instance.OnBoost;
                 @Boost.performed += instance.OnBoost;
                 @Boost.canceled += instance.OnBoost;
                 @Brake.started += instance.OnBrake;
                 @Brake.performed += instance.OnBrake;
                 @Brake.canceled += instance.OnBrake;
+                @LookBehind.started += instance.OnLookBehind;
+                @LookBehind.performed += instance.OnLookBehind;
+                @LookBehind.canceled += instance.OnLookBehind;
             }
         }
     }
@@ -1006,10 +955,9 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         void OnLeftThruster(InputAction.CallbackContext context);
         void OnRightThruster(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
-        void OnStepLeft(InputAction.CallbackContext context);
-        void OnStepRight(InputAction.CallbackContext context);
         void OnBoost(InputAction.CallbackContext context);
         void OnBrake(InputAction.CallbackContext context);
+        void OnLookBehind(InputAction.CallbackContext context);
     }
     public interface IBreakRoomActions
     {

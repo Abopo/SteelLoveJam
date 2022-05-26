@@ -12,8 +12,10 @@ public class PlayerShipSetup : MonoBehaviour
     [SerializeField] private InputReader _inputReader = default;
 
     // used to help setup the scene when player spawns
-    [SerializeField] private GameObject _cameraConstraint;
-    [SerializeField] private GameObject _cameraLookAt;
+    [SerializeField] private GameObject _cameraConstraintLookForward;
+    [SerializeField] private GameObject _cameraConstraintLookBackward;
+    [SerializeField] private GameObject _cameraLookAtForward;
+    [SerializeField] private GameObject _cameraLookAtBehind;
 
     private ShipController _shipController;
 
@@ -37,6 +39,7 @@ public class PlayerShipSetup : MonoBehaviour
         _inputReader.RotationThrustersEvent += _shipController.RotationThrust;
         _inputReader.BoostEvent += _shipController.Boost;
         _inputReader.BrakeEvent += _shipController.Brake;
+        _inputReader.LookBehindEvent += _cameraController.LookBehind;
     }
 
     private void OnDisable()
@@ -48,11 +51,12 @@ public class PlayerShipSetup : MonoBehaviour
         _inputReader.RotationThrustersEvent -= _shipController.RotationThrust;
         _inputReader.BoostEvent -= _shipController.Boost;
         _inputReader.BrakeEvent -= _shipController.Brake;
+        _inputReader.LookBehindEvent -= _cameraController.LookBehind;
     }
 
     private void Start()
     {
-        _cameraController.Init(GetComponent<ShipController>(), _cameraConstraint, _cameraLookAt);
+        _cameraController.Init(GetComponent<ShipController>(), _cameraConstraintLookForward, _cameraConstraintLookBackward, _cameraLookAtForward, _cameraLookAtBehind);
         _speedometer.Init(GetComponent<Rigidbody>());
     }
 }
