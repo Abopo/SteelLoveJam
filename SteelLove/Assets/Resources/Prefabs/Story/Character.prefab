@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 097b95c9f69f04f2d8c08a817e7786af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueView: {fileID: 2275397418236115513}
+  dialogueView: {fileID: 5315892974109813802}
   continueActionType: 3
   continueActionKeyCode: 32
   continueActionReference: {fileID: -1966584351898701308, guid: 82f4736d26f4d584aa6152d572102341,
@@ -69,6 +69,7 @@ MonoBehaviour:
       m_Groups: 
       m_Action: Skip
       m_Flags: 0
+    m_Flags: 0
   enableActionOnStart: 1
 --- !u!1 &522726703
 GameObject:
@@ -130,6 +131,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -228,6 +230,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 1
 --- !u!114 &5967329979382131743
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -305,6 +308,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -438,6 +442,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -573,6 +578,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -616,7 +622,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2275397418236115516}
-  - component: {fileID: 2275397418236115513}
+  - component: {fileID: 5315892974109813802}
   - component: {fileID: 2275397418236115514}
   - component: {fileID: 2275397418236115515}
   - component: {fileID: 2275397418236115512}
@@ -650,7 +656,7 @@ RectTransform:
   m_AnchoredPosition: {x: -35.4, y: 417.6}
   m_SizeDelta: {x: -919.96747, y: 270.07547}
   m_Pivot: {x: 0.5, y: 0}
---- !u!114 &2275397418236115513
+--- !u!114 &5315892974109813802
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -659,7 +665,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2275397418236115517}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ddcdd604a328c4ab296f048eb7b3a925, type: 3}
+  m_Script: {fileID: 11500000, guid: 1a92fe662e0db73489df3359e957313b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   canvasGroup: {fileID: 2275397418236115512}
@@ -716,6 +722,7 @@ MonoBehaviour:
   m_ChildControlHeight: 1
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
 --- !u!225 &2275397418236115512
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -777,7 +784,7 @@ MonoBehaviour:
     type: 3}
   _variableStorage: {fileID: 0}
   dialogueViews:
-  - {fileID: 2275397418236115513}
+  - {fileID: 5315892974109813802}
   - {fileID: 2347397021036160297}
   startNode: Start
   startAutomatically: 0
@@ -865,7 +872,7 @@ MonoBehaviour:
   canvasGroup: {fileID: 6471944129293815758}
   optionViewPrefab: {fileID: 7982813390366930180, guid: 0822bb67344785e4bad284d875a5852b,
     type: 3}
-  lineView: {fileID: 2275397418236115513}
+  lineView: {fileID: 0}
   fadeTime: 0.1
   showUnavailableOptions: 0
 --- !u!114 &6471944129293815759
@@ -893,6 +900,7 @@ MonoBehaviour:
   m_ChildControlHeight: 1
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
 --- !u!114 &6471944129293815760
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -980,6 +988,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0.2509804}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1197,6 +1206,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:

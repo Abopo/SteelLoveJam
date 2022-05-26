@@ -9,7 +9,7 @@ public class FinishLine : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other) {
         if (other.tag == "Ship") {
-            Debug.Log("Player hit checkpoint");
+            Debug.Log("Player hit finish line.");
 
             // The player has hit this checkpoint
             Hit();

@@ -2,18 +2,37 @@
 ---
 Oh! Hello there.
 Don't mind me, I'm just looking through my own, personal, definitely mine luggage...
+-> Very well.
+-> Is that so? What is it you are looking for then?
+    Oh, just some spare batteries for my goggles.
+    They've been acting up recently.
+
+<<jump Sumiv_Quest>>
 ===
 
 title: Sumiv_Race2_Top3
 ---
+Turns out this racing thing is easier than I thought.
+I'm one step closer to finishing my research. 
+Now if I could only find some batteries...
+<<jump Sumiv_Quest>>
 ===
 
 title: Sumiv_Race2_Mid3
 ---
+Hello there. I performed adequately in the first race it seems.
+By the way, you wouldn't have happened to come across
+some batteries have you?
+<<jump Sumiv_Quest>>
 ===
 
 title: Sumiv_Race2_Bot3
 ---
+Ah, hello again. I performed quite poorly in the first race.
+I couldn't focus because my goggles were freaking out the whole time.
+They keep showing signals for tons of giant robots,
+but that's impossible. There's should only be 1.
+<<jump Sumiv_Quest>>
 ===
 
 title: Sumiv_Race3_Top3
@@ -38,4 +57,31 @@ title: Sumiv_Race4_Mid3
 
 title: Sumiv_Race4_Bot3
 ---
+===
+
+title: Sumiv_Quest
+---
+-> Give Canteen Drink <<if $has_canteen_drink is true>>
+    <<jump Sumiv_Drink>>
+-> Give batteries. <<if $has_batteries is 1>>
+    <<jump Sumiv_Batteries>>
+-> Goodbye
+===
+
+title: Sumiv_Drink
+---
+===
+
+title: Sumiv_Batteries
+---
+<<set $has_batteries to 2>>
+
+*gasp* Where did you find those?!
+Now i can finally -
+Oh, wait. It looks like these are the wrong size.
+Well, thanks anyway. Here, take this.
+Thank you for at least trying to help me.
+
+<Got <color=orange>Ship Upgrade Parts</color> >
+<<set $ship_upgrade_parts to $ship_upgrade_parts+1>>
 ===
