@@ -7,21 +7,24 @@ public class BoostPickup : MonoBehaviour
     [SerializeField] private float _boostRecovery;
 
     [Header("Listening To")]
-    [SerializeField] private VoidEventChannelSO _onCrossedFinishLine = default;
+    [SerializeField] private GameObjectEventChannelSO _onLapFinished = default;
 
     public void Start()
     {
-        _onCrossedFinishLine.OnEventRaised += Reenable;
+        _onLapFinished.OnEventRaised += Reenable;
     }
 
     public void OnDestroy()
     {
-        _onCrossedFinishLine.OnEventRaised -= Reenable;
+        _onLapFinished.OnEventRaised -= Reenable;
     }
 
-    public void Reenable()
+    public void Reenable(GameObject shipObj)
     {
-        gameObject.SetActive(true);
+        if (shipObj.GetComponent<PlayerShipSetup>() != null)
+        {
+            gameObject.SetActive(true);
+        }
     }
 
     private void OnTriggerEnter(Collider other)

@@ -7,12 +7,11 @@ public class RaceManager : MonoBehaviour
     [SerializeField] private InputReader _inputReader = default;
 
     [Header("Broadcasting On")]
-    [SerializeField] private IntEventChannelSO _onLapFinished = default;
+    [SerializeField] private GameObjectEventChannelSO _onLapFinished = default;
 
     [Header("Listening to")]
     [SerializeField] private VoidEventChannelSO _onCountdownFinished = default;
-    [SerializeField] private VoidEventChannelSO _onCrossedActiveCheckpoint = default;
-    [SerializeField] private VoidEventChannelSO _onCrossedFinishLine = default;
+    [SerializeField] private GameObjectEventChannelSO _onCrossedFinishLine = default;
     [SerializeField] private VoidEventChannelSO _onRaceFinished = default;
     [SerializeField] private VoidEventChannelSO _onSpawnedShips = default;
     [SerializeField] private VoidEventChannelSO _onPauseEvent = default;
@@ -25,7 +24,6 @@ public class RaceManager : MonoBehaviour
     private void OnEnable()
     {
         _onCountdownFinished.OnEventRaised += OnCountdownFinished;
-        _onCrossedActiveCheckpoint.OnEventRaised += OnCrossedActiveCheckpoint;
         _onCrossedFinishLine.OnEventRaised += OnCrossedFinishLine;
         _onRaceFinished.OnEventRaised += OnRaceFinished;
         _onSpawnedShips.OnEventRaised += OnSpawnedShips;
@@ -38,7 +36,6 @@ public class RaceManager : MonoBehaviour
     private void OnDisable()
     {
         _onCountdownFinished.OnEventRaised -= OnCountdownFinished;
-        _onCrossedActiveCheckpoint.OnEventRaised -= OnCrossedActiveCheckpoint;
         _onCrossedFinishLine.OnEventRaised -= OnCrossedFinishLine;
         _onRaceFinished.OnEventRaised -= OnRaceFinished;
         _onSpawnedShips.OnEventRaised -= OnSpawnedShips;
@@ -50,8 +47,18 @@ public class RaceManager : MonoBehaviour
 
     private void Start()
     {
+        _RaceStateSO.UpdateState(RaceStateSO.RaceState.None);
         _RaceStateSO.UpdateState(RaceStateSO.RaceState.Initializing);
         Time.timeScale = 1.0f;
+        InitCheckpoints();
+    }
+
+    private void InitCheckpoints()
+    {
+        for (int i = 0; i < _checkpoints.Length; i++)
+        {
+            _checkpoints[i].Init(i);
+        }
     }
 
     private void OnCountdownFinished()
@@ -76,17 +83,24 @@ public class RaceManager : MonoBehaviour
         }
     }
 
-    private void OnCrossedFinishLine()
+    private void OnCrossedFinishLine(GameObject shipObj)
     {
-        if(AllCheckpointsCrossed()) {
+        if(AllCheckpointsCrossed(shipObj)) {
             // Reset checkpoints
             ResetCheckpoints();
 
             // If lap 3, end race
             if (_curLap >= 3) {
-                _RaceStateSO.UpdateState(RaceStateSO.RaceState.RaceFinished);
+                if (shipObj.GetComponent<PlayerShipSetup>() != null)
+                {
+                    _RaceStateSO.UpdateState(RaceStateSO.RaceState.RaceFinished);
+                }
+                else
+                {
+                    // TODO: lock that position as won
+                }
             }
-            _onLapFinished.RaiseEvent(_curLap);
+            _onLapFinished.RaiseEvent(shipObj);
             _curLap++;
         }
     }
@@ -107,13 +121,14 @@ public class RaceManager : MonoBehaviour
         }
     }
 
-    bool AllCheckpointsCrossed() {
-        bool allCrossed = true;
+    bool AllCheckpointsCrossed(GameObject shipObj) {
+        bool allCrossed = false;
 
-        foreach (Checkpoint checkpoint in _checkpoints) {
-            if (!checkpoint._passed) {
-                allCrossed = false;
-            }
+        CheckpointTracker checkpointTracker = shipObj.GetComponent<CheckpointTracker>();
+
+        if (checkpointTracker.LastPassedCheckpoint == _checkpoints.Length - 1)
+        {
+            allCrossed = true;
         }
 
         return allCrossed;

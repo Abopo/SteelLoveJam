@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e1d63be4d358521468456e858d84e3f8, type: 3}
-  m_Name: OnCrossedFinishLine
+  m_Name: OnCrossedNextCheckpoint
   m_EditorClassIdentifier: 
-  description: Called when a ship crosses the finish line.
+  description: 
