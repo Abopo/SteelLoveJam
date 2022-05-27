@@ -15,11 +15,11 @@ public class InputReader : DescriptionBaseSO, GameInput.IRacingActions, GameInpu
     public event UnityAction<float> LeftThrustEvent = delegate { };
     public event UnityAction<float> RightThrustEvent = delegate { };
     public event UnityAction<Vector2> RotationThrustersEvent = delegate { };
-    public event UnityAction StepLeftEvent = delegate { };
-    public event UnityAction StepRightEvent = delegate { };
     public event UnityAction<float> BoostEvent = delegate { };
     public event UnityAction QuickTurnEvent = delegate { };
     public event UnityAction<float> BrakeEvent = delegate { };
+    public event UnityAction<float> LookBehindEvent = delegate { };
+
     public event UnityAction PauseEvent = delegate { };
 
     // Break room
@@ -74,18 +74,6 @@ public class InputReader : DescriptionBaseSO, GameInput.IRacingActions, GameInpu
         RotationThrustersEvent.Invoke(context.ReadValue<Vector2>());
     }
 
-    public void OnStepLeft(InputAction.CallbackContext context)
-    {
-        if (context.phase == InputActionPhase.Performed)
-            StepLeftEvent.Invoke();
-    }
-
-    public void OnStepRight(InputAction.CallbackContext context)
-    {
-        if (context.phase == InputActionPhase.Performed)
-            StepRightEvent.Invoke();
-    }
-
     public void OnBoost(InputAction.CallbackContext context) {
         BoostEvent.Invoke(context.ReadValue<float>());
     }
@@ -103,9 +91,14 @@ public class InputReader : DescriptionBaseSO, GameInput.IRacingActions, GameInpu
         if (context.phase == InputActionPhase.Performed)
             PauseEvent.Invoke();
     }
+
+    public void OnLookBehind(InputAction.CallbackContext context)
+    {
+        LookBehindEvent.Invoke(context.ReadValue<float>());
+    }
     #endregion
 
-#region BreakRoomInput
+    #region BreakRoomInput
 
     public void OnMovement(InputAction.CallbackContext context) {
         MovementEvent.Invoke(context.ReadValue<Vector2>());

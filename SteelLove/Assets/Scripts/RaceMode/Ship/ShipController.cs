@@ -7,32 +7,31 @@ public class ShipController : MonoBehaviour {
 
     public bool Boosting => _boosting;
 
-    [Header("Movement Properties")]
+    [Header("Thruster Properties")]
     [SerializeField] private float _mainthrustForce;
-    [SerializeField] private float _boostForceMultiplier;
     [SerializeField] private float _reverseThrustForce;
     [SerializeField] private float _horizontalThrustForce;
-    [SerializeField] private float _stepForce;
     [SerializeField] private float _brakeForce;
+    [SerializeField] private float _maxSpeed;
+
+    [Header("extreme direction change")]
     [SerializeField] private float _extremeDirChangeAngle;
     [SerializeField] private float _extremeDirChangeMult;
 
+    [Header("Turning")]
     [SerializeField] private float _rotForce;
-
-    [SerializeField] private float _stepTime;
-    [SerializeField] private float _speedLimitEnableAfterStepTime;
-    [SerializeField] private float _stepCooldown;
-
-    [SerializeField] private float _maxSpeed;
-    [SerializeField] private float _maxSpeedBoostModifier;
-    [SerializeField] private float _overSpeedLimitSlowdownForce;
     [SerializeField] private float _maxRotSpeed;
 
-    [SerializeField] private float _stepCost;
+    [Header("Boosting")]
+    [SerializeField] private float _boostForceMultiplier;
     [SerializeField] private float _boostCost;
+    [SerializeField] private float _maxSpeedBoostModifier;
 
-    [Header("Input")]
-    [SerializeField] private InputReader _inputReader = default;
+    [Header("BoostPad")]
+    [SerializeField] private float _boostPadNoSpeedLimitTime;
+
+    [Header("Over Speed limit Slowdown")]
+    [SerializeField] private float _overSpeedLimitSlowdownForce;
 
     [Header("Broadcasting On")]
     [SerializeField] private VoidEventChannelSO _OnCrossedFinishLine = default;
@@ -43,17 +42,19 @@ public class ShipController : MonoBehaviour {
     [SerializeField] ParticleSystem _boostParticles;
 
     [Header("Ship Stats")]
-    // Ship Resources
     [SerializeField] private float _health = 100.0f;
     [SerializeField] private float _boostTank = 0f;
 
+    // accessors
     public float Health => _health;
-    
-    private bool _isOutsideOfTrack;
+    public float BoostTank { get => _boostTank; }
 
+    // required components
     private Rigidbody _rigidbody = default;
     private Animator _animator = default;
+    private ShipThrusters _thrusters;
 
+    // Input values
     private float _mainThrusterInputValue;
     private float _reverseThrusterInputValue;
     private float _leftThrusterInputValue;
@@ -62,13 +63,9 @@ public class ShipController : MonoBehaviour {
     private bool _brake;
     private bool _boosting;
 
-    private Vector2 _stepDir;
-    private bool _canStep = true;
-    private bool _speedLimitEnabled = true;
-
-    ShipThrusters _thrusters;
-
-    public float BoostTank { get => _boostTank; }
+    // Boost pad
+    private bool _boostPadActive;
+    private int _boostPadActiveCount;
 
     private void Awake()
     {
@@ -84,35 +81,21 @@ public class ShipController : MonoBehaviour {
 
         HandleThrusters();
 
-        if(_speedLimitEnabled)
-            LimitVelocity();
+        LimitVelocity();
 
         LimitRotation();
     }
 
     #region Collisions
-
     private void OnTriggerEnter(Collider collision) {
         if (collision.tag == "FinishLine") {
             _OnCrossedFinishLine.RaiseEvent();
-        }
-
-        // TODO: trigger for out of bound areas?
-        if (collision.tag == "InsideTrack") {
-            _isOutsideOfTrack = false;
         }
 
         if(collision.tag == "Hazard") {
             ChangeHealth(-collision.GetComponent<Hazard>().damage);
         }
     }
-
-    private void OnTriggerExit(Collider other) {
-        if (other.tag == "InsideTrack") {
-            _isOutsideOfTrack = true;
-        }
-    }
-
     #endregion
 
     public void ChangeHealth(float amount)
@@ -185,16 +168,6 @@ public class ShipController : MonoBehaviour {
         _rotInputValue = value;
     }
 
-    public void StepLeft()
-    {
-        AttemptStepInitial(-transform.right);
-    }
-
-    public void StepRight()
-    {
-        AttemptStepInitial(transform.right);
-    }
-
     public void Boost(float value)
     {
         if (value > 0 && _boostTank > 0f)
@@ -221,6 +194,17 @@ public class ShipController : MonoBehaviour {
         }
     }
 
+    public void BoostPadActivate(float boostPadForce)
+    {
+        _boostPadActive = true;
+        _boostPadActiveCount++;
+
+        _rigidbody.velocity = Vector3.zero;
+        _rigidbody.AddForce(transform.forward * boostPadForce * _mainthrustForce);
+
+        StartCoroutine(DisableBoostPadBoost());
+    }
+
     private void PerformMovement()
     {
         if (_brake) 
@@ -237,7 +221,10 @@ public class ShipController : MonoBehaviour {
             {
                 finalMainThrustForce *= _boostForceMultiplier;
                 finalMainInputValue = 1f;
-                _boostTank -= _boostCost * Time.deltaTime;
+                ReduceBoost(_boostCost * Time.deltaTime);
+            } else if (_boosting && BoostTank <= 0f)
+            {
+                _boosting = false;
             }
 
             _rigidbody.AddForce(CalculateThrustForce(transform.forward, finalMainThrustForce, finalMainInputValue));
@@ -296,26 +283,19 @@ public class ShipController : MonoBehaviour {
     private void LimitVelocity()
     {
         float curMaxSpeed = _maxSpeed;
-        if(_boosting)
+        float curSlowdown = _overSpeedLimitSlowdownForce;
+        if (_boostPadActive || _boosting)
         {
-            if (_boostTank > 0)
-            {
-                curMaxSpeed *= _maxSpeedBoostModifier;
-                ReduceBoost(_boostCost * Time.deltaTime);
-            }
-            else
-            {
-                _boosting = false;
-            }
+            curMaxSpeed *= _maxSpeedBoostModifier;
+            curSlowdown *= _boostForceMultiplier;
         }
 
         if(_rigidbody.velocity.sqrMagnitude > curMaxSpeed * curMaxSpeed)
-        { 
-            Vector3 slowDownForce = _rigidbody.velocity.normalized * -_overSpeedLimitSlowdownForce;
-            if (_boosting)
-            {
-                slowDownForce *= _boostForceMultiplier;
-            }
+        {
+            // slow down at a higher rate when we are further over the speed limit
+            float curSlowdownRate = _rigidbody.velocity.sqrMagnitude / (curMaxSpeed * curMaxSpeed) * curSlowdown;
+            Vector3 slowDownForce = _rigidbody.velocity.normalized * -curSlowdownRate;
+
             _rigidbody.AddForce(slowDownForce);
             if (_rigidbody.velocity.sqrMagnitude < curMaxSpeed * curMaxSpeed)
             {
@@ -335,41 +315,20 @@ public class ShipController : MonoBehaviour {
     private void ReduceBoost(float cost)
     {
         _boostTank -= cost;
-        _onBoostLevelChanged.RaiseEvent(_boostTank);
-    }
-
-    private void AttemptStepInitial(Vector2 stepDir)
-    {
-        if (_stepDir == Vector2.zero && _canStep == true && _boostTank >= _boostCost)
+        if(_onBoostLevelChanged)
         {
-            _stepDir = stepDir;
-            ReduceBoost(_stepCost);
-            var initialForce = _stepDir * _stepForce;
-            _rigidbody.AddForce(initialForce);
-            _canStep = false;
-            _speedLimitEnabled = false;
-            StartCoroutine(FireCounterStepAfterTimer());
-            StartCoroutine(ReEnableStepAfterTimer());
+            _onBoostLevelChanged.RaiseEvent(_boostTank);
         }
     }
 
-    private IEnumerator FireCounterStepAfterTimer()
+    private IEnumerator DisableBoostPadBoost()
     {
-        yield return new WaitForSeconds(_stepTime);
-        _rigidbody.AddForce(-_stepDir * _stepForce * .8f);
-        _stepDir = Vector3.zero;
-        StartCoroutine(EnableSpeedLimitAfterTimer());
-    }
-
-    private IEnumerator ReEnableStepAfterTimer()
-    {
-        yield return new WaitForSeconds(_stepCooldown);
-        _canStep = true;
-    }
-
-    private IEnumerator EnableSpeedLimitAfterTimer()
-    {
-        yield return new WaitForSeconds(_speedLimitEnableAfterStepTime);
-        _speedLimitEnabled = true;
+        yield return new WaitForSeconds(_boostPadNoSpeedLimitTime);
+        _boostPadActiveCount--;
+        if (_boostPadActiveCount <= 0)
+        {
+            _boostPadActiveCount = 0;
+            _boostPadActive = false;
+        }
     }
 }

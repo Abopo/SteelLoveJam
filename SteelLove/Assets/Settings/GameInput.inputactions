@@ -11,7 +11,8 @@
                     "id": "d261877e-1dfa-4d8d-869f-f99ef7a4939a",
                     "expectedControlType": "Analog",
                     "processors": "AxisDeadzone",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": true
                 },
                 {
                     "name": "ReverseThruster",
@@ -19,7 +20,8 @@
                     "id": "b2deeeee-a328-440a-ba1d-4290d8889b2c",
                     "expectedControlType": "Analog",
                     "processors": "AxisDeadzone",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": true
                 },
                 {
                     "name": "RotationThrusters",
@@ -27,7 +29,8 @@
                     "id": "45a1d724-176c-4fca-98d8-f2c426e4d64f",
                     "expectedControlType": "Vector2",
                     "processors": "StickDeadzone",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": true
                 },
                 {
                     "name": "LeftThruster",
@@ -35,7 +38,8 @@
                     "id": "7488f641-036c-48a4-9ff2-6c6745fa2674",
                     "expectedControlType": "Analog",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": true
                 },
                 {
                     "name": "RightThruster",
@@ -43,7 +47,8 @@
                     "id": "621808d5-3a14-40e6-8d44-41e9842d94c5",
                     "expectedControlType": "Analog",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Pause",
@@ -51,23 +56,8 @@
                     "id": "a74c7fd5-a293-40ba-9a13-c04b423c3e95",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "StepLeft",
-                    "type": "Button",
-                    "id": "541db52a-b2c7-4c14-b2f7-31ab53c532c3",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "StepRight",
-                    "type": "Button",
-                    "id": "cb9fb9a3-bd09-42b8-a1c7-f15795d93385",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Boost",
@@ -75,7 +65,8 @@
                     "id": "1283ca4d-8b21-4deb-acd4-ad4e4783b766",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Brake",
@@ -83,7 +74,17 @@
                     "id": "c7bdc70d-01d6-42f9-b80b-79ac77233acd",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "LookBehind",
+                    "type": "Button",
+                    "id": "a801b9bc-0a36-402b-966e-1fa878f5506b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -188,17 +189,6 @@
                 },
                 {
                     "name": "",
-                    "id": "2291f148-fe7b-46a0-a1fc-f117d2092edd",
-                    "path": "<Gamepad>/rightTrigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "LeftThruster",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "0e390258-8212-4d09-bfc3-274e5ed29607",
                     "path": "<Keyboard>/d",
                     "interactions": "",
@@ -216,17 +206,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "LeftThruster",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "1d2d22c6-cea0-4f6e-b6e8-97ec5ce1e171",
-                    "path": "<Gamepad>/leftTrigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "RightThruster",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -276,39 +255,6 @@
                 },
                 {
                     "name": "",
-                    "id": "457923c9-c9ca-4f3b-9c9a-42d28e04647f",
-                    "path": "<Gamepad>/leftShoulder",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "StepLeft",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "df578efb-f61d-4c14-acb6-72ed930cb4e0",
-                    "path": "<Gamepad>/rightShoulder",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "StepRight",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "cb780378-94fa-44ac-93ba-e2ebd5d19ca7",
-                    "path": "<Gamepad>/buttonWest",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Boost",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "5e4daec6-36ac-4040-898e-6737ec80910d",
                     "path": "<Keyboard>/space",
                     "interactions": "",
@@ -320,8 +266,19 @@
                 },
                 {
                     "name": "",
-                    "id": "029194bc-dc8c-4c9f-bbf4-bce70dd59e03",
-                    "path": "<Gamepad>/buttonEast",
+                    "id": "e27626d8-c6e0-4166-84de-9642860825a6",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Boost",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8e765c15-1851-4bfa-9c54-7b52abc241ab",
+                    "path": "<Keyboard>/f",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -331,8 +288,8 @@
                 },
                 {
                     "name": "",
-                    "id": "8e765c15-1851-4bfa-9c54-7b52abc241ab",
-                    "path": "<Keyboard>/f",
+                    "id": "b7f80387-5620-4bf7-b993-e32e21f763bb",
+                    "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -350,6 +307,17 @@
                     "action": "ReverseThruster",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "90858cb7-673c-4fbf-ab83-cd66ec20c830",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LookBehind",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -363,7 +331,8 @@
                     "id": "3793d084-f132-449b-b7f7-182c656ec9b8",
                     "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Interact",
@@ -371,7 +340,8 @@
                     "id": "38948878-e5eb-4575-b9ff-f045d21824b0",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -475,7 +445,8 @@
                     "id": "c16b2b93-1cff-4b3b-ad6d-bbb3abf89cdb",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Back",
@@ -483,7 +454,8 @@
                     "id": "2438b6fe-1bdb-497e-b647-9e8918fee4ba",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "MoveCursor",
@@ -491,7 +463,8 @@
                     "id": "a5084261-34b1-4b3a-925f-dcdba3cc794f",
                     "expectedControlType": "Vector2",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Left Click",
@@ -499,7 +472,8 @@
                     "id": "c6f2fa39-4d6c-47e9-aea5-81903f274c23",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Point",
@@ -507,7 +481,8 @@
                     "id": "a93d74e0-89ee-4fcf-b848-deb13e884445",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [

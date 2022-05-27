@@ -54,6 +54,10 @@ public class AttachToTrack : MonoBehaviour
 
             _latestNormal = averagedNormals;
         }
+        else
+        {
+            FaceVelocity(_latestNormal);
+        }
 
         ContinueRotatingToNormal();
     }

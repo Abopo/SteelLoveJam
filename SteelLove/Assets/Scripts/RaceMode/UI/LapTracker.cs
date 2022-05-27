@@ -6,16 +6,35 @@ using TMPro;
 public class LapTracker : MonoBehaviour
 {
     [Header("Listening to")]
-    [SerializeField] private FloatEventChannelSO _onLapIncreased = default;
+    [SerializeField] private IntEventChannelSO _onLapFinished = default;
+    [SerializeField] private VoidEventChannelSO _onRaceFinishedStateEvent = default;
 
     [SerializeField] TMP_Text _lapText;
 
-    // Start is called before the first frame update
-    void Start() {
-        _onLapIncreased.OnEventRaised += OnLapIncreased;
+    private bool _raceFinished;
+
+    private void OnEnable()
+    {
+        _onLapFinished.OnEventRaised += UpdateLap;
+        _onRaceFinishedStateEvent.OnEventRaised += OnRaceFinished;
     }
 
-    void OnLapIncreased(float lap) {
-        _lapText.text = "Lap: " + (int)lap + "/3";
+    private void OnDisable()
+    {
+        _onLapFinished.OnEventRaised -= UpdateLap;
+        _onRaceFinishedStateEvent.OnEventRaised -= OnRaceFinished;
+    }
+
+    void UpdateLap(int lapFinished) {
+        var curLap = lapFinished + 1;
+        if (_raceFinished == false)
+        {
+            _lapText.text = "Lap: " + curLap + "/3";
+        }
+    }
+
+    private void OnRaceFinished()
+    {
+        _raceFinished = true;
     }
 }

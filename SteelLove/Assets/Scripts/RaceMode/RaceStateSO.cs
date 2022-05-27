@@ -30,7 +30,7 @@ public class RaceStateSO : DescriptionBaseSO
     [Header("Broadcasting on")]
     [SerializeField] private VoidEventChannelSO _onInitializeStateEvent = default;
     [SerializeField] private VoidEventChannelSO _onCountdownStateEvent = default;
-    [SerializeField] private VoidEventChannelSO _onRaceStateEvent = default;
+    [SerializeField] private VoidEventChannelSO _onRaceStartEvent = default;
     [SerializeField] private VoidEventChannelSO _onPauseStateEvent = default;
     [SerializeField] private VoidEventChannelSO _onRaceFinishedEvent = default;
 
@@ -76,7 +76,7 @@ public class RaceStateSO : DescriptionBaseSO
             case RaceState.Race:
                 _inputReader.DisableAllInput();
                 _inputReader.EnableRacingInput();
-                _onRaceStateEvent.RaiseEvent();
+                _onRaceStartEvent.RaiseEvent();
                 break;
             case RaceState.RaceFinished:
                 _inputReader.DisableAllInput();

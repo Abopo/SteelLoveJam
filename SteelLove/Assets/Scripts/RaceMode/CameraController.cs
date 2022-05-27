@@ -3,8 +3,10 @@
 public class CameraController : MonoBehaviour
 {
     [SerializeField] private ShipController _playerShipController;
-    [SerializeField] private GameObject _cameraConstraint;
-    [SerializeField] private GameObject _cameraLookAt;
+    [SerializeField] private GameObject _cameraConstraintLookingForward;
+    [SerializeField] private GameObject _cameraConstraintLookingBackward;
+    [SerializeField] private GameObject _cameraLookAtForward;
+    [SerializeField] private GameObject _cameraLookAtBehind;
     [SerializeField] private float _speed = 0;
     [SerializeField] private float _defaultFOV = 80;
     [SerializeField] private float _boostFOV = 110;
@@ -12,6 +14,8 @@ public class CameraController : MonoBehaviour
 
 
     private Camera ourCamera;
+
+    private bool _lookingBehind;
 
     private void Awake()
     {
@@ -27,17 +31,39 @@ public class CameraController : MonoBehaviour
         }
     }
 
-    public void Init(ShipController shipController, GameObject cameraConstraint, GameObject cameraLookAt)
+    public void Init(ShipController shipController, GameObject cameraConstraintLookingForward, GameObject cameraConstraintLookingBackwards, GameObject cameraLookAtForward, GameObject cameraLookAtBehind)
     {
         _playerShipController = shipController;
-        _cameraConstraint = cameraConstraint;
-        _cameraLookAt = cameraLookAt;
+        _cameraConstraintLookingForward = cameraConstraintLookingForward;
+        _cameraConstraintLookingBackward = cameraConstraintLookingBackwards;
+        _cameraLookAtForward = cameraLookAtForward;
+        _cameraLookAtBehind = cameraLookAtBehind;
+    }
+
+    public void LookBehind(float inputValue)
+    {
+        if (inputValue > 0)
+        {
+            _lookingBehind = true;
+        }
+        else
+        {
+            _lookingBehind = false;
+        }
     }
 
     private void Follow()
     {
-        transform.position = Vector3.Lerp(transform.position, _cameraConstraint.transform.position, Time.deltaTime * _speed);
-        transform.LookAt(_cameraLookAt.transform.position, _cameraConstraint.transform.up);
+        Transform cameraConstraint = _cameraConstraintLookingForward.transform;
+        Vector3 lookAtPos = _cameraLookAtForward.transform.position;
+        if(_lookingBehind)
+        {
+            cameraConstraint = _cameraConstraintLookingBackward.transform;
+            lookAtPos = _cameraLookAtBehind.transform.position;
+        }
+
+        transform.position = Vector3.Lerp(transform.position, cameraConstraint.position, Time.deltaTime * _speed);
+        transform.LookAt(lookAtPos, cameraConstraint.up);
     }
 
     private void BoostFOV()

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8022852027729816626}
   - component: {fileID: 8022852027729816625}
+  - component: {fileID: 3528412425053851652}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -45,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _RaceStateSO: {fileID: 11400000, guid: cf67de4e450d04b4d9ab14a73e86c363, type: 2}
   _inputReader: {fileID: 11400000, guid: 3aad594c8fb5bb44cbff640004584d4d, type: 2}
-  _onLapIncreased: {fileID: 11400000, guid: 53e7b791cb6dfcc4e9e939a73b820ef6, type: 2}
+  _onLapFinished: {fileID: 11400000, guid: f7ce76743af8aa643813e0556003d78e, type: 2}
   _onCountdownFinished: {fileID: 11400000, guid: 59a020500020bec4e813d575a31c45c2,
     type: 2}
   _onCrossedActiveCheckpoint: {fileID: 11400000, guid: a08af722bf20bfd40b10e957017d38bc,
@@ -57,3 +58,18 @@ MonoBehaviour:
   _curLap: 1
   _checkpoints:
   - {fileID: 0}
+--- !u!114 &3528412425053851652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8022852027729816624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17085efb629708d4aa66018670b087f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _onPostLapTime: {fileID: 11400000, guid: 81f2631b854fe564ebd25463aa533b05, type: 2}
+  _onRaceStateEvent: {fileID: 11400000, guid: eb9b51f329654b14a9f17e243030ca44, type: 2}
+  _onLapFinished: {fileID: 11400000, guid: f7ce76743af8aa643813e0556003d78e, type: 2}

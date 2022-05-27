@@ -97,9 +97,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerShipController: {fileID: 0}
-  _cameraConstraint: {fileID: 0}
-  _cameraLookAt: {fileID: 0}
-  _speed: 25
+  _cameraConstraintLookingForward: {fileID: 0}
+  _cameraConstraintLookingBackward: {fileID: 0}
+  _cameraLookAtForward: {fileID: 0}
+  _cameraLookAtBehind: {fileID: 0}
+  _speed: 40
   _defaultFOV: 80
   _boostFOV: 110
   _smoothTime: 1
