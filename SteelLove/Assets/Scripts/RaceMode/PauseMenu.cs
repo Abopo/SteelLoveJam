@@ -48,12 +48,12 @@ public class PauseMenu : MonoBehaviour
 
     public void ReloadLevel()
     {
-        _trackToLoad.sceneReference.LoadSceneAsync(LoadSceneMode.Single, true);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void ReturnToMainMenu()
     {
-
+        SceneManager.LoadScene(0);
     }
 
     private void UnPause()

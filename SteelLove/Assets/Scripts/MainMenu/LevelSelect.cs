@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class LevelSelect : MonoBehaviour
 {
-    [SerializeField] private List<GameSceneSO> _raceTracks;
+    [SerializeField] private List<TrackSceneSO> _raceTracks;
 
     [SerializeField] private Transform _levelSelectButtonParent;
     [SerializeField] private Transform _levelPreviewParent;
@@ -15,19 +15,19 @@ public class LevelSelect : MonoBehaviour
     [SerializeField] private GameObject _levelSelectButtonPrefab;
 
     [Header("Listening To")]
-    [SerializeField] private GameSceneEventChannelSO _onLevelSelected;
+    [SerializeField] private TrackSceneEventChannelSO _onTrackSelected;
 
     private GameSceneSO _selectedTrack;
     private GameObject _curPreview;
 
     private void OnEnable()
     {
-        _onLevelSelected.OnEventRaised += SelectTrack;
+        _onTrackSelected.OnEventRaised += SelectTrack;
     }
 
     private void OnDisable()
     {
-        _onLevelSelected.OnEventRaised -= SelectTrack;
+        _onTrackSelected.OnEventRaised -= SelectTrack;
     }
 
     private void Start()
@@ -43,7 +43,7 @@ public class LevelSelect : MonoBehaviour
         _confirmButton.onClick.AddListener(ConfirmTrack);
     }
 
-    public void SelectTrack(GameSceneSO track)
+    public void SelectTrack(TrackSceneSO track)
     {
         _selectedTrack = track;
 

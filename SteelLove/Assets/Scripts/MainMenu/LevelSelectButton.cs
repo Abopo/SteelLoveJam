@@ -9,11 +9,11 @@ public class LevelSelectButton : MonoBehaviour
     [SerializeField] private Button _selectTrackButton;
 
     [Header("Listening To")]
-    [SerializeField] private GameSceneEventChannelSO _onLevelSelected;
+    [SerializeField] private TrackSceneEventChannelSO _onTrackSelected;
 
-    private GameSceneSO _level;
+    private TrackSceneSO _level;
 
-    public void Init(GameSceneSO level)
+    public void Init(TrackSceneSO level)
     {
         _level = level;
 
@@ -24,6 +24,6 @@ public class LevelSelectButton : MonoBehaviour
 
     public void OnClick()
     {
-        _onLevelSelected.RaiseEvent(_level);
+        _onTrackSelected.RaiseEvent(_level);
     }
 }
