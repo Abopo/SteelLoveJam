@@ -22,7 +22,7 @@ public class PauseMenu : MonoBehaviour
     {
         _onCountdownStateEvent.OnEventRaised += UnPause;
         _onRaceStartEvent.OnEventRaised += UnPause;
-        _onPauseStateEvent.OnEventRaised += TogglePause;
+        _onPauseStateEvent.OnEventRaised += Pause;
         _onRaceFinishedEvent.OnEventRaised += UnPause;
     }
 
@@ -30,7 +30,7 @@ public class PauseMenu : MonoBehaviour
     {
         _onCountdownStateEvent.OnEventRaised -= UnPause;
         _onRaceStartEvent.OnEventRaised -= UnPause;
-        _onPauseStateEvent.OnEventRaised -= TogglePause;
+        _onPauseStateEvent.OnEventRaised -= Pause;
         _onRaceFinishedEvent.OnEventRaised -= UnPause;
     }
 
@@ -42,7 +42,6 @@ public class PauseMenu : MonoBehaviour
     public void Resume()
     {
         _onPauseEvent.RaiseEvent();
-        TogglePause();
     }
 
     public void ReloadLevel()
@@ -57,25 +56,15 @@ public class PauseMenu : MonoBehaviour
 
     private void UnPause()
     {
+        Debug.Log("Pause menu: Pause");
         _isPaused = false;
         _showOnPause.SetActive(false);
     }
 
     private void Pause()
     {
+        Debug.Log("Pause menu: UnPause");
         _isPaused = true;
         _showOnPause.SetActive(true);
-    }
-    
-    private void TogglePause()
-    {
-        if(_isPaused)
-        {
-            UnPause();
-        }
-        else
-        {
-            Pause();
-        }
     }
 }

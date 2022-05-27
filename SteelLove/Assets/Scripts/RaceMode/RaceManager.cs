@@ -55,6 +55,10 @@ public class RaceManager : MonoBehaviour
 
     private void OnCountdownFinished()
     {
+        if (_RaceStateSO.CurrentState == RaceStateSO.RaceState.Pause)
+        {
+            return;
+        }
         _RaceStateSO.UpdateState(RaceStateSO.RaceState.Race);
 
         // Activate first checkpoint
