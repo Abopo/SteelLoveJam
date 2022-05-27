@@ -46,7 +46,7 @@ public class TrackDamage : MonoBehaviour
         }
     }
 
-    private bool IsOffTrack()
+    public bool IsOffTrack()
     {
         RaycastHit hit;
         int mask = LayerMask.GetMask("TrackFloor");

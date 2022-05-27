@@ -239,7 +239,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7055378956345761353}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1136959700517508135
+--- !u!114 &5506157551350826831
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -248,25 +248,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 891199925090221488}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bb6b867a41448888c1cd4f99643ad71, type: 3}
+  m_Script: {fileID: 11500000, guid: d5b472f7414b453498513cc09832c9ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SensorName: RayPerceptionSensor
-  m_DetectableTags:
-  - TrackWallsAI
-  - CheckpointAI
-  m_RaysPerDirection: 10
-  m_MaxRayDegrees: 180
-  m_SphereCastRadius: 0
-  m_RayLength: 60
-  m_RayLayerMask:
-    serializedVersion: 2
-    m_Bits: 2048
-  m_ObservationStacks: 1
-  rayHitColor: {r: 1, g: 0, b: 0, a: 1}
-  rayMissColor: {r: 1, g: 1, b: 1, a: 1}
-  m_StartVerticalOffset: 0.16
-  m_EndVerticalOffset: 0
+  _raycastDist: 2
+  _outsideTrackDamageBuildup: 0.1
+  _outsideTrackFullDamage: 1
+  _timeToFullDamage: 10
+  _insideTrackHealingBuildup: 0.1
+  _insideTrackFullHeal: 1
+  _timeToFullHealing: 10
+  _centerPoint: {fileID: 1071225809358077158}
 --- !u!114 &1330900263122309628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -300,7 +292,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 9
+    VectorObservationSize: 10
     NumStackedVectorObservations: 2
     m_ActionSpec:
       m_NumContinuousActions: 3
@@ -317,7 +309,7 @@ MonoBehaviour:
   m_UseChildSensors: 1
   m_UseChildActuators: 1
   m_ObservableAttributeHandling: 0
---- !u!114 &5506157551350826831
+--- !u!114 &1136959700517508135
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -326,17 +318,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 891199925090221488}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5b472f7414b453498513cc09832c9ac, type: 3}
+  m_Script: {fileID: 11500000, guid: 6bb6b867a41448888c1cd4f99643ad71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _raycastDist: 2
-  _outsideTrackDamageBuildup: 0.1
-  _outsideTrackFullDamage: 1
-  _timeToFullDamage: 10
-  _insideTrackHealingBuildup: 0.1
-  _insideTrackFullHeal: 1
-  _timeToFullHealing: 10
-  _centerPoint: {fileID: 1071225809358077158}
+  m_SensorName: RayPerceptionSensor
+  m_DetectableTags:
+  - TrackWallsAI
+  - CheckpointAI
+  m_RaysPerDirection: 10
+  m_MaxRayDegrees: 180
+  m_SphereCastRadius: 0
+  m_RayLength: 60
+  m_RayLayerMask:
+    serializedVersion: 2
+    m_Bits: 2048
+  m_ObservationStacks: 1
+  rayHitColor: {r: 1, g: 0, b: 0, a: 1}
+  rayMissColor: {r: 1, g: 1, b: 1, a: 1}
+  m_StartVerticalOffset: 0.16
+  m_EndVerticalOffset: 0
 --- !u!114 &5932332875928760867
 MonoBehaviour:
   m_ObjectHideFlags: 0

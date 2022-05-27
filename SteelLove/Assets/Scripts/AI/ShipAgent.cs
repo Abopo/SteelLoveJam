@@ -27,12 +27,15 @@ public class ShipAgent : Agent {
     private float _rightThrusterInputValue;
     private Vector2 _rotInputValue;
 
+    TrackDamage _trackDamage;
+
     AgentManager _agentManager;
 
     // Start is called before the first frame update
     void Start() {
-        _rBody = GetComponentInParent<Rigidbody>();
-        _ship = GetComponentInParent<ShipController>();
+        _rBody = GetComponent<Rigidbody>();
+        _ship = GetComponent<ShipController>();
+        _trackDamage = GetComponent<TrackDamage>();
         _agentManager = GetComponentInParent<AgentManager>();
     }
 
@@ -119,7 +122,9 @@ public class ShipAgent : Agent {
             sensor.AddObservation(_nextCheckpoint.transform.position);
             sensor.AddObservation(transform.position);
 
-            sensor.AddObservation(_rBody.velocity);        
+            sensor.AddObservation(_rBody.velocity);
+
+            sensor.AddObservation(_trackDamage.IsOffTrack());
             //float distToCheckpoint = Vector3.Distance(transform.position, _nextCheckpoint.position);
             //sensor.AddObservation(distToCheckpoint);
         }
@@ -192,24 +197,7 @@ public class ShipAgent : Agent {
 
     private void OnTriggerEnter(Collider other) {
         if(other.tag == "CheckpointAI") {
-            if (other.GetComponent<AICheckpoint>() == _nextCheckpoint) {
-                OnCheckpointPassed();
-
-                // Set next checkpoint
-                _nextCheckpoint = other.GetComponent<AICheckpoint>().nextCheckpoint;
-                if (_nextCheckpoint == null) {
-                    // We've hit the last checkpoint, so reset
-                    Debug.Log("Hit final checkpoint!");
-                    _curHealth = 0f;
-                    SetReward(1);
-                    EndEpisode();
-                } else {
-                    // Deactivate hit checkpoint
-                    //other.gameObject.SetActive(false);
-                    // Activate the next checkpoint
-                    //_nextCheckpoint.gameObject.SetActive(true);
-                }
-            }
+            OnCheckpointPassed(other.GetComponent<AICheckpoint>());
         }
     }
 
@@ -243,17 +231,23 @@ public class ShipAgent : Agent {
         }
     }
 
-    public void OnCheckpointPassed() {
-        // Determine time since last checkpoint
-        float timeDelta = Time.time - _lastCheckpointTime;
+    public void OnCheckpointPassed(AICheckpoint checkpoint) {
+        if (checkpoint == _nextCheckpoint) {
+            SetReward(1);
+        } else {
+            SetReward(0.5f);
+        }
 
-        // Smaller time equals bigger reward
-        //float reward = 2 / timeDelta;
-        //AddReward(reward);
-        SetReward(1);
+        // Update next checkpoint
+        _nextCheckpoint = checkpoint.nextCheckpoint;
 
-        // Record new time
-        _lastCheckpointTime = Time.time;
+        if (_nextCheckpoint == null) {
+            // We've hit the last checkpoint, so reset
+            Debug.Log("Hit final checkpoint!");
+            _curHealth = 0f;
+            SetReward(1);
+            EndEpisode();
+        }
     }
 
     public override void Heuristic(in ActionBuffers actionsOut) {

@@ -5,6 +5,7 @@ using UnityEngine;
 public class AICheckpoint : MonoBehaviour {
 
     public AICheckpoint nextCheckpoint;
+    public int index;
 
     // Start is called before the first frame update
     void Start() {
