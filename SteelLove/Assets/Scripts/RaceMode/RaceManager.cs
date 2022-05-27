@@ -51,6 +51,7 @@ public class RaceManager : MonoBehaviour
     private void Start()
     {
         _RaceStateSO.UpdateState(RaceStateSO.RaceState.Initializing);
+        Time.timeScale = 1.0f;
     }
 
     private void OnCountdownFinished()

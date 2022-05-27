@@ -4,7 +4,7 @@ using Unity.Collections;
 using UnityEngine;
 
 // Should only ever have one race state
-//[CreateAssetMenu(fileName = "RaceState", menuName = "Race/RaceState", order = 51)]
+[CreateAssetMenu(fileName = "RaceState", menuName = "Race/RaceState", order = 51)]
 public class RaceStateSO : DescriptionBaseSO
 {
     public enum RaceState

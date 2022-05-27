@@ -16,6 +16,8 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private VoidEventChannelSO _onPauseStateEvent = default;
     [SerializeField] private VoidEventChannelSO _onRaceFinishedEvent = default;
 
+    [SerializeField] private GameSceneSO _trackToLoad;
+
     private bool _isPaused;
 
     private void OnEnable()
@@ -46,7 +48,7 @@ public class PauseMenu : MonoBehaviour
 
     public void ReloadLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        _trackToLoad.sceneReference.LoadSceneAsync(LoadSceneMode.Single, true);
     }
 
     public void ReturnToMainMenu()
@@ -56,14 +58,12 @@ public class PauseMenu : MonoBehaviour
 
     private void UnPause()
     {
-        Debug.Log("Pause menu: Pause");
         _isPaused = false;
         _showOnPause.SetActive(false);
     }
 
     private void Pause()
     {
-        Debug.Log("Pause menu: UnPause");
         _isPaused = true;
         _showOnPause.SetActive(true);
     }

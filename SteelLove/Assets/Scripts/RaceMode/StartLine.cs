@@ -16,7 +16,6 @@ public class StartLine : MonoBehaviour
     private void OnEnable()
     {
         _onInitializeStateEvent.OnEventRaised += OnInitialize;
-        Debug.Log("enable starting line");
     }
 
     private void OnDisable()

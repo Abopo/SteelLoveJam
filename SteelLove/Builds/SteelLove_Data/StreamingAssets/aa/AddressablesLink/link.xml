@@ -1,6 +1,7 @@
 <linker>
   <assembly fullname="Unity.Addressables, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" preserve="all">
     <type fullname="UnityEngine.AddressableAssets.Addressables" preserve="all" />
+    <type fullname="UnityEngine.AddressableAssets.AssetReference" preserve="nothing" serialized="true" />
   </assembly>
   <assembly fullname="Unity.ResourceManager, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" preserve="all">
     <type fullname="UnityEngine.ResourceManagement.ResourceProviders.LegacyResourcesProvider" preserve="all" />
@@ -83,6 +84,7 @@
     <type fullname="Speedometer" preserve="all" />
     <type fullname="ResourceMeter" preserve="all" />
     <type fullname="PauseMenu" preserve="all" />
+    <type fullname="GameSceneSO" preserve="all" />
     <type fullname="TimeTracker" preserve="all" />
     <type fullname="CharacterSO" preserve="all" />
     <type fullname="RaceStateSO" preserve="all" />
@@ -90,9 +92,9 @@
     <type fullname="ShipThrusters" preserve="all" />
     <type fullname="BoostSun" preserve="all" />
     <type fullname="FloatEventChannelSO" preserve="all" />
+    <type fullname="ObjectRotate3D" preserve="all" />
     <type fullname="TrackBorder" preserve="all" />
     <type fullname="EnvironmentPathed" preserve="all" />
-    <type fullname="ObjectRotate3D" preserve="all" />
     <type fullname="BoostPad" preserve="all" />
   </assembly>
   <assembly fullname="Unity.InputSystem, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null">
