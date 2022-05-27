@@ -55,6 +55,7 @@ MonoBehaviour:
     type: 2}
   _onRaceFinished: {fileID: 11400000, guid: cfc78b7350bc8dd4e9a733b45bdb6aa7, type: 2}
   _onSpawnedShips: {fileID: 11400000, guid: 4c03f3fabb82fa04b87bb0a7b7da1bdb, type: 2}
+  _onPauseEvent: {fileID: 11400000, guid: 17899c6a8dfefa44e9313878c9bd0e58, type: 2}
   _curLap: 1
   _checkpoints:
   - {fileID: 0}

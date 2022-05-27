@@ -73,15 +73,6 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Pause"",
-                    ""type"": ""Button"",
-                    ""id"": ""a74c7fd5-a293-40ba-9a13-c04b423c3e95"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""Boost"",
                     ""type"": ""Button"",
                     ""id"": ""1283ca4d-8b21-4deb-acd4-ad4e4783b766"",
@@ -110,17 +101,6 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                 }
             ],
             ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""7c08930d-5b4c-412e-a3d3-11d7c82896ff"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""MainThruster"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
                 {
                     ""name"": """",
                     ""id"": ""afd1e610-8368-43a0-a793-a8889fbef424"",
@@ -255,28 +235,6 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""0cfa937d-7e14-4bc0-992c-c9dd48ad6ce8"",
-                    ""path"": ""<Gamepad>/start"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Pause"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""e48d7699-224c-4e14-b1f0-be2667c08711"",
-                    ""path"": ""<Keyboard>/escape"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Pause"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""5e4daec6-36ac-4040-898e-6737ec80910d"",
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
@@ -332,8 +290,30 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""b9c0326b-9cb9-4101-ba10-f7ebb4cfc9bd"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ReverseThruster"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""90858cb7-673c-4fbf-ab83-cd66ec20c830"",
                     ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LookBehind"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ce845c54-1e33-4c1c-ab05-bb113d8c69fd"",
+                    ""path"": ""<Keyboard>/r"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -663,6 +643,45 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""General"",
+            ""id"": ""2bfd6946-d8de-4e13-a546-78818e523cbe"",
+            ""actions"": [
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""3371ee40-8cb4-4d44-af5b-8bf0d9057e72"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""69f93458-1be1-466b-873d-6ed878b66aae"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7048305a-61d9-4b65-b225-4365c02cce36"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -674,7 +693,6 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         m_Racing_RotationThrusters = m_Racing.FindAction("RotationThrusters", throwIfNotFound: true);
         m_Racing_LeftThruster = m_Racing.FindAction("LeftThruster", throwIfNotFound: true);
         m_Racing_RightThruster = m_Racing.FindAction("RightThruster", throwIfNotFound: true);
-        m_Racing_Pause = m_Racing.FindAction("Pause", throwIfNotFound: true);
         m_Racing_Boost = m_Racing.FindAction("Boost", throwIfNotFound: true);
         m_Racing_Brake = m_Racing.FindAction("Brake", throwIfNotFound: true);
         m_Racing_LookBehind = m_Racing.FindAction("LookBehind", throwIfNotFound: true);
@@ -689,6 +707,9 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         m_UI_MoveCursor = m_UI.FindAction("MoveCursor", throwIfNotFound: true);
         m_UI_LeftClick = m_UI.FindAction("Left Click", throwIfNotFound: true);
         m_UI_Point = m_UI.FindAction("Point", throwIfNotFound: true);
+        // General
+        m_General = asset.FindActionMap("General", throwIfNotFound: true);
+        m_General_Pause = m_General.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -753,7 +774,6 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_Racing_RotationThrusters;
     private readonly InputAction m_Racing_LeftThruster;
     private readonly InputAction m_Racing_RightThruster;
-    private readonly InputAction m_Racing_Pause;
     private readonly InputAction m_Racing_Boost;
     private readonly InputAction m_Racing_Brake;
     private readonly InputAction m_Racing_LookBehind;
@@ -766,7 +786,6 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         public InputAction @RotationThrusters => m_Wrapper.m_Racing_RotationThrusters;
         public InputAction @LeftThruster => m_Wrapper.m_Racing_LeftThruster;
         public InputAction @RightThruster => m_Wrapper.m_Racing_RightThruster;
-        public InputAction @Pause => m_Wrapper.m_Racing_Pause;
         public InputAction @Boost => m_Wrapper.m_Racing_Boost;
         public InputAction @Brake => m_Wrapper.m_Racing_Brake;
         public InputAction @LookBehind => m_Wrapper.m_Racing_LookBehind;
@@ -794,9 +813,6 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                 @RightThruster.started -= m_Wrapper.m_RacingActionsCallbackInterface.OnRightThruster;
                 @RightThruster.performed -= m_Wrapper.m_RacingActionsCallbackInterface.OnRightThruster;
                 @RightThruster.canceled -= m_Wrapper.m_RacingActionsCallbackInterface.OnRightThruster;
-                @Pause.started -= m_Wrapper.m_RacingActionsCallbackInterface.OnPause;
-                @Pause.performed -= m_Wrapper.m_RacingActionsCallbackInterface.OnPause;
-                @Pause.canceled -= m_Wrapper.m_RacingActionsCallbackInterface.OnPause;
                 @Boost.started -= m_Wrapper.m_RacingActionsCallbackInterface.OnBoost;
                 @Boost.performed -= m_Wrapper.m_RacingActionsCallbackInterface.OnBoost;
                 @Boost.canceled -= m_Wrapper.m_RacingActionsCallbackInterface.OnBoost;
@@ -825,9 +841,6 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                 @RightThruster.started += instance.OnRightThruster;
                 @RightThruster.performed += instance.OnRightThruster;
                 @RightThruster.canceled += instance.OnRightThruster;
-                @Pause.started += instance.OnPause;
-                @Pause.performed += instance.OnPause;
-                @Pause.canceled += instance.OnPause;
                 @Boost.started += instance.OnBoost;
                 @Boost.performed += instance.OnBoost;
                 @Boost.canceled += instance.OnBoost;
@@ -947,6 +960,39 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         }
     }
     public UIActions @UI => new UIActions(this);
+
+    // General
+    private readonly InputActionMap m_General;
+    private IGeneralActions m_GeneralActionsCallbackInterface;
+    private readonly InputAction m_General_Pause;
+    public struct GeneralActions
+    {
+        private @GameInput m_Wrapper;
+        public GeneralActions(@GameInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Pause => m_Wrapper.m_General_Pause;
+        public InputActionMap Get() { return m_Wrapper.m_General; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(GeneralActions set) { return set.Get(); }
+        public void SetCallbacks(IGeneralActions instance)
+        {
+            if (m_Wrapper.m_GeneralActionsCallbackInterface != null)
+            {
+                @Pause.started -= m_Wrapper.m_GeneralActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_GeneralActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_GeneralActionsCallbackInterface.OnPause;
+            }
+            m_Wrapper.m_GeneralActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
+            }
+        }
+    }
+    public GeneralActions @General => new GeneralActions(this);
     public interface IRacingActions
     {
         void OnMainThruster(InputAction.CallbackContext context);
@@ -954,7 +1000,6 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         void OnRotationThrusters(InputAction.CallbackContext context);
         void OnLeftThruster(InputAction.CallbackContext context);
         void OnRightThruster(InputAction.CallbackContext context);
-        void OnPause(InputAction.CallbackContext context);
         void OnBoost(InputAction.CallbackContext context);
         void OnBrake(InputAction.CallbackContext context);
         void OnLookBehind(InputAction.CallbackContext context);
@@ -971,5 +1016,9 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         void OnMoveCursor(InputAction.CallbackContext context);
         void OnLeftClick(InputAction.CallbackContext context);
         void OnPoint(InputAction.CallbackContext context);
+    }
+    public interface IGeneralActions
+    {
+        void OnPause(InputAction.CallbackContext context);
     }
 }

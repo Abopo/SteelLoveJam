@@ -15,6 +15,7 @@ public class RaceManager : MonoBehaviour
     [SerializeField] private VoidEventChannelSO _onCrossedFinishLine = default;
     [SerializeField] private VoidEventChannelSO _onRaceFinished = default;
     [SerializeField] private VoidEventChannelSO _onSpawnedShips = default;
+    [SerializeField] private VoidEventChannelSO _onPauseEvent = default;
 
     [SerializeField] int _curLap = 1;
 
@@ -28,6 +29,7 @@ public class RaceManager : MonoBehaviour
         _onCrossedFinishLine.OnEventRaised += OnCrossedFinishLine;
         _onRaceFinished.OnEventRaised += OnRaceFinished;
         _onSpawnedShips.OnEventRaised += OnSpawnedShips;
+        _onPauseEvent.OnEventRaised += OnPause;
 
         // input events
         _inputReader.PauseEvent += OnPause;
@@ -40,6 +42,7 @@ public class RaceManager : MonoBehaviour
         _onCrossedFinishLine.OnEventRaised -= OnCrossedFinishLine;
         _onRaceFinished.OnEventRaised -= OnRaceFinished;
         _onSpawnedShips.OnEventRaised -= OnSpawnedShips;
+        _onPauseEvent.OnEventRaised -= OnPause;
 
         // input events
         _inputReader.PauseEvent -= OnPause;
@@ -126,10 +129,12 @@ public class RaceManager : MonoBehaviour
         if (_RaceStateSO.CurrentState == RaceStateSO.RaceState.Pause)
         {
             _RaceStateSO.ReturnToPreviousState();
+            Time.timeScale = 1;
         }
         else
         {
             _RaceStateSO.UpdateState(RaceStateSO.RaceState.Pause);
+            Time.timeScale = 0;
         }
     }
 }
