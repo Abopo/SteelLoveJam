@@ -11,20 +11,28 @@ public class CheckpointTracker : MonoBehaviour
     [Header("Listening To")]
     [SerializeField] private VoidEventChannelSO _onRaceStateEvent = default;
     [SerializeField] private GameObjectEventChannelSO _onLapFinished = default;
+    [SerializeField] private GameObjectEventChannelSO _onShipFinishedRace = default;
 
     public int LastPassedCheckpoint => _lastPassedCheckpoint;
+    public int CurLap => _curLap;
+    public bool FinishedRace => _finishedRace;
+
     private int _lastPassedCheckpoint = -1;
+    private int _curLap = 0;
+    private bool _finishedRace;
 
     private void OnEnable()
     {
-        _onRaceStateEvent.OnEventRaised += ResetCheckpoint;
-        _onLapFinished.OnEventRaised += CheckForReset;
+        _onRaceStateEvent.OnEventRaised += OnRaceStart;
+        _onLapFinished.OnEventRaised += OnLapFinished;
+        _onShipFinishedRace.OnEventRaised += OnFinishedRace;
     }
 
     private void OnDisable()
     {
-        _onRaceStateEvent.OnEventRaised -= ResetCheckpoint;
-        _onLapFinished.OnEventRaised -= CheckForReset;
+        _onRaceStateEvent.OnEventRaised -= OnRaceStart;
+        _onLapFinished.OnEventRaised -= OnLapFinished;
+        _onShipFinishedRace.OnEventRaised += OnFinishedRace;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -40,16 +48,29 @@ public class CheckpointTracker : MonoBehaviour
         }
     }
 
-    private void ResetCheckpoint()
+    private void OnRaceStart()
     {
         _lastPassedCheckpoint = -1;
+        _curLap = 0;
     }
 
-    private void CheckForReset(GameObject shipObj)
+    private void OnLapFinished(GameObject shipObj)
     {
-        if (shipObj = gameObject)
+        if (shipObj == gameObject)
         {
-            ResetCheckpoint();
+            _lastPassedCheckpoint = -1;
+            if (!_finishedRace)
+            {
+                _curLap++;
+            }
+        }
+    }
+
+    private void OnFinishedRace(GameObject shipObj)
+    {
+        if (shipObj == gameObject)
+        {
+            _finishedRace = true;
         }
     }
 }

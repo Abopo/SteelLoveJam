@@ -67,7 +67,8 @@ MonoBehaviour:
   _maxSpeedBoostModifier: 1.75
   _boostPadNoSpeedLimitTime: 2
   _overSpeedLimitSlowdownForce: 20
-  _OnCrossedFinishLine: {fileID: 0}
+  _OnCrossedFinishLine: {fileID: 11400000, guid: cd09aa317b22bf64980d7bb094732930,
+    type: 2}
   _onHealthLevelChanged: {fileID: 0}
   _onBoostLevelChanged: {fileID: 0}
   _boostParticles: {fileID: 33624793748234298}
@@ -182,6 +183,8 @@ MonoBehaviour:
     type: 2}
   _onRaceStateEvent: {fileID: 11400000, guid: eb9b51f329654b14a9f17e243030ca44, type: 2}
   _onLapFinished: {fileID: 11400000, guid: 8d4ba15d737b5314cb786d8746b73182, type: 2}
+  _onShipFinishedRace: {fileID: 11400000, guid: d37dd02d665681c4284c1eb3208ce6d3,
+    type: 2}
 --- !u!1 &718393714094275683
 GameObject:
   m_ObjectHideFlags: 0

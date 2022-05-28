@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class RaceManager : MonoBehaviour
 {
@@ -8,16 +9,16 @@ public class RaceManager : MonoBehaviour
 
     [Header("Broadcasting On")]
     [SerializeField] private GameObjectEventChannelSO _onLapFinished = default;
+    [SerializeField] private GameObjectEventChannelSO _onShipFinishedRace = default;
 
     [Header("Listening to")]
     [SerializeField] private VoidEventChannelSO _onCountdownFinished = default;
     [SerializeField] private GameObjectEventChannelSO _onCrossedFinishLine = default;
     [SerializeField] private VoidEventChannelSO _onRaceFinished = default;
-    [SerializeField] private VoidEventChannelSO _onSpawnedShips = default;
+    [SerializeField] private GameObjectsListEventChannelSO _onSpawnedShips = default;
     [SerializeField] private VoidEventChannelSO _onPauseEvent = default;
 
-    [SerializeField] int _curLap = 1;
-
+    public Checkpoint[] Checkpoints => _checkpoints;
     [SerializeField] private Checkpoint[] _checkpoints;
     private int _activeCheckpoint = 0;
 
@@ -89,23 +90,21 @@ public class RaceManager : MonoBehaviour
             // Reset checkpoints
             ResetCheckpoints();
 
+            CheckpointTracker checkpointTracker = shipObj.GetComponent<CheckpointTracker>();
+
             // If lap 3, end race
-            if (_curLap >= 3) {
+            if (checkpointTracker.CurLap >= 2 && checkpointTracker.FinishedRace == false) {
                 if (shipObj.GetComponent<PlayerShipSetup>() != null)
                 {
                     _RaceStateSO.UpdateState(RaceStateSO.RaceState.RaceFinished);
                 }
-                else
-                {
-                    // TODO: lock that position as won
-                }
+                _onShipFinishedRace.RaiseEvent(shipObj);
             }
             _onLapFinished.RaiseEvent(shipObj);
-            _curLap++;
         }
     }
 
-    private void OnSpawnedShips()
+    private void OnSpawnedShips(List<GameObject> shipObjs)
     {
         _RaceStateSO.UpdateState(RaceStateSO.RaceState.Countdown);
     }
