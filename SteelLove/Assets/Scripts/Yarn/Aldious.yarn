@@ -61,4 +61,20 @@ title: Aldious_Race4_Bot3
 
 title: Aldious_Drink
 ---
+You're giving this to me?
+Wow, that's just about the nicest thing anyone's done since I got here!
+You may look creepy, but I knew you were a great person under there.
+Tell ya what. You like Gigantipla? It's all the rage these days.
+I won an exclusive, giga-grade Gigantipla last week in a raffle.
+I don't care much for it, so you can have it if ya want.
+-> I do not want your toy.
+    Great! It's in my room.
+    You can go grab it from there.
+-> I accept.
+    Great! It's in my room.
+    You can go grab it from there.
+===
+
+title: Aldious_Headband
+---
 ===

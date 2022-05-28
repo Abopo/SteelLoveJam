@@ -69,24 +69,44 @@ Perhaps I can find a way to...even the odds a bit.
 
 title: Ziv_Race3_Top3
 ---
+<<set $got_canteen_drink to false>>
+
+Being in the Top 3 halfway through the prix is a great position to be in.
+However, the courses get harder from here on out.
+If I want to meet my brother again I mustn't get complacent.
 ===
 
 title: Ziv_Race3_Mid3
 ---
+<<set $got_canteen_drink to false>>
+
+Hmph, I still haven't managed to reach the Top 3.
+There's only 2 races left in the prix. So I need to really up
+my game if I want to get first place and see my brother again.
 ===
 
 title: Ziv_Race3_Bot3
 ---
+<<set $got_canteen_drink to false>>
+
+Curses! I shouldn't be losing this badly.
+It's already halfway through the prix and I'm in the bottom 3.
+At this rate I may never see my brother again...
+Get it together Ziv. It's going to take a miracle to get first now.
+And miracles have happened before...
 ===
 
 title: Ziv_Race4_Top3
 ---
+<<set $got_canteen_drink to false>>
 ===
 
 title: Ziv_Race4_Mid3
 ---
+<<set $got_canteen_drink to false>>
 ===
 
 title: Ziv_Race4_Bot3
 ---
+<<set $got_canteen_drink to false>>
 ===
