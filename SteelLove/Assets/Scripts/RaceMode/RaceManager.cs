@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class RaceManager : MonoBehaviour
 {
@@ -7,25 +8,23 @@ public class RaceManager : MonoBehaviour
     [SerializeField] private InputReader _inputReader = default;
 
     [Header("Broadcasting On")]
-    [SerializeField] private IntEventChannelSO _onLapFinished = default;
+    [SerializeField] private GameObjectEventChannelSO _onLapFinished = default;
+    [SerializeField] private GameObjectEventChannelSO _onShipFinishedRace = default;
 
     [Header("Listening to")]
     [SerializeField] private VoidEventChannelSO _onCountdownFinished = default;
-    [SerializeField] private VoidEventChannelSO _onCrossedActiveCheckpoint = default;
-    [SerializeField] private VoidEventChannelSO _onCrossedFinishLine = default;
+    [SerializeField] private GameObjectEventChannelSO _onCrossedFinishLine = default;
     [SerializeField] private VoidEventChannelSO _onRaceFinished = default;
-    [SerializeField] private VoidEventChannelSO _onSpawnedShips = default;
+    [SerializeField] private GameObjectsListEventChannelSO _onSpawnedShips = default;
     [SerializeField] private VoidEventChannelSO _onPauseEvent = default;
 
-    [SerializeField] int _curLap = 1;
-
+    public Checkpoint[] Checkpoints => _checkpoints;
     [SerializeField] private Checkpoint[] _checkpoints;
     private int _activeCheckpoint = 0;
 
     private void OnEnable()
     {
         _onCountdownFinished.OnEventRaised += OnCountdownFinished;
-        _onCrossedActiveCheckpoint.OnEventRaised += OnCrossedActiveCheckpoint;
         _onCrossedFinishLine.OnEventRaised += OnCrossedFinishLine;
         _onRaceFinished.OnEventRaised += OnRaceFinished;
         _onSpawnedShips.OnEventRaised += OnSpawnedShips;
@@ -38,7 +37,6 @@ public class RaceManager : MonoBehaviour
     private void OnDisable()
     {
         _onCountdownFinished.OnEventRaised -= OnCountdownFinished;
-        _onCrossedActiveCheckpoint.OnEventRaised -= OnCrossedActiveCheckpoint;
         _onCrossedFinishLine.OnEventRaised -= OnCrossedFinishLine;
         _onRaceFinished.OnEventRaised -= OnRaceFinished;
         _onSpawnedShips.OnEventRaised -= OnSpawnedShips;
@@ -50,11 +48,26 @@ public class RaceManager : MonoBehaviour
 
     private void Start()
     {
+        _RaceStateSO.UpdateState(RaceStateSO.RaceState.None);
         _RaceStateSO.UpdateState(RaceStateSO.RaceState.Initializing);
+        Time.timeScale = 1.0f;
+        InitCheckpoints();
+    }
+
+    private void InitCheckpoints()
+    {
+        for (int i = 0; i < _checkpoints.Length; i++)
+        {
+            _checkpoints[i].Init(i);
+        }
     }
 
     private void OnCountdownFinished()
     {
+        if (_RaceStateSO.CurrentState == RaceStateSO.RaceState.Pause)
+        {
+            return;
+        }
         _RaceStateSO.UpdateState(RaceStateSO.RaceState.Race);
 
         // Activate first checkpoint
@@ -71,22 +84,27 @@ public class RaceManager : MonoBehaviour
         }
     }
 
-    private void OnCrossedFinishLine()
+    private void OnCrossedFinishLine(GameObject shipObj)
     {
-        if(AllCheckpointsCrossed()) {
+        if(AllCheckpointsCrossed(shipObj)) {
             // Reset checkpoints
             ResetCheckpoints();
 
+            CheckpointTracker checkpointTracker = shipObj.GetComponent<CheckpointTracker>();
+
             // If lap 3, end race
-            if (_curLap >= 3) {
-                _RaceStateSO.UpdateState(RaceStateSO.RaceState.RaceFinished);
+            if (checkpointTracker.CurLap >= 2 && checkpointTracker.FinishedRace == false) {
+                if (shipObj.GetComponent<PlayerShipSetup>() != null)
+                {
+                    _RaceStateSO.UpdateState(RaceStateSO.RaceState.RaceFinished);
+                }
+                _onShipFinishedRace.RaiseEvent(shipObj);
             }
-            _onLapFinished.RaiseEvent(_curLap);
-            _curLap++;
+            _onLapFinished.RaiseEvent(shipObj);
         }
     }
 
-    private void OnSpawnedShips()
+    private void OnSpawnedShips(List<GameObject> shipObjs)
     {
         _RaceStateSO.UpdateState(RaceStateSO.RaceState.Countdown);
     }
@@ -102,13 +120,14 @@ public class RaceManager : MonoBehaviour
         }
     }
 
-    bool AllCheckpointsCrossed() {
-        bool allCrossed = true;
+    bool AllCheckpointsCrossed(GameObject shipObj) {
+        bool allCrossed = false;
 
-        foreach (Checkpoint checkpoint in _checkpoints) {
-            if (!checkpoint._passed) {
-                allCrossed = false;
-            }
+        CheckpointTracker checkpointTracker = shipObj.GetComponent<CheckpointTracker>();
+
+        if (checkpointTracker.LastPassedCheckpoint == _checkpoints.Length - 1)
+        {
+            allCrossed = true;
         }
 
         return allCrossed;

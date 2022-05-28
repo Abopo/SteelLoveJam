@@ -205,11 +205,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8928391152414819305, guid: deb7d8a23f723b24aa15197c38c0701f,
         type: 3}
-      propertyPath: _checkpoints.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8928391152414819305, guid: deb7d8a23f723b24aa15197c38c0701f,
-        type: 3}
       propertyPath: _checkpoints.Array.data[0]
       value: 
       objectReference: {fileID: 412367194}

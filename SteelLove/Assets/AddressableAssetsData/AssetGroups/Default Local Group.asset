@@ -17,20 +17,8 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: e7cc633f34139dd4e8854c167d4de4fd
   m_SerializeEntries:
-  - m_GUID: 4e8d14170ad54b140bbde2e210a243e0
-    m_Address: Assets/Scenes/TrackTests/Track2.unity
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: e440fe55eac0716408ab8de6d59651e5
-    m_Address: Assets/Scenes/TrackTests/Track3.unity
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 49b86466816a81f4eb3fed8b9b3cec3d
-    m_Address: Assets/Scenes/TrackTests/Track4.unity
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 9d7c4acc7b839414ea416239ba57cf62
-    m_Address: Assets/Scenes/TrackTests/Track5.unity
+  - m_GUID: b3db9cf215e5dfa4687746acaf54dfe9
+    m_Address: Assets/ScriptableObjects/Scenes/Tracks/Track2.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0

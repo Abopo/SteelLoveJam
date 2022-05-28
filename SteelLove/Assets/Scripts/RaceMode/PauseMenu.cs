@@ -16,13 +16,15 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private VoidEventChannelSO _onPauseStateEvent = default;
     [SerializeField] private VoidEventChannelSO _onRaceFinishedEvent = default;
 
+    [SerializeField] private GameSceneSO _trackToLoad;
+
     private bool _isPaused;
 
     private void OnEnable()
     {
         _onCountdownStateEvent.OnEventRaised += UnPause;
         _onRaceStartEvent.OnEventRaised += UnPause;
-        _onPauseStateEvent.OnEventRaised += TogglePause;
+        _onPauseStateEvent.OnEventRaised += Pause;
         _onRaceFinishedEvent.OnEventRaised += UnPause;
     }
 
@@ -30,7 +32,7 @@ public class PauseMenu : MonoBehaviour
     {
         _onCountdownStateEvent.OnEventRaised -= UnPause;
         _onRaceStartEvent.OnEventRaised -= UnPause;
-        _onPauseStateEvent.OnEventRaised -= TogglePause;
+        _onPauseStateEvent.OnEventRaised -= Pause;
         _onRaceFinishedEvent.OnEventRaised -= UnPause;
     }
 
@@ -42,17 +44,16 @@ public class PauseMenu : MonoBehaviour
     public void Resume()
     {
         _onPauseEvent.RaiseEvent();
-        TogglePause();
     }
 
     public void ReloadLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void ReturnToMainMenu()
     {
-
+        SceneManager.LoadScene(0);
     }
 
     private void UnPause()
@@ -65,17 +66,5 @@ public class PauseMenu : MonoBehaviour
     {
         _isPaused = true;
         _showOnPause.SetActive(true);
-    }
-    
-    private void TogglePause()
-    {
-        if(_isPaused)
-        {
-            UnPause();
-        }
-        else
-        {
-            Pause();
-        }
     }
 }

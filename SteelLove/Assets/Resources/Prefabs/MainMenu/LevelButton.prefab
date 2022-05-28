@@ -136,7 +136,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _levelName: {fileID: 5859325189817133450}
   _selectTrackButton: {fileID: 3800188629510586840}
-  _onLevelSelected: {fileID: 11400000, guid: 308980310b3de6a468ada7cf2c174b13, type: 2}
+  _onTrackSelected: {fileID: 11400000, guid: 219d0352119aae54a9e704d2e08b5f7c, type: 2}
 --- !u!1 &7478888608196735282
 GameObject:
   m_ObjectHideFlags: 0

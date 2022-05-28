@@ -1,20 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Checkpoint : MonoBehaviour {
+public class Checkpoint : MonoBehaviour 
+{
+    [Header("Listening To")]
+    [SerializeField] private GameObjectEventChannelSO _onCrossedNextCheckpoint = default;
 
-    [Header("Broadcasting On")]
-    [SerializeField] private VoidEventChannelSO _onCrossedActiveCheckpoint = default;
+    public int CheckpointNumber => _checkpointNumber;
+    private int _checkpointNumber;
 
-    MeshRenderer _mesh;
+    private MeshRenderer _mesh;
 
-    Material _baseMaterial;
-    Material _activeMaterial;
-    Material _passedMaterial;
-
-    [SerializeField] bool _isActive; // If this checkpoint is the next one the player needs to hit
-    public bool _passed;
+    private Material _baseMaterial;
+    private Material _activeMaterial;
+    private Material _passedMaterial;
 
     void Awake() {
         _mesh = GetComponentInChildren<MeshRenderer>();
@@ -24,39 +22,50 @@ public class Checkpoint : MonoBehaviour {
         _passedMaterial = Resources.Load<Material>("Materials/Checkpoint_Passed");
     }
 
-    // Start is called before the first frame update
-    void Start() {
+    private void OnEnable()
+    {
+        _onCrossedNextCheckpoint.OnEventRaised += CheckForMatChange;
+    }
+
+    private void OnDisable()
+    {
+        _onCrossedNextCheckpoint.OnEventRaised -= CheckForMatChange;
+    }
+
+    public void Init(int checkpointNumber)
+    {
+        _checkpointNumber = checkpointNumber;
+    }
+
+    private void CheckForMatChange(GameObject shipObj)
+    {
         
-    }
-
-    void OnTriggerEnter(Collider other) {
-        if(other.tag == "Ship") {
-            // The player has hit this checkpoint
-            Hit();
-        }
-    }
-
-    void Hit() {
-        if(_isActive) {
-            // Activate the next checkpoint
-            _onCrossedActiveCheckpoint.RaiseEvent();
-
-            _passed = true;
-            _isActive = false;
-
-            // Change material to green
-            _mesh.material = _passedMaterial;
+        if (shipObj.GetComponent<PlayerShipSetup>() != null)
+        {
+            var checkPointTracker = shipObj.GetComponent<CheckpointTracker>();
+            if (checkPointTracker.LastPassedCheckpoint == _checkpointNumber)
+            {
+                _mesh.material = _passedMaterial;
+            }
+            else if(checkPointTracker.LastPassedCheckpoint == _checkpointNumber -1)
+            {
+                _mesh.material = _activeMaterial;
+            }
         }
     }
 
     public void Reset() {
-        _isActive = false;
-        _passed = false;
-        _mesh.material = _baseMaterial;
+        if(_checkpointNumber == 0)
+        {
+            _mesh.material = _activeMaterial;
+        }
+        else
+        {
+            _mesh.material = _baseMaterial;
+        }
     }
 
     public void Activate() {
-        _isActive = true;
         _mesh.material = _activeMaterial;
     }
 }
