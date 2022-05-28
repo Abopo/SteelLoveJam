@@ -136,6 +136,57 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90de1738a9d2297418110fc6a90920b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &903053071 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8928391152363862272, guid: deb7d8a23f723b24aa15197c38c0701f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1420732532}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &903053073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 903053071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b416fbce5a38cc47a3a1e709f95f5e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cfuStatus: PSXEffects v1.18.3 - version ahead?!
+  sections: 01010100
+  customRes: {x: 620, y: 480}
+  resolutionFactor: 1
+  limitFramerate: 30
+  skipFrames: 1
+  affineMapping: 1
+  clampAffine: 0
+  affineBounds: 0
+  polygonalDrawDistance: -1
+  vertexInaccuracy: 30
+  polygonInaccuracy: 2
+  colorDepth: 5
+  scanlines: 0
+  scanlineIntensity: 5
+  ditherTexture: {fileID: 0}
+  dithering: 1
+  ditherThreshold: 1
+  ditherIntensity: 12
+  maxDarkness: 20
+  subtractFade: 0
+  favorRed: 1
+  worldSpaceSnapping: 0
+  postProcessing: 1
+  verticalScanlines: 1
+  shadowIntensity: 0.5
+  downscale: 1
+  snapCamera: 0
+  camInaccuracy: 0.05
+  camSnapping: 0
+  shadowType: 1
+  ditherSky: 1
+  ditherType: 1
 --- !u!1001 &1354500232
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -299,6 +350,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: UniversalRace
       objectReference: {fileID: 0}
+    - target: {fileID: 6054963522667793656, guid: deb7d8a23f723b24aa15197c38c0701f,
+        type: 3}
+      propertyPath: cfuStatus
+      value: Checking for updates...
+      objectReference: {fileID: 0}
+    - target: {fileID: 8928391151459758368, guid: deb7d8a23f723b24aa15197c38c0701f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8928391152414819305, guid: deb7d8a23f723b24aa15197c38c0701f,
         type: 3}
       propertyPath: _checkpoints.Array.size
@@ -314,7 +375,8 @@ PrefabInstance:
       propertyPath: _checkpoints.Array.data[1]
       value: 
       objectReference: {fileID: 1707389339}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6054963522667793656, guid: deb7d8a23f723b24aa15197c38c0701f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: deb7d8a23f723b24aa15197c38c0701f, type: 3}
 --- !u!114 &1707389339 stripped
 MonoBehaviour:
@@ -402,6 +464,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1063433267291114830, guid: 4d58f1270095674438c0b9b0b1ea0ffb,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3c54ca19a5315a848b8ee7d7d721b858, type: 2}
     - target: {fileID: 4837922028507344999, guid: 4d58f1270095674438c0b9b0b1ea0ffb,
         type: 3}
       propertyPath: m_RootOrder
