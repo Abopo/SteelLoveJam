@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using Unity.MLAgents;
-using Unity.MLAgents.Sensors;
 using Unity.MLAgents.Actuators;
+using Unity.MLAgents.Sensors;
+using UnityEngine;
 
 public class ShipAgent : Agent {
 
@@ -37,6 +35,24 @@ public class ShipAgent : Agent {
         _ship = GetComponent<ShipController>();
         _trackDamage = GetComponent<TrackDamage>();
         _agentManager = GetComponentInParent<AgentManager>();
+
+        Reset();
+    }
+    private void Reset() {
+        // Set to start of the track (or a random position on the track?)
+        _ship.transform.position = new Vector3(0f, 0.5f, 0f);
+
+        _rBody.velocity = Vector3.zero;
+
+        //ResetAllCheckpoints();
+        //_firstCheckpoint = _agentManager.GetRandomCheckpoint();
+        _firstCheckpoint = _agentManager.FirstCheckpoint();
+        transform.position = new Vector3(_firstCheckpoint.center.x, 0.5f, _firstCheckpoint.center.z);
+        _nextCheckpoint = _firstCheckpoint.nextCheckpoint;
+
+        // Reset health
+        _ship.ChangeHealth(100);
+        _curHealth = 100;
     }
 
     protected override void OnEnable() {
@@ -91,21 +107,10 @@ public class ShipAgent : Agent {
         base.OnEpisodeBegin();
 
         if (_curHealth <= 0) {
-            // Set to start of the track (or a random position on the track?)
-            _ship.transform.position = new Vector3(0f, 0.5f, 0f);
-
-            _rBody.velocity = Vector3.zero;
-
-            //ResetAllCheckpoints();
-            _firstCheckpoint = _agentManager.GetRandomCheckpoint();
-            transform.position = new Vector3(_firstCheckpoint.transform.position.x, 0.5f, _firstCheckpoint.transform.position.z);
-            _nextCheckpoint = _firstCheckpoint.nextCheckpoint;
-
-            // Reset health
-            _ship.ChangeHealth(100);
-            _curHealth = 100;
+            Reset();
         }
     }
+
 
     void ResetAllCheckpoints() {
         AICheckpoint tempCheckpoint = _firstCheckpoint;
@@ -119,7 +124,10 @@ public class ShipAgent : Agent {
 
     public override void CollectObservations(VectorSensor sensor) {
         if (_nextCheckpoint != null) {
-            sensor.AddObservation(_nextCheckpoint.transform.position);
+
+            //sensor.AddObservation(_nextCheckpoint.transform.position);
+            sensor.AddObservation(_nextCheckpoint.center);
+
             sensor.AddObservation(transform.position);
 
             sensor.AddObservation(_rBody.velocity);
@@ -168,11 +176,6 @@ public class ShipAgent : Agent {
     }
 
     void GiveRewards() {
-        /*
-         * First let's start extremely simple, just speed and health
-         * then, increase complexity later.
-         */
-
         // Small punishment every tick to encourage moving to checkpoints quickly
         AddReward(-0.0001f);
 
@@ -203,19 +206,20 @@ public class ShipAgent : Agent {
 
     private void OnCollisionEnter(Collision collision) {
         if(collision.collider.tag == "TrackWallsAI") {
+            /*
             // Insta wall death
             _curHealth = 0f;
             SetReward(-1);
             EndEpisode();
+            */
 
-            /*
+            
             AddReward(_rBody.velocity.magnitude * -0.005f);
             
             _curHealth -= 10f;
             if (_curHealth <= 0) {
                 EndEpisode();
             }
-            */
         }
     }
 
@@ -223,7 +227,7 @@ public class ShipAgent : Agent {
         if (collision.collider.tag == "TrackWallsAI") {
             AddReward(-0.001f);
 
-            _curHealth -= 1f;
+            _curHealth -= 0.1f;
             if (_curHealth <= 0) {
                 SetReward(-1);
                 EndEpisode();
@@ -234,13 +238,18 @@ public class ShipAgent : Agent {
     public void OnCheckpointPassed(AICheckpoint checkpoint) {
         if (checkpoint == _nextCheckpoint) {
             SetReward(1);
+            _nextCheckpoint = checkpoint.nextCheckpoint;
         } else {
-            SetReward(0.5f);
+            // Only reward if hit checkpoint has higher id and is somewhat close.
+            if (checkpoint.id > _nextCheckpoint.id && checkpoint.id - _nextCheckpoint.id < 10) {
+                SetReward(0.5f);
+                _nextCheckpoint = checkpoint.nextCheckpoint;
+            } else {
+                AddReward(-0.5f);
+            }
         }
 
-        // Update next checkpoint
-        _nextCheckpoint = checkpoint.nextCheckpoint;
-
+        // TODO: actually just loop them forever
         if (_nextCheckpoint == null) {
             // We've hit the last checkpoint, so reset
             Debug.Log("Hit final checkpoint!");
