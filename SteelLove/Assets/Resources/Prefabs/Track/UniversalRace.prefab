@@ -866,72 +866,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4028441556968651220, guid: 45b10900e08007f49bd3caf79f23fc1a,
-        type: 3}
-      propertyPath: m_TargetTexture
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 4028441556968651223, guid: 45b10900e08007f49bd3caf79f23fc1a,
         type: 3}
       propertyPath: m_Name
       value: 3dCamera
       objectReference: {fileID: 0}
+    - target: {fileID: 7932091578071127178, guid: 45b10900e08007f49bd3caf79f23fc1a,
+        type: 3}
+      propertyPath: cfuStatus
+      value: PSXEffects v1.18.3 - version ahead?!
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45b10900e08007f49bd3caf79f23fc1a, type: 3}
---- !u!1 &8928391152363862272 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4028441556968651223, guid: 45b10900e08007f49bd3caf79f23fc1a,
-    type: 3}
-  m_PrefabInstance: {fileID: 5480847977753526487}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8928391152363862276 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4028441556968651219, guid: 45b10900e08007f49bd3caf79f23fc1a,
     type: 3}
   m_PrefabInstance: {fileID: 5480847977753526487}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6054963522667793656
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8928391152363862272}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b416fbce5a38cc47a3a1e709f95f5e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cfuStatus: PSXEffects v1.18.3 - version ahead?!
-  sections: 01010100
-  customRes: {x: 2560, y: 1440}
-  resolutionFactor: 1
-  limitFramerate: -1
-  skipFrames: 0
-  affineMapping: 1
-  clampAffine: 0
-  affineBounds: 0
-  polygonalDrawDistance: 0
-  vertexInaccuracy: 30
-  polygonInaccuracy: 2
-  colorDepth: 5
-  scanlines: 0
-  scanlineIntensity: 5
-  ditherTexture: {fileID: 0}
-  dithering: 1
-  ditherThreshold: 1
-  ditherIntensity: 12
-  maxDarkness: 20
-  subtractFade: 0
-  favorRed: 1
-  worldSpaceSnapping: 0
-  postProcessing: 1
-  verticalScanlines: 1
-  shadowIntensity: 0.5
-  downscale: 0
-  snapCamera: 0
-  camInaccuracy: 0.05
-  camSnapping: 0
-  shadowType: 0
-  ditherSky: 0
-  ditherType: 1
