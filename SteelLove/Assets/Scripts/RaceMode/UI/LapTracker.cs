@@ -6,30 +6,42 @@ using TMPro;
 public class LapTracker : MonoBehaviour
 {
     [Header("Listening to")]
-    [SerializeField] private IntEventChannelSO _onLapFinished = default;
+    [SerializeField] private VoidEventChannelSO _onRaceStateEvent = default;
     [SerializeField] private VoidEventChannelSO _onRaceFinishedStateEvent = default;
+    [SerializeField] private GameObjectEventChannelSO _onLapFinished = default;
 
     [SerializeField] TMP_Text _lapText;
 
     private bool _raceFinished;
+    private int _displayLap;
 
     private void OnEnable()
     {
-        _onLapFinished.OnEventRaised += UpdateLap;
+        _onRaceStateEvent.OnEventRaised += OnRaceStart;
         _onRaceFinishedStateEvent.OnEventRaised += OnRaceFinished;
+        _onLapFinished.OnEventRaised += UpdateLap;
     }
 
     private void OnDisable()
     {
-        _onLapFinished.OnEventRaised -= UpdateLap;
+        _onRaceStateEvent.OnEventRaised += OnRaceStart;
         _onRaceFinishedStateEvent.OnEventRaised -= OnRaceFinished;
+        _onLapFinished.OnEventRaised -= UpdateLap;
     }
 
-    void UpdateLap(int lapFinished) {
-        var curLap = lapFinished + 1;
-        if (_raceFinished == false)
+    private void OnRaceStart()
+    {
+        _displayLap = 1;
+    }
+
+    void UpdateLap(GameObject shipObj) {
+        if (shipObj.GetComponent<PlayerShipSetup>() != null)
         {
-            _lapText.text = "Lap: " + curLap + "/3";
+            _displayLap++;
+            if (_raceFinished == false)
+            {
+                _lapText.text = "Lap: " + _displayLap + "/3";
+            }
         }
     }
 

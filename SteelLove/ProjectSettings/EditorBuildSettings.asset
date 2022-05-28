@@ -6,9 +6,26 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 509a002669c61164e9a79c18e532b5c3
+  - enabled: 1
     path: Assets/Scenes/BreakRoom.unity
     guid: 4a52497f914552e4eac3eb017dfe65ef
   - enabled: 1
     path: Assets/Scenes/Track1.unity
     guid: 9ccfa836f9d7a264998a1f9c4c21bbca
-  m_configObjects: {}
+  - enabled: 1
+    path: Assets/Scenes/TrackTests/Track3.unity
+    guid: e440fe55eac0716408ab8de6d59651e5
+  - enabled: 1
+    path: Assets/Scenes/TrackTests/Track2.unity
+    guid: 4e8d14170ad54b140bbde2e210a243e0
+  - enabled: 1
+    path: Assets/Scenes/TrackTests/Track4.unity
+    guid: 49b86466816a81f4eb3fed8b9b3cec3d
+  - enabled: 1
+    path: Assets/Scenes/TrackTests/Track5.unity
+    guid: 9d7c4acc7b839414ea416239ba57cf62
+  m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: c3e7daa8b814c324e98e63b4cac96e99,
+      type: 2}

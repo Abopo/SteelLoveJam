@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8022852027729816626}
   - component: {fileID: 8022852027729816625}
   - component: {fileID: 3528412425053851652}
+  - component: {fileID: 7045129465049192426}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -46,16 +47,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _RaceStateSO: {fileID: 11400000, guid: cf67de4e450d04b4d9ab14a73e86c363, type: 2}
   _inputReader: {fileID: 11400000, guid: 3aad594c8fb5bb44cbff640004584d4d, type: 2}
-  _onLapFinished: {fileID: 11400000, guid: f7ce76743af8aa643813e0556003d78e, type: 2}
-  _onCountdownFinished: {fileID: 11400000, guid: 59a020500020bec4e813d575a31c45c2,
+  _onLapFinished: {fileID: 11400000, guid: 8d4ba15d737b5314cb786d8746b73182, type: 2}
+  _onShipFinishedRace: {fileID: 11400000, guid: d37dd02d665681c4284c1eb3208ce6d3,
     type: 2}
-  _onCrossedActiveCheckpoint: {fileID: 11400000, guid: a08af722bf20bfd40b10e957017d38bc,
+  _onCountdownFinished: {fileID: 11400000, guid: 59a020500020bec4e813d575a31c45c2,
     type: 2}
   _onCrossedFinishLine: {fileID: 11400000, guid: cd09aa317b22bf64980d7bb094732930,
     type: 2}
   _onRaceFinished: {fileID: 11400000, guid: cfc78b7350bc8dd4e9a733b45bdb6aa7, type: 2}
-  _onSpawnedShips: {fileID: 11400000, guid: 4c03f3fabb82fa04b87bb0a7b7da1bdb, type: 2}
-  _curLap: 1
+  _onSpawnedShips: {fileID: 11400000, guid: 7ca7c9644a417714ea974f9f40a37a4c, type: 2}
+  _onPauseEvent: {fileID: 11400000, guid: 17899c6a8dfefa44e9313878c9bd0e58, type: 2}
   _checkpoints:
   - {fileID: 0}
 --- !u!114 &3528412425053851652
@@ -72,4 +73,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _onPostLapTime: {fileID: 11400000, guid: 81f2631b854fe564ebd25463aa533b05, type: 2}
   _onRaceStateEvent: {fileID: 11400000, guid: eb9b51f329654b14a9f17e243030ca44, type: 2}
-  _onLapFinished: {fileID: 11400000, guid: f7ce76743af8aa643813e0556003d78e, type: 2}
+  _onLapFinished: {fileID: 11400000, guid: 8d4ba15d737b5314cb786d8746b73182, type: 2}
+--- !u!114 &7045129465049192426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8022852027729816624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58b6059068beb8f449b9ee32199e166f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _onRacePositionsUpdated: {fileID: 11400000, guid: 551640a97a37ae24383808a60a80576f,
+    type: 2}
+  _onRaceStateEvent: {fileID: 11400000, guid: eb9b51f329654b14a9f17e243030ca44, type: 2}
+  _onRaceFinished: {fileID: 11400000, guid: cfc78b7350bc8dd4e9a733b45bdb6aa7, type: 2}
+  _onSpawnedShips: {fileID: 11400000, guid: 7ca7c9644a417714ea974f9f40a37a4c, type: 2}
+  _onShipFinishedRace: {fileID: 11400000, guid: d37dd02d665681c4284c1eb3208ce6d3,
+    type: 2}

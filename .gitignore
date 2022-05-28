@@ -59,3 +59,5 @@ sysinfo.txt
 crashlytics-build.properties
 
 /SteelLove/Library
+/SteelLove/Logs/AssetImportWorker0.log
+/SteelLove/Logs/shadercompiler-AssetImportWorker0.log

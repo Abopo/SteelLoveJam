@@ -4,7 +4,7 @@ using Unity.Collections;
 using UnityEngine;
 
 // Should only ever have one race state
-//[CreateAssetMenu(fileName = "RaceState", menuName = "Race/RaceState", order = 51)]
+[CreateAssetMenu(fileName = "RaceState", menuName = "Race/RaceState", order = 51)]
 public class RaceStateSO : DescriptionBaseSO
 {
     public enum RaceState
@@ -52,7 +52,7 @@ public class RaceStateSO : DescriptionBaseSO
 
     public void ReturnToPreviousState()
     {
-        if (_previousState != RaceState.Initializing)
+        if (_previousState == RaceState.Initializing)
             return;
 
         _currentState = _previousState;
@@ -71,11 +71,13 @@ public class RaceStateSO : DescriptionBaseSO
                 break;
             case RaceState.Countdown:
                 _inputReader.DisableAllInput();
+                _inputReader.EnableGeneralInput();
                 _onCountdownStateEvent.RaiseEvent();
                 break;
             case RaceState.Race:
                 _inputReader.DisableAllInput();
                 _inputReader.EnableRacingInput();
+                _inputReader.EnableGeneralInput();
                 _onRaceStartEvent.RaiseEvent();
                 break;
             case RaceState.RaceFinished:
@@ -85,6 +87,7 @@ public class RaceStateSO : DescriptionBaseSO
             case RaceState.Pause:
                 _inputReader.DisableAllInput();
                 _inputReader.EnableUIInput();
+                _inputReader.EnableGeneralInput();
                 _onPauseStateEvent.RaiseEvent();
                 break;
         }

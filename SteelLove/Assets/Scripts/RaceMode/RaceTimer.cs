@@ -9,11 +9,13 @@ public class RaceTimer : MonoBehaviour
 
     [Header("Listening To")]
     [SerializeField] private VoidEventChannelSO _onRaceStateEvent = default;
-    [SerializeField] private IntEventChannelSO _onLapFinished = default;
+    [SerializeField] private GameObjectEventChannelSO _onLapFinished = default;
 
     private float _curTime;
     private List<float> _lapTimes = new List<float>();
     private bool _startedRace;
+
+    private int _curLap = 0;
 
     private void Awake()
     {
@@ -43,23 +45,28 @@ public class RaceTimer : MonoBehaviour
     private void OnRaceStart()
     {
         _startedRace = true;
+        _curLap = 0;
     }
 
-    private void OnLapIncreased(int lap)
+    private void OnLapIncreased(GameObject shipObj)
     {
-        int lapInd = lap - 1; // subtract 1 because we finished the previous lap and 1 for 0 indexing
-        var lapTime = _curTime;
-        if(lap > 1)
+        if (shipObj.GetComponent<PlayerShipSetup>() != null)
         {
-            float prevTimes = 0;
-            foreach(var time in _lapTimes)
+            var lapTime = _curTime;
+            if (_curLap > 0)
             {
-                prevTimes += time;
+                float prevTimes = 0;
+                foreach (var time in _lapTimes)
+                {
+                    prevTimes += time;
+                }
+                lapTime -= prevTimes;
             }
-            lapTime -= prevTimes;
-        }
-        _lapTimes.Add(lapTime);
+            _lapTimes.Add(lapTime);
 
-        _onPostLapTime.RaiseEvent(lapTime);
+            _onPostLapTime.RaiseEvent(lapTime);
+
+            _curLap++;
+        }
     }
 }

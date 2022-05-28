@@ -11,6 +11,7 @@ TagManager:
   - Hazard
   - TrackWallsAI
   - CheckpointAI
+  - Checkpoint
   layers:
   - Default
   - TransparentFX

@@ -34,7 +34,7 @@ public class ShipController : MonoBehaviour {
     [SerializeField] private float _overSpeedLimitSlowdownForce;
 
     [Header("Broadcasting On")]
-    [SerializeField] private VoidEventChannelSO _OnCrossedFinishLine = default;
+    [SerializeField] private GameObjectEventChannelSO _OnCrossedFinishLine = default;
     [SerializeField] private FloatEventChannelSO _onHealthLevelChanged = default;
     [SerializeField] private FloatEventChannelSO _onBoostLevelChanged = default;
 
@@ -89,7 +89,7 @@ public class ShipController : MonoBehaviour {
     #region Collisions
     private void OnTriggerEnter(Collider collision) {
         if (collision.tag == "FinishLine") {
-            _OnCrossedFinishLine.RaiseEvent();
+            _OnCrossedFinishLine.RaiseEvent(gameObject);
         }
 
         if(collision.tag == "Hazard") {

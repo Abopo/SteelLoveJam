@@ -5,7 +5,7 @@ using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 //[CreateAssetMenu(fileName = "InputRreader", menuName = "Game/Input Reader")] // commented out because we only need one
-public class InputReader : DescriptionBaseSO, GameInput.IRacingActions, GameInput.IBreakRoomActions, GameInput.IUIActions
+public class InputReader : DescriptionBaseSO, GameInput.IRacingActions, GameInput.IBreakRoomActions, GameInput.IUIActions, GameInput.IGeneralActions
 {
     private GameInput _gameInput;
 
@@ -20,8 +20,6 @@ public class InputReader : DescriptionBaseSO, GameInput.IRacingActions, GameInpu
     public event UnityAction<float> BrakeEvent = delegate { };
     public event UnityAction<float> LookBehindEvent = delegate { };
 
-    public event UnityAction PauseEvent = delegate { };
-
     // Break room
     public event UnityAction<Vector2> MovementEvent = delegate { };
     public event UnityAction<float> InteractEvent = delegate { };
@@ -30,6 +28,9 @@ public class InputReader : DescriptionBaseSO, GameInput.IRacingActions, GameInpu
     public event UnityAction<Vector2> MoveCursorEvent = delegate { };
     public event UnityAction BackEvent = delegate { };
     public event UnityAction ConfirmEvent = delegate { };
+
+    // General
+    public event UnityAction PauseEvent = delegate { };
 
     private void OnEnable()
     {
@@ -40,6 +41,7 @@ public class InputReader : DescriptionBaseSO, GameInput.IRacingActions, GameInpu
             _gameInput.Racing.SetCallbacks(this);
             _gameInput.BreakRoom.SetCallbacks(this);
             _gameInput.UI.SetCallbacks(this);
+            _gameInput.General.SetCallbacks(this);
         }
     }
 
@@ -86,11 +88,7 @@ public class InputReader : DescriptionBaseSO, GameInput.IRacingActions, GameInpu
         BrakeEvent.Invoke(context.ReadValue<float>());
     }
 
-    public void OnPause(InputAction.CallbackContext context)
-    {
-        if (context.phase == InputActionPhase.Performed)
-            PauseEvent.Invoke();
-    }
+    
 
     public void OnLookBehind(InputAction.CallbackContext context)
     {
@@ -135,13 +133,22 @@ public class InputReader : DescriptionBaseSO, GameInput.IRacingActions, GameInpu
 
     public void OnPoint(InputAction.CallbackContext context) {
     }
-#endregion
+    #endregion
+
+    #region General
+    public void OnPause(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Performed)
+            PauseEvent.Invoke();
+    }
+    #endregion
 
     public void EnableAllInput()
     {
         _gameInput.Racing.Enable();
         _gameInput.BreakRoom.Enable();
         _gameInput.UI.Enable();
+        _gameInput.General.Enable();
     }
 
     public void DisableAllInput()
@@ -149,6 +156,7 @@ public class InputReader : DescriptionBaseSO, GameInput.IRacingActions, GameInpu
         _gameInput.Racing.Disable();
         _gameInput.BreakRoom.Disable();
         _gameInput.UI.Disable();
+        _gameInput.General.Disable();
     }
 
     public void EnableRacingInput()
@@ -164,5 +172,15 @@ public class InputReader : DescriptionBaseSO, GameInput.IRacingActions, GameInpu
     public void EnableUIInput()
     {
         _gameInput.UI.Enable();
+    }
+
+    public void EnableGeneralInput()
+    {
+        _gameInput.General.Enable();
+    }
+
+    public void OnMenuBack(InputAction.CallbackContext context)
+    {
+        throw new System.NotImplementedException();
     }
 }
