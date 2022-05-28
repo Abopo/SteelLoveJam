@@ -4,14 +4,6 @@
 
 title: Initialize
 ---
-<<set $jebb_fondness to 0>>
-<<set $trik_fondness to 0>>
-<<set $sumiv_fondness to 0>>
-<<set $frieda_fondness to 0>>
-<<set $damian_fondness to 0>>
-<<set $charlene_fondness to 0>>
-<<set $aldious_fondness to 0>>
-
 <<set $got_canteen_drink to false>>
 
 <<set $jebb_drink to false>>
@@ -22,8 +14,15 @@ title: Initialize
 <<set $aldious_drink to false>>
 
 <<set $has_canteen_drink to false>>
+
+<<set $has_phone to 0>>
+<<set $has_gigantipla to 0>>
+<<set $has_buof_plushie to 0>>
+<<set $has_headband to 0>>
+<<set $has_batteries to 0>>
+<<set $has_milk to 0>>
 <<set $has_grazeloid_translator to false>>
-<<set $got_screwdriver to false>>
+
 <<set $has_screwdriver to false>>
 <<set $ship_upgrade_parts to 0>>
 ===

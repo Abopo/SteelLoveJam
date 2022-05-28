@@ -8,6 +8,8 @@ public class DialogueBubble : MonoBehaviour {
 
     [SerializeField] Vector3 relativePos;
     [SerializeField] Transform background;
+    [SerializeField] GameObject rightArrow;
+    [SerializeField] GameObject leftArrow;
 
     Camera _mainCamera;
 
@@ -35,12 +37,11 @@ public class DialogueBubble : MonoBehaviour {
     }
 
     void MoveToRight() {
-        transform.localPosition = new Vector3(Mathf.Abs(transform.localPosition.x), 
+        transform.localPosition = new Vector3(2.45f, 
                                          transform.localPosition.y, 
                                          transform.localPosition.z);
 
-        background.transform.localScale = new Vector3(-Mathf.Abs(background.transform.localScale.x),
-                                                        background.transform.localScale.y,
-                                                        background.transform.localScale.z);
+        rightArrow.SetActive(false);
+        leftArrow.SetActive(true);
     }
 }

@@ -105,3 +105,63 @@ title: Ship_Upgrade_Parts
 <<set $ship_upgrade_parts to $ship_upgrade_parts+1>>
 < Got <color=orange>Ship Upgrade Parts</color> >
 ===
+
+title: Phone
+---
+<<if $has_phone is 0>>
+    <<set $has_phone to 1>>
+    < Got <color=orange>Old Phone</color> >
+<<else>>
+    <<jump Nothing>>
+<<endif>>
+===
+
+title: Gigantipla
+---
+<<if $has_gigantipla is 0>>
+    <<set $has_gigantipla to 1>>
+    < Got <color=orange>Gigantipla</color> >
+<<else>>
+    <<jump Nothing>>
+<<endif>>
+===
+
+title: Buof_Plushie
+---
+<<if $has_buof_plushie is 0>>
+    <<set $has_buof_plushie to 1>>
+    < Got <color=orange>Buof Plushie</color> >
+<<else>>
+    <<jump Nothing>>
+<<endif>>
+===
+
+title: Headband
+---
+<<if $has_headband is 0>>
+    <<set $has_headband to 1>>
+    < Got <color=orange>Headband 2.0</color> >
+<<else>>
+    <<jump Nothing>>
+<<endif>>
+===
+
+title: Batteries
+---
+<<if $has_batteries is 0>>
+    <<set $has_batteries to 1>>
+    < Got <color=orange>Batteries</color> >
+<<else>>
+    <<jump Nothing>>
+<<endif>>
+===
+
+title: Green_Milk
+---
+<<if $has_milk is 0>>
+    <<set $has_milk to 1>>
+    < Got <color=orange>Green Milk</color> >
+<<else>>
+    <<jump Nothing>>
+<<endif>>
+===
