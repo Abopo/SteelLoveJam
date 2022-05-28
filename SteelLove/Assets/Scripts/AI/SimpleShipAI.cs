@@ -22,11 +22,20 @@ public class SimpleShipAI : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+        // Force proper Y rotation
+        transform.localRotation = Quaternion.Euler(transform.localRotation.x, 180, transform.localRotation.z);
+
         // Aim joystick towards the next checkpoint
         _toCheckpoint = _nextCheckpoint.center - transform.position;
         _toCheckpoint.Normalize();
         _input.x = _toCheckpoint.x;
-        _input.y = _toCheckpoint.z;
+
+        // Have to swap to tracking x position if we've rotated
+        if (Mathf.Abs(transform.localEulerAngles.x) > 45) {
+            _input.y = _toCheckpoint.y;
+        } else {
+            _input.y = _toCheckpoint.z;
+        }
 
         SendInputToShip();
     }
