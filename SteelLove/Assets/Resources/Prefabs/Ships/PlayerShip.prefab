@@ -5215,11 +5215,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _raycastDist: 2
-  _outsideTrackDamageBuildup: 0.1
+  _outsideTrackDamageBuildup: 0.2
   _outsideTrackFullDamage: 1
   _timeToFullDamage: 10
-  _insideTrackHealingBuildup: 0.1
-  _insideTrackFullHeal: 1
+  _insideTrackHealingBuildup: 0.5
+  _insideTrackFullHeal: 0.5
   _timeToFullHealing: 10
   _centerPoint: {fileID: 2293335431748937384}
 --- !u!114 &5635634655330167057
