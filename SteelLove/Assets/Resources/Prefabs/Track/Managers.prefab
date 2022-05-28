@@ -52,7 +52,7 @@ MonoBehaviour:
     type: 2}
   _onCountdownFinished: {fileID: 11400000, guid: 59a020500020bec4e813d575a31c45c2,
     type: 2}
-  _onCrossedFinishLine: {fileID: 11400000, guid: cd09aa317b22bf64980d7bb094732930,
+  _onCrossedNextCheckpoint: {fileID: 11400000, guid: 71c2b24e6ca91284bb7c5343a20d9ec8,
     type: 2}
   _onRaceFinished: {fileID: 11400000, guid: cfc78b7350bc8dd4e9a733b45bdb6aa7, type: 2}
   _onSpawnedShips: {fileID: 11400000, guid: 7ca7c9644a417714ea974f9f40a37a4c, type: 2}

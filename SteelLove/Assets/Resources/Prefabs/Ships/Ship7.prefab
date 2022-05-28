@@ -199,7 +199,7 @@ MonoBehaviour:
   _maxSpeed: 28
   _extremeDirChangeAngle: 75
   _extremeDirChangeMult: 1.25
-  _rotForce: 0.4
+  _rotForce: 0.7
   _maxRotSpeed: 2
   _boostForceMultiplier: 4
   _boostCost: 25
