@@ -25,7 +25,6 @@ public class StartLine : MonoBehaviour
 
     private void OnInitialize()
     {
-        Debug.Log("init starting line");
         List<CharacterSO> polePosiitons = _raceStateSO.PolePositions;
         List<GameObject> shipObjs = new List<GameObject>();
         for(int i = 0; i < polePosiitons.Count; ++i)
