@@ -45,9 +45,12 @@ public class ShipController : MonoBehaviour {
     [SerializeField] private float _health = 100.0f;
     [SerializeField] private float _boostTank = 0f;
 
+    [SerializeField] private GameObject _shipModel;
+
     // accessors
     public float Health => _health;
     public float BoostTank { get => _boostTank; }
+    public GameObject ShipModel => _shipModel;
 
     // required components
     private Rigidbody _rigidbody = default;
@@ -123,11 +126,6 @@ public class ShipController : MonoBehaviour {
         if (_boostTank <= 100)
         {
             _boostTank += fillSpeed;
-
-            if (_boostParticles != null && !_boostParticles.isPlaying)
-            {
-                _boostParticles.Play();
-            }
         }
         else
         {

@@ -213,6 +213,7 @@ MonoBehaviour:
   _boostParticles: {fileID: 6586966576420607307}
   _health: 100
   _boostTank: 0
+  _shipModel: {fileID: 2417316724817728671}
 --- !u!114 &6567690924902640480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,7 +221,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6567690924902640492}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 32afa5c285aeaff4eac3b3d00036c179, type: 3}
   m_Name: 
@@ -228,7 +229,7 @@ MonoBehaviour:
   _graph: {fileID: 6567690924902640495}
   _lineMat: {fileID: 2100000, guid: 52f54f8012454f74eaa7e9926f989372, type: 2}
   _lineThickness: 0.1
-  _lineScale: 0.5
+  _lineScale: 0.2
   _playerRigidBody: {fileID: 3037327862204088890}
 --- !u!95 &2940213114809627421
 Animator:
