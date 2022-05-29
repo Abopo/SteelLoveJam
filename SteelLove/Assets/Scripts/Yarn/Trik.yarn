@@ -1,7 +1,9 @@
 ﻿title: Trik_Race1
 ---
 <<if $has_grazeloid_translator == true>>
-    Hello!
+    Oh! Hello! I see you have a translator.
+    
+    <<jump Trik_Quest>>
 <<else>>
     asjkldf!
 <<endif>>
@@ -9,14 +11,32 @@
 
 title: Trik_Race2_Top3
 ---
+<<if $has_grazeloid_translator == true>>
+    Hello!
+    <<jump Trik_Quest>>
+<<else>>
+    asjkldf!
+<<endif>>
 ===
 
 title: Trik_Race2_Mid3
 ---
+<<if $has_grazeloid_translator == true>>
+    Hello!
+    <<jump Trik_Quest>>
+<<else>>
+    asjkldf!
+<<endif>>
 ===
 
 title: Trik_Race2_Bot3
 ---
+<<if $has_grazeloid_translator == true>>
+    Hello!
+    <<jump Trik_Quest>>
+<<else>>
+    asjkldf!
+<<endif>>
 ===
 
 title: Trik_Race3_Top3
@@ -41,6 +61,13 @@ title: Trik_Race4_Mid3
 
 title: Trik_Race4_Bot3
 ---
+===
+
+title: Trik_Quest
+---
+-> Give Canteen Drink <<if $has_canteen_drink is true>>
+    <<jump Trik_Drink>>
+-> Goodbye
 ===
 
 title: Trik_Drink

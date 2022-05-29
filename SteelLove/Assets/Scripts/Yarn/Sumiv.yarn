@@ -70,6 +70,8 @@ title: Sumiv_Quest
 
 title: Sumiv_Drink
 ---
+<<set $has_canteen_drink to false>>
+
 *gulp* Whew, that hits the spot, thanks.
 Searching through all these crates is more tiring than it seems.
 I should give you something in return...

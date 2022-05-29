@@ -8,6 +8,8 @@ tags:
     Not particularly. Things haven't been the same since The Revealing have they?
     I feel like I'm lost, and don't know where to go.
     That's why I have to win this Grand Prix, and find my path again!
+
+<<jump Charlene_Quest>>
 ===
 
 title: Charlene_Race2_Top3
@@ -15,18 +17,21 @@ title: Charlene_Race2_Top3
 I...I somehow did really well in the first race.
 It was probably just a fluke though.
 I'm no good on my own.
+<<jump Charlene_Quest>>
 ===
 
 title: Charlene_Race2_Mid3
 ---
 Well, that wasn't as bad as I thought it would be.
 I'm still not in the top 3 though...
+<<jump Charlene_Quest>>
 ===
 
 title: Charlene_Race2_Bot3
 ---
 Just as I though. It's hopeless...
 Without Gigantimous to lead me, I can't accomplish anything...
+<<jump Charlene_Quest>>
 ===
 
 title: Charlene_Race3_Top3
@@ -53,8 +58,19 @@ title: Charlene_Race4_Bot3
 ---
 ===
 
+title: Charlene_Quest
+---
+-> Give Canteen Drink <<if $has_canteen_drink is true>>
+    <<jump Charlene_Drink>>
+-> Give Gigantipla. <<if $has_gigantipla is 1>>
+    <<jump Charlene_Gigantipla>>
+-> Goodbye
+===
+
 title: Charlene_Drink
 ---
+<<set $has_canteen_drink to false>>
+
 You sure you're gonna give this to me?
 I'm underage you know?
 -> UH-
@@ -70,4 +86,5 @@ I'm underage you know?
 
 title: Charlene_Gigantipla
 ---
+<<get_item Ship_Upgrade_Parts>>
 ===

@@ -12,6 +12,8 @@ Well, howdy there! Would you like to pop a squat and share a drink?
     -> I am from the Metilio sector.
         Wow! Quite a far way from home aren'tchya?
         <<set $aldious_fondness to 2>>
+
+<<jump Aldious_Quest>>
 ===
 
 title: Aldious_Race2_Top3
@@ -19,12 +21,14 @@ title: Aldious_Race2_Top3
 Oh boy! That last race went just swell!
 This racing thing wasn't as hard as I thought!
 If you need any tips just ask away haha!
+<<jump Aldious_Quest>>
 ===
 
 title: Aldious_Race2_Mid3
 ---
 This racing thing is a little tricky,
 but I think I'm getting the hang of it!
+<<jump Aldious_Quest>>
 ===
 
 title: Aldious_Race2_Bot3
@@ -33,6 +37,7 @@ Oopsie! I didn't do so well on the first race did I?
 That's ok though, there's still 3 races to go!
 Could be worse, eh?
 I could be back making those <i>disgusting</i> lovebots...
+<<jump Aldious_Quest>>
 ===
 
 title: Aldious_Race3_Top3
@@ -59,8 +64,19 @@ title: Aldious_Race4_Bot3
 ---
 ===
 
+title: Aldious_Quest
+---
+-> Give Canteen Drink <<if $has_canteen_drink is true>>
+    <<jump Aldious_Drink>>
+-> Give headband. <<if $has_headband is 1>>
+    <<jump Aldious_Headband>>
+-> Goodbye
+===
+
 title: Aldious_Drink
 ---
+<<set $has_canteen_drink to false>>
+
 You're giving this to me?
 Wow, that's just about the nicest thing anyone's done since I got here!
 You may look creepy, but I knew you were a great person under there.
@@ -77,4 +93,5 @@ I don't care much for it, so you can have it if ya want.
 
 title: Aldious_Headband
 ---
+<<get_item Ship_Upgrade_Parts>>
 ===

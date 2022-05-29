@@ -139,8 +139,10 @@ public class PlayerController : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if(collision.gameObject.layer == LayerMask.NameToLayer("Interactable")) {
-            // Show the interact icon
-            _interactIcon.enabled = true;
+            if (collision.GetComponent<Interactable>().showIcon) {
+                // Show the interact icon
+                _interactIcon.enabled = true;
+            }
         }
     }
 

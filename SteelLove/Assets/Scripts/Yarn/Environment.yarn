@@ -148,6 +148,13 @@ title: Headband
 
 title: Batteries
 ---
+<<set $has_batteries to 1>>
+
+< Got <color=orange>Batteries</color> >
+===
+
+title: Batteries_2
+---
 <<if $has_batteries is 0>>
     <<set $has_batteries to 1>>
     < Got <color=orange>Batteries</color> >

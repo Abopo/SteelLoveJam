@@ -85,11 +85,6 @@ public class GameManager : MonoBehaviour {
 
     IEnumerator LateStart() {
         yield return null;
-
-        // This is the first time the game is opened so initialize stuff
-        //if (nextRace == 1) {
-        //    FindObjectOfType<MainUI>().DisplayDialogue("Initialize");
-        //}
     }
 
     public void RaceFinished() {

@@ -1263,6 +1263,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6024d25e1ab2d4f468f5bf6dbf13b869, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  showIcon: 1
   _charaName: Jebb
   _posList:
   - {x: 0, y: 0}

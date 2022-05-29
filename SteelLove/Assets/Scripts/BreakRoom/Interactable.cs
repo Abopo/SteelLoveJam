@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour {
 
+    public bool showIcon = true;
+
     // Start is called before the first frame update
     protected virtual void Start() {
         // Just make sure that we are interactable
