@@ -184,18 +184,6 @@ LightingSettings:
   m_PVRFilteringAtrousPositionSigmaDirect: 0.5
   m_PVRFilteringAtrousPositionSigmaIndirect: 2
   m_PVRFilteringAtrousPositionSigmaAO: 1
---- !u!114 &154514352 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5164607774306015339, guid: ee98935a6e21a6d4fb3d1343ea64dd55,
-    type: 3}
-  m_PrefabInstance: {fileID: 4603755983083715365}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90de1738a9d2297418110fc6a90920b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &295767586
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -266,67 +254,55 @@ PrefabInstance:
     - target: {fileID: 8928391152414819305, guid: deb7d8a23f723b24aa15197c38c0701f,
         type: 3}
       propertyPath: _checkpoints.Array.size
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8928391152414819305, guid: deb7d8a23f723b24aa15197c38c0701f,
         type: 3}
       propertyPath: _checkpoints.Array.data[0]
       value: 
-      objectReference: {fileID: 412367194}
+      objectReference: {fileID: 678475902}
     - target: {fileID: 8928391152414819305, guid: deb7d8a23f723b24aa15197c38c0701f,
         type: 3}
       propertyPath: _checkpoints.Array.data[1]
       value: 
-      objectReference: {fileID: 678475902}
+      objectReference: {fileID: 1537583329}
     - target: {fileID: 8928391152414819305, guid: deb7d8a23f723b24aa15197c38c0701f,
         type: 3}
       propertyPath: _checkpoints.Array.data[2]
       value: 
-      objectReference: {fileID: 1537583329}
+      objectReference: {fileID: 628091116}
     - target: {fileID: 8928391152414819305, guid: deb7d8a23f723b24aa15197c38c0701f,
         type: 3}
       propertyPath: _checkpoints.Array.data[3]
       value: 
-      objectReference: {fileID: 628091116}
+      objectReference: {fileID: 2131607516}
     - target: {fileID: 8928391152414819305, guid: deb7d8a23f723b24aa15197c38c0701f,
         type: 3}
       propertyPath: _checkpoints.Array.data[4]
       value: 
-      objectReference: {fileID: 2131607516}
+      objectReference: {fileID: 948369098}
     - target: {fileID: 8928391152414819305, guid: deb7d8a23f723b24aa15197c38c0701f,
         type: 3}
       propertyPath: _checkpoints.Array.data[5]
       value: 
-      objectReference: {fileID: 948369098}
+      objectReference: {fileID: 1057133175}
     - target: {fileID: 8928391152414819305, guid: deb7d8a23f723b24aa15197c38c0701f,
         type: 3}
       propertyPath: _checkpoints.Array.data[6]
       value: 
-      objectReference: {fileID: 1057133175}
+      objectReference: {fileID: 969664341}
     - target: {fileID: 8928391152414819305, guid: deb7d8a23f723b24aa15197c38c0701f,
         type: 3}
       propertyPath: _checkpoints.Array.data[7]
       value: 
-      objectReference: {fileID: 969664341}
+      objectReference: {fileID: 764481889}
     - target: {fileID: 8928391152414819305, guid: deb7d8a23f723b24aa15197c38c0701f,
         type: 3}
       propertyPath: _checkpoints.Array.data[8]
       value: 
-      objectReference: {fileID: 154514352}
+      objectReference: {fileID: 764481889}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deb7d8a23f723b24aa15197c38c0701f, type: 3}
---- !u!114 &412367194 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5164607773453943417, guid: ee98935a6e21a6d4fb3d1343ea64dd55,
-    type: 3}
-  m_PrefabInstance: {fileID: 4603755983083715365}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90de1738a9d2297418110fc6a90920b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &628091116 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5164607774644060975, guid: ee98935a6e21a6d4fb3d1343ea64dd55,
@@ -342,6 +318,18 @@ MonoBehaviour:
 --- !u!114 &678475902 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5164607774830498745, guid: ee98935a6e21a6d4fb3d1343ea64dd55,
+    type: 3}
+  m_PrefabInstance: {fileID: 4603755983083715365}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90de1738a9d2297418110fc6a90920b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &764481889 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5164607773257985399, guid: ee98935a6e21a6d4fb3d1343ea64dd55,
     type: 3}
   m_PrefabInstance: {fileID: 4603755983083715365}
   m_PrefabAsset: {fileID: 0}
