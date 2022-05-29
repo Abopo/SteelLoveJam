@@ -27,6 +27,14 @@ title: Initialize
 <<set $ship_upgrade_parts to 0>>
 ===
 
+title: NextRace
+---
+Shall I rest until we arrive at the race?
+-> Not yet
+-> Yes
+    <<start_race>>
+===
+
 title: Ziv_Race1
 ---
 I am Ziv Chromebeak. I unknowingly killed my brother.

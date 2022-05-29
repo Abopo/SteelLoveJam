@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Yarn.Unity;
+using UnityEngine.SceneManagement;
 
 public class MainUI : MonoBehaviour {
 
@@ -17,6 +18,7 @@ public class MainUI : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         _dialogueRunner.onDialogueComplete.AddListener(OnDialogueComplete);
+        _dialogueRunner.onNodeComplete.AddListener(OnNodeComplete);
     }
 
     // Update is called once per frame
@@ -63,8 +65,32 @@ public class MainUI : MonoBehaviour {
         DisplayDialogue(node);
     }
 
+    void OnNodeComplete(string node) {
+        _playerController.Unfreeze();
+    }
+
     [YarnCommand("get_item")]
     public static void GetItem(string itemName) {
         FindObjectOfType<MainUI>().DisplayDialogue(itemName);
     }
+
+    [YarnCommand("start_race")]
+    public static void StartNextRace() {
+        // Load into the next race
+        switch (GameManager.instance.NextRace) {
+            case 1:
+                SceneManager.LoadScene("Track2");
+                break;
+            case 2:
+                SceneManager.LoadScene("Track3");
+                break;
+            case 3:
+                SceneManager.LoadScene("Track4");
+                break;
+            case 4:
+                SceneManager.LoadScene("Track5");
+                break;
+        }
+    }
+
 }
