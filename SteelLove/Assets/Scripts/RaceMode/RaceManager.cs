@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RaceManager : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class RaceManager : MonoBehaviour
     [SerializeField] private VoidEventChannelSO _onRaceFinished = default;
     [SerializeField] private GameObjectsListEventChannelSO _onSpawnedShips = default;
     [SerializeField] private VoidEventChannelSO _onPauseEvent = default;
+    [SerializeField] private GameObjectEventChannelSO _onShipDestroyed = default;
 
     public Checkpoint[] Checkpoints => _checkpoints;
     [SerializeField] private Checkpoint[] _checkpoints;
@@ -29,9 +31,11 @@ public class RaceManager : MonoBehaviour
         _onRaceFinished.OnEventRaised += OnRaceFinished;
         _onSpawnedShips.OnEventRaised += OnSpawnedShips;
         _onPauseEvent.OnEventRaised += OnPause;
+        _onShipDestroyed.OnEventRaised += OnShipDestroyed;
 
         // input events
         _inputReader.PauseEvent += OnPause;
+        _inputReader.ConfirmEvent += ConfirmEndOfRace;
     }
 
     private void OnDisable()
@@ -41,6 +45,7 @@ public class RaceManager : MonoBehaviour
         _onRaceFinished.OnEventRaised -= OnRaceFinished;
         _onSpawnedShips.OnEventRaised -= OnSpawnedShips;
         _onPauseEvent.OnEventRaised -= OnPause;
+        _onShipDestroyed.OnEventRaised -= OnShipDestroyed;
 
         // input events
         _inputReader.PauseEvent -= OnPause;
@@ -79,8 +84,6 @@ public class RaceManager : MonoBehaviour
         _activeCheckpoint++;
         if (_activeCheckpoint < _checkpoints.Length) {
             _checkpoints[_activeCheckpoint].Activate();
-        } else {
-            // Set finish line as active?
         }
     }
 
@@ -109,6 +112,14 @@ public class RaceManager : MonoBehaviour
         _RaceStateSO.UpdateState(RaceStateSO.RaceState.Countdown);
     }
 
+    private void OnShipDestroyed(GameObject ship)
+    {
+        if(ship.GetComponent<PlayerShipSetup>() != null)
+        {
+            _RaceStateSO.UpdateState(RaceStateSO.RaceState.RaceFinished);
+        }
+    }
+
     private void OnRaceFinished() {
         // Stop ships momentum?
 
@@ -117,6 +128,15 @@ public class RaceManager : MonoBehaviour
         // Let GameManager handle end of race
         if (GameManager.instance != null) {
             GameManager.instance.RaceFinished();
+        }
+    }
+
+    private void ConfirmEndOfRace()
+    {
+        if(_RaceStateSO.CurrentState == RaceStateSO.RaceState.RaceFinished)
+        {
+            // for demo go to main menu
+            SceneManager.LoadScene(0);
         }
     }
 

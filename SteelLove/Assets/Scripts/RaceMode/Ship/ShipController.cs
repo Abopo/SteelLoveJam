@@ -37,9 +37,11 @@ public class ShipController : MonoBehaviour {
     [SerializeField] private GameObjectEventChannelSO _OnCrossedFinishLine = default;
     [SerializeField] private FloatEventChannelSO _onHealthLevelChanged = default;
     [SerializeField] private FloatEventChannelSO _onBoostLevelChanged = default;
+    [SerializeField] private GameObjectEventChannelSO _OnShipDestoryed = default;
 
     [Header("Effects")]
     [SerializeField] ParticleSystem _boostParticles;
+    [SerializeField] ParticleSystem _destructionParticles;
 
     [Header("Ship Stats")]
     [SerializeField] private float _health = 100.0f;
@@ -80,13 +82,16 @@ public class ShipController : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        PerformMovement();
+        if (_health > 0)
+        {
+            PerformMovement();
 
-        HandleThrusters();
+            HandleThrusters();
 
-        LimitVelocity();
+            LimitVelocity();
 
-        LimitRotation();
+            LimitRotation();
+        }
     }
 
     #region Collisions
@@ -103,21 +108,29 @@ public class ShipController : MonoBehaviour {
 
     public void ChangeHealth(float amount)
     {
-        _health += amount;
-        if (_health < 0)
+        if (_health > 0)
         {
-            // TODO: Explode
+            _health += amount;
+            if (_health < 0)
+            {
+                // TODO: Explode
+                _destructionParticles.Play();
+                _OnShipDestoryed.RaiseEvent(gameObject);
+                _shipModel.SetActive(false);
+                _rigidbody.velocity = Vector3.zero;
 
-            _health = 0;
-        }
+                _health = 0;
+            }
 
-        if (_health > 100)
-        {
-            _health = 100;
-        }
+            if (_health > 100)
+            {
+                _health = 100;
+            }
 
-        if (_onHealthLevelChanged != null) {
-            _onHealthLevelChanged.RaiseEvent(_health);
+            if (_onHealthLevelChanged != null)
+            {
+                _onHealthLevelChanged.RaiseEvent(_health);
+            }
         }
     }
 
