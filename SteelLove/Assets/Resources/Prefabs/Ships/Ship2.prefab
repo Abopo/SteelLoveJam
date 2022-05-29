@@ -5094,6 +5094,7 @@ GameObject:
   - component: {fileID: 7109951208249717664}
   - component: {fileID: 3287461794691024101}
   - component: {fileID: 4716904975908761695}
+  - component: {fileID: -7504026269923084065}
   m_Layer: 0
   m_Name: Ship2
   m_TagString: Ship
@@ -5268,6 +5269,21 @@ MonoBehaviour:
   _timeToFullHealing: 10
   _centerPoint: {fileID: 8013170327540851375}
   _offTrackDamageParticles: {fileID: 5592029646977953670}
+--- !u!114 &-7504026269923084065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7905946393772696569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df3400f46a842134bb1fe3308912ef2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speedRequirement: 5
+  _collisionParticles: {fileID: 2518766124786432357, guid: eab1db538c7f3e0479f2d6d5218be03f,
+    type: 3}
 --- !u!1 &8013170327540851375
 GameObject:
   m_ObjectHideFlags: 0
