@@ -40,7 +40,6 @@ public class ShipController : MonoBehaviour {
     [SerializeField] private GameObjectEventChannelSO _OnShipDestoryed = default;
 
     [Header("Effects")]
-    [SerializeField] ParticleSystem _boostParticles;
     [SerializeField] ParticleSystem _destructionParticles;
 
     [Header("Ship Stats")]
