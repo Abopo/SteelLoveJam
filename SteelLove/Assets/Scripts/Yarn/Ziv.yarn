@@ -37,6 +37,28 @@ Shall I rest until we arrive at the race?
 
 title: Ziv_Race1
 ---
+<<set $got_canteen_drink to false>>
+
+<<set $jebb_drink to false>>
+<<set $trik_drink to false>>
+<<set $sumiv_drink to false>>
+<<set $frieda_drink to false>>
+<<set $damian_drink to false>>
+<<set $aldious_drink to false>>
+
+<<set $has_canteen_drink to false>>
+
+<<set $has_phone to 0>>
+<<set $has_gigantipla to 0>>
+<<set $has_buof_plushie to 0>>
+<<set $has_headband to 0>>
+<<set $has_batteries to 0>>
+<<set $has_milk to 0>>
+<<set $has_grazeloid_translator to false>>
+
+<<set $has_screwdriver to false>>
+<<set $ship_upgrade_parts to 0>>
+
 I am Ziv Chromebeak. I unknowingly killed my brother.
 Somehow, we have both been given a second chance.
 An unknown entity organized this Grand Prix,
