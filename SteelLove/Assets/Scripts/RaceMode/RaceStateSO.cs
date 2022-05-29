@@ -82,6 +82,7 @@ public class RaceStateSO : DescriptionBaseSO
                 break;
             case RaceState.RaceFinished:
                 _inputReader.DisableAllInput();
+                _inputReader.EnableUIInput();
                 _onRaceFinishedEvent.RaiseEvent();
                 break;
             case RaceState.Pause:

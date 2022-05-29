@@ -5,27 +5,26 @@ Ahh, I'd heard you were joining the race too Ziv.
 Hard to resist a prize like that, eh?
 You'd best set your hopes aside though, because I will be the one to win this race!
 
--> I look forward to our race.
--> Hah! You wish. Everyone knows I'm the fastest racer here.
--> Very well. Good luck.
-
-Goodbye.
+<<jump Jebb_Quest>>
 ===
 
 title: Jebb_Race2_Top3
 ---
 I'm one step closer to that which I long for...
+<<jump Jebb_Quest>>
 ===
 
 title: Jebb_Race2_Mid3
 ---
 Mmm... not a great start, but nothing I can't handle.
 I've got some tricks up my sleeve for the next race heh heh heh.
+<<jump Jebb_Quest>>
 ===
 
 title: Jebb_Race2_Bot3
 ---
 No...no... I will never feel their love if I continue to lose like this...
+<<jump Jebb_Quest>>
 ===
 
 title: Jebb_Race3_Top3
@@ -52,6 +51,33 @@ title: Jebb_Race4_Bot3
 ---
 ===
 
-title:Jebb_Drink
+title: Jebb_Quest
 ---
+-> Give Canteen Drink <<if $has_canteen_drink is true>>
+    <<jump Jebb_Drink>>
+-> Give buof plushie. <<if $has_buof_plushie is 1>>
+    <<jump Jebb_BuofPlush>>
+-> Goodbye
+===
+
+title: Jebb_Drink
+---
+<<set $has_canteen_drink to false>>
+
+Hmph, a peace offering is it?
+Very well, I will humor you this once.
+*gulp* Mph, that slime creature brews suprisingly good drinks.
+But you and I both know that taste is not the only important aspect in a good drink.
+Those in our trade need a well balanced nutrition.
+I happened to have brought some Grade A Green Milk with me.
+You're welcome to a glass if you wish.
+-> Keep your milk to yourself.
+    Your loss.
+-> I love green milk. Thank you Jebb.
+    You are a man of good taste. Much like myself.
+===
+
+title: Jebb_BuofPlush
+---
+<<get_item Ship_Upgrade_Parts>>
 ===

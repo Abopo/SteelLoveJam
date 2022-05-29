@@ -34,6 +34,7 @@ public class Character : Interactable {
         FindPosition();
 
         _dialogueBubble.onDialogueComplete.AddListener(OnDialogueComplete);
+        _dialogueBubble.onNodeComplete.AddListener(OnNodeComplete);
     }
 
     private void CheckState() {
@@ -113,6 +114,11 @@ public class Character : Interactable {
     }
 
     void OnDialogueComplete() {
+        // Unfreeze player
+        _playerController.Unfreeze();
+    }
+
+    void OnNodeComplete(string node) {
         // Unfreeze player
         _playerController.Unfreeze();
     }

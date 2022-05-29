@@ -15,7 +15,8 @@ public class AICheckpoint : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         //GameObject centerDebug = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-        //centerDebug.transform.position = new Vector3(center.x, 0.5f, center.z);
+        //centerDebug.GetComponent<Collider>().enabled = false;
+        //centerDebug.transform.position = center;
     }
 
     // Update is called once per frame

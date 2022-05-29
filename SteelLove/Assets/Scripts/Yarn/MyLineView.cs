@@ -316,6 +316,8 @@ namespace Yarn.Unity
                     }
                 }
 
+                LayoutRebuilder.ForceRebuildLayoutImmediate(transform.GetChild(0) as RectTransform);
+
                 if (useTypewriterEffect) {
                     // If we're using the typewriter effect, hide all of the
                     // text before we begin any possible fade (so we don't fade

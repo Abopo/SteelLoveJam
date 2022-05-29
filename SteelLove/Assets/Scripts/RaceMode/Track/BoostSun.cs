@@ -7,16 +7,11 @@ public class BoostSun : MonoBehaviour {
     public float fillSpeed;
 
     [SerializeField] float facingAngle = -0.95f;
-    [SerializeField] float dotResult;
+    [SerializeField] private GameObject _particleSystemPrefab;
+    List<ShipController> _shipsInRange = new List<ShipController> ();
 
-    [SerializeField] List<ShipController> _shipsInRange = new List<ShipController> ();
-
-    ParticleSystem _particles;
-
-    // Start is called before the first frame update
-    void Start() {
-        _particles = GetComponentInChildren<ParticleSystem> ();  
-    }
+    private List<GameObject> _spawnedParticleSystem = new List<GameObject>();
+    private List<ShipController> _attachedShips = new List<ShipController>();
 
     // Update is called once per frame
     void Update() {
@@ -27,18 +22,12 @@ public class BoostSun : MonoBehaviour {
                 // Fill it's boost
                 ship.RefillBoost(fillSpeed * Time.deltaTime);
 
-                anyShips = true;
+                SpawnParticlesIfNeeded(ship);
             }
-        }
-
-        // If there were any ships facing us for boost
-        if (anyShips) {
-            // Play the particles if they aren't
-            if (!_particles.isPlaying) {
-                _particles.Play();
+            else
+            {
+                DestroyParticlesIfNeeded(ship);
             }
-        } else {
-            _particles.Stop();
         }
     }
 
@@ -46,21 +35,46 @@ public class BoostSun : MonoBehaviour {
         bool _isFacing = false;
 
         // Get vector from ship to sun
-        Vector3 toSun = ship.transform.position - transform.position;
-        
-        // Debugging
-        Debug.DrawRay(transform.position, toSun, Color.yellow);
-        Debug.DrawRay(ship.transform.position, ship.transform.up, Color.blue);
+        Vector3 toSun = transform.position - ship.transform.position;
+        Vector3 shipUp = ship.transform.up;
 
-        toSun.Normalize();
+        Vector3.OrthoNormalize(ref toSun, ref shipUp);
+
         // Check it's angle with the facing of the ship
-        dotResult = Vector3.Dot(ship.transform.forward, toSun);
+        float angle = Vector3.Angle(ship.transform.forward, toSun);
 
-        if (dotResult < facingAngle) {
+        if (angle <= facingAngle) {
             _isFacing = true;
         }
 
         return _isFacing;
+    }
+
+    private void SpawnParticlesIfNeeded(ShipController ship)
+    {
+        if (_attachedShips.Contains(ship) == false)
+        {
+            _attachedShips.Add(ship);
+            GameObject newParticles = Instantiate(_particleSystemPrefab, transform);
+            newParticles.name = ship.name + " particles";
+            newParticles.GetComponent<ParticleSystem>().Play();
+            newParticles.GetComponent<ParticleAttraction>().Begin(ship.ShipModel);
+            _spawnedParticleSystem.Add(newParticles);
+        }
+
+    }
+
+    private void DestroyParticlesIfNeeded(ShipController ship)
+    {
+        if (_attachedShips.Contains(ship))
+        {
+            int ind = _attachedShips.IndexOf(ship);
+            _attachedShips.Remove(ship);
+            GameObject particleSystem = _spawnedParticleSystem[ind];
+            _spawnedParticleSystem.RemoveAt(ind);
+            particleSystem.GetComponent<ParticleSystem>().Stop();
+            Destroy(particleSystem);
+        }
     }
 
     void OnTriggerEnter(Collider other) {
@@ -72,7 +86,9 @@ public class BoostSun : MonoBehaviour {
 
     void OnTriggerExit(Collider other) {
         if (other.tag == "Ship") {
-            _shipsInRange.Remove(other.GetComponentInParent<ShipController>());
+            var ship = other.GetComponentInParent<ShipController>();
+            _shipsInRange.Remove(ship);
+            DestroyParticlesIfNeeded(ship);
         }
     }
 }

@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour {
     private Collider2D _collider2D;
 
     private SpriteRenderer _sprite;
+    private SpriteRenderer _interactIcon;
 
     MainUI _mainUI;
     [SerializeField] STATE _curState; // Ziv's current ranking placement
@@ -26,7 +27,9 @@ public class PlayerController : MonoBehaviour {
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _collider2D = GetComponentInChildren<Collider2D>();
 
-        _sprite = GetComponentInChildren<SpriteRenderer>();
+        _sprite = transform.Find("Sprite").GetComponent<SpriteRenderer>();
+        _interactIcon = transform.Find("Interact Icon").GetComponent<SpriteRenderer>();
+
 
         _mainUI = FindObjectOfType<MainUI>();
     }
@@ -132,7 +135,23 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-#endregion
+    #endregion
+
+    private void OnTriggerEnter2D(Collider2D collision) {
+        if(collision.gameObject.layer == LayerMask.NameToLayer("Interactable")) {
+            if (collision.GetComponent<Interactable>().showIcon) {
+                // Show the interact icon
+                _interactIcon.enabled = true;
+            }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision) {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Interactable")) {
+            // Hide the interact icon
+            _interactIcon.enabled = false;
+        }
+    }
 
     private void CheckInteract() {
         // Check is we are overlapped with any interactables

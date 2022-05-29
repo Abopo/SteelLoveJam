@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.10950407, g: 0.12845895, b: 0.22073737, a: 1}
+  m_IndirectSpecularColor: {r: 0.14171958, g: 0.16694859, b: 0.28462067, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -184,9 +184,9 @@ LightingSettings:
   m_PVRFilteringAtrousPositionSigmaDirect: 0.5
   m_PVRFilteringAtrousPositionSigmaIndirect: 2
   m_PVRFilteringAtrousPositionSigmaAO: 1
---- !u!114 &412367194 stripped
+--- !u!114 &877397732 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8821147707285940110, guid: 2eb58f33aa2255446bf6a1b1fb548367,
+  m_CorrespondingSourceObject: {fileID: 431641065434223388, guid: 2eb58f33aa2255446bf6a1b1fb548367,
     type: 3}
   m_PrefabInstance: {fileID: 154406473781124818}
   m_PrefabAsset: {fileID: 0}
@@ -388,28 +388,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8928391152414819305, guid: deb7d8a23f723b24aa15197c38c0701f,
         type: 3}
-      propertyPath: _checkpoints.Array.data[0]
-      value: 
-      objectReference: {fileID: 412367194}
+      propertyPath: _checkpoints.Array.size
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8928391152414819305, guid: deb7d8a23f723b24aa15197c38c0701f,
         type: 3}
-      propertyPath: _checkpoints.Array.data[1]
+      propertyPath: _checkpoints.Array.data[0]
       value: 
       objectReference: {fileID: 1359801065}
     - target: {fileID: 8928391152414819305, guid: deb7d8a23f723b24aa15197c38c0701f,
         type: 3}
-      propertyPath: _checkpoints.Array.data[2]
+      propertyPath: _checkpoints.Array.data[1]
       value: 
       objectReference: {fileID: 968738359}
     - target: {fileID: 8928391152414819305, guid: deb7d8a23f723b24aa15197c38c0701f,
         type: 3}
-      propertyPath: _checkpoints.Array.data[3]
+      propertyPath: _checkpoints.Array.data[2]
       value: 
       objectReference: {fileID: 1006726907}
     - target: {fileID: 8928391152414819305, guid: deb7d8a23f723b24aa15197c38c0701f,
         type: 3}
-      propertyPath: _checkpoints.Array.data[4]
+      propertyPath: _checkpoints.Array.data[3]
       value: 
       objectReference: {fileID: 1982914791}
+    - target: {fileID: 8928391152414819305, guid: deb7d8a23f723b24aa15197c38c0701f,
+        type: 3}
+      propertyPath: _checkpoints.Array.data[4]
+      value: 
+      objectReference: {fileID: 877397732}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deb7d8a23f723b24aa15197c38c0701f, type: 3}

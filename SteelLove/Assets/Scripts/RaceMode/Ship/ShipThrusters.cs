@@ -10,7 +10,7 @@ public class ShipThrusters : MonoBehaviour {
     [SerializeField] ParticleSystem[] _leftTurnThrusters;
     [SerializeField] ParticleSystem[] _rightTurnThrusters;
     [SerializeField] ParticleSystem[] _noseThrusters;
-
+    [SerializeField] ParticleSystem _boostThruster;
 
     // Start is called before the first frame update
     void Start() {
@@ -64,6 +64,21 @@ public class ShipThrusters : MonoBehaviour {
             PlayThrusters(_noseThrusters);
         } else {
             StopThrusters(_noseThrusters);
+        }
+    }
+
+    public void BoostThruster(bool boosting) {
+        if(_boostThruster == null) {
+            return;
+        }
+
+        if (boosting) {
+            if (!_boostThruster.isPlaying) {
+                _boostThruster.Play();
+                BackThrusters(0);
+            }
+        } else if (_boostThruster.isPlaying) {
+            _boostThruster.Stop();
         }
     }
 

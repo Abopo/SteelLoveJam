@@ -12,6 +12,7 @@ TagManager:
   - TrackWallsAI
   - CheckpointAI
   - Checkpoint
+  - FirstCheckpointAI
   layers:
   - Default
   - TransparentFX
@@ -26,7 +27,7 @@ TagManager:
   - TrackFloor
   - TrackWallsAI
   - CheckpointAI
-  - AI In Training
+  - AI
   - 
   - 
   - 

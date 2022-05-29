@@ -4,6 +4,7 @@ tags:
 Woah! You're Ziv Chromebeak right?!
 Look man, I don't want any trouble...
 I'm just here to race and get that prize so I can help Singuliera.
+<<jump Damian_Quest>>
 ===
 
 title: Damian_Race2_Top3
@@ -12,6 +13,7 @@ Yes! I knew my time warping powers would come in handy.
 If I mess up during the races I can just go back a bit and try again!
 I got this Grand Prix in the bag!
 Just you wait Singuliera, I'm gonna win you that Giant Robot!
+<<jump Damian_Quest>>
 ===
 
 title: Damian_Race2_Mid3
@@ -25,7 +27,7 @@ Hey, Ziv, you got any racing tips?
 -> I suppose I could give you some tips...
     Oh..that makes sense. Thanks man!
     You're not as bad as you seem!
-    <<set $damian_fondness to 2>>
+<<jump Damian_Quest>>
 ===
 
 title: Damian_Race2_Bot3
@@ -41,8 +43,7 @@ You got any racing tips you could tell me?
 -> I suppose I could give you some tips...
     Oh..that makes sense. Thanks man!
     You're not as bad as you seem!
-    <<set $damian_fondness to 2>>
-
+<<jump Damian_Quest>>
 ===
 
 title: Damian_Race3_Top3
@@ -69,6 +70,42 @@ title: Damian_Race4_Bot3
 ---
 ===
 
+title: Damian_Quest
+---
+-> Give Canteen Drink <<if $has_canteen_drink is true>>
+    <<jump Damian_Drink>>
+-> Give green milk. <<if $has_milk is 1>>
+    <<jump Damian_GreenMilk>>
+-> Goodbye
+===
+
 title: Damian_Drink
 ---
+<<set $has_canteen_drink to false>>
+
+Uh, thanks? This isn't poisoned is it?
+-> Why would I waste good poison on you?
+    I don't know. Maybe because of my time powers?
+    Which I could just use if there is poison, so
+    Bottoms up! *gulp*
+    <<jump Damian_Drink2>>
+-> It is not.
+    Alright, if you say so. It wouldn't matter anyway.
+    Bottoms up! *gulp*
+    <<jump Damian_Drink2>>
+===
+
+title: Damian_Drink2
+---
+That really hit the spot, thanks!
+I feel like I should give you something in return...
+Oh! Here, have some spare batteries from Tupo.
+You never know when you might need some good batteries.
+
+<<get_item Batteries>>
+===
+
+title: Damian_GreenMilk
+---
+<<get_item Ship_Upgrade_Parts>>
 ===

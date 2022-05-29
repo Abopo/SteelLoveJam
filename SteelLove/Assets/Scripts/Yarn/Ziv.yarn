@@ -2,16 +2,16 @@
 ---
 ===
 
-title: Initialize
+title: NextRace
 ---
-<<set $jebb_fondness to 0>>
-<<set $trik_fondness to 0>>
-<<set $sumiv_fondness to 0>>
-<<set $frieda_fondness to 0>>
-<<set $damian_fondness to 0>>
-<<set $charlene_fondness to 0>>
-<<set $aldious_fondness to 0>>
+Shall I rest until we arrive at the race?
+-> Not yet
+-> Yes
+    <<start_race>>
+===
 
+title: Ziv_Race1
+---
 <<set $got_canteen_drink to false>>
 
 <<set $jebb_drink to false>>
@@ -22,20 +22,24 @@ title: Initialize
 <<set $aldious_drink to false>>
 
 <<set $has_canteen_drink to false>>
+
+<<set $has_phone to 0>>
+<<set $has_gigantipla to 0>>
+<<set $has_buof_plushie to 0>>
+<<set $has_headband to 0>>
+<<set $has_batteries to 0>>
+<<set $has_milk to 0>>
 <<set $has_grazeloid_translator to false>>
-<<set $got_screwdriver to false>>
+
 <<set $has_screwdriver to false>>
 <<set $ship_upgrade_parts to 0>>
-===
 
-title: Ziv_Race1
----
 I am Ziv Chromebeak. I unknowingly killed my brother.
-Somehow, we have both been given a second chance.
+Somehow, he has been given a second chance.
 An unknown entity organized this Grand Prix,
 with the apparent prize being a new giant robot built by my brother.
 Everyone here has their own desire for a giant robot.
-Me? I desire win this race so I can see my brother again.
+Me? I desire to win this race so I can see my brother again.
 The ship we are on, "The Break Room", is taking us to our first race.
 There is still quite some time before we will reach our desination.
 ===
@@ -69,24 +73,44 @@ Perhaps I can find a way to...even the odds a bit.
 
 title: Ziv_Race3_Top3
 ---
+<<set $got_canteen_drink to false>>
+
+Being in the Top 3 halfway through the prix is a great position to be in.
+However, the courses get harder from here on out.
+If I want to meet my brother again I mustn't get complacent.
 ===
 
 title: Ziv_Race3_Mid3
 ---
+<<set $got_canteen_drink to false>>
+
+Hmph, I still haven't managed to reach the Top 3.
+There's only 2 races left in the prix. So I need to really up
+my game if I want to get first place and see my brother again.
 ===
 
 title: Ziv_Race3_Bot3
 ---
+<<set $got_canteen_drink to false>>
+
+Curses! I shouldn't be losing this badly.
+It's already halfway through the prix and I'm in the bottom 3.
+At this rate I may never see my brother again...
+Get it together Ziv. It's going to take a miracle to get first now.
+And miracles have happened before...
 ===
 
 title: Ziv_Race4_Top3
 ---
+<<set $got_canteen_drink to false>>
 ===
 
 title: Ziv_Race4_Mid3
 ---
+<<set $got_canteen_drink to false>>
 ===
 
 title: Ziv_Race4_Bot3
 ---
+<<set $got_canteen_drink to false>>
 ===

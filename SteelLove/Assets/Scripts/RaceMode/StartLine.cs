@@ -25,11 +25,11 @@ public class StartLine : MonoBehaviour
 
     private void OnInitialize()
     {
-        List<CharacterSO> polePosiitons = _raceStateSO.PolePositions;
+        List<CharacterSO> polePositions = _raceStateSO.PolePositions;
         List<GameObject> shipObjs = new List<GameObject>();
-        for(int i = 0; i < polePosiitons.Count; ++i)
+        for(int i = 0; i < polePositions.Count; ++i)
         {
-            GameObject ship = Instantiate(polePosiitons[i].ShipPrefab);
+            GameObject ship = Instantiate(polePositions[i].ShipPrefab);
             ship.transform.position = _startingPoints[i].position;
             ship.transform.rotation = _startingPoints[i].rotation;
             shipObjs.Add(ship);

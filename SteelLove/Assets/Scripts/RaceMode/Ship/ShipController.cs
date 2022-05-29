@@ -37,17 +37,22 @@ public class ShipController : MonoBehaviour {
     [SerializeField] private GameObjectEventChannelSO _OnCrossedFinishLine = default;
     [SerializeField] private FloatEventChannelSO _onHealthLevelChanged = default;
     [SerializeField] private FloatEventChannelSO _onBoostLevelChanged = default;
+    [SerializeField] private GameObjectEventChannelSO _OnShipDestoryed = default;
 
     [Header("Effects")]
     [SerializeField] ParticleSystem _boostParticles;
+    [SerializeField] ParticleSystem _destructionParticles;
 
     [Header("Ship Stats")]
     [SerializeField] private float _health = 100.0f;
     [SerializeField] private float _boostTank = 0f;
 
+    [SerializeField] private GameObject _shipModel;
+
     // accessors
     public float Health => _health;
     public float BoostTank { get => _boostTank; }
+    public GameObject ShipModel => _shipModel;
 
     // required components
     private Rigidbody _rigidbody = default;
@@ -56,7 +61,7 @@ public class ShipController : MonoBehaviour {
 
     // Input values
     private float _mainThrusterInputValue;
-    private float _reverseThrusterInputValue;
+    [SerializeField] private float _reverseThrusterInputValue;
     private float _leftThrusterInputValue;
     private float _rightThrusterInputValue;
     private Vector2 _rotInputValue;
@@ -77,13 +82,16 @@ public class ShipController : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        PerformMovement();
+        if (_health > 0)
+        {
+            PerformMovement();
 
-        HandleThrusters();
+            HandleThrusters();
 
-        LimitVelocity();
+            LimitVelocity();
 
-        LimitRotation();
+            LimitRotation();
+        }
     }
 
     #region Collisions
@@ -100,21 +108,29 @@ public class ShipController : MonoBehaviour {
 
     public void ChangeHealth(float amount)
     {
-        _health += amount;
-        if (_health < 0)
+        if (_health > 0)
         {
-            // TODO: Explode
+            _health += amount;
+            if (_health < 0)
+            {
+                // TODO: Explode
+                _destructionParticles.Play();
+                _OnShipDestoryed.RaiseEvent(gameObject);
+                _shipModel.SetActive(false);
+                _rigidbody.velocity = Vector3.zero;
 
-            _health = 0;
-        }
+                _health = 0;
+            }
 
-        if (_health > 100)
-        {
-            _health = 100;
-        }
+            if (_health > 100)
+            {
+                _health = 100;
+            }
 
-        if (_onHealthLevelChanged != null) {
-            _onHealthLevelChanged.RaiseEvent(_health);
+            if (_onHealthLevelChanged != null)
+            {
+                _onHealthLevelChanged.RaiseEvent(_health);
+            }
         }
     }
 
@@ -123,11 +139,6 @@ public class ShipController : MonoBehaviour {
         if (_boostTank <= 100)
         {
             _boostTank += fillSpeed;
-
-            if (_boostParticles != null && !_boostParticles.isPlaying)
-            {
-                _boostParticles.Play();
-            }
         }
         else
         {
@@ -268,10 +279,12 @@ public class ShipController : MonoBehaviour {
             else
             {
                 _thrusters.BackThrusters(_mainThrusterInputValue);
-                _thrusters.NoseThrusters(_reverseThrustForce);
+                _thrusters.NoseThrusters(_reverseThrusterInputValue);
                 _thrusters.LeftThrusters(_leftThrusterInputValue);
                 _thrusters.RightThrusters(_rightThrusterInputValue);
                 _thrusters.TurnThrusters(_rotInputValue.x);
+
+                _thrusters.BoostThruster(_boosting);
             }
         }
     }
@@ -330,5 +343,11 @@ public class ShipController : MonoBehaviour {
             _boostPadActiveCount = 0;
             _boostPadActive = false;
         }
+    }
+
+    public void AdjustShipParametersAI(float mainThrustMult, float horThrustMult, float maxSpeedMult) {
+        _mainThrusterInputValue *= mainThrustMult;
+        _horizontalThrustForce *= horThrustMult;
+        _maxSpeed *= maxSpeedMult;
     }
 }
