@@ -3005,6 +3005,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _raceTracks:
+  - {fileID: 11400000, guid: 315698e975530634dbc2dc5be3aa1c6f, type: 2}
   - {fileID: 11400000, guid: b3db9cf215e5dfa4687746acaf54dfe9, type: 2}
   - {fileID: 11400000, guid: f8a4abbfac411a64cb2230e90793360f, type: 2}
   - {fileID: 11400000, guid: 2c074241b2d7e634aa0f95d3abb8a2b4, type: 2}
