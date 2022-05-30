@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Room : MonoBehaviour {
 
+    [SerializeField] float _musicVolume = 0.1f;
+
     GameObject _mainCamera;
 
     void Awake() {
@@ -21,6 +23,8 @@ public class Room : MonoBehaviour {
     public void Enter() {
         gameObject.SetActive(true);
         _mainCamera.transform.position = new Vector3(transform.position.x, transform.position.y, _mainCamera.transform.position.z);
+
+        FindObjectOfType<GameAudio>().SetVolume(_musicVolume);
     }
 
     public void Exit() {

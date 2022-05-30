@@ -30,6 +30,7 @@ title: Ziv_Race1
 <<set $has_batteries to 0>>
 <<set $has_milk to 0>>
 <<set $has_grazeloid_translator to false>>
+<<set $has_dark_orb to false>>
 
 <<set $has_screwdriver to false>>
 <<set $ship_upgrade_parts to 0>>

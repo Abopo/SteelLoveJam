@@ -138,6 +138,7 @@ title: Triks_Lockbox_Open
 <<if $got_screwdriver is false>>
     <<set $got_screwdriver to true>>
     <<set $has_screwdriver to true>>
+    <<play_item_sound>>
     < Got <color=orange>Grazeloid Screwdriver</color> >
 <<endif>>
 ===
@@ -145,6 +146,7 @@ title: Triks_Lockbox_Open
 title: Ship_Upgrade_Parts
 ---
 <<set $ship_upgrade_parts to $ship_upgrade_parts+1>>
+<<play_item_sound>>
 < Got <color=orange>Ship Upgrade Parts</color> >
 ===
 
@@ -152,6 +154,7 @@ title: Phone
 ---
 <<if $has_phone is 0>>
     <<set $has_phone to 1>>
+    <<play_item_sound>>
     < Got <color=orange>Old Phone</color> >
 <<else>>
     <<jump Nothing>>
@@ -163,6 +166,7 @@ title: Gigantipla
 <<if $has_gigantipla is 0>>
     The security system beeps, and the cupboard opens up.
     <<set $has_gigantipla to 1>>
+    <<play_item_sound>>
     < Got <color=orange>Gigantipla</color> >
 <<else>>
     <<jump Nothing>>
@@ -173,6 +177,7 @@ title: Buof_Plushie
 ---
 <<if $has_buof_plushie is 0>>
     <<set $has_buof_plushie to 1>>
+    <<play_item_sound>>
     < Got <color=orange>Buof Plushie</color> >
 <<else>>
     <<jump Nothing>>
@@ -183,6 +188,7 @@ title: Headband
 ---
 <<if $has_headband is 0>>
     <<set $has_headband to 1>>
+    <<play_item_sound>>
     < Got <color=orange>Headband 2.0</color> >
 <<else>>
     <<jump Nothing>>
@@ -193,6 +199,7 @@ title: Batteries
 ---
 <<set $has_batteries to 1>>
 
+<<play_item_sound>>
 < Got <color=orange>Batteries</color> >
 ===
 
@@ -200,6 +207,7 @@ title: Batteries_2
 ---
 <<if $has_batteries is 0>>
     <<set $has_batteries to 1>>
+    <<play_item_sound>>
     < Got <color=orange>Batteries</color> >
 <<else>>
     <<jump Nothing>>
@@ -211,6 +219,7 @@ title: Green_Milk
 <<if $has_milk is 0>>
     The sticky fridge door finally gives way and swings open.
     <<set $has_milk to 1>>
+    <<play_item_sound>>
     < Got <color=orange>Green Milk</color> >
 <<else>>
     <<jump Nothing>>
@@ -219,5 +228,9 @@ title: Green_Milk
 
 title: Dark_Shippie_Item
 ---
-< Got <color=orange>Dark Orb</color> >
+<<if $has_dark_orb is false>>
+    <<set $has_dark_orb to true>>
+    <<play_item_sound>>
+    < Got <color=orange>Dark Orb</color> >
+<<endif>>
 ===

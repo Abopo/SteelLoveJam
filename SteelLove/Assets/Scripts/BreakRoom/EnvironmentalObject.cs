@@ -8,9 +8,11 @@ public class EnvironmentalObject : Interactable {
     [SerializeField] string _name;
 
     MainUI _mainUI;
+    AudioSource _audioSource;
 
     void Awake() {
         _mainUI = FindObjectOfType<MainUI>();
+        _audioSource = GetComponent<AudioSource>();
     }
 
     // Start is called before the first frame update
@@ -26,6 +28,11 @@ public class EnvironmentalObject : Interactable {
     public override void Interact() {
         base.Interact();
 
-        _mainUI.DisplayDialogue(_name);
+        if (_name != "") {
+            _mainUI.DisplayDialogue(_name);
+        }
+        if (_audioSource != null) {
+            _audioSource.Play();
+        }
     }
 }

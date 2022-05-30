@@ -19,4 +19,4 @@ MonoBehaviour:
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
-  sceneMusic: {fileID: 0}
+  sceneMusic: {fileID: 8300000, guid: 45463c0c656af4c448c21665a7c318a1, type: 3}

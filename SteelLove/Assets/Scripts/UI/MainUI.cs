@@ -12,8 +12,11 @@ public class MainUI : MonoBehaviour {
 
     string _dialogueToRun = "";
 
+    AudioSource _audioSource;
+
     void Awake() {
         _playerController = FindObjectOfType<PlayerController>();
+        _audioSource = GetComponent<AudioSource>();
     }
     // Start is called before the first frame update
     void Start() {
@@ -69,8 +72,18 @@ public class MainUI : MonoBehaviour {
         _playerController.Unfreeze();
     }
 
+    public void PlayGetSound() {
+        _audioSource.Play();
+    }
+
+    [YarnCommand("play_item_sound")]
+    public static void YarnPlayGetSound() {
+        FindObjectOfType<MainUI>().PlayGetSound();
+    }
+
     [YarnCommand("get_item")]
     public static void GetItem(string itemName) {
+        FindObjectOfType<MainUI>().PlayGetSound();
         FindObjectOfType<MainUI>().DisplayDialogue(itemName);
     }
 

@@ -15,9 +15,11 @@ public class Lockbox : MonoBehaviour {
     bool _opened;
 
     MainUI _mainUI;
+    AudioSource _audioSource;
 
     private void Awake() {
         _mainUI = FindObjectOfType<MainUI>();
+        _audioSource = GetComponent<AudioSource>();
     }
     // Start is called before the first frame update
     void Start() {
@@ -37,6 +39,8 @@ public class Lockbox : MonoBehaviour {
         } else {
             _openAttempt[_openIndex] = lockSide;
             _openIndex++;
+
+            _audioSource.Play();
 
             // If we've reached the size of our lock pattern
             if (_openIndex >= _lockpattern.Length) {

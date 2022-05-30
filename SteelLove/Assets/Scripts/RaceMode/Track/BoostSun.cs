@@ -13,6 +13,12 @@ public class BoostSun : MonoBehaviour {
     private List<GameObject> _spawnedParticleSystem = new List<GameObject>();
     private List<ShipController> _attachedShips = new List<ShipController>();
 
+    AudioSource _audioSource;
+
+    void Start() {
+        _audioSource = GetComponent<AudioSource>();
+    }
+
     // Update is called once per frame
     void Update() {
         bool anyShips = false;
@@ -23,10 +29,18 @@ public class BoostSun : MonoBehaviour {
                 ship.RefillBoost(fillSpeed * Time.deltaTime);
 
                 SpawnParticlesIfNeeded(ship);
+
+                if(!_audioSource.isPlaying) {
+                    _audioSource.Play();
+                }
             }
             else
             {
                 DestroyParticlesIfNeeded(ship);
+
+                if (_audioSource.isPlaying) {
+                    StartCoroutine(AudioFadeOut.FadeOut(_audioSource, 0.1f));
+                }
             }
         }
     }

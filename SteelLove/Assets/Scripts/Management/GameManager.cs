@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour {
     [SerializeField] List<CharacterSO> _characterList = new List<CharacterSO>();
     public List<CharacterSO> CharacterList { get => _characterList; }
 
+
     // Singleton
     public static GameManager instance;
     bool _alive;

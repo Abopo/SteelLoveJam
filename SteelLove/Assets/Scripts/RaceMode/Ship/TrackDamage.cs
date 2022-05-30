@@ -22,6 +22,14 @@ public class TrackDamage : MonoBehaviour
     private float _currInsideTrackHealing;
     private float _currInsideTrackTimer;
 
+    ShipController _ship;
+    ShipAudio _shipAudio;
+
+    private void Start() {
+        _ship = GetComponent<ShipController>();
+        _shipAudio = GetComponentInChildren<ShipAudio>();
+    }
+
     private void FixedUpdate()
     {
         if (IsOffTrack())
@@ -34,6 +42,10 @@ public class TrackDamage : MonoBehaviour
             _currOutTrackTimer += Time.deltaTime;
 
             DealDamage();
+
+            if (_shipAudio != null) {
+                _shipAudio.OffTrackAlarm();
+            }
         }
         else
         {
@@ -64,7 +76,7 @@ public class TrackDamage : MonoBehaviour
     private void DealDamage()
     {
         // TODO: 
-        GetComponent<ShipController>().ChangeHealth(-_currOutTrackDamage);
+        _ship.ChangeHealth(-_currOutTrackDamage);
         if (_offTrackDamageParticles.isPlaying == false)
         {
             _offTrackDamageParticles.Play();
@@ -73,10 +85,11 @@ public class TrackDamage : MonoBehaviour
 
     private void Heal()
     {
-        GetComponent<ShipController>().ChangeHealth(_currInsideTrackHealing);
+        _ship.ChangeHealth(_currInsideTrackHealing);
         if (_offTrackDamageParticles.isPlaying)
         {
             _offTrackDamageParticles.Stop();
         }
     }
+
 }

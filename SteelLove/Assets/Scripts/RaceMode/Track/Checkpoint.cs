@@ -15,10 +15,14 @@ public class Checkpoint : MonoBehaviour
     private Material _activeMaterial;
     private Material _passedMaterial;
 
+    AudioSource _audioSource;
+
     void Awake() {
         _baseMaterial = _bannerMeshFront.material;
         _activeMaterial = Resources.Load<Material>("Materials/Checkpoint_Active");
         _passedMaterial = Resources.Load<Material>("Materials/Checkpoint_Passed");
+
+        _audioSource = GetComponent<AudioSource>();
     }
 
     private void OnEnable()
@@ -46,6 +50,8 @@ public class Checkpoint : MonoBehaviour
             {
                 _bannerMeshFront.material = _passedMaterial;
                 _bannerMeshBack.material = _passedMaterial;
+
+                _audioSource.Play();
             }
             else if(checkPointTracker.LastPassedCheckpoint == _checkpointNumber -1)
             {

@@ -11,9 +11,12 @@ public class CollisionEffects : MonoBehaviour
 
     private Rigidbody _rigidbody;
 
+    ShipAudio _shipAudio;
+
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
+        _shipAudio = GetComponentInChildren<ShipAudio>();
     }
 
     private void OnCollisionStay(Collision collision)
@@ -24,6 +27,10 @@ public class CollisionEffects : MonoBehaviour
             Quaternion rot = Quaternion.FromToRotation(Vector3.up, contact.normal);
             Vector3 pos = contact.point;
             Instantiate(_collisionParticles, pos, rot);
+
+            if (_shipAudio != null) {
+                _shipAudio.PlaySparks();
+            }
         }
     }
 }

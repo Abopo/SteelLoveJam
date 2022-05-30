@@ -71,12 +71,16 @@ public class ShipController : MonoBehaviour {
     private bool _boostPadActive;
     private int _boostPadActiveCount;
 
+    ShipAudio _shipAudio;
+
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
         _animator = GetComponent<Animator>();
 
         _thrusters = GetComponentInChildren<ShipThrusters>();
+
+        _shipAudio = GetComponentInChildren<ShipAudio>();
     }
 
     private void FixedUpdate()
@@ -123,6 +127,10 @@ public class ShipController : MonoBehaviour {
                 _OnShipDestoryed.RaiseEvent(gameObject);
                 _shipModel.SetActive(false);
                 _rigidbody.velocity = Vector3.zero;
+                
+                if (_shipAudio != null) {
+                    _shipAudio.PlayExplosion();
+                }
 
                 _health = 0;
             }
