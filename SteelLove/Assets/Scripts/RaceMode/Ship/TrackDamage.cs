@@ -15,6 +15,8 @@ public class TrackDamage : MonoBehaviour
 
     [SerializeField] private GameObject _centerPoint;
 
+    [SerializeField] private ParticleSystem _offTrackDamageParticles;
+
     private float _currOutTrackDamage;
     private float _currOutTrackTimer;
     private float _currInsideTrackHealing;
@@ -63,10 +65,18 @@ public class TrackDamage : MonoBehaviour
     {
         // TODO: 
         GetComponent<ShipController>().ChangeHealth(-_currOutTrackDamage);
+        if (_offTrackDamageParticles.isPlaying == false)
+        {
+            _offTrackDamageParticles.Play();
+        }
     }
 
     private void Heal()
     {
         GetComponent<ShipController>().ChangeHealth(_currInsideTrackHealing);
+        if (_offTrackDamageParticles.isPlaying)
+        {
+            _offTrackDamageParticles.Stop();
+        }
     }
 }

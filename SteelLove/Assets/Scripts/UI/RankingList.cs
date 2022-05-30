@@ -19,8 +19,8 @@ public class RankingList : MonoBehaviour {
 
         // Fill out the ranking list
         for(int i = 0; i < 8; ++i) {
-            _charaRankUIs[i]._characterText.text = GameManager.instance.rankingList[i].charaName;
-            _charaRankUIs[i]._pointsText.text = GameManager.instance.rankingList[i].points.ToString();
+            _charaRankUIs[i]._characterText.text = GameManager.instance.CharacterList[i].name;
+            _charaRankUIs[i]._pointsText.text = GameManager.instance.CharacterList[i].seasonPoints.ToString();
         }
     }
     private void OnEnable() {

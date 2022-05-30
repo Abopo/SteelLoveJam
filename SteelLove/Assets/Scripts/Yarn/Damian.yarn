@@ -107,5 +107,6 @@ You never know when you might need some good batteries.
 
 title: Damian_GreenMilk
 ---
+<<set $has_milk to 2>>
 <<get_item Ship_Upgrade_Parts>>
 ===

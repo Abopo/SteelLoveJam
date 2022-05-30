@@ -86,5 +86,6 @@ I'm underage you know?
 
 title: Charlene_Gigantipla
 ---
+<<set $has_gigantipla to 2>>
 <<get_item Ship_Upgrade_Parts>>
 ===

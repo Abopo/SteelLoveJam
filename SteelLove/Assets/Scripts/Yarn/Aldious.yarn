@@ -84,14 +84,19 @@ Tell ya what. You like Gigantipla? It's all the rage these days.
 I won an exclusive, giga-grade Gigantipla last week in a raffle.
 I don't care much for it, so you can have it if ya want.
 -> I do not want your toy.
-    Great! It's in my room.
-    You can go grab it from there.
+    Great! It's in my room. You can go grab it from the shelves there.
+    They've got a security system install though,
+    and I may have accidently recorded the back of my head for the security photo...
+    So you gotta open it while facing away.
 -> I accept.
-    Great! It's in my room.
-    You can go grab it from there.
+    Great! It's in my room. You can go grab it from the shelves there.
+    They've got a security system installed though,
+    and I may have accidently recorded the back of my head for the security photo...
+    So you gotta open it while facing away.
 ===
 
 title: Aldious_Headband
 ---
+<<set $has_headband to 2>>
 <<get_item Ship_Upgrade_Parts>>
 ===

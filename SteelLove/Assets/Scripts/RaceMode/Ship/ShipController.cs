@@ -40,7 +40,6 @@ public class ShipController : MonoBehaviour {
     [SerializeField] private GameObjectEventChannelSO _OnShipDestoryed = default;
 
     [Header("Effects")]
-    [SerializeField] ParticleSystem _boostParticles;
     [SerializeField] ParticleSystem _destructionParticles;
 
     [Header("Ship Stats")]
@@ -102,6 +101,12 @@ public class ShipController : MonoBehaviour {
 
         if(collision.tag == "Hazard") {
             ChangeHealth(-collision.GetComponent<Hazard>().damage);
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision) {
+        if (collision.gameObject.tag == "Hazard") {
+            ChangeHealth(-collision.gameObject.GetComponent<Hazard>().damage);
         }
     }
     #endregion

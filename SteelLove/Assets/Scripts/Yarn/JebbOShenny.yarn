@@ -75,9 +75,12 @@ You're welcome to a glass if you wish.
     Your loss.
 -> I love green milk. Thank you Jebb.
     You are a man of good taste. Much like myself.
+    Check the fridge in my room. The door is kind of sticky though.
+    So just give it a good long pull if it doesn't open right away.
 ===
 
 title: Jebb_BuofPlush
 ---
+<<set $has_buof_plushie to 2>>
 <<get_item Ship_Upgrade_Parts>>
 ===

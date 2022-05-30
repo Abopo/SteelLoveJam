@@ -2,10 +2,13 @@
 ---
 <<if $has_grazeloid_translator == true>>
     Oh! Hello! I see you have a translator.
-    
+    You're the first person to come talk to me since I got here.
+    As such is grazeloid tradition, I will tell you a secret.
+    I was exploring the second hanger and spotted what looked like a hole in the wall.
+    I was too big to fit through, but maybe your slim build can fit.
     <<jump Trik_Quest>>
 <<else>>
-    asjkldf!
+    jknlxvfe! yg... njko waklm.
 <<endif>>
 ===
 
@@ -15,7 +18,7 @@ title: Trik_Race2_Top3
     Hello!
     <<jump Trik_Quest>>
 <<else>>
-    asjkldf!
+    nmri qwpn fnfoawioer.
 <<endif>>
 ===
 
@@ -25,7 +28,7 @@ title: Trik_Race2_Mid3
     Hello!
     <<jump Trik_Quest>>
 <<else>>
-    asjkldf!
+    qwerijo vfd j tyjnktiu.
 <<endif>>
 ===
 
@@ -35,32 +38,76 @@ title: Trik_Race2_Bot3
     Hello!
     <<jump Trik_Quest>>
 <<else>>
-    asjkldf!
+    tbreiu unekrvn wnwenkjlas hiu!
 <<endif>>
 ===
 
 title: Trik_Race3_Top3
 ---
+<<if $has_grazeloid_translator == true>>
+    Hello!
+    <<jump Trik_Quest>>
+<<else>>
+    nmri qwpn fnfoawioer.
+<<endif>>
 ===
 
 title: Trik_Race3_Mid3
 ---
+title: Trik_Race2_Mid3
+---
+<<if $has_grazeloid_translator == true>>
+    Hello!
+    <<jump Trik_Quest>>
+<<else>>
+    qwerijo vfd j tyjnktiu.
+<<endif>>
 ===
 
 title: Trik_Race3_Bot3
 ---
+title: Trik_Race2_Bot3
+---
+<<if $has_grazeloid_translator == true>>
+    Hello!
+    <<jump Trik_Quest>>
+<<else>>
+    tbreiu unekrvn wnwenkjlas hiu!
+<<endif>>
 ===
 
 title: Trik_Race4_Top3
 ---
+<<if $has_grazeloid_translator == true>>
+    Hello!
+    <<jump Trik_Quest>>
+<<else>>
+    nmri qwpn fnfoawioer.
+<<endif>>
 ===
 
 title: Trik_Race4_Mid3
 ---
+title: Trik_Race2_Mid3
+---
+<<if $has_grazeloid_translator == true>>
+    Hello!
+    <<jump Trik_Quest>>
+<<else>>
+    qwerijo vfd j tyjnktiu.
+<<endif>>
 ===
 
 title: Trik_Race4_Bot3
 ---
+title: Trik_Race2_Bot3
+---
+<<if $has_grazeloid_translator == true>>
+    Hello!
+    <<jump Trik_Quest>>
+<<else>>
+    tbreiu unekrvn wnwenkjlas hiu!
+<<endif>>
 ===
 
 title: Trik_Quest
@@ -72,4 +119,19 @@ title: Trik_Quest
 
 title: Trik_Drink
 ---
+<<set $has_canteen_drink to false>>
+
+Oh! You're giving this to me?
+You're a surprisingly kind person I see.
+*gulp* Mmmm, so delicious! I can see why your kinds enjoy this activity.
+As is grazeloid tradition, I muct give you something in return.
+How are you doing in the race? Any particular racer giving you trouble?
+-> Of course not. I am the fastest here.
+    Well, just in case, I have a grazeloid screwdriver in the lockbox in my room.
+    You could use it to make some... adjustments to a rival racers ship.
+    The lockbox's combination is Right, Down, Up, Left.
+-> Perhaps...some equal my skill.
+    Well, just in case, I have a grazeloid screwdriver in the lockbox in my room.
+    You could use it to make some... adjustments to a rival racers ship.
+    The lockbox's combination is Right, Down, Up, Left.
 ===

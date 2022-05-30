@@ -37,36 +37,78 @@ Fastest ship this side of Cranika.
 title: Ship_Trik
 ---
 Trik's ship.
+<<if $has_screwdriver is true>>
+-> Sabotage
+    <<set $has_screwdriver to false>>
+    <<sabotage Trik>>
+-> Leave
+<<endif>>
 ===
 
 title: Ship_Jebb
 ---
 Jebb's ship.
+<<if $has_screwdriver is true>>
+-> Sabotage
+    <<set $has_screwdriver to false>>
+    <<sabotage Jebb>>
+-> Leave
+<<endif>>
 ===
 
 title: Ship_Sumiv
 ---
 Sumiv's Ship
+<<if $has_screwdriver is true>>
+-> Sabotage
+    <<set $has_screwdriver to false>>
+    <<sabotage Sumiv>>
+-> Leave
+<<endif>>
 ===
 
 title: Ship_Frieda
 ---
 Ms. Frieda's ship.
+<<if $has_screwdriver is true>>
+-> Sabotage
+    <<set $has_screwdriver to false>>
+    <<sabotage Frieda>>
+-> Leave
+<<endif>>
 ===
 
 title: Ship_Aldious
 ---
 Aldious'...ship.
+<<if $has_screwdriver is true>>
+-> Sabotage
+    <<set $has_screwdriver to false>>
+    <<sabotage Aldious>>
+-> Leave
+<<endif>>
 ===
 
 title: Ship_Charlene
 ---
 Charlene's ship.
+<<if $has_screwdriver is true>>
+-> Sabotage
+    <<set $has_screwdriver to false>>
+    <<sabotage Charlene>>
+-> Leave
+<<endif>>
 ===
 
 title: Ship_Damian
 ---
 Damian's ship.
+<<if $has_screwdriver is true>>
+-> Sabotage
+    <<set $has_screwdriver to false>>
+    <<sabotage Damian>>
+-> Leave
+<<endif>>
 ===
 
 title: Grazeloid_Translator
@@ -119,6 +161,7 @@ title: Phone
 title: Gigantipla
 ---
 <<if $has_gigantipla is 0>>
+    The security system beeps, and the cupboard opens up.
     <<set $has_gigantipla to 1>>
     < Got <color=orange>Gigantipla</color> >
 <<else>>
@@ -166,9 +209,15 @@ title: Batteries_2
 title: Green_Milk
 ---
 <<if $has_milk is 0>>
+    The sticky fridge door finally gives way and swings open.
     <<set $has_milk to 1>>
     < Got <color=orange>Green Milk</color> >
 <<else>>
     <<jump Nothing>>
 <<endif>>
+===
+
+title: Dark_Shippie_Item
+---
+< Got <color=orange>Dark Orb</color> >
 ===

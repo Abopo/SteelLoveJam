@@ -7,6 +7,7 @@ public class CharacterSO : DescriptionBaseSO
 {
     public GameObject ShipPrefab => _shipPrefab;
     [SerializeField] private GameObject _shipPrefab;
-    [SerializeField] private int _seasonPoints;
-    [SerializeField] private AI_DIFFICULTY _difficulty;
+    public int seasonPoints;
+    public AI_DIFFICULTY difficulty;
+    public bool sabotaged;
 }

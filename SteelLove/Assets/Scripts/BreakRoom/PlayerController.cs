@@ -15,7 +15,12 @@ public class PlayerController : MonoBehaviour {
     private Collider2D _collider2D;
 
     private SpriteRenderer _sprite;
+    public bool facingRight => _sprite.flipX;
+
     private SpriteRenderer _interactIcon;
+
+    private float _interactValue;
+    public float InteractValue => _interactValue;
 
     MainUI _mainUI;
     [SerializeField] STATE _curState; // Ziv's current ranking placement
@@ -130,6 +135,8 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void Interact(float value) {
+        _interactValue = value;
+
         if (_inControl) {
             CheckInteract();
         }
@@ -170,9 +177,11 @@ public class PlayerController : MonoBehaviour {
 
     public void Freeze() {
         _inControl = false;
+        _interactIcon.enabled = false;
     }
 
     public void Unfreeze() {
         _inControl = true;
+
     }
 }

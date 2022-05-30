@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5cc6a130b87f5784ca7f4ec86992a11e, type: 3}
-  m_Name: Jeb O'Shenny
+  m_Name: Jebb O'Shenny
   m_EditorClassIdentifier: 
   description: 
   _shipPrefab: {fileID: 16834316324134429, guid: c040d227a8a3ae34591a721980b2796f,

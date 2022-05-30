@@ -81,5 +81,6 @@ Be sure to knock 3 times quick to make sure there's no one in there though!
 
 title: Frieda_Phone
 ---
+<<set $has_phone to 2>>
 <<get_item Ship_Upgrade_Parts>>
 ===
