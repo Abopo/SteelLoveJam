@@ -5,7 +5,11 @@
     You're the first person to come talk to me since I got here.
     As such is grazeloid tradition, I will tell you a secret.
     I was exploring the second hanger and spotted what looked like a hole in the wall.
-    I was too big to fit through, but maybe your slim build can fit.
+    I was too big to fit through, but maybe your slim build could squeeze in.
+    -> Thank you for the information.
+        No problem!
+    -> I'm claustrophobic...
+        Never a better time to face your fears than the now!
     <<jump Trik_Quest>>
 <<else>>
     jknlxvfe! yg... njko waklm.
@@ -15,7 +19,9 @@
 title: Trik_Race2_Top3
 ---
 <<if $has_grazeloid_translator == true>>
-    Hello!
+    Hahaha! I knew the improvements I made to my ship would pay off!
+    Ohhh I can't wait to get my hands on that giant robot.
+    I'm going to make a fortune off of all it's parts!
     <<jump Trik_Quest>>
 <<else>>
     nmri qwpn fnfoawioer.
@@ -25,7 +31,8 @@ title: Trik_Race2_Top3
 title: Trik_Race2_Mid3
 ---
 <<if $has_grazeloid_translator == true>>
-    Hello!
+    Hmm...seems like my ship could use a little more tuning.
+    I should have enough time before the next race to fix it up.
     <<jump Trik_Quest>>
 <<else>>
     qwerijo vfd j tyjnktiu.
@@ -35,7 +42,10 @@ title: Trik_Race2_Mid3
 title: Trik_Race2_Bot3
 ---
 <<if $has_grazeloid_translator == true>>
-    Hello!
+    Ugh! This hunk o' junks useless!
+    I'll have to replace virtually every part at this rate!
+    If only I'd had saved more money in my stash beforehand,
+    I'd have been able to buy a better ship...
     <<jump Trik_Quest>>
 <<else>>
     tbreiu unekrvn wnwenkjlas hiu!
