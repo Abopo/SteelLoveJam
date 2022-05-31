@@ -55,7 +55,9 @@ title: Trik_Race2_Bot3
 title: Trik_Race3_Top3
 ---
 <<if $has_grazeloid_translator == true>>
-    Hello!
+    Oh! Hello again! These races are no problem at all are they?
+    Turns out if you just build a better ship than everyone else
+    you win! Who woulda thought huh?
     <<jump Trik_Quest>>
 <<else>>
     nmri qwpn fnfoawioer.
@@ -67,7 +69,9 @@ title: Trik_Race3_Mid3
 title: Trik_Race2_Mid3
 ---
 <<if $has_grazeloid_translator == true>>
-    Hello!
+    Hmm... I'm still unable to keep up with the faster racers.
+    I'll have to take a look at their ships to see what makes them so fast.
+    Perhaps I can trade out some parts...
     <<jump Trik_Quest>>
 <<else>>
     qwerijo vfd j tyjnktiu.
@@ -79,7 +83,11 @@ title: Trik_Race3_Bot3
 title: Trik_Race2_Bot3
 ---
 <<if $has_grazeloid_translator == true>>
-    Hello!
+    Gragh! Why am I still losing?!
+    I've upgraded my ship with all the best parts I could find!
+    I can't lose this grand prix...
+    If I do I'll be out of money, and the Empire will surely catch me again.
+    There must be something different about the other racers ships...
     <<jump Trik_Quest>>
 <<else>>
     tbreiu unekrvn wnwenkjlas hiu!
@@ -134,14 +142,14 @@ title: Trik_Drink
 Oh! You're giving this to me?
 You're a surprisingly kind person I see.
 *gulp* Mmmm, so delicious! I can see why your kinds enjoy this activity.
-As is grazeloid tradition, I muct give you something in return.
+As is grazeloid tradition, I must give you something in return.
 How are you doing in the race? Any particular racer giving you trouble?
 -> Of course not. I am the fastest here.
     Well, just in case, I have a grazeloid screwdriver in the lockbox in my room.
     You could use it to make some... adjustments to a rival racers ship.
-    The lockbox's combination is Right, Down, Up, Left.
+    The lockbox's combination is <color=red>Right, Down, Up, Left</color>.
 -> Perhaps...some equal my skill.
     Well, just in case, I have a grazeloid screwdriver in the lockbox in my room.
     You could use it to make some... adjustments to a rival racers ship.
-    The lockbox's combination is Right, Down, Up, Left.
+    The lockbox's combination is <color=red>Right, Down, Up, Left</color>.
 ===

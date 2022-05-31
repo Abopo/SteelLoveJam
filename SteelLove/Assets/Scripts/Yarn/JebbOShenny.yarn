@@ -4,20 +4,23 @@ position: -185,-17
 Ahh, I'd heard you were joining the race too Ziv.
 Hard to resist a prize like that, eh?
 You'd best set your hopes aside though, because I will be the one to win this race!
-
+-> You wish Jebb. We both know I'm a better racer than you.
+    Perhaps in the past. But I've got a few new tricks up my blanket this time around.
+-> If you say so.
+    Oh, I do.
 <<jump Jebb_Quest>>
 ===
 
 title: Jebb_Race2_Top3
 ---
-I'm one step closer to that which I long for...
+Yes, I am one step closer to those which I long for...
 <<jump Jebb_Quest>>
 ===
 
 title: Jebb_Race2_Mid3
 ---
 Mmm... not a great start, but nothing I can't handle.
-I've got some tricks up my sleeve for the next race heh heh heh.
+Time to pull out the big guns.
 <<jump Jebb_Quest>>
 ===
 
@@ -29,6 +32,10 @@ No...no... I will never feel their love if I continue to lose like this...
 
 title: Jebb_Race3_Top3
 ---
+What's wrong Ziv? Weren't expecting me to do this well?
+I told you I am going to win this Grand Prix.
+And I'm a man of my word.
+<<jump Jebb_Quest>>
 ===
 
 title: Jebb_Race3_Mid3
@@ -41,6 +48,13 @@ title: Jebb_Race3_Bot3
 
 title: Jebb_Race4_Top3
 ---
+I told you I would win this grand prix Ziv.
+And with a true giant robot in my possession,
+Singuliera won't be able to resist coming to me.
+Finally, after all this time I will have both, and be complete.
+-> Ugh, I've heard enough.
+-> Good for you I guess.
+<<jump Jebb_Quest>>
 ===
 
 title: Jebb_Race4_Mid3
@@ -76,11 +90,21 @@ You're welcome to a glass if you wish.
 -> I love green milk. Thank you Jebb.
     You are a man of good taste. Much like myself.
     Check the fridge in my room. The door is kind of sticky though.
-    So just give it a good long pull if it doesn't open right away.
+    So just give it a <color=red>good long pull</color> if it doesn't open right away.
 ===
 
 title: Jebb_BuofPlush
 ---
-<<set $has_buof_plushie to 2>>
-<<get_item Ship_Upgrade_Parts>>
+Is that, perhaps, a Buof plushie?
+-> Why? You like Buof's?
+    I...love them. They are the softest beings in the galaxy.
+    Would you be willing to give that to me?
+    -> Sure, for some upgrade parts.
+        Very well, take your parts.
+        <<set $has_buof_plushie to 2>>
+        <<get_item Ship_Upgrade_Parts>>
+    -> You've convinced me to keep it.
+        An unfortunate, but logical choice.
+-> Nope.
+    I...see.
 ===

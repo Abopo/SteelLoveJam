@@ -48,6 +48,7 @@ You got any racing tips you could tell me?
 
 title: Damian_Race3_Top3
 ---
+
 ===
 
 title: Damian_Race3_Mid3
@@ -60,6 +61,13 @@ title: Damian_Race3_Bot3
 
 title: Damian_Race4_Top3
 ---
+I...I've done these races so many times now.
+My power is almost out...but I'm finally in the Top 3 at the last race.
+This is my last chance, and I will win this time.
+Which means finally beating you, Ziv.
+Out of all my runs, you've been the biggest problem.
+But this time I will win it all! For Singuliera!
+<<jump Damian_Quest>>
 ===
 
 title: Damian_Race4_Mid3
@@ -68,6 +76,10 @@ title: Damian_Race4_Mid3
 
 title: Damian_Race4_Bot3
 ---
+Well, it's hopeless to win this time around.
+I should still practice on the last track before trying again.
+I don't know how many chances I have left in me...
+<<jump Damian_Quest>>
 ===
 
 title: Damian_Quest
@@ -107,6 +119,10 @@ You never know when you might need some good batteries.
 
 title: Damian_GreenMilk
 ---
+You're giving this to me? Thanks!
+How did you know the way my powers recharge?
+Actually, don't tell me. I'm sure you have your mysterious ways.
+Here, take these. With my powers recharged, I won't need them.
 <<set $has_milk to 2>>
 <<get_item Ship_Upgrade_Parts>>
 ===

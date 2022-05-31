@@ -37,6 +37,16 @@ but that's impossible. There's should only be 1.
 
 title: Sumiv_Race3_Top3
 ---
+Great, I'm in the Top 3. Now if I could only find out what's up with my goggles...
+-> Please explain further.
+    Well, these are Robot Finding Goggles. I can tune them to search by size.
+    They, of course, have only ever shown 1 response, Gigantimous.
+    But recently, they've been occasionally showing countless responses.
+    Only for a brief moment though...
+    It's possbly due to it's low batteries, but I have to make sure.
+-> Good luck with that.
+    Thanks, I guess.
+<<jump Sumiv_Quest>>
 ===
 
 title: Sumiv_Race3_Mid3
@@ -45,6 +55,10 @@ title: Sumiv_Race3_Mid3
 
 title: Sumiv_Race3_Bot3
 ---
+Damn, if I keep performing like this, I may never be able to complete my research.
+I need to measure the new giant robot in person,
+to prove that other giant robots can feasibly exist elsewhere in the universe.
+<<jump Sumiv_Quest>>
 ===
 
 title: Sumiv_Race4_Top3
@@ -81,7 +95,7 @@ You can't understand a thing he says can you?
 I saw a grazeloid translator here in the storage room.
 Where was it again?
 I think it was in one of those orange crates.
-I'm pretty thourough, so you might need to dig a bit to find it.
+I'm pretty thourough, so you might need to <color=red>dig a bit</color> to find it.
 
 -> I wish not to speak to that creature.
     Fair enough. It's still around if you need it.

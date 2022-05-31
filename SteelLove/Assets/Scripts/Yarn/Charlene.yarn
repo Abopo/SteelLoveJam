@@ -36,6 +36,11 @@ Without Gigantimous to lead me, I can't accomplish anything...
 
 title: Charlene_Race3_Top3
 ---
+Somehow, I am still in the Top 3.
+Am I actually just good at this racing thing?
+It's pretty fun too! I like going fast around the turns.
+Maybe I can make it on my own after all...
+<<jump Charlene_Quest>>
 ===
 
 title: Charlene_Race3_Mid3
@@ -44,6 +49,10 @@ title: Charlene_Race3_Mid3
 
 title: Charlene_Race3_Bot3
 ---
+*sigh* Still in last, as expected.
+At least regardless of how I do, there will be another giant robot.
+They'll never be Gigantimous, but it's better than nothing...
+<<jump Charlene_Quest>>
 ===
 
 title: Charlene_Race4_Top3
@@ -86,6 +95,14 @@ I'm underage you know?
 
 title: Charlene_Gigantipla
 ---
-<<set $has_gigantipla to 2>>
-<<get_item Ship_Upgrade_Parts>>
+Woah! Is that the giga-grade Gigantipla?!
+They only made like 10 of those in the whole galaxy!
+How did you get your hands on one?
+Whatever, I'll trade you for it. What do you want?
+-> I'd like some ship upgrade parts.
+    Deal! Here ya go!
+    <<set $has_gigantipla to 2>>
+    <<get_item Ship_Upgrade_Parts>>
+-> This gigantipla is priceless.
+    Crud, well let me know if you change your mind.
 ===

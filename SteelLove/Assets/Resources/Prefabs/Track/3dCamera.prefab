@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 4028441556968651221}
   - component: {fileID: 4028441556968651222}
   - component: {fileID: 7932091578071127178}
-  - component: {fileID: 3359360175880774420}
   m_Layer: 0
   m_Name: 3dCamera
   m_TagString: MainCamera
@@ -151,49 +150,4 @@ MonoBehaviour:
   camSnapping: 0
   shadowType: 0
   ditherSky: 0
-  ditherType: 1
---- !u!114 &3359360175880774420
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4028441556968651223}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b416fbce5a38cc47a3a1e709f95f5e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cfuStatus: PSXEffects v1.18.3 - version ahead?!
-  sections: 01010100
-  customRes: {x: 620, y: 480}
-  resolutionFactor: 1
-  limitFramerate: 30
-  skipFrames: 1
-  affineMapping: 1
-  clampAffine: 0
-  affineBounds: 0
-  polygonalDrawDistance: -1
-  vertexInaccuracy: 30
-  polygonInaccuracy: 2
-  colorDepth: 5
-  scanlines: 0
-  scanlineIntensity: 5
-  ditherTexture: {fileID: 0}
-  dithering: 1
-  ditherThreshold: 1
-  ditherIntensity: 12
-  maxDarkness: 20
-  subtractFade: 0
-  favorRed: 1
-  worldSpaceSnapping: 0
-  postProcessing: 1
-  verticalScanlines: 1
-  shadowIntensity: 0.5
-  downscale: 1
-  snapCamera: 0
-  camInaccuracy: 0.05
-  camSnapping: 0
-  shadowType: 1
-  ditherSky: 1
   ditherType: 1

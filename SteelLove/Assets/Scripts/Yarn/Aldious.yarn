@@ -42,14 +42,30 @@ I could be back making those <i>disgusting</i> lovebots...
 
 title: Aldious_Race3_Top3
 ---
+Well toot my horn that last race went just swell didn't it?
+I'm so excited I'll actually be able to meet the giant robot creator.
+I'll finally be able to put my...<i>past</i> behind me,
+and learn how to create giant robots myself!
+-> You will never compare to my brother old man.
+    Maybe so, but I can try!
+-> My brother will be a fine teacher I'm sure.
+    Great!
+<<jump Aldious_Quest>>
 ===
 
 title: Aldious_Race3_Mid3
 ---
+There's still a chance for me to win right?
+<<jump Aldious_Quest>>
 ===
 
 title: Aldious_Race3_Bot3
 ---
+Hoowee! That last race was a doozy huh?
+I'm almost starting to feel like I won't be able to win at all hehe!
+Then I'll have to go back to making those <i>detestable</i> lovebots...
+Can't have that can we?! No siree, that won't do...
+<<jump Aldious_Quest>>
 ===
 
 title: Aldious_Race4_Top3
@@ -87,16 +103,23 @@ I don't care much for it, so you can have it if ya want.
     Great! It's in my room. You can go grab it from the shelves there.
     They've got a security system install though,
     and I may have accidently recorded the back of my head for the security photo...
-    So you gotta open it while facing away.
+    So you gotta open it <color=red>while facing away</color>.
 -> I accept.
     Great! It's in my room. You can go grab it from the shelves there.
     They've got a security system installed though,
     and I may have accidently recorded the back of my head for the security photo...
-    So you gotta open it while facing away.
+    So you gotta open it <color=red>while facing away</color>.
 ===
 
 title: Aldious_Headband
 ---
-<<set $has_headband to 2>>
-<<get_item Ship_Upgrade_Parts>>
+Cheese and crackers! Is that a Futuro Headband 2.0?!
+Where did you find it?! Those aren't even fully in production yet!
+You've gotta give me those. I'll trade you some upgrade parts for 'em.
+-> You've got a deal.
+    Sweet! Thank you so much!
+    <<set $has_headband to 2>>
+    <<get_item Ship_Upgrade_Parts>>
+-> No can do.
+    You're a heartless cretin you know that?
 ===

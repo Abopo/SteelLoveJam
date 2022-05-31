@@ -146,7 +146,7 @@ public class PlayerController : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if(collision.gameObject.layer == LayerMask.NameToLayer("Interactable")) {
-            if (collision.GetComponent<Interactable>().showIcon) {
+            if (collision.GetComponentInParent<Interactable>().showIcon) {
                 // Show the interact icon
                 _interactIcon.enabled = true;
             }
@@ -171,7 +171,7 @@ public class PlayerController : MonoBehaviour {
         _collider2D.OverlapCollider(contactFilter, overlappingColliders);
 
         foreach (Collider2D collider in overlappingColliders) {
-            collider.GetComponent<Interactable>().Interact();
+            collider.GetComponentInParent<Interactable>().Interact();
         }
     }
 

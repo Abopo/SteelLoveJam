@@ -189,7 +189,7 @@ title: Headband
 <<if $has_headband is 0>>
     <<set $has_headband to 1>>
     <<play_item_sound>>
-    < Got <color=orange>Headband 2.0</color> >
+    < Got <color=orange>Headband</color> >
 <<else>>
     <<jump Nothing>>
 <<endif>>

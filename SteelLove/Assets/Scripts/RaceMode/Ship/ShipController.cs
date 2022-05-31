@@ -41,6 +41,7 @@ public class ShipController : MonoBehaviour {
 
     [Header("Effects")]
     [SerializeField] ParticleSystem _destructionParticles;
+    [SerializeField] ParticleSystem _shipFireParticles;
 
     [Header("Ship Stats")]
     [SerializeField] private float _health = 100.0f;
@@ -104,6 +105,12 @@ public class ShipController : MonoBehaviour {
         }
 
         if(collision.tag == "Hazard") {
+            if(collision.transform.parent.GetComponent<Ship_Engine_Hazard>())
+            {
+                Debug.Log("Start fire");
+                _shipFireParticles.Play();
+            }
+            Debug.Log("health: " + _health + " damage: " + collision.GetComponent<Hazard>().damage);
             ChangeHealth(-collision.GetComponent<Hazard>().damage);
         }
     }
@@ -117,7 +124,7 @@ public class ShipController : MonoBehaviour {
 
     public void ChangeHealth(float amount)
     {
-        if (_health > 0)
+        if (_shipModel.activeInHierarchy)
         {
             _health += amount;
             if (_health < 0)
