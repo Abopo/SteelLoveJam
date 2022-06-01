@@ -178,10 +178,10 @@ public class PlayerController : MonoBehaviour {
     public void Freeze() {
         _inControl = false;
         _interactIcon.enabled = false;
+        _rigidbody2D.velocity = Vector3.zero;
     }
 
     public void Unfreeze() {
         _inControl = true;
-
     }
 }

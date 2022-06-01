@@ -115,3 +115,22 @@ title: Ziv_Race4_Bot3
 ---
 <<set $got_canteen_drink to false>>
 ===
+
+title: Ziv_Ending_Bad
+---
+I have utterly failed. I don't know if I will ever be able to see my brother again, if he was even alive to begin with. It seems assassination is the only thing I'm good at. Perhaps in a different universe I got to meet with my brother. Nothing will be good, ever. Back to work.
+===
+
+title: Ziv_Ending_Mid
+---
+I was not good enough. I don't know what to do from here. Shall I continue to search for my brother? Is he even truly alive? Should I just go back to assassin work? The future is clouded. Perhaps in a different universe it is more clear. Things are uncertain, for now.
+===
+
+title: Ziv_Ending_Good
+---
+I was so close! I may not be able to meet my brother again today, but coming this far has given me hope that I will be able to find him in the future. Perhaps in a different universe I met him today. Wait a little longer, dear brother. Things will be better, soon.
+===
+
+title: Ziv_Ending_True
+---
+===
