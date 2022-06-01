@@ -6,6 +6,8 @@ public class Ship_Engine_Hazard : MonoBehaviour {
 
     [SerializeField] ParticleSystem[] _particles;
     [SerializeField] float _activeTime;
+    [SerializeField] private float _delayTime;
+    [SerializeField] private bool _alwaysOn;
     [SerializeField] Collider _hazardCollider;
 
     float _timer;
@@ -17,23 +19,32 @@ public class Ship_Engine_Hazard : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
-        
+        if(_alwaysOn)
+        {
+            Activate();
+        }
+        _timer -= _delayTime;
     }
 
     // Update is called once per frame
     void Update() {
+        if (!_alwaysOn)
+        {
+            _timer += Time.deltaTime;
+            if (_timer > _activeTime)
+            {
+                if (!_isActive)
+                {
+                    Activate();
+                }
+                else
+                {
+                    Deactivate();
+                }
 
-        _timer += Time.deltaTime;
-        if (_timer > _activeTime) {
-            if (!_isActive) {
-                Activate();
-            } else {
-                Deactivate();
+                _timer = 0;
             }
-
-            _timer = 0;
         }
-
     }
 
     void Activate() {

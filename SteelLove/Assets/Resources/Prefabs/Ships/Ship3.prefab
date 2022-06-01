@@ -77,10 +77,13 @@ MonoBehaviour:
   _onHealthLevelChanged: {fileID: 0}
   _onBoostLevelChanged: {fileID: 0}
   _OnShipDestoryed: {fileID: 11400000, guid: d6c5d9cbdd0504145a54ca4ca2cacb45, type: 2}
+  _onCrossedNextCheckpoint: {fileID: 11400000, guid: 71c2b24e6ca91284bb7c5343a20d9ec8,
+    type: 2}
   _destructionParticles: {fileID: 1735770635193018114}
   _shipFireParticles: {fileID: 3357260197979298184}
   _health: 100
   _boostTank: 0
+  _healthGainOnCheckpoint: 25
   _shipModel: {fileID: 6715833768031010736}
   _reverseThrusterInputValue: 0
 --- !u!114 &16834316324134417
