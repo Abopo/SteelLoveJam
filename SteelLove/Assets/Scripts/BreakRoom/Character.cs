@@ -39,7 +39,7 @@ public class Character : Interactable {
 
     private void CheckState() {
         // If this is the first race
-        if(GameManager.instance.NextRace == 1) {
+        if(GameManager.instance.NextRace == 1 || GameManager.instance.NextRace == 5) {
             // There aren't any rankings yet, so stay in NO_STATE
             curState = STATE.NO_STATE;
         } else {
@@ -51,10 +51,12 @@ public class Character : Interactable {
 
     void FindPosition() {
         int nextRace = GameManager.instance.NextRace;
-        Vector3 position = _posList[nextRace-1];
-        position.z = -1;
+        if (nextRace < _posList.Length) {
+            Vector3 position = _posList[nextRace - 1];
+            position.z = -1;
 
-        transform.localPosition = position;
+            transform.localPosition = position;
+        }
     }
 
     // Update is called once per frame

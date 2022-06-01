@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class Checkpoint : MonoBehaviour 
 {
-    [SerializeField] private MeshRenderer _bannerMeshFront;
-    [SerializeField] private MeshRenderer _bannerMeshBack;
+    [SerializeField] private List<MeshRenderer> _bannerMeshFront;
+    [SerializeField] private List<MeshRenderer> _bannerMeshBack;
 
     [Header("Listening To")]
     [SerializeField] private GameObjectEventChannelSO _onCrossedNextCheckpoint = default;
@@ -18,7 +19,7 @@ public class Checkpoint : MonoBehaviour
     AudioSource _audioSource;
 
     void Awake() {
-        _baseMaterial = _bannerMeshFront.material;
+        _baseMaterial = _bannerMeshFront[0].material;
         _activeMaterial = Resources.Load<Material>("Materials/Checkpoint_Active");
         _passedMaterial = Resources.Load<Material>("Materials/Checkpoint_Passed");
 
@@ -40,6 +41,23 @@ public class Checkpoint : MonoBehaviour
         _checkpointNumber = checkpointNumber;
     }
 
+    public void Reset()
+    {
+        if (_checkpointNumber == 0)
+        {
+            SetBannerMeshMat(_activeMaterial);
+        }
+        else
+        {
+            SetBannerMeshMat(_baseMaterial);
+        }
+    }
+
+    public void Activate()
+    {
+        SetBannerMeshMat(_activeMaterial);
+    }
+
     private void CheckForMatChange(GameObject shipObj)
     {
         
@@ -48,34 +66,26 @@ public class Checkpoint : MonoBehaviour
             var checkPointTracker = shipObj.GetComponent<CheckpointTracker>();
             if (checkPointTracker.LastPassedCheckpoint == _checkpointNumber)
             {
-                _bannerMeshFront.material = _passedMaterial;
-                _bannerMeshBack.material = _passedMaterial;
+                SetBannerMeshMat(_passedMaterial);
 
                 _audioSource.Play();
             }
             else if(checkPointTracker.LastPassedCheckpoint == _checkpointNumber -1)
             {
-                _bannerMeshFront.material = _activeMaterial;
-                _bannerMeshBack.material = _activeMaterial;
+                SetBannerMeshMat(_activeMaterial);
             }
         }
     }
 
-    public void Reset() {
-        if(_checkpointNumber == 0)
+    private void SetBannerMeshMat(Material mat)
+    {
+        foreach(var banner in _bannerMeshFront)
         {
-            _bannerMeshFront.material = _activeMaterial;
-            _bannerMeshBack.material = _activeMaterial;
+            banner.material = mat;
         }
-        else
+        foreach(var banner in _bannerMeshBack)
         {
-            _bannerMeshFront.material = _baseMaterial;
-            _bannerMeshBack.material = _baseMaterial;
+            banner.material = mat;
         }
-    }
-
-    public void Activate() {
-        _bannerMeshFront.material = _activeMaterial;
-        _bannerMeshBack.material = _activeMaterial;
     }
 }

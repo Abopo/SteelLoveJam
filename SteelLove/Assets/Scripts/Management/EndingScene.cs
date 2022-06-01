@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Yarn.Unity;
+using TMPro;
 
 public class EndingScene : MonoBehaviour {
 
+    [SerializeField] private InputReader _inputReader = default;
+
     DialogueRunner _dialogueRunner;
+    MyLineView _lineView;
     bool _isComplete;
-    
+
     [SerializeField] Material[] _skyboxes;
 
     float _waitTime = 5.0f;
@@ -16,33 +20,34 @@ public class EndingScene : MonoBehaviour {
 
     private void Awake() {
         _dialogueRunner = GetComponentInChildren<DialogueRunner>();
+        _lineView = GetComponentInChildren<MyLineView>();
     }
 
     // Start is called before the first frame update
     void Start() {
-        // TODO: Set ending text based on Ziv's ranking
-        StartCoroutine(LateStart());
+        _inputReader.EnableAllInput();
 
-        _dialogueRunner.onDialogueComplete.AddListener(OnDialogueComplete);
+        StartCoroutine(LateStart());
     }
 
     IEnumerator LateStart() {
         yield return null;
 
+        // TODO: Set ending text based on Ziv's ranking
         _dialogueRunner.StartDialogue("Ziv_Ending_Bad");
     }
 
-    private void Update() {
-        if (_isComplete) {
-            _waitTimer += Time.deltaTime;
-            if (_waitTimer > _waitTime) {
-                // Load the main menu
-                SceneManager.LoadScene(0);
-            }
-        }
+    private void OnEnable() {
+        _inputReader.InteractEvent += Interact;
     }
 
-    void OnDialogueComplete() {
-        _isComplete = true;
+    private void Update() {
+    }
+
+    void Interact(float value) {
+        if(_lineView.typewriterIsDone) {
+            // Load the main menu
+            SceneManager.LoadScene(0);
+        }
     }
 }

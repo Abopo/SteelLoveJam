@@ -469,8 +469,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90de1738a9d2297418110fc6a90920b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bannerMeshFront: {fileID: 3221613165939984712}
-  _bannerMeshBack: {fileID: 8798493184741838396}
+  _bannerMeshFront:
+  - {fileID: 3221613165939984712}
+  _bannerMeshBack:
+  - {fileID: 8798493184741838396}
   _onCrossedNextCheckpoint: {fileID: 11400000, guid: 71c2b24e6ca91284bb7c5343a20d9ec8,
     type: 2}
 --- !u!65 &2312332085915729340

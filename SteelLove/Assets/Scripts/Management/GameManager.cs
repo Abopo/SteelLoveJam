@@ -11,7 +11,7 @@ public struct CharacterRank {
 
 public class GameManager : MonoBehaviour {
 
-    int nextRace = 1; // What race is next to play
+    [SerializeField] int nextRace = 1; // What race is next to play
     public int NextRace { get => nextRace; }
 
     // List of characters sorted by their points

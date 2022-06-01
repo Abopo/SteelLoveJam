@@ -121,6 +121,8 @@ namespace Yarn.Unity
         [SerializeField]
         internal bool useTypewriterEffect = false;
 
+        public bool typewriterIsDone = false;
+
         /// <summary>
         /// A Unity Event that is called each time a character is revealed
         /// during a typewriter effect.
@@ -343,6 +345,8 @@ namespace Yarn.Unity
                 // If we're using the typewriter effect, start it, and wait for
                 // it to finish.
                 if (useTypewriterEffect) {
+                    typewriterIsDone = false;
+
                     // setting the canvas all back to its defaults because if we didn't also fade we don't have anything visible
                     canvasGroup.alpha = 1f;
                     canvasGroup.interactable = true;
@@ -373,6 +377,7 @@ namespace Yarn.Unity
 
             // All of our text should now be visible.
             lineText.maxVisibleCharacters = int.MaxValue;
+            typewriterIsDone = true;
 
             // Our view should at be at full opacity.
             canvasGroup.alpha = 1f;

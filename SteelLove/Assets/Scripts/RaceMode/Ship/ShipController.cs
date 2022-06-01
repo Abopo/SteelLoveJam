@@ -39,6 +39,9 @@ public class ShipController : MonoBehaviour {
     [SerializeField] private FloatEventChannelSO _onBoostLevelChanged = default;
     [SerializeField] private GameObjectEventChannelSO _OnShipDestoryed = default;
 
+    [Header("Listening To")]
+    [SerializeField] private GameObjectEventChannelSO _onCrossedNextCheckpoint = default;
+
     [Header("Effects")]
     [SerializeField] ParticleSystem _destructionParticles;
     [SerializeField] ParticleSystem _shipFireParticles;
@@ -46,6 +49,7 @@ public class ShipController : MonoBehaviour {
     [Header("Ship Stats")]
     [SerializeField] private float _health = 100.0f;
     [SerializeField] private float _boostTank = 0f;
+    [SerializeField] private float _healthGainOnCheckpoint;
 
     [SerializeField] private GameObject _shipModel;
 
@@ -82,6 +86,16 @@ public class ShipController : MonoBehaviour {
         _thrusters = GetComponentInChildren<ShipThrusters>();
 
         _shipAudio = GetComponentInChildren<ShipAudio>();
+    }
+
+    private void OnEnable()
+    {
+        _onCrossedNextCheckpoint.OnEventRaised += CheckpointHeal;
+    }
+
+    private void OnDisable()
+    {
+        _onCrossedNextCheckpoint.OnEventRaised += CheckpointHeal;
     }
 
     private void FixedUpdate()
@@ -362,6 +376,14 @@ public class ShipController : MonoBehaviour {
         {
             _boostPadActiveCount = 0;
             _boostPadActive = false;
+        }
+    }
+
+    private void CheckpointHeal(GameObject shipObj)
+    {
+        if (shipObj == gameObject)
+        {
+            ChangeHealth(_healthGainOnCheckpoint);
         }
     }
 

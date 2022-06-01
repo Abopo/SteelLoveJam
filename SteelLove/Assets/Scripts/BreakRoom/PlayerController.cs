@@ -72,6 +72,8 @@ public class PlayerController : MonoBehaviour {
             case 4:
                 dialogueToRun += "Race4";
                 break;
+            case 5:
+                return;
         }
 
         switch (_curState) {

@@ -157,8 +157,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 48.464172, y: -40.069824}
-  m_SizeDelta: {x: 915.3496, y: 658.393}
+  m_AnchoredPosition: {x: 48.464172, y: -38.802002}
+  m_SizeDelta: {x: 915.3496, y: 655.8574}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &214021934
 MonoBehaviour:
@@ -180,10 +180,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: I was so close! I may not be able to meet my brother again today, but coming
-    this far has given me hope that I will be able to find him in the future. Perhaps
-    in a different universe I met him today. Wait a little longer, dear brother.
-    Things will be better, soon.
+  m_text: "I did it. I met my brother again. He revealed to me some dark secrets
+    of the universe. My purpose now is to help my brother at all costs. Now that
+    we are together, I know one thing for certain. Everything's gonna be alright,
+    forever. <br><br>Ziv Chromebeak will return in The Multiverse of Love. \r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e87ce4ffebddb224c826b3b8c73e0804, type: 2}
   m_sharedMaterial: {fileID: -852475379320034306, guid: e87ce4ffebddb224c826b3b8c73e0804,
@@ -376,6 +376,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf8e29fff9752014dad42045df645db0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _inputReader: {fileID: 11400000, guid: 3aad594c8fb5bb44cbff640004584d4d, type: 2}
   _skyboxes:
   - {fileID: 2100000, guid: 142397bd25cf70c4a9fe0c954934f343, type: 2}
   - {fileID: 2100000, guid: cb0c4d20058461a4db7dc95a11a894ee, type: 2}
@@ -1366,8 +1367,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 731.3615, y: -184.05103}
-  m_SizeDelta: {x: 1030.4211, y: 778.2535}
+  m_AnchoredPosition: {x: 731.3615, y: -200.53284}
+  m_SizeDelta: {x: 1030.4211, y: 811.2172}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1566714013
 MonoBehaviour:
@@ -1566,8 +1567,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1674212600}
-  - component: {fileID: 1674212601}
   - component: {fileID: 1674212602}
+  - component: {fileID: 1674212601}
   m_Layer: 5
   m_Name: Line View
   m_TagString: Untagged
@@ -1604,17 +1605,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1674212599}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ddcdd604a328c4ab296f048eb7b3a925, type: 3}
+  m_Script: {fileID: 11500000, guid: 1a92fe662e0db73489df3359e957313b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   canvasGroup: {fileID: 1674212602}
-  useFadeEffect: 0
+  useFadeEffect: 1
   fadeInTime: 0.25
   fadeOutTime: 0.05
   lineText: {fileID: 214021934}
-  showCharacterNameInLineView: 0
+  showCharacterNameInLineView: 1
   characterNameText: {fileID: 0}
   useTypewriterEffect: 1
+  typewriterIsDone: 0
   onCharacterTyped:
     m_PersistentCalls:
       m_Calls: []

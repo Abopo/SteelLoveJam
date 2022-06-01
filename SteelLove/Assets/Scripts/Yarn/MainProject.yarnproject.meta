@@ -19,68 +19,132 @@ ScriptedImporter:
   - {fileID: 6391573757903218779, guid: 0e8762a02a59cec48b8710604586b4ae, type: 3}
   - {fileID: 6391573757903218779, guid: 1d8aa007b42bee54d832cd91d472b57b, type: 3}
   - {fileID: 6391573757903218779, guid: da2a689e2198c5e49a85704c4cc244e0, type: 3}
+  - {fileID: 6391573757903218779, guid: 3d003a728e739434db8d002107e53266, type: 3}
   compileErrors: []
   serializedDeclarations:
-  - name: $jebb_fondness
-    typeName: Number
+  - name: $got_canteen_drink
+    typeName: Bool
     defaultValueBool: 0
     defaultValueNumber: 0
     defaultValueString: 
-    description: Implicitly declared in Ziv.yarn, node Start
+    description: Implicitly declared in Ziv.yarn, node Ziv_Race1
     isImplicit: 1
     sourceYarnAsset: {fileID: 6391573757903218779, guid: 96f3cf184cf615c4eb5a1097d9cb296b,
       type: 3}
-  - name: $trik_fondness
-    typeName: Number
+  - name: $jebb_drink
+    typeName: Bool
     defaultValueBool: 0
     defaultValueNumber: 0
     defaultValueString: 
-    description: Implicitly declared in Ziv.yarn, node Start
+    description: Implicitly declared in Ziv.yarn, node Ziv_Race1
     isImplicit: 1
     sourceYarnAsset: {fileID: 6391573757903218779, guid: 96f3cf184cf615c4eb5a1097d9cb296b,
       type: 3}
-  - name: $sumiv_fondness
-    typeName: Number
+  - name: $trik_drink
+    typeName: Bool
     defaultValueBool: 0
     defaultValueNumber: 0
     defaultValueString: 
-    description: Implicitly declared in Ziv.yarn, node Start
+    description: Implicitly declared in Ziv.yarn, node Ziv_Race1
     isImplicit: 1
     sourceYarnAsset: {fileID: 6391573757903218779, guid: 96f3cf184cf615c4eb5a1097d9cb296b,
       type: 3}
-  - name: $frieda_fondness
-    typeName: Number
+  - name: $sumiv_drink
+    typeName: Bool
     defaultValueBool: 0
     defaultValueNumber: 0
     defaultValueString: 
-    description: Implicitly declared in Ziv.yarn, node Start
+    description: Implicitly declared in Ziv.yarn, node Ziv_Race1
     isImplicit: 1
     sourceYarnAsset: {fileID: 6391573757903218779, guid: 96f3cf184cf615c4eb5a1097d9cb296b,
       type: 3}
-  - name: $damian_fondness
-    typeName: Number
+  - name: $frieda_drink
+    typeName: Bool
     defaultValueBool: 0
     defaultValueNumber: 0
     defaultValueString: 
-    description: Implicitly declared in Ziv.yarn, node Start
+    description: Implicitly declared in Ziv.yarn, node Ziv_Race1
     isImplicit: 1
     sourceYarnAsset: {fileID: 6391573757903218779, guid: 96f3cf184cf615c4eb5a1097d9cb296b,
       type: 3}
-  - name: $charlene_fondness
-    typeName: Number
+  - name: $damian_drink
+    typeName: Bool
     defaultValueBool: 0
     defaultValueNumber: 0
     defaultValueString: 
-    description: Implicitly declared in Ziv.yarn, node Start
+    description: Implicitly declared in Ziv.yarn, node Ziv_Race1
     isImplicit: 1
     sourceYarnAsset: {fileID: 6391573757903218779, guid: 96f3cf184cf615c4eb5a1097d9cb296b,
       type: 3}
-  - name: $aldious_fondness
+  - name: $aldious_drink
+    typeName: Bool
+    defaultValueBool: 0
+    defaultValueNumber: 0
+    defaultValueString: 
+    description: Implicitly declared in Ziv.yarn, node Ziv_Race1
+    isImplicit: 1
+    sourceYarnAsset: {fileID: 6391573757903218779, guid: 96f3cf184cf615c4eb5a1097d9cb296b,
+      type: 3}
+  - name: $has_canteen_drink
+    typeName: Bool
+    defaultValueBool: 0
+    defaultValueNumber: 0
+    defaultValueString: 
+    description: Implicitly declared in Ziv.yarn, node Ziv_Race1
+    isImplicit: 1
+    sourceYarnAsset: {fileID: 6391573757903218779, guid: 96f3cf184cf615c4eb5a1097d9cb296b,
+      type: 3}
+  - name: $has_phone
     typeName: Number
     defaultValueBool: 0
     defaultValueNumber: 0
     defaultValueString: 
-    description: Implicitly declared in Ziv.yarn, node Start
+    description: Implicitly declared in Ziv.yarn, node Ziv_Race1
+    isImplicit: 1
+    sourceYarnAsset: {fileID: 6391573757903218779, guid: 96f3cf184cf615c4eb5a1097d9cb296b,
+      type: 3}
+  - name: $has_gigantipla
+    typeName: Number
+    defaultValueBool: 0
+    defaultValueNumber: 0
+    defaultValueString: 
+    description: Implicitly declared in Ziv.yarn, node Ziv_Race1
+    isImplicit: 1
+    sourceYarnAsset: {fileID: 6391573757903218779, guid: 96f3cf184cf615c4eb5a1097d9cb296b,
+      type: 3}
+  - name: $has_buof_plushie
+    typeName: Number
+    defaultValueBool: 0
+    defaultValueNumber: 0
+    defaultValueString: 
+    description: Implicitly declared in Ziv.yarn, node Ziv_Race1
+    isImplicit: 1
+    sourceYarnAsset: {fileID: 6391573757903218779, guid: 96f3cf184cf615c4eb5a1097d9cb296b,
+      type: 3}
+  - name: $has_headband
+    typeName: Number
+    defaultValueBool: 0
+    defaultValueNumber: 0
+    defaultValueString: 
+    description: Implicitly declared in Ziv.yarn, node Ziv_Race1
+    isImplicit: 1
+    sourceYarnAsset: {fileID: 6391573757903218779, guid: 96f3cf184cf615c4eb5a1097d9cb296b,
+      type: 3}
+  - name: $has_batteries
+    typeName: Number
+    defaultValueBool: 0
+    defaultValueNumber: 0
+    defaultValueString: 
+    description: Implicitly declared in Ziv.yarn, node Ziv_Race1
+    isImplicit: 1
+    sourceYarnAsset: {fileID: 6391573757903218779, guid: 96f3cf184cf615c4eb5a1097d9cb296b,
+      type: 3}
+  - name: $has_milk
+    typeName: Number
+    defaultValueBool: 0
+    defaultValueNumber: 0
+    defaultValueString: 
+    description: Implicitly declared in Ziv.yarn, node Ziv_Race1
     isImplicit: 1
     sourceYarnAsset: {fileID: 6391573757903218779, guid: 96f3cf184cf615c4eb5a1097d9cb296b,
       type: 3}
@@ -89,9 +153,54 @@ ScriptedImporter:
     defaultValueBool: 0
     defaultValueNumber: 0
     defaultValueString: 
-    description: Implicitly declared in Ziv.yarn, node Start
+    description: Implicitly declared in Ziv.yarn, node Ziv_Race1
     isImplicit: 1
     sourceYarnAsset: {fileID: 6391573757903218779, guid: 96f3cf184cf615c4eb5a1097d9cb296b,
+      type: 3}
+  - name: $has_dark_orb
+    typeName: Bool
+    defaultValueBool: 0
+    defaultValueNumber: 0
+    defaultValueString: 
+    description: Implicitly declared in Ziv.yarn, node Ziv_Race1
+    isImplicit: 1
+    sourceYarnAsset: {fileID: 6391573757903218779, guid: 96f3cf184cf615c4eb5a1097d9cb296b,
+      type: 3}
+  - name: $has_screwdriver
+    typeName: Bool
+    defaultValueBool: 0
+    defaultValueNumber: 0
+    defaultValueString: 
+    description: Implicitly declared in Ziv.yarn, node Ziv_Race1
+    isImplicit: 1
+    sourceYarnAsset: {fileID: 6391573757903218779, guid: 96f3cf184cf615c4eb5a1097d9cb296b,
+      type: 3}
+  - name: $ship_upgrade_parts
+    typeName: Number
+    defaultValueBool: 0
+    defaultValueNumber: 0
+    defaultValueString: 
+    description: Implicitly declared in Ziv.yarn, node Ziv_Race1
+    isImplicit: 1
+    sourceYarnAsset: {fileID: 6391573757903218779, guid: 96f3cf184cf615c4eb5a1097d9cb296b,
+      type: 3}
+  - name: $aldious_fondness
+    typeName: Number
+    defaultValueBool: 0
+    defaultValueNumber: 0
+    defaultValueString: 
+    description: Implicitly declared in Aldious.yarn, node Aldious_Race1
+    isImplicit: 1
+    sourceYarnAsset: {fileID: 6391573757903218779, guid: dd478bf8a655ab041a8bcc61e37c3570,
+      type: 3}
+  - name: $got_screwdriver
+    typeName: Bool
+    defaultValueBool: 0
+    defaultValueNumber: 0
+    defaultValueString: 
+    description: Implicitly declared in Environment.yarn, node Triks_Lockbox_Open
+    isImplicit: 1
+    sourceYarnAsset: {fileID: 6391573757903218779, guid: da2a689e2198c5e49a85704c4cc244e0,
       type: 3}
   defaultLanguage: en-US
   languagesToSourceAssets: []
@@ -99,9 +208,6 @@ ScriptedImporter:
   searchAllAssembliesForActions: 1
   assembliesToSearch: []
   ListOfFunctions:
-  - Name: CoolFunction
-    ReturnType: -> Int32
-    Parameters: []
   - Name: Random
     ReturnType: -> Single
     Parameters: []
@@ -147,3 +253,6 @@ ScriptedImporter:
     ReturnType: -> Int32
     Parameters:
     - num
+  - Name: CoolFunction
+    ReturnType: -> Int32
+    Parameters: []
