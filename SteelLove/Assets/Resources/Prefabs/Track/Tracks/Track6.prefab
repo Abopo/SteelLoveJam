@@ -26256,7 +26256,7 @@ PrefabInstance:
     - target: {fileID: 4963836003297037732, guid: b835537a7d25d104785b388ae0878243,
         type: 3}
       propertyPath: _delayTime
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4963836003297037754, guid: b835537a7d25d104785b388ae0878243,
         type: 3}
@@ -26646,7 +26646,7 @@ PrefabInstance:
     - target: {fileID: 4963836003297037732, guid: b835537a7d25d104785b388ae0878243,
         type: 3}
       propertyPath: _delayTime
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4963836003297037754, guid: b835537a7d25d104785b388ae0878243,
         type: 3}
