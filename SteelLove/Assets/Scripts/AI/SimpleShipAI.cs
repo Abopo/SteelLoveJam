@@ -9,11 +9,11 @@ public class SimpleShipAI : MonoBehaviour {
     AI_DIFFICULTY _difficulty;
 
     ShipController _ship;
+    Rigidbody _rigidbody;
 
     [SerializeField] AICheckpoint _firstCheckpoint;
     [SerializeField] AICheckpoint _nextCheckpoint;
 
-    [SerializeField] Vector3 _toCheckpoint;
     [SerializeField] Vector2 _input;
 
     AICheckpoint[] _allCheckpoints;
@@ -21,8 +21,12 @@ public class SimpleShipAI : MonoBehaviour {
 
     [SerializeField] private VoidEventChannelSO _onRaceStartEvent = default;
 
+    private Vector3 _averageTargetPt;
+    private int _lookForwardAmount = 10;
+
     private void Awake() {
         _ship = GetComponent<ShipController>();
+        _rigidbody = GetComponent<Rigidbody>();
 
         _allCheckpoints = FindObjectsOfType<AICheckpoint>();
 
@@ -30,11 +34,14 @@ public class SimpleShipAI : MonoBehaviour {
         if (fc != null) {
             _firstCheckpoint = fc.GetComponent<AICheckpoint>();
         }
+
+        BuildCheckpointList();
     }
     // Start is called before the first frame update
     void Start() {
         // TODO: Set this on game start
         _difficulty = (AI_DIFFICULTY)Random.Range(0, (int)AI_DIFFICULTY.NUM_DIFFICULTIES);
+        _difficulty = AI_DIFFICULTY.EXPERT;
         SetupViaDifficulty();
     }
 
@@ -44,6 +51,41 @@ public class SimpleShipAI : MonoBehaviour {
 
     private void OnDisable() {
         _onRaceStartEvent.OnEventRaised -= OnRaceStart;
+    }
+
+    private void BuildCheckpointList()
+    {
+        var curCheckpoint = _firstCheckpoint;
+        var rayDir = new Vector3(0, 0, -1); // TODO: fix this. shouldnt be hardcoded. might need to be based on transform for first one.
+
+        for (int i = 0; i < _allCheckpoints.Length; i++)
+        {
+            RaycastHit hit = new RaycastHit();
+            int mask = LayerMask.GetMask("CheckpointAI");
+            if (Physics.Raycast(curCheckpoint.transform.position, rayDir, out hit, 50, mask))
+            {
+                var hitCheckpoint = hit.transform.gameObject.GetComponent<AICheckpoint>();
+                if (hitCheckpoint)
+                {
+                    curCheckpoint.nextCheckpoint = hitCheckpoint;
+                    curCheckpoint = hitCheckpoint;
+
+                    var ourNormal = rayDir;
+                    var nextNormal = -hit.normal;
+                    var up = hit.transform.up;
+                    Vector3.OrthoNormalize(ref ourNormal, ref up);
+                    Vector3.OrthoNormalize(ref nextNormal, ref up);
+
+                    curCheckpoint.angleToNextCheckpoint = Vector3.SignedAngle(ourNormal, nextNormal, transform.up);
+
+                    rayDir = -hit.normal;
+                }
+                else
+                {
+                    Debug.Log("failed");
+                }
+            }
+        }
     }
 
     void SetupViaDifficulty() {
@@ -68,30 +110,41 @@ public class SimpleShipAI : MonoBehaviour {
 
     void OnRaceStart() {
         _nextCheckpoint = _firstCheckpoint;
+        CalculateTargetPoint();
     }
 
     // Update is called once per frame
     void Update() {
         if (_nextCheckpoint != null) {
             // Aim joystick towards the next checkpoint
-            _toCheckpoint = _nextCheckpoint.center - transform.position;
-            _toCheckpoint.Normalize();
-            _input.x = _toCheckpoint.x;
+            var toAvgPos = _averageTargetPt - transform.position;
+            var toAvgPosNorm =  toAvgPos.normalized;
 
-            // Have to swap to tracking x position if we've rotated
-            if (Mathf.Abs(transform.localEulerAngles.x) > 45) {
-                _input.y = _toCheckpoint.y;
-            } else {
-                _input.y = _toCheckpoint.z;
+            var velocityNorm = _rigidbody.velocity.normalized;
+            var angle = Vector3.SignedAngle(velocityNorm, toAvgPosNorm, transform.up);
+
+            if (_rigidbody.velocity.magnitude > 10)
+            {
+                if (angle > -120 && angle < 120)
+                {
+                    angle *= 1.5f;
+                    toAvgPosNorm = Quaternion.AngleAxis(angle, transform.up) * toAvgPosNorm;
+
+                    _input.x = angle / 120f;
+                }
             }
 
-            if (Mathf.Abs(_input.x) > Mathf.Abs(_input.y)) {
-                _input.y = 0f;
-            }
+            var facingAngle = Vector3.SignedAngle(transform.forward, toAvgPosNorm, transform.up);
+            transform.rotation *= Quaternion.Euler(transform.up * facingAngle);
 
-            // Slight randomization to keep ai's apart from each other
-            _input.x += Random.Range(-0.1f, 0.1f);
-            _input.y += Random.Range(-0.1f, 0.1f);
+            transform.LookAt(transform.position + toAvgPosNorm, transform.up);
+
+            _input.y = -1f;
+
+            if (toAvgPos.magnitude < 10)
+            {
+                FindCloseCheckpoint();
+            }
 
             SendInputToShip();
         }
@@ -104,6 +157,7 @@ public class SimpleShipAI : MonoBehaviour {
 
     // Send input to ship
     void SendInputToShip() {
+        _ship.ChangeHealth(100);
         if (_input.y < 0) {
             _ship.ThrustForward(Mathf.Abs(_input.y));
         } else {
@@ -119,41 +173,54 @@ public class SimpleShipAI : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other) {
         if (other.tag == "CheckpointAI" || other.tag == "FirstCheckpointAI") {
-            _hitCheckpoints.Add(other.GetComponent<AICheckpoint>());
-            _nextCheckpoint = FindClosestCheckpoint();
+            var hitCheckpoint = other.GetComponent<AICheckpoint>();
+            _nextCheckpoint = hitCheckpoint.nextCheckpoint;
 
-            // If we've run out of checkpoints 
-            if(_nextCheckpoint == null) {
-                // Clear the list, and set the first checkpoint again
-                _hitCheckpoints.Clear();
-                _nextCheckpoint = _firstCheckpoint;
+            if(_nextCheckpoint.lookForwardAmount > 0)
+            {
+                _lookForwardAmount = _nextCheckpoint.lookForwardAmount;
             }
-            /*
-            if (other.GetComponent<AICheckpoint>().nextCheckpoint.id > _nextCheckpoint.id ||
-                other.GetComponent<AICheckpoint>().nextCheckpoint.id == 0) {
-                _nextCheckpoint = other.GetComponent<AICheckpoint>().nextCheckpoint;
-            }
-            */
+
+
+            CalculateTargetPoint();
         }
     }
 
-    AICheckpoint FindClosestCheckpoint() {
-        AICheckpoint tempCheckpoint = null;
+    private void CalculateTargetPoint()
+    {
+        Vector3 averagedPos = Vector3.zero;
+        var curCheckpoint = _nextCheckpoint;
 
-        float closestDist = 1000f;
-        float tempDist = 0;
-        foreach(AICheckpoint ac in _allCheckpoints) {
-            if (_hitCheckpoints.Contains(ac)) {
-                continue;
-            } else {
-                tempDist = Vector3.Distance(transform.position, ac.center);
-                if (tempDist < closestDist) {
-                    tempCheckpoint = ac;
-                    closestDist = tempDist;
-                }
-            }
+        int forwardThinking = 7;
+
+        for (int i = 0; i < forwardThinking; i++)
+        {
+            averagedPos += curCheckpoint.transform.position;
+            curCheckpoint = curCheckpoint.nextCheckpoint;
         }
 
-        return tempCheckpoint;
+        _averageTargetPt = averagedPos / forwardThinking;
+    }
+
+    private void FindCloseCheckpoint()
+    {
+        for (int i = 0; i < _allCheckpoints.Length; ++i)
+        {
+            var dist = (_allCheckpoints[i].transform.position - transform.position).magnitude;
+            if (dist < 10)
+            {
+                _nextCheckpoint = _allCheckpoints[i];
+                CalculateTargetPoint();
+                return;
+            }
+        }
+    }
+
+    private Vector2 rotate(Vector2 v, float delta)
+    {
+        return new Vector2(
+            v.x * Mathf.Cos(delta) - v.y * Mathf.Sin(delta),
+            v.x * Mathf.Sin(delta) + v.y * Mathf.Cos(delta)
+        );
     }
 }

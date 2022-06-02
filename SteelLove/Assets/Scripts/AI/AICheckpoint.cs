@@ -7,8 +7,9 @@ public class AICheckpoint : MonoBehaviour {
     public AICheckpoint nextCheckpoint;
     public int id;
 
+    public float angleToNextCheckpoint;
     public Vector3 center;
-
+    public int lookForwardAmount = 6;
     private void Awake() {
         center = GetComponent<MeshCollider>().bounds.center;
     }
