@@ -9,7 +9,7 @@ public class CheckpointArrow : MonoBehaviour
 
     [Header("Listening To")]
     [SerializeField] private GameObjectEventChannelSO _onActiveCheckpointZoneLeft = default;
-    [SerializeField] private GameObjectEventChannelSO _onCrossedNextCheckpoint = default;
+    [SerializeField] private GameObjectEventChannelSO _onPlayerCrossedNextCheckpoint = default;
 
     private bool _isDisplaying;
     private GameObject _targetCheckpoint;
@@ -23,13 +23,13 @@ public class CheckpointArrow : MonoBehaviour
     private void OnEnable()
     {
         _onActiveCheckpointZoneLeft.OnEventRaised += CheckpointMissed;
-        _onCrossedNextCheckpoint.OnEventRaised += CrossedCheckpoint;
+        _onPlayerCrossedNextCheckpoint.OnEventRaised += CrossedCheckpoint;
     }
 
     private void OnDisable()
     {
         _onActiveCheckpointZoneLeft.OnEventRaised -= CheckpointMissed;
-        _onCrossedNextCheckpoint.OnEventRaised -= CrossedCheckpoint;
+        _onPlayerCrossedNextCheckpoint.OnEventRaised -= CrossedCheckpoint;
     }
 
     private void Update()

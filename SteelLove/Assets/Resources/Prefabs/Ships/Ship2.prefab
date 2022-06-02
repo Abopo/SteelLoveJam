@@ -5255,6 +5255,8 @@ MonoBehaviour:
   _distanceToCheckpointAssist: 40
   _onCrossedNextCheckpoint: {fileID: 11400000, guid: 71c2b24e6ca91284bb7c5343a20d9ec8,
     type: 2}
+  _onPlayerCrossedNextCheckpoint: {fileID: 11400000, guid: 0571c863040de2d43bc1017e00a432e7,
+    type: 2}
   _onActiveCheckpointZoneLeft: {fileID: 11400000, guid: dd6b7d2cebd221f4596e990f183a1765,
     type: 2}
   _onRaceStateEvent: {fileID: 11400000, guid: eb9b51f329654b14a9f17e243030ca44, type: 2}
