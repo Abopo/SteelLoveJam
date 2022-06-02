@@ -6,7 +6,7 @@ public enum AI_DIFFICULTY { DUMB = 0, EASY, MID, HARD, EXPERT, NUM_DIFFICULTIES 
 
 public class SimpleShipAI : MonoBehaviour {
 
-    AI_DIFFICULTY _difficulty;
+    public AI_DIFFICULTY difficulty;
 
     ShipController _ship;
 
@@ -34,7 +34,7 @@ public class SimpleShipAI : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         // TODO: Set this on game start
-        _difficulty = (AI_DIFFICULTY)Random.Range(0, (int)AI_DIFFICULTY.NUM_DIFFICULTIES);
+        difficulty = (AI_DIFFICULTY)Random.Range(0, (int)AI_DIFFICULTY.NUM_DIFFICULTIES);
         SetupViaDifficulty();
     }
 
@@ -47,7 +47,7 @@ public class SimpleShipAI : MonoBehaviour {
     }
 
     void SetupViaDifficulty() {
-        switch(_difficulty) {
+        switch(difficulty) {
             case AI_DIFFICULTY.DUMB:
                 _ship.AdjustShipParametersAI(0.5f, 0.5f, 0.5f);
                 break;

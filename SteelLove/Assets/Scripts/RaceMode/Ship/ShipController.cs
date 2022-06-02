@@ -7,6 +7,8 @@ public class ShipController : MonoBehaviour {
 
     public bool Boosting => _boosting;
 
+    [SerializeField] CharacterSO m_Character;
+
     [Header("Thruster Properties")]
     [SerializeField] private float _mainthrustForce;
     [SerializeField] private float _reverseThrustForce;
@@ -86,6 +88,54 @@ public class ShipController : MonoBehaviour {
         _thrusters = GetComponentInChildren<ShipThrusters>();
 
         _shipAudio = GetComponentInChildren<ShipAudio>();
+    }
+
+    private void Start() {
+        // Set up parameters based on upgrades/sabotage
+        if(m_Character.upgrades > 0) {
+            // Handling increase
+            _rotForce = 0.7f;
+            _maxRotSpeed = 2f;
+        }
+        if (m_Character.upgrades > 1) {
+            // Acceleration increase
+            _mainthrustForce = 17;
+            _reverseThrustForce = 12;
+            _horizontalThrustForce = 10;
+        }
+        if (m_Character.upgrades > 2) {
+            // Health increase
+            _health = 125;
+        }
+        if (m_Character.upgrades > 3) {
+            // Boost increase
+            _boostForceMultiplier = 4;
+            _maxSpeedBoostModifier = 1.75f;
+        }
+        if(m_Character.upgrades > 4) {
+            // Top speed increase
+            _maxSpeed = 28;
+        }
+        if(m_Character.upgrades > 5) {
+            // Overall increase
+            _rotForce = 0.8f;
+            _maxRotSpeed = 2.25f;
+            _mainthrustForce = 19;
+            _reverseThrustForce = 14;
+            _horizontalThrustForce = 12;
+            _health = 150;
+            _boostForceMultiplier = 5;
+            _maxSpeedBoostModifier = 1.9f;
+            _maxSpeed = 30;
+        }
+
+        if(m_Character.sabotaged) {
+            // Force dumb ai
+            GetComponentInParent<SimpleShipAI>().difficulty = AI_DIFFICULTY.DUMB;
+
+            // Lower health
+            _health = 50;
+        }
     }
 
     private void OnEnable()

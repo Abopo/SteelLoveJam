@@ -18,15 +18,13 @@ Just you wait Singuliera, I'm gonna win you that Giant Robot!
 
 title: Damian_Race2_Mid3
 ---
-*whew* OK, that wasn't so bad.
-I need to step it up a notch if I want to win though.
-Hey, Ziv, you got any racing tips?
-
--> Why would I tell you? This is a competition you fool.
-    Fine, geez! Guess that metal is as cold as they say.
--> I suppose I could give you some tips...
-    Oh..that makes sense. Thanks man!
-    You're not as bad as you seem!
+Psst, hey, Ziv. Do you wanna know where the next race is gonna be? 
+-> I don't need your help. 
+    Alright, suit yourself.
+-> Why would you tell me? 
+    You're a pretty scary dude, so I thought it'd be smart to get on your good side. 
+    The next race is gonna be in the Orbeil Asteroid Belt. I've been there before, and it's a doozy for sure. 
+    There's bound to be asteroids all over the track.
 <<jump Damian_Quest>>
 ===
 

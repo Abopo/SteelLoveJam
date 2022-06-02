@@ -45,7 +45,20 @@ public class PlayerController : MonoBehaviour {
         // Ziv starts in his room, so make sure it is active
         myRoom.Enter();
 
+        CheckState();
+
         StartCoroutine(LateStart());
+    }
+
+    private void CheckState() {
+        // If this is the first race
+        if (GameManager.instance.NextRace == 1 || GameManager.instance.NextRace == 5) {
+            // There aren't any rankings yet, so stay in NO_STATE
+            _curState = STATE.NO_STATE;
+        } else {
+            // Check the ranking list for our character and set our state
+            _curState = GameManager.instance.GetCharacterState("Ziv");
+        }
     }
 
     IEnumerator LateStart() {

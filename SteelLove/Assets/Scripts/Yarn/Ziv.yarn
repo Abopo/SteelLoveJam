@@ -33,7 +33,7 @@ title: Ziv_Race1
 <<set $has_dark_orb to false>>
 
 <<set $has_screwdriver to false>>
-<<set $ship_upgrade_parts to 0>>
+<<set $ship_upgrade_parts to 5>>
 
 I am Ziv Chromebeak. I unknowingly killed my brother.
 Somehow, he has been given a second chance.
@@ -41,6 +41,8 @@ An unknown entity organized this Grand Prix,
 with the apparent prize being a new giant robot built by my brother.
 Everyone here has their own desire for a giant robot.
 Me? I desire to win this race so I can see my brother again.
+Luckily for me, I have spent my time away honing my racing skills.
+I have perfected the cool, new ability to harness the power of suns to use as booster fuel for my ship.
 The ship we are on, "The Break Room", is taking us to our first race.
 There is still quite some time before we will reach our desination.
 ===

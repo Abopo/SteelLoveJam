@@ -18,7 +18,6 @@ public class GameManager : MonoBehaviour {
     [SerializeField] List<CharacterSO> _characterList = new List<CharacterSO>();
     public List<CharacterSO> CharacterList { get => _characterList; }
 
-
     // Singleton
     public static GameManager instance;
     bool _alive;
@@ -47,6 +46,8 @@ public class GameManager : MonoBehaviour {
 
             character.seasonPoints = 0;
             character.sabotaged = false;
+
+            character.upgrades = 0;
         }
     }
 
@@ -95,7 +96,7 @@ public class GameManager : MonoBehaviour {
     }
 
     public STATE GetCharacterState(string charaName) {
-        STATE charaState = STATE.NO_STATE;
+        STATE charaState = STATE.MID3;
 
         int i;
         for(i = 0; i < _characterList.Count; ++i) {
@@ -106,13 +107,27 @@ public class GameManager : MonoBehaviour {
 
         if(i <= 2) {
             charaState = STATE.TOP3;
-        } else if(i <= 6) {
+        } else if(i <= 5) {
             charaState = STATE.MID3;
         } else {
             charaState = STATE.BOT3;
         }
 
         return charaState;
+    }
+
+    [YarnCommand("upgrade")]
+    public static void UpgradeShip() {
+        // Increase Ziv's ship upgrades by 1
+        int upgrades = 0;
+        foreach (CharacterSO character in instance._characterList) {
+            if (character.name.Contains("Ziv")) {
+                character.upgrades += 1;
+                upgrades = character.upgrades;
+            }
+        }
+
+        FindObjectOfType<MainUI>().DisplayDialogue("Ship_Ziv_Upgrade_" + upgrades);
     }
 
     [YarnCommand("sabotage")]

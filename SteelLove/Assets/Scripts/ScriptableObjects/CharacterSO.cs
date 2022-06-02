@@ -10,4 +10,5 @@ public class CharacterSO : DescriptionBaseSO
     public int seasonPoints;
     public AI_DIFFICULTY difficulty;
     public bool sabotaged;
+    public int upgrades;
 }

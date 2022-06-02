@@ -23,6 +23,7 @@ public class BoostSun : MonoBehaviour {
     void Update() {
         bool anyShips = false;
         foreach (ShipController ship in _shipsInRange) {
+            anyShips = true;
             // Check if the ship is facing us
             if (ship != null && IsFacingSun(ship)) {
                 // Fill it's boost
@@ -38,10 +39,12 @@ public class BoostSun : MonoBehaviour {
             {
                 DestroyParticlesIfNeeded(ship);
 
-                if (_audioSource.isPlaying) {
-                    StartCoroutine(AudioFadeOut.FadeOut(_audioSource, 0.1f));
-                }
+                CheckSound();
             }
+        }
+
+        if(!anyShips) {
+            CheckSound();
         }
     }
 
@@ -103,6 +106,12 @@ public class BoostSun : MonoBehaviour {
             var ship = other.GetComponentInParent<ShipController>();
             _shipsInRange.Remove(ship);
             DestroyParticlesIfNeeded(ship);
+        }
+    }
+
+    void CheckSound() {
+        if (_audioSource.isPlaying) {
+            StartCoroutine(AudioFadeOut.FadeOut(_audioSource, 0.1f));
         }
     }
 }

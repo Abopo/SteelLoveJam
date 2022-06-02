@@ -5526,18 +5526,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c062d5e0f1bd3648bb3382082ec24eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mainthrustForce: 17
-  _reverseThrustForce: 12
-  _horizontalThrustForce: 10
+  m_Character: {fileID: 11400000, guid: 35aa3aac8fc6d9f41bdd9350040ad960, type: 2}
+  _mainthrustForce: 14
+  _reverseThrustForce: 10
+  _horizontalThrustForce: 7
   _brakeForce: 2.5
-  _maxSpeed: 28
+  _maxSpeed: 25
   _extremeDirChangeAngle: 75
   _extremeDirChangeMult: 1.25
-  _rotForce: 0.7
-  _maxRotSpeed: 2
-  _boostForceMultiplier: 4
+  _rotForce: 0.5
+  _maxRotSpeed: 1.5
+  _boostForceMultiplier: 3
   _boostCost: 25
-  _maxSpeedBoostModifier: 1.75
+  _maxSpeedBoostModifier: 1.5
   _boostPadNoSpeedLimitTime: 2
   _overSpeedLimitSlowdownForce: 20
   _OnCrossedFinishLine: {fileID: 11400000, guid: cd09aa317b22bf64980d7bb094732930,

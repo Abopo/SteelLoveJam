@@ -66,8 +66,6 @@ title: Trik_Race3_Top3
 
 title: Trik_Race3_Mid3
 ---
-title: Trik_Race2_Mid3
----
 <<if $has_grazeloid_translator == true>>
     Hmm... I'm still unable to keep up with the faster racers.
     I'll have to take a look at their ships to see what makes them so fast.
@@ -79,8 +77,6 @@ title: Trik_Race2_Mid3
 ===
 
 title: Trik_Race3_Bot3
----
-title: Trik_Race2_Bot3
 ---
 <<if $has_grazeloid_translator == true>>
     Gragh! Why am I still losing?!
