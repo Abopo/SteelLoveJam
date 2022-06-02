@@ -11,4 +11,5 @@ public class CharacterSO : DescriptionBaseSO
     public AI_DIFFICULTY difficulty;
     public bool sabotaged;
     public int upgrades;
+    public Sprite portrait;
 }
