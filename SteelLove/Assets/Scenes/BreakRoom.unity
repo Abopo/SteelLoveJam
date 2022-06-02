@@ -11942,8 +11942,8 @@ Transform:
   m_Children:
   - {fileID: 820259280}
   - {fileID: 1287509480}
-  - {fileID: 275683101}
   - {fileID: 1814206488}
+  - {fileID: 275683101}
   m_Father: {fileID: 0}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -19072,7 +19072,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &929440004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37190,7 +37190,7 @@ Transform:
   - {fileID: 1237045570}
   - {fileID: 142386177}
   m_Father: {fileID: 503602200}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1815942816
 PrefabInstance:

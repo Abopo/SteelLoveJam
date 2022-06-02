@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Yarn.Unity;
+using LootLocker.Requests;
 
 public struct CharacterRank {
     public string charaName;
@@ -36,7 +37,7 @@ public class GameManager : MonoBehaviour {
 
         // Character AI settings
         List<int> aiDifficulties = new List<int>() {
-            0, 1, 2, 2, 3, 3, 4
+            0, 1, 1, 2, 2, 3, 3, 4
         };
         int rand = 0;
         foreach (CharacterSO character in _characterList) {
@@ -80,7 +81,22 @@ public class GameManager : MonoBehaviour {
     void Start() {
         DontDestroyOnLoad(transform.gameObject);
 
+        LootLockerSetup();
+
         StartCoroutine(LateStart());
+    }
+
+    void LootLockerSetup() {
+        LootLockerSDKManager.StartGuestSession((response) =>
+        {
+            if (!response.success) {
+                Debug.Log("error starting LootLocker session");
+
+                return;
+            }
+
+            Debug.Log("successfully started LootLocker session");
+        });
     }
 
     IEnumerator LateStart() {
@@ -90,9 +106,6 @@ public class GameManager : MonoBehaviour {
     public void RaceFinished() {
         // Update next race
         nextRace++;
-
-        // Load Break Room
-        SceneManager.LoadScene("BreakRoom");
     }
 
     public STATE GetCharacterState(string charaName) {

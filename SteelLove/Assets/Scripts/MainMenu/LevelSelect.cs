@@ -23,6 +23,8 @@ public class LevelSelect : MonoBehaviour
     private GameSceneSO _selectedTrack;
     private GameObject _curPreview;
 
+    Leaderboard _leaderboard;
+
     private void OnEnable()
     {
         _onTrackSelected.OnEventRaised += SelectTrack;
@@ -44,6 +46,8 @@ public class LevelSelect : MonoBehaviour
 
         _confirmButton.gameObject.SetActive(false);
         _confirmButton.onClick.AddListener(ConfirmTrack);
+
+        _leaderboard = GetComponentInChildren<Leaderboard>();
     }
 
     public void SelectTrack(TrackSceneSO track)
@@ -61,6 +65,9 @@ public class LevelSelect : MonoBehaviour
         _curPreview = Instantiate(track.trackPreview, _levelPreviewParent);
 
         _confirmButton.gameObject.SetActive(true);
+
+        // Load leaderboard scores for the track
+        _leaderboard.ShowScores(track.trackLeaderboardID);
     }
 
     public void ConfirmTrack()

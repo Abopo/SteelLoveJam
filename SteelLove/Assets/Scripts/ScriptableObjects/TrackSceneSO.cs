@@ -7,4 +7,5 @@ using UnityEngine;
 public class TrackSceneSO : GameSceneSO
 {
     public GameObject trackPreview;
+    public int trackLeaderboardID;
 }
