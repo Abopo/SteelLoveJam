@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e95205ed14ad322459440d6c5a42743f, type: 3}
-  m_Name: Track1
+  m_Name: StoryTrack3
   m_EditorClassIdentifier: 
   description: 
-  levelName: Track 1
+  levelName: Story Track 3
   sceneReference:
-    m_AssetGUID: ea0002467969730478dc5d518af17364
+    m_AssetGUID: 8aaa1e26efe85b24c853817cc89cc21d
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   sceneMusic: {fileID: 8300000, guid: d7f4c28729fc1d14e9a86d986c221c32, type: 3}
-  trackPreview: {fileID: 7408947775923023686, guid: c1d05ebf6eb191b4cb03651a7b3391f7,
+  trackPreview: {fileID: 6017453794432076249, guid: f13efb5f4f37f7b49beb149469516001,
     type: 3}

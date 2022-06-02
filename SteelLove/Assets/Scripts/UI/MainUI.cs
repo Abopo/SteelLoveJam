@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Yarn.Unity;
-using UnityEngine.SceneManagement;
 
 public class MainUI : MonoBehaviour {
 
     [SerializeField] DialogueRunner _dialogueRunner;
+    [SerializeField] SceneManagerSO _sceneManager;
+
+    [SerializeField] List<TrackSceneSO> _trackOrder;
 
     PlayerController _playerController;
 
@@ -76,6 +78,11 @@ public class MainUI : MonoBehaviour {
         _audioSource.Play();
     }
 
+    public void LoadNextRace()
+    {
+        _sceneManager.LoadScene(_trackOrder[GameManager.instance.NextRace - 1]);
+    }
+
     [YarnCommand("play_item_sound")]
     public static void YarnPlayGetSound() {
         FindObjectOfType<MainUI>().PlayGetSound();
@@ -89,21 +96,7 @@ public class MainUI : MonoBehaviour {
 
     [YarnCommand("start_race")]
     public static void StartNextRace() {
-        // Load into the next race
-        switch (GameManager.instance.NextRace) {
-            case 1:
-                SceneManager.LoadScene("Track2");
-                break;
-            case 2:
-                SceneManager.LoadScene("Track3");
-                break;
-            case 3:
-                SceneManager.LoadScene("Track4");
-                break;
-            case 4:
-                SceneManager.LoadScene("Track5");
-                break;
-        }
+        FindObjectOfType<MainUI>().LoadNextRace();
     }
 
 }

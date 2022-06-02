@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LevelSelect : MonoBehaviour
 {
+    [SerializeField] private SceneManagerSO _sceneManager;
     [SerializeField] private List<TrackSceneSO> _raceTracks;
 
     [SerializeField] private Transform _levelSelectButtonParent;
@@ -13,6 +13,9 @@ public class LevelSelect : MonoBehaviour
     [SerializeField] private TMPro.TMP_Text _levelNameText;
     [SerializeField] private Button _confirmButton;
     [SerializeField] private GameObject _levelSelectButtonPrefab;
+
+    [SerializeField] private GameSceneSO _menuScene;
+    [SerializeField] private RaceStateSO _raceStateSO;
 
     [Header("Listening To")]
     [SerializeField] private TrackSceneEventChannelSO _onTrackSelected;
@@ -62,6 +65,6 @@ public class LevelSelect : MonoBehaviour
 
     public void ConfirmTrack()
     {
-        _selectedTrack.sceneReference.LoadSceneAsync(LoadSceneMode.Single, true);
+        _sceneManager.LoadScene(_selectedTrack);
     }
 }

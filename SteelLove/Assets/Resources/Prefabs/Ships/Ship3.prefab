@@ -84,6 +84,7 @@ MonoBehaviour:
   _health: 100
   _boostTank: 0
   _healthGainOnCheckpoint: 25
+  _healthLossOnGeneralCollision: 5
   _shipModel: {fileID: 6715833768031010736}
   _reverseThrusterInputValue: 0
 --- !u!114 &16834316324134417

@@ -3,7 +3,10 @@ guid: 5e1f62924f24f4a47b31bc9d210be59e
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - _dialogueRunner: {instanceID: 0}
+  - _raceStateSO: {fileID: 11400000, guid: cf67de4e450d04b4d9ab14a73e86c363, type: 2}
+  - _breakRoomScene: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

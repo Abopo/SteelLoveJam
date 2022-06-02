@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52e55bd36d3ba2c4caf2af1edd445bbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _sceneManager: {fileID: 11400000, guid: 8630cfd2995c59b4d9160d3ee14416b4, type: 2}
   _RaceStateSO: {fileID: 11400000, guid: cf67de4e450d04b4d9ab14a73e86c363, type: 2}
   _inputReader: {fileID: 11400000, guid: 3aad594c8fb5bb44cbff640004584d4d, type: 2}
   _onLapFinished: {fileID: 11400000, guid: 8d4ba15d737b5314cb786d8746b73182, type: 2}
@@ -58,6 +59,8 @@ MonoBehaviour:
   _onSpawnedShips: {fileID: 11400000, guid: 7ca7c9644a417714ea974f9f40a37a4c, type: 2}
   _onPauseEvent: {fileID: 11400000, guid: 17899c6a8dfefa44e9313878c9bd0e58, type: 2}
   _onShipDestroyed: {fileID: 11400000, guid: d6c5d9cbdd0504145a54ca4ca2cacb45, type: 2}
+  _onReportRaceResults: {fileID: 11400000, guid: 9e64de216f6b1b042b86fc21fa1fb138,
+    type: 2}
   _checkpoints:
   - {fileID: 0}
 --- !u!114 &3528412425053851652
@@ -88,6 +91,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _onRacePositionsUpdated: {fileID: 11400000, guid: 551640a97a37ae24383808a60a80576f,
+    type: 2}
+  _onReportRaceResults: {fileID: 11400000, guid: 9e64de216f6b1b042b86fc21fa1fb138,
     type: 2}
   _onRaceStateEvent: {fileID: 11400000, guid: eb9b51f329654b14a9f17e243030ca44, type: 2}
   _onRaceFinished: {fileID: 11400000, guid: cfc78b7350bc8dd4e9a733b45bdb6aa7, type: 2}
