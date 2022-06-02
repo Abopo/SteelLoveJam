@@ -9,6 +9,7 @@ public class RacePositioning : MonoBehaviour
 
     [Header("Broadcasting On")]
     [SerializeField] private GameObjectsListEventChannelSO _onRacePositionsUpdated = default;
+    [SerializeField] private GameObjectsListEventChannelSO _onReportRaceResults = default;
 
     [Header("Listening To")]
     [SerializeField] private VoidEventChannelSO _onRaceStateEvent = default;
@@ -28,7 +29,7 @@ public class RacePositioning : MonoBehaviour
     private void OnEnable()
     {
         _onRaceStateEvent.OnEventRaised += StartTracking;
-        _onRaceFinished.OnEventRaised += LockAllPositions;
+        _onRaceFinished.OnEventRaised += ReportRaceResults;
         _onSpawnedShips.OnEventRaised += SetShips;
         _onShipFinishedRace.OnEventRaised += LockPosition;
     }
@@ -36,7 +37,7 @@ public class RacePositioning : MonoBehaviour
     private void OnDisable()
     {
         _onRaceStateEvent.OnEventRaised -= StartTracking;
-        _onRaceFinished.OnEventRaised += LockAllPositions;
+        _onRaceFinished.OnEventRaised += ReportRaceResults;
         _onSpawnedShips.OnEventRaised -= SetShips;
         _onShipFinishedRace.OnEventRaised += LockPosition;
     }
@@ -128,9 +129,11 @@ public class RacePositioning : MonoBehaviour
         }
     }
 
-    private void LockAllPositions()
+    private void ReportRaceResults()
     {
         lockedPositions = _positionOrder.Count;
+        GetCurrentOrder();
+        _onReportRaceResults.RaiseEvent(_positionOrder);
     }
 
     private void LockPosition(GameObject shipObj)

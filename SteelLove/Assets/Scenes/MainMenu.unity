@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 142397bd25cf70c4a9fe0c954934f343, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.18396598, g: 0.11492064, b: 0.27726778, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -26687,6 +26687,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d898f9f0a2109d642a4441c12fed4d3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _sceneManager: {fileID: 11400000, guid: 8630cfd2995c59b4d9160d3ee14416b4, type: 2}
+  _mainMenuScene: {fileID: 11400000, guid: f81df6b663ea64e4b83433519123ab47, type: 2}
   _gameStartScene: {fileID: 11400000, guid: 6edb2a8a7f2bd8043b0e911c0a8dfa4a, type: 2}
 --- !u!1 &1186379274
 GameObject:
@@ -42322,6 +42324,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3aca2b9c43172bd47ac7c55c16f6d449, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _sceneManager: {fileID: 11400000, guid: 8630cfd2995c59b4d9160d3ee14416b4, type: 2}
   _raceTracks:
   - {fileID: 11400000, guid: 315698e975530634dbc2dc5be3aa1c6f, type: 2}
   - {fileID: 11400000, guid: b3db9cf215e5dfa4687746acaf54dfe9, type: 2}
@@ -42334,6 +42337,8 @@ MonoBehaviour:
   _confirmButton: {fileID: 2048126494}
   _levelSelectButtonPrefab: {fileID: 2647796878222801420, guid: 23f036e15223004479fb54444216068d,
     type: 3}
+  _menuScene: {fileID: 0}
+  _raceStateSO: {fileID: 0}
   _onTrackSelected: {fileID: 11400000, guid: 219d0352119aae54a9e704d2e08b5f7c, type: 2}
 --- !u!1 &1652462319
 GameObject:

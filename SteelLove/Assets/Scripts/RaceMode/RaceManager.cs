@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class RaceManager : MonoBehaviour
 {
+    [SerializeField] private SceneManagerSO _sceneManager = default;
     [SerializeField] private RaceStateSO _RaceStateSO = default;
 
     [SerializeField] private InputReader _inputReader = default;
@@ -19,6 +20,7 @@ public class RaceManager : MonoBehaviour
     [SerializeField] private GameObjectsListEventChannelSO _onSpawnedShips = default;
     [SerializeField] private VoidEventChannelSO _onPauseEvent = default;
     [SerializeField] private GameObjectEventChannelSO _onShipDestroyed = default;
+    [SerializeField] private GameObjectsListEventChannelSO _onReportRaceResults = default;
 
     public Checkpoint[] Checkpoints => _checkpoints;
     [SerializeField] private Checkpoint[] _checkpoints;
@@ -32,6 +34,7 @@ public class RaceManager : MonoBehaviour
         _onSpawnedShips.OnEventRaised += OnSpawnedShips;
         _onPauseEvent.OnEventRaised += OnPause;
         _onShipDestroyed.OnEventRaised += OnShipDestroyed;
+        _onReportRaceResults.OnEventRaised += RewardPoints;
 
         // input events
         _inputReader.PauseEvent += OnPause;
@@ -46,6 +49,7 @@ public class RaceManager : MonoBehaviour
         _onSpawnedShips.OnEventRaised -= OnSpawnedShips;
         _onPauseEvent.OnEventRaised -= OnPause;
         _onShipDestroyed.OnEventRaised -= OnShipDestroyed;
+        _onReportRaceResults.OnEventRaised -= RewardPoints;
 
         // input events
         _inputReader.PauseEvent -= OnPause;
@@ -135,9 +139,14 @@ public class RaceManager : MonoBehaviour
     {
         if(_RaceStateSO.CurrentState == RaceStateSO.RaceState.RaceFinished)
         {
-            // for demo go to main menu
-            SceneManager.LoadScene(0);
+            // send us to the previous scene. either break room or main menu.
+            _sceneManager.LoadPreviousScene();
         }
+    }
+
+    private void RewardPoints(List<GameObject> shipObjs)
+    {
+        _RaceStateSO.RewardPoints(shipObjs);
     }
 
     bool AllCheckpointsCrossed(GameObject shipObj) {

@@ -17,6 +17,8 @@ public class RaceStateSO : DescriptionBaseSO
         RaceFinished
     }
 
+    public GameSceneSO previousScene;
+
     public RaceState CurrentState => _currentState;
 
     [SerializeField] [ReadOnly] private RaceState _currentState;
@@ -59,6 +61,32 @@ public class RaceStateSO : DescriptionBaseSO
         _previousState = RaceState.Initializing;
 
         BroadcastStateEntry();
+    }
+
+    public void RewardPoints(List<GameObject> shipsInOrder)
+    {
+        for(int i = 0; i < 4; i++)
+        {
+            var shipObj = shipsInOrder[i];
+            var shipObjName = shipObj.name;
+            shipObjName = shipObjName.Remove(shipObjName.Length - 7, 7);
+            var character = _polePositions.Find(x => x.ShipPrefab.name == shipObjName);
+            switch(i)
+            {
+                case 0:
+                    character.seasonPoints += 9;
+                    break;
+                case 1:
+                    character.seasonPoints += 6;
+                    break;
+                case 2:
+                    character.seasonPoints += 3;
+                    break;
+                case 3:
+                    character.seasonPoints += 1;
+                    break;
+            }
+        }
     }
 
     private void BroadcastStateEntry()

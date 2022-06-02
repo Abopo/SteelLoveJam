@@ -5,8 +5,11 @@ using UnityEngine;
 /// </summary>
 public class CheckpointTracker : MonoBehaviour
 {
+    [SerializeField] private float _distanceToCheckpointAssist;
+
     [Header("Broadcasting On")]
     [SerializeField] private GameObjectEventChannelSO _onCrossedNextCheckpoint = default;
+    [SerializeField] private GameObjectEventChannelSO _onActiveCheckpointZoneLeft = default;
 
     [Header("Listening To")]
     [SerializeField] private VoidEventChannelSO _onRaceStateEvent = default;
@@ -20,6 +23,9 @@ public class CheckpointTracker : MonoBehaviour
     private int _lastPassedCheckpoint = -1;
     private int _curLap = 0;
     private bool _finishedRace;
+
+    private GameObject _nearbyCheckpoint;
+    private bool _alertedAssistanceNeeded;
 
     private void OnEnable()
     {
@@ -35,6 +41,19 @@ public class CheckpointTracker : MonoBehaviour
         _onShipFinishedRace.OnEventRaised += OnFinishedRace;
     }
 
+    private void Update()
+    {
+        if (_nearbyCheckpoint != null && _alertedAssistanceNeeded == false)
+        {
+            var distToCheckpoint = (_nearbyCheckpoint.transform.position - gameObject.transform.position).magnitude;
+            if (distToCheckpoint >= _distanceToCheckpointAssist)
+            {
+                _onActiveCheckpointZoneLeft.RaiseEvent(_nearbyCheckpoint);
+                _alertedAssistanceNeeded = true;
+            }
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Checkpoint")
@@ -44,6 +63,16 @@ public class CheckpointTracker : MonoBehaviour
             {
                 _lastPassedCheckpoint = checkpoint.CheckpointNumber;
                 _onCrossedNextCheckpoint.RaiseEvent(gameObject);
+                _nearbyCheckpoint = null;
+                _alertedAssistanceNeeded = false;
+            }
+        }
+        else if (other.tag == "CheckpointArea")
+        {
+            var checkpoint = other.gameObject.transform.parent.GetComponent<Checkpoint>();
+            if (_lastPassedCheckpoint == checkpoint.CheckpointNumber - 1)
+            {
+                _nearbyCheckpoint = checkpoint.gameObject;
             }
         }
     }

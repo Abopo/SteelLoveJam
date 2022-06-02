@@ -4,11 +4,18 @@ using UnityEngine;
 
 public class MainMenu : MonoBehaviour
 {
+    [SerializeField] private SceneManagerSO _sceneManager;
+    [SerializeField] private GameSceneSO _mainMenuScene;
     [SerializeField] private GameSceneSO _gameStartScene;
+
+    private void Start()
+    {
+        _sceneManager.SetStartingScene(_mainMenuScene);
+    }
 
     public void StartGame()
     {
-        _gameStartScene.sceneReference.LoadSceneAsync(UnityEngine.SceneManagement.LoadSceneMode.Single, true);
+        _sceneManager.LoadScene(_gameStartScene);
     }
 
     public void Quit()

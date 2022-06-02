@@ -52,6 +52,7 @@ public class ShipController : MonoBehaviour {
     [SerializeField] private float _health = 100.0f;
     [SerializeField] private float _boostTank = 0f;
     [SerializeField] private float _healthGainOnCheckpoint;
+    [SerializeField] private float _healthLossOnGeneralCollision;
 
     [SerializeField] private GameObject _shipModel;
 
@@ -182,6 +183,10 @@ public class ShipController : MonoBehaviour {
     private void OnCollisionEnter(Collision collision) {
         if (collision.gameObject.tag == "Hazard") {
             ChangeHealth(-collision.gameObject.GetComponent<Hazard>().damage);
+        }
+        else
+        {
+            ChangeHealth(-_healthLossOnGeneralCollision);
         }
     }
     #endregion

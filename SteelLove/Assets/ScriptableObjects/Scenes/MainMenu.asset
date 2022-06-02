@@ -9,16 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e95205ed14ad322459440d6c5a42743f, type: 3}
-  m_Name: Track3
+  m_Script: {fileID: 11500000, guid: c3a3285c4502ec54ea33ae24e5724dc9, type: 3}
+  m_Name: MainMenu
   m_EditorClassIdentifier: 
-  description: 
-  levelName: Track 3
+  description: the main menu
+  levelName: MainMenu
   sceneReference:
-    m_AssetGUID: e440fe55eac0716408ab8de6d59651e5
+    m_AssetGUID: 509a002669c61164e9a79c18e532b5c3
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
-  sceneMusic: {fileID: 8300000, guid: d7f4c28729fc1d14e9a86d986c221c32, type: 3}
-  trackPreview: {fileID: 6017453794432076249, guid: f13efb5f4f37f7b49beb149469516001,
-    type: 3}
+  sceneMusic: {fileID: 0}
