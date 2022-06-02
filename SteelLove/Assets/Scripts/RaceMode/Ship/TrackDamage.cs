@@ -38,6 +38,7 @@ public class TrackDamage : MonoBehaviour
         }
         else
         {
+            _currOutTrackTimer = 0f;
             _offTrackDamageParticles.Stop();
         }
     }
