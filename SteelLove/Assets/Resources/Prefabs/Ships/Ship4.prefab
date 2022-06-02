@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3703411798402512238}
   - component: {fileID: 9219929488658796738}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: CapsuleCollider
   m_TagString: Ship
   m_Icon: {fileID: 0}
@@ -103,6 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c062d5e0f1bd3648bb3382082ec24eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Character: {fileID: 11400000, guid: aae7d039b6fdeae4ebc4d4574bf06098, type: 2}
   _mainthrustForce: 17
   _reverseThrustForce: 12
   _horizontalThrustForce: 10
@@ -269,6 +270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 327cbf1a564a3404ebc3d3dfaf6253d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  difficulty: 0
   _firstCheckpoint: {fileID: 0}
   _nextCheckpoint: {fileID: 0}
   _toCheckpoint: {x: 0, y: 0, z: 0}

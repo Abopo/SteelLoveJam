@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Yarn.Unity;
+using LootLocker.Requests;
 
 public struct CharacterRank {
     public string charaName;
@@ -17,7 +18,6 @@ public class GameManager : MonoBehaviour {
     // List of characters sorted by their points
     [SerializeField] List<CharacterSO> _characterList = new List<CharacterSO>();
     public List<CharacterSO> CharacterList { get => _characterList; }
-
 
     // Singleton
     public static GameManager instance;
@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour {
 
         // Character AI settings
         List<int> aiDifficulties = new List<int>() {
-            0, 1, 2, 2, 3, 3, 4
+            0, 1, 1, 2, 2, 3, 3, 4
         };
         int rand = 0;
         foreach (CharacterSO character in _characterList) {
@@ -47,6 +47,8 @@ public class GameManager : MonoBehaviour {
 
             character.seasonPoints = 0;
             character.sabotaged = false;
+
+            character.upgrades = 0;
         }
     }
 
@@ -79,7 +81,22 @@ public class GameManager : MonoBehaviour {
     void Start() {
         DontDestroyOnLoad(transform.gameObject);
 
+        LootLockerSetup();
+
         StartCoroutine(LateStart());
+    }
+
+    void LootLockerSetup() {
+        LootLockerSDKManager.StartGuestSession((response) =>
+        {
+            if (!response.success) {
+                Debug.Log("error starting LootLocker session");
+
+                return;
+            }
+
+            Debug.Log("successfully started LootLocker session");
+        });
     }
 
     IEnumerator LateStart() {
@@ -89,13 +106,10 @@ public class GameManager : MonoBehaviour {
     public void RaceFinished() {
         // Update next race
         nextRace++;
-
-        // Load Break Room
-        SceneManager.LoadScene("BreakRoom");
     }
 
     public STATE GetCharacterState(string charaName) {
-        STATE charaState = STATE.NO_STATE;
+        STATE charaState = STATE.MID3;
 
         int i;
         for(i = 0; i < _characterList.Count; ++i) {
@@ -106,13 +120,27 @@ public class GameManager : MonoBehaviour {
 
         if(i <= 2) {
             charaState = STATE.TOP3;
-        } else if(i <= 6) {
+        } else if(i <= 5) {
             charaState = STATE.MID3;
         } else {
             charaState = STATE.BOT3;
         }
 
         return charaState;
+    }
+
+    [YarnCommand("upgrade")]
+    public static void UpgradeShip() {
+        // Increase Ziv's ship upgrades by 1
+        int upgrades = 0;
+        foreach (CharacterSO character in instance._characterList) {
+            if (character.name.Contains("Ziv")) {
+                character.upgrades += 1;
+                upgrades = character.upgrades;
+            }
+        }
+
+        FindObjectOfType<MainUI>().DisplayDialogue("Ship_Ziv_Upgrade_" + upgrades);
     }
 
     [YarnCommand("sabotage")]

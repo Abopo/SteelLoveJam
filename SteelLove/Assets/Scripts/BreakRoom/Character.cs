@@ -44,8 +44,7 @@ public class Character : Interactable {
             curState = STATE.NO_STATE;
         } else {
             // Check the ranking list for our character and set our state
-            GameManager.instance.GetCharacterState(_charaName);
-            curState = STATE.MID3;
+            curState = GameManager.instance.GetCharacterState(_charaName);
         }
     }
 

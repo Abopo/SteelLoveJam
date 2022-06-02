@@ -20,7 +20,7 @@ public class CheckpointTracker : MonoBehaviour
     public int CurLap => _curLap;
     public bool FinishedRace => _finishedRace;
 
-    private int _lastPassedCheckpoint = -1;
+    [SerializeField] private int _lastPassedCheckpoint = -1;
     private int _curLap = 0;
     private bool _finishedRace;
 

@@ -16,6 +16,8 @@ public class TimeTracker : MonoBehaviour
     private bool _raceInProgress;
     private int _curLap;
 
+    public float TotalTime => _curTime;
+
     private void OnEnable()
     {
         _onRaceStateEvent.OnEventRaised += StartTimer;

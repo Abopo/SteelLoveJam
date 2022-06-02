@@ -32,6 +32,38 @@ title: Ship_Ziv
 ---
 It's my ship, the Iron Talon.
 Fastest ship this side of Cranika.
+<<if $ship_upgrade_parts > 0>>
+I have some upgrade parts.
+-> Upgrade ship
+    <<set $ship_upgrade_parts to $ship_upgrade_parts-1>>
+    <<upgrade>>
+-> Leave
+<<endif>>
+===
+
+title: Ship_Ziv_Upgrade_1
+---
+< Handling improved >
+===
+title: Ship_Ziv_Upgrade_2
+---
+< Acceleration increased >
+===
+title: Ship_Ziv_Upgrade_3
+---
+< Health increased >
+===
+title: Ship_Ziv_Upgrade_4
+---
+< Boost improved >
+===
+title: Ship_Ziv_Upgrade_5
+---
+< Top speed increased >
+===
+title: Ship_Ziv_Upgrade_6
+---
+< All parameters increased >
 ===
 
 title: Ship_Trik
