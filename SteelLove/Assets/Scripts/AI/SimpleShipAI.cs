@@ -156,7 +156,6 @@ public class SimpleShipAI : MonoBehaviour {
 
     // Send input to ship
     void SendInputToShip() {
-        _ship.ChangeHealth(100);
         if (_input.y < 0) {
             _ship.ThrustForward(Mathf.Abs(_input.y));
         } else {
