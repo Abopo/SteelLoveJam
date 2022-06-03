@@ -38,7 +38,25 @@ public class EndingScene : MonoBehaviour {
         yield return null;
 
         // TODO: Set ending text based on Ziv's ranking
-        _dialogueRunner.StartDialogue("Ziv_Ending_Bad");
+        int zivPos = GameManager.instance.GetZivPosition();
+
+        if(zivPos == 0) {
+            // True ending
+            _dialogueRunner.StartDialogue("Ziv_Ending_True");
+            RenderSettings.skybox = _skyboxes[2];
+        } else if(zivPos <= 2) {
+            // Top 3 ending
+            _dialogueRunner.StartDialogue("Ziv_Ending_Good");
+            RenderSettings.skybox = _skyboxes[2];
+        } else if(zivPos <= 5) {
+            // Mid ending
+            _dialogueRunner.StartDialogue("Ziv_Ending_Mid");
+            RenderSettings.skybox = _skyboxes[1];
+        } else {
+            // Bad ending
+            _dialogueRunner.StartDialogue("Ziv_Ending_Bad");
+            RenderSettings.skybox = _skyboxes[0];
+        }
     }
 
     private void OnEnable() {

@@ -108,6 +108,9 @@ public class GameManager : MonoBehaviour {
     public void RaceFinished() {
         // Update next race
         nextRace++;
+
+        // Make sure rank list is sorted
+        SortRankList();
     }
 
     public STATE GetCharacterState(string charaName) {
@@ -129,6 +132,19 @@ public class GameManager : MonoBehaviour {
         }
 
         return charaState;
+    }
+
+    public int GetZivPosition() {
+        int zivPos = 8;
+
+        for (int i = 0; i < _characterList.Count; ++i) {
+            if (_characterList[i].name.Contains("Ziv")) {
+                zivPos = i;
+                break;
+            }
+        }
+
+        return zivPos;
     }
 
     [YarnCommand("upgrade")]

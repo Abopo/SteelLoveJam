@@ -6,6 +6,7 @@ using UnityEngine;
 public class RacePositioning : MonoBehaviour
 {
     private List<GameObject> _positionOrder = new List<GameObject>();
+    private List<GameObject> _destroyedOder = new List<GameObject>();
 
     [Header("Broadcasting On")]
     [SerializeField] private GameObjectsListEventChannelSO _onRacePositionsUpdated = default;
@@ -16,6 +17,7 @@ public class RacePositioning : MonoBehaviour
     [SerializeField] private VoidEventChannelSO _onRaceFinished = default;
     [SerializeField] private GameObjectsListEventChannelSO _onSpawnedShips = default;
     [SerializeField] private GameObjectEventChannelSO _onShipFinishedRace = default;
+    [SerializeField] private GameObjectEventChannelSO _onShipDestroyed = default;
 
     private int lockedPositions = 0;
     private bool _raceActive = false;
@@ -32,6 +34,7 @@ public class RacePositioning : MonoBehaviour
         _onRaceFinished.OnEventRaised += ReportRaceResults;
         _onSpawnedShips.OnEventRaised += SetShips;
         _onShipFinishedRace.OnEventRaised += LockPosition;
+        _onShipDestroyed.OnEventRaised += ShipDestroyed;
     }
 
     private void OnDisable()
@@ -40,6 +43,7 @@ public class RacePositioning : MonoBehaviour
         _onRaceFinished.OnEventRaised += ReportRaceResults;
         _onSpawnedShips.OnEventRaised -= SetShips;
         _onShipFinishedRace.OnEventRaised += LockPosition;
+        _onShipDestroyed.OnEventRaised -= ShipDestroyed;
     }
 
     private void Update()
@@ -70,13 +74,16 @@ public class RacePositioning : MonoBehaviour
         
         for (int i = 0; i < _positionOrder.Count; ++i)
         {
-            if (i < lockedPositions)
+            if (_positionOrder[i].GetComponent<ShipController>().Health > 0)
             {
-                lockedIn.Add(_positionOrder[i]);
-            }
-            else
-            {
-                stillRacing.Add(_positionOrder[i]);
+                if (i < lockedPositions)
+                {
+                    lockedIn.Add(_positionOrder[i]);
+                }
+                else
+                {
+                    stillRacing.Add(_positionOrder[i]);
+                }
             }
         }
         
@@ -85,6 +92,7 @@ public class RacePositioning : MonoBehaviour
         _positionOrder.Clear();
         _positionOrder.AddRange(lockedIn);
         _positionOrder.AddRange(stillRacing);
+        _positionOrder.AddRange(_destroyedOder);
     }
 
     private int ComparePositions(GameObject x, GameObject y)
@@ -139,5 +147,11 @@ public class RacePositioning : MonoBehaviour
     private void LockPosition(GameObject shipObj)
     {
         lockedPositions++;
+    }
+
+    private void ShipDestroyed(GameObject shipObj)
+    {
+        // insert at begining of list so earlier destroyed ships are put in last
+        _destroyedOder.Insert(0, shipObj);
     }
 }

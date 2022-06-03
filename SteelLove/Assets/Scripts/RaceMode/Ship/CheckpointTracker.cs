@@ -9,6 +9,7 @@ public class CheckpointTracker : MonoBehaviour
 
     [Header("Broadcasting On")]
     [SerializeField] private GameObjectEventChannelSO _onCrossedNextCheckpoint = default;
+    [SerializeField] private GameObjectEventChannelSO _onPlayerCrossedNextCheckpoint = default;
     [SerializeField] private GameObjectEventChannelSO _onActiveCheckpointZoneLeft = default;
 
     [Header("Listening To")]
@@ -46,7 +47,7 @@ public class CheckpointTracker : MonoBehaviour
         if (_nearbyCheckpoint != null && _alertedAssistanceNeeded == false)
         {
             var distToCheckpoint = (_nearbyCheckpoint.transform.position - gameObject.transform.position).magnitude;
-            if (distToCheckpoint >= _distanceToCheckpointAssist)
+            if (distToCheckpoint >= _distanceToCheckpointAssist && GetComponent<PlayerShipSetup>() != null)
             {
                 _onActiveCheckpointZoneLeft.RaiseEvent(_nearbyCheckpoint);
                 _alertedAssistanceNeeded = true;
@@ -63,6 +64,10 @@ public class CheckpointTracker : MonoBehaviour
             {
                 _lastPassedCheckpoint = checkpoint.CheckpointNumber;
                 _onCrossedNextCheckpoint.RaiseEvent(gameObject);
+                if (GetComponent<PlayerShipSetup>() != null)
+                {
+                    _onPlayerCrossedNextCheckpoint.RaiseEvent(gameObject);
+                }
                 _nearbyCheckpoint = null;
                 _alertedAssistanceNeeded = false;
             }

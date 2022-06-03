@@ -83,25 +83,21 @@ public class RaceManager : MonoBehaviour
         _checkpoints[_activeCheckpoint].Activate();
     }
 
-    private void OnCrossedActiveCheckpoint() 
-    {
-        _activeCheckpoint++;
-        if (_activeCheckpoint < _checkpoints.Length) {
-            _checkpoints[_activeCheckpoint].Activate();
-        }
-    }
-
     private void OnCrossedCheckpoint(GameObject shipObj)
     {
         if(AllCheckpointsCrossed(shipObj)) {
-            // Reset checkpoints
-            ResetCheckpoints();
+            bool isPlayer = shipObj.GetComponent<PlayerShipSetup>() != null;
+
+            if (isPlayer)
+            {
+                ResetCheckpoints();
+            }
 
             CheckpointTracker checkpointTracker = shipObj.GetComponent<CheckpointTracker>();
 
             // If lap 3, end race
             if (checkpointTracker.CurLap >= 2 && checkpointTracker.FinishedRace == false) {
-                if (shipObj.GetComponent<PlayerShipSetup>() != null)
+                if (isPlayer)
                 {
                     _RaceStateSO.UpdateState(RaceStateSO.RaceState.RaceFinished);
                 }

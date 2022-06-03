@@ -12,6 +12,7 @@ public class AttachToTrack : MonoBehaviour
 
     [SerializeField] private List<Transform> _attachPoints;
 
+    public Vector3 LatestNormal => _latestNormal;
     private Vector3 _latestNormal;
 
     private Rigidbody _rigidBody;

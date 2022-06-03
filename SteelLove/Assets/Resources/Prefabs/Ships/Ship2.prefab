@@ -5217,7 +5217,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 32
+  m_Constraints: 0
   m_CollisionDetection: 1
 --- !u!114 &7109951208249717664
 MonoBehaviour:
@@ -5233,8 +5233,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _raycastDist: 2
   _floatHight: 0.5
-  _hightSmoothSpeed: 20
-  _normalSmoothSpeed: 20
+  _hightSmoothSpeed: 8
+  _normalSmoothSpeed: 8
   _attachPoints:
   - {fileID: 1844472916743007867}
   - {fileID: 760452943261525168}
@@ -5255,12 +5255,15 @@ MonoBehaviour:
   _distanceToCheckpointAssist: 40
   _onCrossedNextCheckpoint: {fileID: 11400000, guid: 71c2b24e6ca91284bb7c5343a20d9ec8,
     type: 2}
+  _onPlayerCrossedNextCheckpoint: {fileID: 11400000, guid: 0571c863040de2d43bc1017e00a432e7,
+    type: 2}
   _onActiveCheckpointZoneLeft: {fileID: 11400000, guid: dd6b7d2cebd221f4596e990f183a1765,
     type: 2}
   _onRaceStateEvent: {fileID: 11400000, guid: eb9b51f329654b14a9f17e243030ca44, type: 2}
   _onLapFinished: {fileID: 11400000, guid: 8d4ba15d737b5314cb786d8746b73182, type: 2}
   _onShipFinishedRace: {fileID: 11400000, guid: d37dd02d665681c4284c1eb3208ce6d3,
     type: 2}
+  _lastPassedCheckpoint: -1
 --- !u!114 &4716904975908761695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5277,6 +5280,8 @@ MonoBehaviour:
   _outsideTrackFullDamage: 1
   _timeToFullDamage: 10
   _offTrackDamageParticles: {fileID: 5592029646977953670}
+  _onShipFinishedRace: {fileID: 11400000, guid: d37dd02d665681c4284c1eb3208ce6d3,
+    type: 2}
 --- !u!114 &-7504026269923084065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5307,7 +5312,7 @@ MonoBehaviour:
   difficulty: 0
   _firstCheckpoint: {fileID: 0}
   _nextCheckpoint: {fileID: 0}
-  _toCheckpoint: {x: 0, y: 0, z: 0}
+  _rotSpeed: 8
   _input: {x: 0, y: 0}
   _onRaceStartEvent: {fileID: 11400000, guid: eb9b51f329654b14a9f17e243030ca44, type: 2}
 --- !u!1 &8013170327540851375
@@ -5349,7 +5354,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8013170327540851375}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0e03b40754d5af5418d882cf5ce14ace, type: 3}
   m_Name: 

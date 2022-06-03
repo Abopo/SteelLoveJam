@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Ziv Chromebeak_Dark
   m_EditorClassIdentifier: 
   description: Represents the player. used to store season points and set pole position
-  _shipPrefab: {fileID: 3710275133932983563, guid: 5c27ef7191122fc42a8f30ec0f245634,
+  _shipPrefab: {fileID: 6874506212968302391, guid: 2768af3b914d333458ad79f49ad30df8,
     type: 3}
   seasonPoints: 0
   difficulty: 0
   sabotaged: 0
   upgrades: 5
+  portrait: {fileID: 0}

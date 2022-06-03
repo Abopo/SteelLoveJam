@@ -7,9 +7,17 @@ public class RaceOverUI : MonoBehaviour
     [SerializeField] private GameObject _raceCompleteMessage;
     [SerializeField] private GameObject _shipDestoryedMessage;
     [SerializeField] private GameObject _leaderboardSubmission;
+    [SerializeField] private GameObject _postRacePositions;
+
+    // post Race positions
+    [SerializeField] private RaceStateSO _raceState;
+    [SerializeField] private Transform _badgeParent;
+
+    [SerializeField] private GameObject _badgePrefab;
 
     [SerializeField] private VoidEventChannelSO _onRaceFinishedEvent = default;
     [SerializeField] private GameObjectEventChannelSO _onShipDestroyed = default;
+    [SerializeField] private GameObjectsListEventChannelSO _onReportRaceResults = default;
 
     [SerializeField] private SceneManagerSO _sceneManager = default;
 
@@ -19,6 +27,7 @@ public class RaceOverUI : MonoBehaviour
     {
         _raceCompleteMessage.SetActive(false);
         _shipDestoryedMessage.SetActive(false);
+        _postRacePositions.SetActive(false);
         _playerDestroyed = false;
     }
 
@@ -26,12 +35,14 @@ public class RaceOverUI : MonoBehaviour
     {
         _onRaceFinishedEvent.OnEventRaised += EnableUI;
         _onShipDestroyed.OnEventRaised += OnShipDestroyed;
+        _onReportRaceResults.OnEventRaised += PopulateRacePositionsUI;
     }
 
     private void OnDisable()
     {
         _onRaceFinishedEvent.OnEventRaised -= EnableUI;
         _onShipDestroyed.OnEventRaised -= OnShipDestroyed;
+        _onReportRaceResults.OnEventRaised -= PopulateRacePositionsUI;
     }
 
     private void EnableUI()
@@ -49,6 +60,8 @@ public class RaceOverUI : MonoBehaviour
                 LeaderboardCheck();
             }
         }
+
+        _postRacePositions.SetActive(true);
     }
 
     private void LeaderboardCheck() {
@@ -72,6 +85,20 @@ public class RaceOverUI : MonoBehaviour
         if (ship.GetComponent<PlayerShipSetup>() != null)
         {
             _playerDestroyed = true;
+        }
+    }
+
+    private void PopulateRacePositionsUI(List<GameObject> shipObjs)
+    {
+        for (int i = 0; i < shipObjs.Count; ++i)
+        {
+            var shipObj = shipObjs[i];
+            var shipObjName = shipObj.name;
+            shipObjName = shipObjName.Remove(shipObjName.Length - 7, 7);
+            var character = _raceState.PolePositions.Find(x => x.ShipPrefab.name == shipObjName);
+            var badgeObj = Instantiate(_badgePrefab, _badgeParent);
+            bool isDestroyed = shipObj.GetComponent<ShipController>().Health <= 0;
+            badgeObj.GetComponent<PositionBadge>().Init(character.portrait, i + 1, isDestroyed);
         }
     }
 }
