@@ -15,11 +15,11 @@ MonoBehaviour:
   description: 
   levelName: Story Track 4
   sceneReference:
-    m_AssetGUID: 1bc4b568e16f7d341b9adb0c0545cdf2
+    m_AssetGUID: 85efcc68b4e0cf7418e164fdb082feb8
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   sceneMusic: {fileID: 8300000, guid: d7f4c28729fc1d14e9a86d986c221c32, type: 3}
-  trackPreview: {fileID: 5145607299929115363, guid: 4c29cc8acae36b94a886ce96bcc0fa2c,
+  trackPreview: {fileID: 4547367683176929487, guid: ddbf78613b2d4064db428e25c879359a,
     type: 3}
   trackLeaderboardID: 3357

@@ -41,6 +41,10 @@ MonoBehaviour:
     m_Address: Assets/Scenes/DarkShippieDues.unity
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 85efcc68b4e0cf7418e164fdb082feb8
+    m_Address: Assets/Scenes/TrackTests/Track7.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 6115fc7b36dbf284badd2052d5ee3bd8, type: 2}
   m_SchemaSet:
