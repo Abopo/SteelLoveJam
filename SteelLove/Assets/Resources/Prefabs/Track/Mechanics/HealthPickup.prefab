@@ -58,9 +58,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b18ba310db30049409f886b753075dfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healthRecovery: 20
-  _onCrossedFinishLine: {fileID: 11400000, guid: cd09aa317b22bf64980d7bb094732930,
-    type: 2}
+  _healthRecovery: 40
+  _onLapFinished: {fileID: 11400000, guid: 8d4ba15d737b5314cb786d8746b73182, type: 2}
 --- !u!1001 &2156614541102421840
 PrefabInstance:
   m_ObjectHideFlags: 0

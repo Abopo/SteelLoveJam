@@ -6283,7 +6283,7 @@ MonoBehaviour:
   id: 0
   angleToNextCheckpoint: 0
   center: {x: 0, y: 0, z: 0}
-  lookForwardAmount: 9
+  lookForwardAmount: 0
 --- !u!1 &1201304192933836261
 GameObject:
   m_ObjectHideFlags: 0
@@ -17509,7 +17509,7 @@ MonoBehaviour:
   id: 0
   angleToNextCheckpoint: 0
   center: {x: 0, y: 0, z: 0}
-  lookForwardAmount: 6
+  lookForwardAmount: 0
 --- !u!1 &4174601696259284675
 GameObject:
   m_ObjectHideFlags: 0

@@ -27,6 +27,7 @@ public class SimpleShipAI : MonoBehaviour {
     private Vector3 _averageTargetPt;
     private int _defaultLookForward = 4;
     private int _lookForwardAmount;
+    private float _randomizeMagnitudeRange = 2.5f;
 
     private bool _raceStarted = false;
 
@@ -136,7 +137,7 @@ public class SimpleShipAI : MonoBehaviour {
             {
                 if (angle > -120 && angle < 120)
                 {
-                    angle *= 1.5f;
+                    angle *= 1.25f;
                     toAvgPosNorm = Quaternion.AngleAxis(angle, transform.up) * toAvgPosNorm;
 
                     _input.x = -angle / 120f;
@@ -234,6 +235,17 @@ public class SimpleShipAI : MonoBehaviour {
         }
 
         _averageTargetPt = averagedPos / _lookForwardAmount;
+
+        // randomize slightly
+        float x = Random.Range(-1f, 1f);
+        float y = Random.Range(-1f, 1f);
+        float z = Random.Range(-1f, 1f);
+        Vector3 randomizeNorm = new Vector3(x, y, z).normalized;
+        var up = transform.up;
+        Vector3.OrthoNormalize(ref up, ref randomizeNorm);
+        float magnitude = Random.Range(0, _randomizeMagnitudeRange);
+
+        _averageTargetPt += randomizeNorm * magnitude;
     }
 
     private void FindCloseCheckpoint()
