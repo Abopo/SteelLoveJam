@@ -40,9 +40,9 @@ public class RacePositioning : MonoBehaviour
     private void OnDisable()
     {
         _onRaceStateEvent.OnEventRaised -= StartTracking;
-        _onRaceFinished.OnEventRaised += ReportRaceResults;
+        _onRaceFinished.OnEventRaised -= ReportRaceResults;
         _onSpawnedShips.OnEventRaised -= SetShips;
-        _onShipFinishedRace.OnEventRaised += LockPosition;
+        _onShipFinishedRace.OnEventRaised -= LockPosition;
         _onShipDestroyed.OnEventRaised -= ShipDestroyed;
     }
 

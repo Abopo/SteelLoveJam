@@ -31,7 +31,7 @@ public class TrackDamage : MonoBehaviour
     }
 
     private void OnDisable() {
-        _onShipFinishedRace.OnEventRaised += OnFinishedRace;
+        _onShipFinishedRace.OnEventRaised -= OnFinishedRace;
     }
 
     private void FixedUpdate()

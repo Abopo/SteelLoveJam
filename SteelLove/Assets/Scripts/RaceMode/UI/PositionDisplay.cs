@@ -17,7 +17,7 @@ public class PositionDisplay : MonoBehaviour
 
     private void OnDisable()
     {
-        _onRacePositionsUpdated.OnEventRaised += CheckPosition;
+        _onRacePositionsUpdated.OnEventRaised -= CheckPosition;
     }
 
     private void CheckPosition(List<GameObject> positions)

@@ -24,7 +24,7 @@ public class LapTracker : MonoBehaviour
 
     private void OnDisable()
     {
-        _onRaceStateEvent.OnEventRaised += OnRaceStart;
+        _onRaceStateEvent.OnEventRaised -= OnRaceStart;
         _onRaceFinishedStateEvent.OnEventRaised -= OnRaceFinished;
         _onLapFinished.OnEventRaised -= UpdateLap;
     }

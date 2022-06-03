@@ -54,6 +54,8 @@ public class RaceManager : MonoBehaviour
 
         // input events
         _inputReader.PauseEvent -= OnPause;
+        _inputReader.ConfirmEvent -= ConfirmEndOfRace;
+        _inputReader.RaceSkipEvent -= OnRaceSkip;
     }
 
     private void Start()

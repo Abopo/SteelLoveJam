@@ -39,7 +39,7 @@ public class CheckpointTracker : MonoBehaviour
     {
         _onRaceStateEvent.OnEventRaised -= OnRaceStart;
         _onLapFinished.OnEventRaised -= OnLapFinished;
-        _onShipFinishedRace.OnEventRaised += OnFinishedRace;
+        _onShipFinishedRace.OnEventRaised -= OnFinishedRace;
     }
 
     private void Update()
