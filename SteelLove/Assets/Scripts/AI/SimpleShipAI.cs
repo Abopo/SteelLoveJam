@@ -25,7 +25,8 @@ public class SimpleShipAI : MonoBehaviour {
     [SerializeField] private VoidEventChannelSO _onRaceStartEvent = default;
 
     private Vector3 _averageTargetPt;
-    private int _lookForwardAmount = 10;
+    private int _defaultLookForward = 4;
+    private int _lookForwardAmount;
 
     private bool _raceStarted = false;
 
@@ -41,6 +42,8 @@ public class SimpleShipAI : MonoBehaviour {
         }
 
         BuildCheckpointList();
+
+        _lookForwardAmount = _defaultLookForward;
     }
     // Start is called before the first frame update
     void Start() {
@@ -209,6 +212,9 @@ public class SimpleShipAI : MonoBehaviour {
             if(_nextCheckpoint.lookForwardAmount > 0)
             {
                 _lookForwardAmount = _nextCheckpoint.lookForwardAmount;
+            } else if (_nextCheckpoint.lookForwardAmount == -1)
+            {
+                _lookForwardAmount = _defaultLookForward;
             }
 
 
@@ -221,15 +227,13 @@ public class SimpleShipAI : MonoBehaviour {
         Vector3 averagedPos = Vector3.zero;
         var curCheckpoint = _nextCheckpoint;
 
-        int forwardThinking = 7;
-
-        for (int i = 0; i < forwardThinking; i++)
+        for (int i = 0; i < _lookForwardAmount; i++)
         {
             averagedPos += curCheckpoint.transform.position;
             curCheckpoint = curCheckpoint.nextCheckpoint;
         }
 
-        _averageTargetPt = averagedPos / forwardThinking;
+        _averageTargetPt = averagedPos / _lookForwardAmount;
     }
 
     private void FindCloseCheckpoint()
