@@ -60,7 +60,7 @@ public class Ship_Engine_Hazard : MonoBehaviour {
     }
 
     IEnumerator EnableColliderLater() {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
         _hazardCollider.enabled = true;
     }
 

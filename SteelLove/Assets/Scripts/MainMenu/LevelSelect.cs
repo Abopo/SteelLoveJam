@@ -72,11 +72,17 @@ public class LevelSelect : MonoBehaviour
         _confirmButton.gameObject.SetActive(true);
 
         // Load leaderboard scores for the track
-        _leaderboard.ShowScores(track.trackLeaderboardID);
+        if (track.trackLeaderboardID != 0) {
+            _leaderboard.Show();
+            _leaderboard.ShowScores(track.trackLeaderboardID);
+        } else {
+            _leaderboard.Hide();
+        }
     }
 
     public void ConfirmTrack()
     {
         _sceneManager.LoadScene(_selectedTrack);
     }
+
 }

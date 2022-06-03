@@ -35,6 +35,8 @@ public class Character : Interactable {
 
         _dialogueBubble.onDialogueComplete.AddListener(OnDialogueComplete);
         _dialogueBubble.onNodeComplete.AddListener(OnNodeComplete);
+
+        _dialogueBubble.VariableStorage = GameManager.instance.yarnMemory;
     }
 
     private void CheckState() {
@@ -116,7 +118,7 @@ public class Character : Interactable {
 
     void OnDialogueComplete() {
         // Unfreeze player
-        _playerController.Unfreeze();
+        //_playerController.Unfreeze();
     }
 
     void OnNodeComplete(string node) {

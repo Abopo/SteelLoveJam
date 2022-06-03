@@ -74,7 +74,7 @@ public class RacePositioning : MonoBehaviour
         
         for (int i = 0; i < _positionOrder.Count; ++i)
         {
-            if (_positionOrder[i].GetComponent<ShipController>().Health > 0)
+            if (_positionOrder[i] != null && _positionOrder[i].GetComponent<ShipController>().Health > 0)
             {
                 if (i < lockedPositions)
                 {
@@ -84,6 +84,9 @@ public class RacePositioning : MonoBehaviour
                 {
                     stillRacing.Add(_positionOrder[i]);
                 }
+            } else {
+                int x;
+                x = 1;
             }
         }
         

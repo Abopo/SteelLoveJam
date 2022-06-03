@@ -13,7 +13,9 @@ You'd best set your hopes aside though, because I will be the one to win this ra
 
 title: Jebb_Race2_Top3
 ---
-Yes, I am one step closer to those which I long for...
+Yes, I am one step closer to those which I long for... 
+Just you wait Singuliera, I'll give you what you truly want. 
+What we both truly want.
 <<jump Jebb_Quest>>
 ===
 
@@ -45,10 +47,15 @@ If that's true it's going to be one hell of a race. That place is a mess.
 There's bound to be old shop debris and misfiring engines all over the place. 
 Keep your wits about you, Ziv. 
 Wouldn't want to lose a man with your skills in a place like that.
+<<jump Jebb_Quest>>
 ===
 
 title: Jebb_Race3_Bot3
 ---
+Am... Am I truly not going to win the prix? 
+It's almost impossible with how far behind I am. Will I never attain those which I desire?
+Perhaps it is time to give up and move on...
+<<jump Jebb_Quest>>
 ===
 
 title: Jebb_Race4_Top3
@@ -68,6 +75,10 @@ title: Jebb_Race4_Mid3
 
 title: Jebb_Race4_Bot3
 ---
+Ziv, I concede this race to you. You are truly the better racer. 
+I have decided to move on from my past desires. I see now that it was an...idealistic dream at best. 
+From henceforth I have resolved to dedicate myself to buof conservation. 
+I hope to see you again soon, Ziv.
 ===
 
 title: Jebb_Quest

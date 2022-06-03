@@ -19,6 +19,7 @@ public class InputReader : DescriptionBaseSO, GameInput.IRacingActions, GameInpu
     public event UnityAction QuickTurnEvent = delegate { };
     public event UnityAction<float> BrakeEvent = delegate { };
     public event UnityAction<float> LookBehindEvent = delegate { };
+    public event UnityAction RaceSkipEvent = delegate { };
 
     // Break room
     public event UnityAction<Vector2> MovementEvent = delegate { };
@@ -94,6 +95,11 @@ public class InputReader : DescriptionBaseSO, GameInput.IRacingActions, GameInpu
     {
         LookBehindEvent.Invoke(context.ReadValue<float>());
     }
+
+    public void OnRaceSkip(InputAction.CallbackContext context) {
+        RaceSkipEvent.Invoke();
+    }
+
     #endregion
 
     #region BreakRoomInput

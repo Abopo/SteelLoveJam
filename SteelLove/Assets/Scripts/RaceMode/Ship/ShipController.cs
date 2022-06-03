@@ -50,6 +50,7 @@ public class ShipController : MonoBehaviour {
 
     [Header("Ship Stats")]
     [SerializeField] private float _health = 100.0f;
+    private float _maxHealth;
     [SerializeField] private float _boostTank = 0f;
     [SerializeField] private float _healthGainOnCheckpoint;
     [SerializeField] private float _healthLossOnGeneralCollision;
@@ -137,6 +138,8 @@ public class ShipController : MonoBehaviour {
             // Lower health
             _health = 50;
         }
+
+        _maxHealth = _health;
     }
 
     private void OnEnable()
@@ -146,7 +149,7 @@ public class ShipController : MonoBehaviour {
 
     private void OnDisable()
     {
-        _onCrossedNextCheckpoint.OnEventRaised += CheckpointHeal;
+        _onCrossedNextCheckpoint.OnEventRaised -= CheckpointHeal;
     }
 
     private void FixedUpdate()
@@ -170,7 +173,7 @@ public class ShipController : MonoBehaviour {
         }
 
         if(collision.tag == "Hazard") {
-            if(collision.transform.parent.GetComponent<Ship_Engine_Hazard>())
+            if(collision.transform.parent.GetComponent<Ship_Engine_Hazard>() && _shipFireParticles != null)
             {
                 Debug.Log("Start fire");
                 _shipFireParticles.Play();
@@ -211,9 +214,9 @@ public class ShipController : MonoBehaviour {
                 _health = 0;
             }
 
-            if (_health > 100)
+            if (_health > _maxHealth)
             {
-                _health = 100;
+                _health = _maxHealth;
             }
 
             if (_onHealthLevelChanged != null)

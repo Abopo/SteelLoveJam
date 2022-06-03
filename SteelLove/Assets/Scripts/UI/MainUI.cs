@@ -24,6 +24,8 @@ public class MainUI : MonoBehaviour {
     void Start() {
         _dialogueRunner.onDialogueComplete.AddListener(OnDialogueComplete);
         _dialogueRunner.onNodeComplete.AddListener(OnNodeComplete);
+
+        _dialogueRunner.VariableStorage = GameManager.instance.yarnMemory;
     }
 
     // Update is called once per frame

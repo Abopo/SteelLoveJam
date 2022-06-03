@@ -15,7 +15,7 @@ What's your name metal nose?
 title: Frieda_Race2_Top3
 ---
 Ha! Do you see now that beating me is futile?
-I'm already in best 3, and it's going to stay that way.
+I'm already in the best 3, and it's going to stay that way.
 Nothing will stand in my way of helping that poor girl.
 <<jump Frieda_Quest>>
 ===
@@ -40,6 +40,11 @@ but anything is better than whatever the hell is going on now.
 
 title: Frieda_Race3_Top3
 ---
+I'm still in the top 3, as expected. 
+You lot are too young, too inexperienced to race on these kinds of tracks. 
+And it's only going to get harder from here. 
+Good luck, metal face.
+<<jump Frieda_Quest>>
 ===
 
 title: Frieda_Race3_Mid3
@@ -48,10 +53,20 @@ title: Frieda_Race3_Mid3
 
 title: Frieda_Race3_Bot3
 ---
+Oh man, I've really screwed it again haven't I?
+I'm sorry Singuliera, it doesn't look like Auntie Frieda's gonna be able to help you this time. 
+*sigh* I need another drink... 
+<<jump Frieda_Quest>>
 ===
 
 title: Frieda_Race4_Top3
 ---
+Just a little while longer, Singuliera. 
+Auntie Frieda's gonna get you back on your feet like that whole thing never happened. 
+Hey, you, metal face. You've been an impressive opponent so far, but it all ends here. 
+Nothing you can do will stop me from winning, so don't even try it. 
+If you do, I'm not liable for what happens, you hear?
+<<jump Frieda_Quest>>
 ===
 
 title: Frieda_Race4_Mid3
@@ -60,6 +75,18 @@ title: Frieda_Race4_Mid3
 
 title: Frieda_Race4_Bot3
 ---
+Hey! *hic* Mmetal face! 
+You...you gotta win this... win this race you hear me?! 
+All these other racers got sum sel...selfish plan for the prize. 
+But you? *hic* I dunno what you want outta all this. 
+But I do...what I do know is you're a good person under that oh so scary mask. 
+If there's anything I'm *burp* good at, it's judg...judging character. 
+If, for some reason, you don't want the giant robot, please use it to help Singuliera. 
+The poor girl's been through enough... 
+-> You're wrong about me.
+    I'm never wrong about these things. Even if you don't realize it yourself. 
+-> I...will consider it. 
+    That's all I ask. Thank you. 
 ===
 
 title: Frieda_Quest
@@ -80,7 +107,7 @@ You give this to me? Many thanks metal one!
 I suppose you want something in return?
 I don't have much, but I do have a prototype headband.
 I think I left it in the bathroom though.
-Check the 3rd stall from the right in the ladies room.
+Check the <color=red>2nd stall from the right</color> in the ladies room.
 Be sure to <color=red>knock 3 times quick</color> to make sure there's no one in there though!
 -> Very well.
 -> I'd...prefer if you retrieved it.

@@ -21,8 +21,7 @@ Now if I could only find some batteries...
 title: Sumiv_Race2_Mid3
 ---
 Hello there. I performed adequately in the first race it seems.
-By the way, you wouldn't have happened to come across
-some batteries have you?
+By the way, you wouldn't have happened to come across some batteries have you?
 <<jump Sumiv_Quest>>
 ===
 
@@ -63,6 +62,11 @@ to prove that other giant robots can feasibly exist elsewhere in the universe.
 
 title: Sumiv_Race4_Top3
 ---
+Yes! I'm still in the Top 3 coming into the final race. 
+If I can get my hands on that true giant robot, I'll be able to
+scientifically prove beyond doubt that giant robots DO exist in our universe. 
+Then, everyone will finally respect me and my research.
+<<jump Sumiv_Quest>>
 ===
 
 title: Sumiv_Race4_Mid3
@@ -71,6 +75,9 @@ title: Sumiv_Race4_Mid3
 
 title: Sumiv_Race4_Bot3
 ---
+*sigh* Could things get any worse? I'm at the bottom of the rankings, 
+I still haven't figured out what's going on with my glasses, I've run out of complimentary drinks... 
+If I can't prove other giant robots exist, I'm going to be the laughing stock of the Robot Research League forever...
 ===
 
 title: Sumiv_Quest
@@ -94,7 +101,7 @@ The one that likes to hang out in the ship hangers?
 You can't understand a thing he says can you?
 I saw a grazeloid translator here in the storage room.
 Where was it again?
-I think it was in one of those orange crates.
+I think it was in that green crate over there.
 I'm pretty thourough, so you might need to <color=red>dig a bit</color> to find it.
 
 -> I wish not to speak to that creature.

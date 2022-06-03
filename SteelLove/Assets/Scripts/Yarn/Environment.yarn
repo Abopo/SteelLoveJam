@@ -262,6 +262,6 @@ title: Dark_Shippie_Item
 ---
 <<if $has_dark_orb is false>>
     <<set $has_dark_orb to true>>
-    <<get_item Dark Orb>>
+    <<get_item DarkOrb>>
 <<endif>>
 ===

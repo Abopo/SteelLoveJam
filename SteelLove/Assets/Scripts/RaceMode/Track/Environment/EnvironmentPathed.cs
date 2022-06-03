@@ -88,4 +88,15 @@ public class EnvironmentPathed : MonoBehaviour
             }
         }
     }
+
+    void OnDrawGizmosSelected() {
+        for (int i = 0; i < _path.Count; i++) {
+            int nextPoint = i + 1;
+            if (i == _path.Count - 1) {
+                nextPoint = 0;
+            }
+
+            Gizmos.DrawLine(_path[i].position, _path[nextPoint].position);
+        }
+    }
 }

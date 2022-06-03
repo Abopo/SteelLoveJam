@@ -23,7 +23,8 @@ Psst, hey, Ziv. Do you wanna know where the next race is gonna be?
     Alright, suit yourself.
 -> Why would you tell me? 
     You're a pretty scary dude, so I thought it'd be smart to get on your good side. 
-    The next race is gonna be in the Orbeil Asteroid Belt. I've been there before, and it's a doozy for sure. 
+    The next race is gonna be in the Orbeil Asteroid Belt. 
+    I've been there before, and it's a doozy for sure. 
     There's bound to be asteroids all over the track.
 <<jump Damian_Quest>>
 ===
@@ -32,7 +33,7 @@ title: Damian_Race2_Bot3
 ---
 Grr...what should I do? Should I go back?
 No...not yet. There's still 3 races to go.
-I don't need to resort to useing my powers just yet.
+I don't need to resort to using my powers just yet.
 Hey, Ziv, you're good at racing right?
 You got any racing tips you could tell me?
 
@@ -46,7 +47,11 @@ You got any racing tips you could tell me?
 
 title: Damian_Race3_Top3
 ---
-
+Hell yeah! I am absolutely killing it this time! 
+I bet Singuliera is gonna be sooo happy when I bring her a true giant robot! 
+I'll finally be able to confess my feelings for her. 
+Definitely not gonna chicken out like the last 6 times...
+<<jump Damian_Quest>>
 ===
 
 title: Damian_Race3_Mid3
@@ -55,6 +60,10 @@ title: Damian_Race3_Mid3
 
 title: Damian_Race3_Bot3
 ---
+Augh! I've lost count of how many times I've reset, but I still can't win! 
+I know all the tracks by heart, and I know what everyone else will do. 
+Why is racing so hard?!
+<<jump Damian_Quest>>
 ===
 
 title: Damian_Race4_Top3

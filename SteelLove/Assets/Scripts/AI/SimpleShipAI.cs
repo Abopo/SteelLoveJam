@@ -46,7 +46,7 @@ public class SimpleShipAI : MonoBehaviour {
     void Start() {
         // TODO: Set this on game start
         difficulty = (AI_DIFFICULTY)Random.Range(0, (int)AI_DIFFICULTY.NUM_DIFFICULTIES);
-        difficulty = AI_DIFFICULTY.EXPERT;
+        //difficulty = AI_DIFFICULTY.EXPERT;
         SetupViaDifficulty();
     }
 

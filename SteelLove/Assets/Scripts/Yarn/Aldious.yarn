@@ -6,12 +6,10 @@ Well, howdy there! Would you like to pop a squat and share a drink?
 -> I... suppose so.
     Great! The drinks here are surprisingly good I hear!
     Where ya from partner?
-    <<set $aldious_fondness to 1>>
     -> None of your business
         I get it. See ya around!
     -> I am from the Metilio sector.
         Wow! Quite a far way from home aren'tchya?
-        <<set $aldious_fondness to 2>>
 
 <<jump Aldious_Quest>>
 ===
@@ -19,7 +17,7 @@ Well, howdy there! Would you like to pop a squat and share a drink?
 title: Aldious_Race2_Top3
 ---
 Oh boy! That last race went just swell!
-This racing thing wasn't as hard as I thought!
+This racing thing isn't as hard as I thought!
 If you need any tips just ask away haha!
 <<jump Aldious_Quest>>
 ===
@@ -43,19 +41,21 @@ I could be back making those <i>disgusting</i> lovebots...
 title: Aldious_Race3_Top3
 ---
 Well toot my horn that last race went just swell didn't it?
-I'm so excited I'll actually be able to meet the giant robot creator.
+I'm so excited I may actually be able to meet the creator of Gigantimous.
 I'll finally be able to put my...<i>past</i> behind me,
-and learn how to create giant robots myself!
+and learn how to build giant robots myself!
 -> You will never compare to my brother old man.
     Maybe so, but I can try!
 -> My brother will be a fine teacher I'm sure.
-    Great!
+    Great! He sounds like a splendid fellow.
 <<jump Aldious_Quest>>
 ===
 
 title: Aldious_Race3_Mid3
 ---
+Looks like I'm smack dab in the middle o' the pack, huh? 
 There's still a chance for me to win right?
+Oh, I'm sure there is!
 <<jump Aldious_Quest>>
 ===
 
@@ -70,14 +70,34 @@ Can't have that can we?! No siree, that won't do...
 
 title: Aldious_Race4_Top3
 ---
+Hey there! I think I'm gonna go all the way! 
+I'm finally gonna have the chance to learn how to build something that people don't want to have sex with!
+-> I hate to break it to you but...
+    What? People want to have sex with giant robots too? Oh...oh no...
+-> Yes, that is definitely the case with giant robots.
+    Good! That's what I thought.
+<<jump Aldious_Quest>>
 ===
 
 title: Aldious_Race4_Mid3
 ---
+Welp, I don't know if I'm going to be able to win the race now. 
+But, I've come this far, so I'm not just gonna give up without a fight! 
+Maybe everyone else will crash in the final race! You never know! 
+By the way, thanks for talking with me all this time. 
+Everybody else stopped after the first race, don't know why though.
+-> It is because you are insufferable.
+    Nah, that can't be it.
+-> You're...welcome.
+<<jump Aldious_Quest>>
 ===
 
 title: Aldious_Race4_Bot3
 ---
+Fuck! I'm in dead last! This can't be happening... 
+There's no way I can win now. Which means I won't be able to pay off my debts. 
+Which means I'll have to go back to creating those damned, <i>despicable</i> lovebots!
+<<jump Aldious_Quest>>
 ===
 
 title: Aldious_Quest

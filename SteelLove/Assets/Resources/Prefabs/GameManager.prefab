@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 194424df798b1244eb071e48beaeed02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextRace: 1
   _characterList:
   - {fileID: 11400000, guid: b89b7ce7e367ba648b38da290b16d3cb, type: 2}
   - {fileID: 11400000, guid: 9456d4f318cf6ad4287e71f0ac1930ef, type: 2}
@@ -55,6 +56,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2e877ba792ad2ed4f97b19421a9a60e2, type: 2}
   - {fileID: 11400000, guid: aae7d039b6fdeae4ebc4d4574bf06098, type: 2}
   - {fileID: 11400000, guid: 35aa3aac8fc6d9f41bdd9350040ad960, type: 2}
+  yarnMemory: {fileID: 0}
 --- !u!114 &2556727979197640786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,6 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f769d395cda5869439e5a16be64ffd4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _sceneManager: {fileID: 0}
 --- !u!82 &2556727980536308479
 AudioSource:
   m_ObjectHideFlags: 0
@@ -139,7 +142,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

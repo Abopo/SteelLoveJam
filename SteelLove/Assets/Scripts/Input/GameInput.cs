@@ -98,6 +98,15 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RaceSkip"",
+                    ""type"": ""Button"",
+                    ""id"": ""1d6f8eb1-0402-49fd-bcfd-83ce535fd4d1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -318,6 +327,17 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""LookBehind"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a9c91600-8286-4682-8f3e-b151645dd27f"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RaceSkip"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -696,6 +716,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         m_Racing_Boost = m_Racing.FindAction("Boost", throwIfNotFound: true);
         m_Racing_Brake = m_Racing.FindAction("Brake", throwIfNotFound: true);
         m_Racing_LookBehind = m_Racing.FindAction("LookBehind", throwIfNotFound: true);
+        m_Racing_RaceSkip = m_Racing.FindAction("RaceSkip", throwIfNotFound: true);
         // BreakRoom
         m_BreakRoom = asset.FindActionMap("BreakRoom", throwIfNotFound: true);
         m_BreakRoom_Movement = m_BreakRoom.FindAction("Movement", throwIfNotFound: true);
@@ -777,6 +798,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_Racing_Boost;
     private readonly InputAction m_Racing_Brake;
     private readonly InputAction m_Racing_LookBehind;
+    private readonly InputAction m_Racing_RaceSkip;
     public struct RacingActions
     {
         private @GameInput m_Wrapper;
@@ -789,6 +811,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         public InputAction @Boost => m_Wrapper.m_Racing_Boost;
         public InputAction @Brake => m_Wrapper.m_Racing_Brake;
         public InputAction @LookBehind => m_Wrapper.m_Racing_LookBehind;
+        public InputAction @RaceSkip => m_Wrapper.m_Racing_RaceSkip;
         public InputActionMap Get() { return m_Wrapper.m_Racing; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -822,6 +845,9 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                 @LookBehind.started -= m_Wrapper.m_RacingActionsCallbackInterface.OnLookBehind;
                 @LookBehind.performed -= m_Wrapper.m_RacingActionsCallbackInterface.OnLookBehind;
                 @LookBehind.canceled -= m_Wrapper.m_RacingActionsCallbackInterface.OnLookBehind;
+                @RaceSkip.started -= m_Wrapper.m_RacingActionsCallbackInterface.OnRaceSkip;
+                @RaceSkip.performed -= m_Wrapper.m_RacingActionsCallbackInterface.OnRaceSkip;
+                @RaceSkip.canceled -= m_Wrapper.m_RacingActionsCallbackInterface.OnRaceSkip;
             }
             m_Wrapper.m_RacingActionsCallbackInterface = instance;
             if (instance != null)
@@ -850,6 +876,9 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                 @LookBehind.started += instance.OnLookBehind;
                 @LookBehind.performed += instance.OnLookBehind;
                 @LookBehind.canceled += instance.OnLookBehind;
+                @RaceSkip.started += instance.OnRaceSkip;
+                @RaceSkip.performed += instance.OnRaceSkip;
+                @RaceSkip.canceled += instance.OnRaceSkip;
             }
         }
     }
@@ -1003,6 +1032,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         void OnBoost(InputAction.CallbackContext context);
         void OnBrake(InputAction.CallbackContext context);
         void OnLookBehind(InputAction.CallbackContext context);
+        void OnRaceSkip(InputAction.CallbackContext context);
     }
     public interface IBreakRoomActions
     {

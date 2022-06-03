@@ -65,7 +65,7 @@ public class RaceStateSO : DescriptionBaseSO
 
     public void RewardPoints(List<GameObject> shipsInOrder)
     {
-        for(int i = 0; i < 4; i++)
+        for(int i = 0; i < 8; i++)
         {
             var shipObj = shipsInOrder[i];
             var shipObjName = shipObj.name;
@@ -74,16 +74,28 @@ public class RaceStateSO : DescriptionBaseSO
             switch(i)
             {
                 case 0:
-                    character.seasonPoints += 9;
+                    character.seasonPoints += 10;
                     break;
                 case 1:
-                    character.seasonPoints += 6;
+                    character.seasonPoints += 8;
                     break;
                 case 2:
-                    character.seasonPoints += 3;
+                    character.seasonPoints += 6;
                     break;
                 case 3:
+                    character.seasonPoints += 4;
+                    break;
+                case 4:
+                    character.seasonPoints += 3;
+                    break;
+                case 5:
+                    character.seasonPoints += 2;
+                    break;
+                case 6:
                     character.seasonPoints += 1;
+                    break;
+                case 7:
+                    character.seasonPoints += 0;
                     break;
             }
         }

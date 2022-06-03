@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour {
     [SerializeField] List<CharacterSO> _characterList = new List<CharacterSO>();
     public List<CharacterSO> CharacterList { get => _characterList; }
 
+    public InMemoryVariableStorage yarnMemory;
+
     // Singleton
     public static GameManager instance;
     bool _alive;
@@ -29,6 +31,8 @@ public class GameManager : MonoBehaviour {
         if (_alive) {
             // Do initial setup stuff
             StartGameInitialize();
+
+            yarnMemory = GetComponentInChildren<InMemoryVariableStorage>();
         }
     }
 
@@ -56,9 +60,9 @@ public class GameManager : MonoBehaviour {
 
     public int RankCompare(CharacterSO rank1, CharacterSO rank2) {
         if(rank1.seasonPoints > rank2.seasonPoints) {
-            return 1;
-        } else if(rank1.seasonPoints < rank2.seasonPoints) {
             return -1;
+        } else if(rank1.seasonPoints < rank2.seasonPoints) {
+            return 1;
         } else {
             return 0;
         }
@@ -114,6 +118,9 @@ public class GameManager : MonoBehaviour {
     }
 
     public STATE GetCharacterState(string charaName) {
+        // Make sure list is sorted
+        SortRankList();
+
         STATE charaState = STATE.MID3;
 
         int i;
@@ -136,6 +143,9 @@ public class GameManager : MonoBehaviour {
 
     public int GetZivPosition() {
         int zivPos = 8;
+
+        // Make sure list is sorted
+        SortRankList();
 
         for (int i = 0; i < _characterList.Count; ++i) {
             if (_characterList[i].name.Contains("Ziv")) {
