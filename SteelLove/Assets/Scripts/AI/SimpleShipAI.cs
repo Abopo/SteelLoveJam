@@ -14,7 +14,10 @@ public class SimpleShipAI : MonoBehaviour {
     [SerializeField] AICheckpoint _firstCheckpoint;
     [SerializeField] AICheckpoint _nextCheckpoint;
 
+    [SerializeField] float _rotSpeed;
+
     [SerializeField] Vector2 _input;
+    Vector2 _rotInput;
 
     AICheckpoint[] _allCheckpoints;
     List<AICheckpoint> _hitCheckpoints = new List<AICheckpoint>();
@@ -23,6 +26,8 @@ public class SimpleShipAI : MonoBehaviour {
 
     private Vector3 _averageTargetPt;
     private int _lookForwardAmount = 10;
+
+    private bool _raceStarted = false;
 
     private void Awake() {
         _ship = GetComponent<ShipController>();
@@ -41,6 +46,7 @@ public class SimpleShipAI : MonoBehaviour {
     void Start() {
         // TODO: Set this on game start
         difficulty = (AI_DIFFICULTY)Random.Range(0, (int)AI_DIFFICULTY.NUM_DIFFICULTIES);
+        difficulty = AI_DIFFICULTY.EXPERT;
         SetupViaDifficulty();
     }
 
@@ -108,13 +114,14 @@ public class SimpleShipAI : MonoBehaviour {
     }
 
     void OnRaceStart() {
+        _raceStarted = true;
         _nextCheckpoint = _firstCheckpoint;
         CalculateTargetPoint();
     }
 
     // Update is called once per frame
-    void Update() {
-        if (_nextCheckpoint != null) {
+    void FixedUpdate() {
+        if (_nextCheckpoint != null && _raceStarted) {
             // Aim joystick towards the next checkpoint
             var toAvgPos = _averageTargetPt - transform.position;
             var toAvgPosNorm =  toAvgPos.normalized;
@@ -129,14 +136,34 @@ public class SimpleShipAI : MonoBehaviour {
                     angle *= 1.5f;
                     toAvgPosNorm = Quaternion.AngleAxis(angle, transform.up) * toAvgPosNorm;
 
-                    _input.x = angle / 120f;
+                    _input.x = -angle / 120f;
                 }
             }
 
-            var facingAngle = Vector3.SignedAngle(transform.forward, toAvgPosNorm, transform.up);
-            transform.rotation *= Quaternion.Euler(transform.up * facingAngle);
+            var orthoToAvgNorm = toAvgPosNorm;
+            var up = transform.up;
+            Vector3.OrthoNormalize(ref up, ref orthoToAvgNorm);
 
-            transform.LookAt(transform.position + toAvgPosNorm, transform.up);
+            Quaternion fromTo = Quaternion.FromToRotation(_rigidbody.transform.forward, orthoToAvgNorm);
+            var newRot = Quaternion.Lerp(_rigidbody.rotation, fromTo * _rigidbody.rotation, Time.deltaTime * _rotSpeed);
+            _rigidbody.MoveRotation(newRot);
+
+            //var facingAngle = Vector3.SignedAngle(transform.forward, toAvgPosNorm, transform.up);
+
+            //_rigidbody.rotation *= Quaternion.Euler(transform.up * facingAngle);
+
+            //if (facingAngle < 25 && facingAngle > -25)
+            //{
+            //    _rotInput.x = Mathf.Clamp(facingAngle / 360f, -1f, 1f);
+            //}
+            //else
+            //{
+            //    _rotInput.x = Mathf.Clamp(facingAngle / 180f, -1f, 1f);
+            //}
+
+            //transform.rotation *= Quaternion.Euler(_attachToTrack.LatestNormal * facingAngle);
+
+            //transform.LookAt(transform.position + toAvgPosNorm, _attachToTrack.LatestNormal);
 
             _input.y = -1f;
 
@@ -167,6 +194,11 @@ public class SimpleShipAI : MonoBehaviour {
         } else {
             _ship.ThrustLeft(Mathf.Abs(_input.x));
         }
+
+        //if (_rotInput.x != 0)
+        //{
+        //    _ship.RotationThrust(_rotInput);
+        //}
     }
 
     private void OnTriggerEnter(Collider other) {

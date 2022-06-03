@@ -358,7 +358,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 32
+  m_Constraints: 0
   m_CollisionDetection: 1
 --- !u!114 &6068933336262228789
 MonoBehaviour:
@@ -374,8 +374,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _raycastDist: 2
   _floatHight: 0.5
-  _hightSmoothSpeed: 20
-  _normalSmoothSpeed: 20
+  _hightSmoothSpeed: 8
+  _normalSmoothSpeed: 8
   _attachPoints:
   - {fileID: 7404705120999445591}
   - {fileID: 381905313260728969}
@@ -451,6 +451,7 @@ MonoBehaviour:
   difficulty: 0
   _firstCheckpoint: {fileID: 0}
   _nextCheckpoint: {fileID: 0}
+  _rotSpeed: 8
   _input: {x: 0, y: 0}
   _onRaceStartEvent: {fileID: 11400000, guid: eb9b51f329654b14a9f17e243030ca44, type: 2}
 --- !u!1 &6980358763735501827
