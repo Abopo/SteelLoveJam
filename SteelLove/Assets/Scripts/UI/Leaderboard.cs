@@ -34,6 +34,11 @@ public class Leaderboard : MonoBehaviour {
     }
 
     public void ShowScores(int id) {
+        // Reset old scores
+        for (int i = 0; i < Entries.Length; i++) {
+            Entries[i].Clear(i + 1);
+        }
+
         LootLockerSDKManager.GetScoreList(id, MaxScores, (response) =>
         {
             if (response.success) {

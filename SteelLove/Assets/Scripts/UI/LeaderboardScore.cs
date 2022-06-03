@@ -24,6 +24,12 @@ public class LeaderboardScore : MonoBehaviour {
         
     }
 
+    public void Clear(int rank) {
+        rankText.text = rank + ")";
+        playerName.text = "";
+        timeText.text = "";
+    }
+
     public void SetScore(int rank, string member_id, int time) {
         rankText.text = rank + ")";
         playerName.text = member_id;
