@@ -7,6 +7,7 @@ public class LevelSelect : MonoBehaviour
 {
     [SerializeField] private SceneManagerSO _sceneManager;
     [SerializeField] private List<TrackSceneSO> _raceTracks;
+    [SerializeField] private TrackSceneSO _dsdTrack;
 
     [SerializeField] private Transform _levelSelectButtonParent;
     [SerializeField] private Transform _levelPreviewParent;
@@ -37,6 +38,10 @@ public class LevelSelect : MonoBehaviour
 
     private void Start()
     {
+        if(PlayerPrefs.GetInt("DarkShippieDues", 0) > 0) {
+            _raceTracks.Add(_dsdTrack);
+        }
+
         foreach(var track in _raceTracks)
         {
             var buttonObj = Instantiate(_levelSelectButtonPrefab, _levelSelectButtonParent);

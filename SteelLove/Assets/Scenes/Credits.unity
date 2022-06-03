@@ -381,6 +381,9 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 142397bd25cf70c4a9fe0c954934f343, type: 2}
   - {fileID: 2100000, guid: cb0c4d20058461a4db7dc95a11a894ee, type: 2}
   - {fileID: 2100000, guid: a7d4f5041273f4b469a8633035abc6c9, type: 2}
+  _sceneManager: {fileID: 11400000, guid: 8630cfd2995c59b4d9160d3ee14416b4, type: 2}
+  _mainMenu: {fileID: 11400000, guid: f81df6b663ea64e4b83433519123ab47, type: 2}
+  _dsdScene: {fileID: 11400000, guid: 11c068a1dc4c8c84bb1efd806eaa4d46, type: 2}
 --- !u!1 &300211915
 GameObject:
   m_ObjectHideFlags: 0

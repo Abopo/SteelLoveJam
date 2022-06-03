@@ -20,6 +20,7 @@ ScriptedImporter:
   - {fileID: 6391573757903218779, guid: 1d8aa007b42bee54d832cd91d472b57b, type: 3}
   - {fileID: 6391573757903218779, guid: da2a689e2198c5e49a85704c4cc244e0, type: 3}
   - {fileID: 6391573757903218779, guid: 3d003a728e739434db8d002107e53266, type: 3}
+  - {fileID: 6391573757903218779, guid: 29adec207b565a94cace95cbad5237f8, type: 3}
   compileErrors: []
   serializedDeclarations:
   - name: $got_canteen_drink

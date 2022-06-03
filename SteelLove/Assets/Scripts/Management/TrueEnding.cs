@@ -8,6 +8,10 @@ public class TrueEnding : MonoBehaviour {
 
     DialogueRunner _dialogueRunner;
 
+    public bool isDark;
+    [SerializeField] private SceneManagerSO _sceneManager;
+    [SerializeField] private TrackSceneSO _track;
+
     // Start is called before the first frame update
     void Start() {
         _dialogueRunner = GetComponentInChildren<DialogueRunner>();
@@ -21,7 +25,12 @@ public class TrueEnding : MonoBehaviour {
     }
 
     void OnNodeComplete(string node) {
-        // Load credits scene
-        SceneManager.LoadScene("Credits");
+        if (isDark) {
+            PlayerPrefs.SetInt("DarkShippieDues", 1);
+            _sceneManager.LoadScene(_track, false);
+        } else {
+            // Load credits scene
+            SceneManager.LoadScene("Credits");
+        }
     }
 }

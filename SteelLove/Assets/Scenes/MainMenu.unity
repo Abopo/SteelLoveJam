@@ -898,6 +898,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 397685503}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: StartGameInitialize
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &172062381
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1458,10 +1470,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 2560, y: 1440}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -6890,6 +6902,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e76fe4fe5b38f349a6e0f952fea5156, type: 3}
+--- !u!114 &397685503 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2556727979197640784, guid: 9e76fe4fe5b38f349a6e0f952fea5156,
+    type: 3}
+  m_PrefabInstance: {fileID: 397685502}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 194424df798b1244eb071e48beaeed02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &433965165
 GameObject:
   m_ObjectHideFlags: 0
@@ -44803,6 +44827,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f8a4abbfac411a64cb2230e90793360f, type: 2}
   - {fileID: 11400000, guid: 2c074241b2d7e634aa0f95d3abb8a2b4, type: 2}
   - {fileID: 11400000, guid: 6cd73fad941256244bcd7ad8a18c5802, type: 2}
+  _dsdTrack: {fileID: 11400000, guid: 1a5463199286df84e90373727b6eb18d, type: 2}
   _levelSelectButtonParent: {fileID: 486114187}
   _levelPreviewParent: {fileID: 1652462320}
   _levelNameText: {fileID: 1186379276}

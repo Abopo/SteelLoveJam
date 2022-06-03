@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e95205ed14ad322459440d6c5a42743f, type: 3}
+  m_Name: DSDTrack
+  m_EditorClassIdentifier: 
+  description: 
+  levelName: DSD Track
+  sceneReference:
+    m_AssetGUID: 8b86543f39b83474591e97c99666749d
+    m_SubObjectName: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  sceneMusic: {fileID: 8300000, guid: e6fe45ac80f4f9a43aceaf1762f23c5b, type: 3}
+  trackPreview: {fileID: 7408947775923023686, guid: c1d05ebf6eb191b4cb03651a7b3391f7,
+    type: 3}
+  trackLeaderboardID: 0

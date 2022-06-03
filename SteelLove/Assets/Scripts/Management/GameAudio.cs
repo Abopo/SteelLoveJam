@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameAudio : MonoBehaviour {
-   
+
+    [SerializeField] SceneManagerSO _sceneManager;
     AudioSource _music;
 
     // Start is called before the first frame update
@@ -13,5 +14,9 @@ public class GameAudio : MonoBehaviour {
 
     public void SetVolume(float volume) {
         _music.volume = volume;
+    }
+
+    void OnSceneLoaded() {
+        // Set music
     }
 }

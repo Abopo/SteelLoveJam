@@ -15,6 +15,10 @@ public class EndingScene : MonoBehaviour {
 
     [SerializeField] Material[] _skyboxes;
 
+    [SerializeField] SceneManagerSO _sceneManager;
+    [SerializeField] GameSceneSO _mainMenu;
+    [SerializeField] GameSceneSO _dsdScene;
+
     float _waitTime = 5.0f;
     float _waitTimer = 0f;
 
@@ -46,8 +50,13 @@ public class EndingScene : MonoBehaviour {
 
     void Interact(float value) {
         if(_lineView.typewriterIsDone) {
-            // Load the main menu
-            SceneManager.LoadScene(0);
+            if (PlayerPrefs.GetInt("Has_DarkOrb", 0) > 0) {
+                _sceneManager.LoadScene(_dsdScene);
+            } else {
+                // Load the main menu
+                _sceneManager.LoadScene(_mainMenu);
+                //SceneManager.LoadScene(0);
+            }
         }
     }
 }

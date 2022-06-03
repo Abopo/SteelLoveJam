@@ -92,6 +92,10 @@ public class MainUI : MonoBehaviour {
     public static void GetItem(string itemName) {
         FindObjectOfType<MainUI>().PlayGetSound();
         FindObjectOfType<MainUI>().DisplayDialogue(itemName);
+
+        if(itemName == "Dark Orb") {
+            PlayerPrefs.SetInt("Has_DarkOrb", 1);
+        }
     }
 
     [YarnCommand("start_race")]

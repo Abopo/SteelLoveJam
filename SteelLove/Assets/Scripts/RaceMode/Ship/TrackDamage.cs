@@ -11,8 +11,12 @@ public class TrackDamage : MonoBehaviour
 
     [SerializeField] private ParticleSystem _offTrackDamageParticles;
 
+    [SerializeField] private GameObjectEventChannelSO _onShipFinishedRace = default;
+
     private float _currOutTrackDamage;
     private float _currOutTrackTimer;
+
+    bool _finishedRace = false;
 
     ShipController _ship;
     ShipAudio _shipAudio;
@@ -22,9 +26,17 @@ public class TrackDamage : MonoBehaviour
         _shipAudio = GetComponentInChildren<ShipAudio>();
     }
 
+    private void OnEnable() {
+        _onShipFinishedRace.OnEventRaised += OnFinishedRace;
+    }
+
+    private void OnDisable() {
+        _onShipFinishedRace.OnEventRaised += OnFinishedRace;
+    }
+
     private void FixedUpdate()
     {
-        if (IsOffTrack())
+        if (IsOffTrack() && !_finishedRace)
         {
             _currOutTrackDamage = Mathf.Lerp(0, _outsideTrackFullDamage, _currOutTrackTimer / _timeToFullDamage);
 
@@ -63,6 +75,12 @@ public class TrackDamage : MonoBehaviour
         if (_offTrackDamageParticles.isPlaying == false)
         {
             _offTrackDamageParticles.Play();
+        }
+    }
+
+    private void OnFinishedRace(GameObject shipObj) {
+        if (shipObj == gameObject) {
+            _finishedRace = true;
         }
     }
 }

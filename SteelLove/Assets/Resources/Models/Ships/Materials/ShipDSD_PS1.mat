@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Ship1_PS1
+  m_Name: ShipDSD_PS1
   m_Shader: {fileID: 4800000, guid: 94cb0d6305cd4a743b1d2ec684e277de, type: 3}
   m_ShaderKeywords: DIFF_VERTEX OPAQUE SPEC_GOURAUD UNLIT _DIFFMODEL_VERTEX _DRAWDIST_ON
     _EMISSION _SPECMODEL_GOURAUD
@@ -51,7 +51,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: a20396394941e3c49993777f7cc82eee, type: 3}
+        m_Texture: {fileID: 2800000, guid: 7f6c7e8ee9998ac43a235c2ba01cecdf, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetalMap:

@@ -8,7 +8,7 @@
     <<set $got_canteen_drink to true>>
     <<set $has_canteen_drink to true>>
 
-    <<get_item CanteenDrink>>
+    <<get_item Canteen Drink>>
 <<else>>
     How was your drink?
     I hope it was good. I'm still kinda new at this.

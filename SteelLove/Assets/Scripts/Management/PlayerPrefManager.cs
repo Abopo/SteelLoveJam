@@ -6,17 +6,20 @@ public class PlayerPrefManager : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
-        // TODO: Only run first time game is opened
-        InitializeFirstTimePrefs();
-        
-        // TODO: only run this on new game start
-        InitializeStoryPrefs();
+        // TODO: Remove for final build
+        PlayerPrefs.SetInt("FirstTimePlaying", 0);
+
+        //Only run first time game is opened
+        if (PlayerPrefs.GetInt("FirstTimePlaying", 0) == 0) {
+            InitializeFirstTimePrefs();
+        }
     }
 
     public void InitializeStoryPrefs() {
         PlayerPrefs.SetInt("Lockbox_0", 0);
         PlayerPrefs.SetInt("KnockLock_0", 0);
         PlayerPrefs.SetInt("SearchLock_0", 0);
+        PlayerPrefs.SetInt("Has_DarkOrb", 0);
     }
 
     void InitializeFirstTimePrefs() {
@@ -24,5 +27,7 @@ public class PlayerPrefManager : MonoBehaviour {
         PlayerPrefs.SetInt("Story Track 2 BestTime", 10000);
         PlayerPrefs.SetInt("Story Track 3 BestTime", 10000);
         PlayerPrefs.SetInt("Story Track 4 BestTime", 10000);
+
+        PlayerPrefs.SetInt("DarkShippieDues", 0);
     }
 }

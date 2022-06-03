@@ -50,6 +50,8 @@ public class GameManager : MonoBehaviour {
 
             character.upgrades = 0;
         }
+
+        GetComponent<PlayerPrefManager>().InitializeStoryPrefs();
     }
 
     public int RankCompare(CharacterSO rank1, CharacterSO rank2) {

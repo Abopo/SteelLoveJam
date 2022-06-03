@@ -12,14 +12,20 @@ public class SceneManagerSO : DescriptionBaseSO
     /// should only be called by the mainMenu passing in mainMenu scene
     /// </summary>
     /// <param name="startScene"></param>
-    public void SetStartingScene(GameSceneSO startScene)
-    {
+    public void SetStartingScene(GameSceneSO startScene) {
         currentScene = startScene;
     }
 
-    public void LoadScene(GameSceneSO newScene)
-    {
+    public void LoadScene(GameSceneSO newScene) {
         previousScene = currentScene;
+        currentScene = newScene;
+        newScene.sceneReference.LoadSceneAsync(UnityEngine.SceneManagement.LoadSceneMode.Single, true);
+    }
+
+    public void LoadScene(GameSceneSO newScene, bool savePrevious) {
+        if(savePrevious) {
+            previousScene = currentScene;
+        }
         currentScene = newScene;
         newScene.sceneReference.LoadSceneAsync(UnityEngine.SceneManagement.LoadSceneMode.Single, true);
     }
