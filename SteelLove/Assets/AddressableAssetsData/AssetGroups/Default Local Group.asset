@@ -21,28 +21,8 @@ MonoBehaviour:
     m_Address: Assets/ScriptableObjects/Scenes/Tracks/Track2.asset
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 8aaa1e26efe85b24c853817cc89cc21d
-    m_Address: Assets/Scenes/TrackTests/Track6.unity
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 509a002669c61164e9a79c18e532b5c3
-    m_Address: Assets/Scenes/MainMenu.unity
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: 1bc4b568e16f7d341b9adb0c0545cdf2
     m_Address: Assets/Scenes/TrackTests/TrainAI3.unity
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 8b86543f39b83474591e97c99666749d
-    m_Address: Assets/Scenes/TrackTests/TrackDSD.unity
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 3e17228fc7bde1a4b8fc03a26aba9c2b
-    m_Address: Assets/Scenes/DarkShippieDues.unity
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-  - m_GUID: 85efcc68b4e0cf7418e164fdb082feb8
-    m_Address: Assets/Scenes/TrackTests/Track7.unity
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0
