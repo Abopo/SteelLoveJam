@@ -2070,6 +2070,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Managers
       objectReference: {fileID: 0}
+    - target: {fileID: 8022852027729816625, guid: 1fedec1d9f29f5b4b88a90abc2c7d226,
+        type: 3}
+      propertyPath: _creditsScene
+      value: 
+      objectReference: {fileID: 11400000, guid: 13683e14edee8cf4794b89d35d305b1c,
+        type: 2}
+    - target: {fileID: 8022852027729816625, guid: 1fedec1d9f29f5b4b88a90abc2c7d226,
+        type: 3}
+      propertyPath: _trueEndScene
+      value: 
+      objectReference: {fileID: 11400000, guid: ee18b059f91030b49aba6f4b173b4be5,
+        type: 2}
     - target: {fileID: 8022852027729816626, guid: 1fedec1d9f29f5b4b88a90abc2c7d226,
         type: 3}
       propertyPath: m_RootOrder

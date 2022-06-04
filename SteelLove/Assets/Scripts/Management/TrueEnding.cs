@@ -11,6 +11,7 @@ public class TrueEnding : MonoBehaviour {
     public bool isDark;
     [SerializeField] private SceneManagerSO _sceneManager;
     [SerializeField] private TrackSceneSO _track;
+    [SerializeField] private GameSceneSO _credits;
 
     // Start is called before the first frame update
     void Start() {
@@ -30,7 +31,7 @@ public class TrueEnding : MonoBehaviour {
             _sceneManager.LoadScene(_track, false);
         } else {
             // Load credits scene
-            SceneManager.LoadScene("Credits");
+            _sceneManager.LoadScene(_credits, false);
         }
     }
 }

@@ -5259,6 +5259,7 @@ MonoBehaviour:
   moveSpeed: 5
   _inputReader: {fileID: 11400000, guid: 3aad594c8fb5bb44cbff640004584d4d, type: 2}
   myRoom: {fileID: 719650191}
+  _interactValue: 0
   _curState: 0
 --- !u!50 &1687516215
 Rigidbody2D:
@@ -9037,6 +9038,7 @@ MonoBehaviour:
   - {x: 0, y: 0}
   - {x: 0, y: 0}
   curState: 0
+  _collider2D: {fileID: 0}
 --- !u!114 &8824941372813923247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9050,8 +9052,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDark: 0
-  _sceneManager: {fileID: 0}
+  _sceneManager: {fileID: 11400000, guid: 8630cfd2995c59b4d9160d3ee14416b4, type: 2}
   _track: {fileID: 0}
+  _credits: {fileID: 11400000, guid: 13683e14edee8cf4794b89d35d305b1c, type: 2}
 --- !u!61 &8824941373272870313
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -25,6 +25,22 @@ MonoBehaviour:
     m_Address: Assets/Scenes/TrackTests/TrainAI3.unity
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 8aaa1e26efe85b24c853817cc89cc21d
+    m_Address: Assets/Scenes/TrackTests/Track6.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 8b86543f39b83474591e97c99666749d
+    m_Address: Assets/Scenes/TrackTests/TrackDSD.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: a295673bc57af3a4f9473937009fd79b
+    m_Address: Assets/Scenes/Credits.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: ae1248bba49984b4fbf15b1114578b87
+    m_Address: Assets/Scenes/TrueEnding.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 6115fc7b36dbf284badd2052d5ee3bd8, type: 2}
   m_SchemaSet:
