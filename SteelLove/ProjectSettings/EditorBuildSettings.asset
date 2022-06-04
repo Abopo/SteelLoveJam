@@ -29,13 +29,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TrackTests/TrainAI2.unity
     guid: ea0002467969730478dc5d518af17364
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/TrackTests/Track6.unity
     guid: 8aaa1e26efe85b24c853817cc89cc21d
   - enabled: 0
     path: Assets/Scenes/TrackTests/TrackDSD.unity
     guid: 8b86543f39b83474591e97c99666749d
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/TrackTests/Track7.unity
     guid: 85efcc68b4e0cf7418e164fdb082feb8
   - enabled: 0
