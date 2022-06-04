@@ -38,8 +38,8 @@ public class RaceManager : MonoBehaviour
 
         // input events
         _inputReader.PauseEvent += OnPause;
-        _inputReader.ConfirmEvent += ConfirmEndOfRace;
         _inputReader.RaceSkipEvent += OnRaceSkip;
+        _inputReader.PostRaceSkipEvent += ConfirmEndOfRace;
     }
 
     private void OnDisable()
@@ -56,6 +56,7 @@ public class RaceManager : MonoBehaviour
         _inputReader.PauseEvent -= OnPause;
         _inputReader.ConfirmEvent -= ConfirmEndOfRace;
         _inputReader.RaceSkipEvent -= OnRaceSkip;
+        _inputReader.PostRaceSkipEvent -= ConfirmEndOfRace;
     }
 
     private void Start()

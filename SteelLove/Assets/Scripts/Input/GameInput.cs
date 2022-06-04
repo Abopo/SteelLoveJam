@@ -505,6 +505,15 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ExitPostRace"",
+                    ""type"": ""Button"",
+                    ""id"": ""12ceddce-b91b-4cfb-a5f3-3c357d080536"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -523,17 +532,6 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""c11728e9-f6e5-4df1-9c49-1fb7641df9cd"",
                     ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Confirm"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""d3dc945c-1828-4fba-8151-9430e8323be4"",
-                    ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -661,6 +659,28 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                     ""action"": ""Point"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0913002c-80ac-497e-8235-d84a7c09026f"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ExitPostRace"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d22dbe98-056f-4b87-ba54-851106ca1285"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ExitPostRace"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -728,6 +748,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         m_UI_MoveCursor = m_UI.FindAction("MoveCursor", throwIfNotFound: true);
         m_UI_LeftClick = m_UI.FindAction("Left Click", throwIfNotFound: true);
         m_UI_Point = m_UI.FindAction("Point", throwIfNotFound: true);
+        m_UI_ExitPostRace = m_UI.FindAction("ExitPostRace", throwIfNotFound: true);
         // General
         m_General = asset.FindActionMap("General", throwIfNotFound: true);
         m_General_Pause = m_General.FindAction("Pause", throwIfNotFound: true);
@@ -933,6 +954,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_UI_MoveCursor;
     private readonly InputAction m_UI_LeftClick;
     private readonly InputAction m_UI_Point;
+    private readonly InputAction m_UI_ExitPostRace;
     public struct UIActions
     {
         private @GameInput m_Wrapper;
@@ -942,6 +964,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         public InputAction @MoveCursor => m_Wrapper.m_UI_MoveCursor;
         public InputAction @LeftClick => m_Wrapper.m_UI_LeftClick;
         public InputAction @Point => m_Wrapper.m_UI_Point;
+        public InputAction @ExitPostRace => m_Wrapper.m_UI_ExitPostRace;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -966,6 +989,9 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                 @Point.started -= m_Wrapper.m_UIActionsCallbackInterface.OnPoint;
                 @Point.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnPoint;
                 @Point.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnPoint;
+                @ExitPostRace.started -= m_Wrapper.m_UIActionsCallbackInterface.OnExitPostRace;
+                @ExitPostRace.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnExitPostRace;
+                @ExitPostRace.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnExitPostRace;
             }
             m_Wrapper.m_UIActionsCallbackInterface = instance;
             if (instance != null)
@@ -985,6 +1011,9 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                 @Point.started += instance.OnPoint;
                 @Point.performed += instance.OnPoint;
                 @Point.canceled += instance.OnPoint;
+                @ExitPostRace.started += instance.OnExitPostRace;
+                @ExitPostRace.performed += instance.OnExitPostRace;
+                @ExitPostRace.canceled += instance.OnExitPostRace;
             }
         }
     }
@@ -1046,6 +1075,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         void OnMoveCursor(InputAction.CallbackContext context);
         void OnLeftClick(InputAction.CallbackContext context);
         void OnPoint(InputAction.CallbackContext context);
+        void OnExitPostRace(InputAction.CallbackContext context);
     }
     public interface IGeneralActions
     {

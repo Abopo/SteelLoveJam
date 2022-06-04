@@ -9,11 +9,6 @@ public class LeaderboardSubmission : MonoBehaviour {
     [SerializeField] TMP_InputField MemberID;
     public int leaderboardID; 
 
-    // Start is called before the first frame update
-    void Start() {
-        
-    }
-
     public void SubmitScore() {
         if(MemberID.text == "") {
             Debug.Log("No Member ID");

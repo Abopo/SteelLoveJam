@@ -20,6 +20,7 @@ public class InputReader : DescriptionBaseSO, GameInput.IRacingActions, GameInpu
     public event UnityAction<float> BrakeEvent = delegate { };
     public event UnityAction<float> LookBehindEvent = delegate { };
     public event UnityAction RaceSkipEvent = delegate { };
+    public event UnityAction PostRaceSkipEvent = delegate { };
 
     // Break room
     public event UnityAction<Vector2> MovementEvent = delegate { };
@@ -89,8 +90,6 @@ public class InputReader : DescriptionBaseSO, GameInput.IRacingActions, GameInpu
         BrakeEvent.Invoke(context.ReadValue<float>());
     }
 
-    
-
     public void OnLookBehind(InputAction.CallbackContext context)
     {
         LookBehindEvent.Invoke(context.ReadValue<float>());
@@ -138,6 +137,15 @@ public class InputReader : DescriptionBaseSO, GameInput.IRacingActions, GameInpu
     }
 
     public void OnPoint(InputAction.CallbackContext context) {
+    }
+
+    public void OnExitPostRace(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Performed)
+        {
+            PostRaceSkipEvent.Invoke();
+        }
+
     }
     #endregion
 
