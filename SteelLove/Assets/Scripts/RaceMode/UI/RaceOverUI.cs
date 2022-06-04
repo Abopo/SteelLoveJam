@@ -56,7 +56,7 @@ public class RaceOverUI : MonoBehaviour
             _raceCompleteMessage.SetActive(true);
 
             // If we loaded from the main menu
-            if(_sceneManager.previousScene.levelName == "MainMenu") {
+            if(_sceneManager.previousScene != null && _sceneManager.previousScene.levelName == "MainMenu") {
                 LeaderboardCheck();
             }
         }

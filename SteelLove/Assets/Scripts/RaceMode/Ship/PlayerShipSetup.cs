@@ -17,6 +17,9 @@ public class PlayerShipSetup : MonoBehaviour
     [SerializeField] private GameObject _cameraLookAtForward;
     [SerializeField] private GameObject _cameraLookAtBehind;
 
+    [Header("Listening To")]
+    [SerializeField] private VoidEventChannelSO _onRaceFinished = default;
+
     private ShipController _shipController;
 
     private CameraController _cameraController;
@@ -40,6 +43,8 @@ public class PlayerShipSetup : MonoBehaviour
         _inputReader.BoostEvent += _shipController.Boost;
         _inputReader.BrakeEvent += _shipController.Brake;
         _inputReader.LookBehindEvent += _cameraController.LookBehind;
+
+        _onRaceFinished.OnEventRaised += ActivateAutoPilot;
     }
 
     private void OnDisable()
@@ -52,11 +57,23 @@ public class PlayerShipSetup : MonoBehaviour
         _inputReader.BoostEvent -= _shipController.Boost;
         _inputReader.BrakeEvent -= _shipController.Brake;
         _inputReader.LookBehindEvent -= _cameraController.LookBehind;
+        _onRaceFinished.OnEventRaised -= ActivateAutoPilot;
     }
 
     private void Start()
     {
         _cameraController.Init(GetComponent<ShipController>(), _cameraConstraintLookForward, _cameraConstraintLookBackward, _cameraLookAtForward, _cameraLookAtBehind);
         _speedometer.Init(GetComponent<Rigidbody>());
+    }
+
+    private void ActivateAutoPilot()
+    {
+        if (_shipController.Health > 0)
+        {
+            SimpleShipAI simpleShipAI = GetComponent<SimpleShipAI>();
+            simpleShipAI.enabled = true;
+            simpleShipAI.difficulty = AI_DIFFICULTY.HARD;
+            simpleShipAI.StartAI();
+        }
     }
 }

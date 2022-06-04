@@ -13,17 +13,11 @@ MonoBehaviour:
   m_Name: RaceState
   m_EditorClassIdentifier: 
   description: Manages the state of the current race.
+  previousScene: {fileID: 0}
   _currentState: 5
   _previousState: 3
   _polePositions:
   - {fileID: 11400000, guid: 35aa3aac8fc6d9f41bdd9350040ad960, type: 2}
-  - {fileID: 11400000, guid: b89b7ce7e367ba648b38da290b16d3cb, type: 2}
-  - {fileID: 11400000, guid: 9456d4f318cf6ad4287e71f0ac1930ef, type: 2}
-  - {fileID: 11400000, guid: 7abdfdb93234cbd4fb43432a80e0cad4, type: 2}
-  - {fileID: 11400000, guid: 9114ef651968129458685020d7bb554b, type: 2}
-  - {fileID: 11400000, guid: cbd40ac4cb777c74a87cb513ec56f7f2, type: 2}
-  - {fileID: 11400000, guid: 2e877ba792ad2ed4f97b19421a9a60e2, type: 2}
-  - {fileID: 11400000, guid: aae7d039b6fdeae4ebc4d4574bf06098, type: 2}
   _inputReader: {fileID: 11400000, guid: 3aad594c8fb5bb44cbff640004584d4d, type: 2}
   _onInitializeStateEvent: {fileID: 11400000, guid: d4fb627773a104e4ea69a2587eecfca1,
     type: 2}

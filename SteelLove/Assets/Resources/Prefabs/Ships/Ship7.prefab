@@ -387,7 +387,7 @@ MonoBehaviour:
   difficulty: 0
   _firstCheckpoint: {fileID: 0}
   _nextCheckpoint: {fileID: 0}
-  _rotSpeed: 8
+  _rotSpeed: 5
   _input: {x: 0, y: 0}
   _onRaceStartEvent: {fileID: 11400000, guid: eb9b51f329654b14a9f17e243030ca44, type: 2}
 --- !u!1 &7319563693355598007

@@ -55,11 +55,11 @@ public class SimpleShipAI : MonoBehaviour {
     }
 
     private void OnEnable() {
-        _onRaceStartEvent.OnEventRaised += OnRaceStart;
+        _onRaceStartEvent.OnEventRaised += StartAI;
     }
 
     private void OnDisable() {
-        _onRaceStartEvent.OnEventRaised -= OnRaceStart;
+        _onRaceStartEvent.OnEventRaised -= StartAI;
     }
 
     private void BuildCheckpointList()
@@ -117,7 +117,7 @@ public class SimpleShipAI : MonoBehaviour {
         }
     }
 
-    void OnRaceStart() {
+    public void StartAI() {
         _raceStarted = true;
         _nextCheckpoint = _firstCheckpoint;
         CalculateTargetPoint();
@@ -260,13 +260,5 @@ public class SimpleShipAI : MonoBehaviour {
                 return;
             }
         }
-    }
-
-    private Vector2 rotate(Vector2 v, float delta)
-    {
-        return new Vector2(
-            v.x * Mathf.Cos(delta) - v.y * Mathf.Sin(delta),
-            v.x * Mathf.Sin(delta) + v.y * Mathf.Cos(delta)
-        );
     }
 }

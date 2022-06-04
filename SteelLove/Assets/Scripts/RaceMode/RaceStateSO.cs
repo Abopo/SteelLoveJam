@@ -65,7 +65,7 @@ public class RaceStateSO : DescriptionBaseSO
 
     public void RewardPoints(List<GameObject> shipsInOrder)
     {
-        for(int i = 0; i < 8; i++)
+        for(int i = 0; i < shipsInOrder.Count; i++)
         {
             var shipObj = shipsInOrder[i];
             var shipObjName = shipObj.name;
