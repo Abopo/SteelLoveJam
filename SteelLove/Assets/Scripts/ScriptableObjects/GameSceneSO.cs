@@ -10,4 +10,5 @@ public class GameSceneSO : DescriptionBaseSO
     public string levelName;
     public AssetReference sceneReference;
     public AudioClip sceneMusic;
+    public float volume;
 }

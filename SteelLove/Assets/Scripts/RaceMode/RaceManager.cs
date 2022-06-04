@@ -9,6 +9,8 @@ public class RaceManager : MonoBehaviour
     [SerializeField] private GameSceneSO _creditsScene = default;
     [SerializeField] private GameSceneSO _trueEndScene = default;
     [SerializeField] private RaceStateSO _RaceStateSO = default;
+    [SerializeField] private GameSceneSO _DSDMeetingScene = default;
+    [SerializeField] private GameSceneSO _mainMenu = default;
 
     [SerializeField] private InputReader _inputReader = default;
 
@@ -24,6 +26,8 @@ public class RaceManager : MonoBehaviour
     [SerializeField] private VoidEventChannelSO _onPauseEvent = default;
     [SerializeField] private GameObjectEventChannelSO _onShipDestroyed = default;
     [SerializeField] private GameObjectsListEventChannelSO _onReportRaceResults = default;
+
+    [SerializeField] private AudioClip _victorySong;
 
     public Checkpoint[] Checkpoints => _checkpoints;
     [SerializeField] private Checkpoint[] _checkpoints;
@@ -136,6 +140,8 @@ public class RaceManager : MonoBehaviour
         if (GameManager.instance != null && _sceneManager.previousScene == _breakRoomScene) {
             GameManager.instance.RaceFinished();
         }
+
+        GameManager.instance.PlaySongClip(_victorySong);
     }
 
     private void ConfirmEndOfRace()
@@ -153,9 +159,14 @@ public class RaceManager : MonoBehaviour
                     _sceneManager.LoadScene(_creditsScene);
                 }
 
-            } else {
+            } else if(_sceneManager.previousScene != _DSDMeetingScene)
+            {
                 // send us to the previous scene. either break room or main menu.
                 _sceneManager.LoadPreviousScene();
+            }
+            else
+            {
+                _sceneManager.LoadScene(_mainMenu);
             }
         }
     }

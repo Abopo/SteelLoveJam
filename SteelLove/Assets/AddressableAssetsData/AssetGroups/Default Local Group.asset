@@ -25,12 +25,12 @@ MonoBehaviour:
     m_Address: Assets/Scenes/TrackTests/TrainAI3.unity
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 4dd03ec9c77998547bb1ef5c9762de0b
-    m_Address: Assets/Scenes/PS1GraphicsTestingScene.unity
-    m_ReadOnly: 0
-    m_SerializedLabels: []
   - m_GUID: c3feb03dd2b26434c80fa77006afd986
     m_Address: Assets/Scenes/TestingScene 1.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 4dd03ec9c77998547bb1ef5c9762de0b
+    m_Address: Assets/Scenes/PS1GraphicsTestingScene.unity
     m_ReadOnly: 0
     m_SerializedLabels: []
   - m_GUID: 2cda990e2423bbf4892e6590ba056729

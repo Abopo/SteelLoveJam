@@ -28,7 +28,7 @@ public class TrueEnding : MonoBehaviour {
     void OnNodeComplete(string node) {
         if (isDark) {
             PlayerPrefs.SetInt("DarkShippieDues", 1);
-            _sceneManager.LoadScene(_track, false);
+            _sceneManager.LoadScene(_track);
         } else {
             // Load credits scene
             _sceneManager.LoadScene(_credits, false);

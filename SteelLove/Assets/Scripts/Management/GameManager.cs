@@ -89,6 +89,11 @@ public class GameManager : MonoBehaviour {
         _characterList.Sort(RankCompare);
     }
 
+    public void PlaySongClip(AudioClip clip)
+    {
+        _gameAudio.PlaySongOnceThenReturn(clip);
+    }
+
     void SingletonCheck() {
         GameObject obj = GameObject.FindGameObjectWithTag("GameManager");
         if (obj != null && obj != this.gameObject) {
