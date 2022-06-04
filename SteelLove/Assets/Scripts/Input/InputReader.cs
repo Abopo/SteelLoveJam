@@ -96,7 +96,9 @@ public class InputReader : DescriptionBaseSO, GameInput.IRacingActions, GameInpu
     }
 
     public void OnRaceSkip(InputAction.CallbackContext context) {
-        RaceSkipEvent.Invoke();
+        if (context.performed) {
+            RaceSkipEvent.Invoke();
+        }
     }
 
     #endregion

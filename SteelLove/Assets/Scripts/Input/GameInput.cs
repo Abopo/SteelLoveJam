@@ -333,8 +333,8 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""a9c91600-8286-4682-8f3e-b151645dd27f"",
-                    ""path"": ""<Keyboard>/p"",
-                    ""interactions"": """",
+                    ""path"": ""<Keyboard>/f8"",
+                    ""interactions"": ""Hold(duration=1)"",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""RaceSkip"",

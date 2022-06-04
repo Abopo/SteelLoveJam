@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class RaceManager : MonoBehaviour
 {
     [SerializeField] private SceneManagerSO _sceneManager = default;
+    [SerializeField] private GameSceneSO _breakRoomScene = default;
     [SerializeField] private GameSceneSO _creditsScene = default;
     [SerializeField] private GameSceneSO _trueEndScene = default;
     [SerializeField] private RaceStateSO _RaceStateSO = default;
@@ -132,7 +133,7 @@ public class RaceManager : MonoBehaviour
         // Display race finished message
 
         // Let GameManager handle end of race
-        if (GameManager.instance != null) {
+        if (GameManager.instance != null && _sceneManager.previousScene == _breakRoomScene) {
             GameManager.instance.RaceFinished();
         }
     }
@@ -141,7 +142,7 @@ public class RaceManager : MonoBehaviour
     {
         if(_RaceStateSO.CurrentState == RaceStateSO.RaceState.RaceFinished)
         {
-            if (GameManager.instance.NextRace >= 5) {
+            if (_sceneManager.previousScene == _breakRoomScene && GameManager.instance.NextRace >= 5) {
                 // Load game end stuff
 
                 // If ziv is in first, load True ending

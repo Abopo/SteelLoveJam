@@ -2082,6 +2082,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: ee18b059f91030b49aba6f4b173b4be5,
         type: 2}
+    - target: {fileID: 8022852027729816625, guid: 1fedec1d9f29f5b4b88a90abc2c7d226,
+        type: 3}
+      propertyPath: _breakRoomScene
+      value: 
+      objectReference: {fileID: 11400000, guid: 6edb2a8a7f2bd8043b0e911c0a8dfa4a,
+        type: 2}
     - target: {fileID: 8022852027729816626, guid: 1fedec1d9f29f5b4b88a90abc2c7d226,
         type: 3}
       propertyPath: m_RootOrder
