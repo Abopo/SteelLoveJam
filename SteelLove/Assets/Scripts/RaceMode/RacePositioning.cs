@@ -113,17 +113,17 @@ public class RacePositioning : MonoBehaviour
         }
         else
         {
-            if (xCheckpointTracker.LastPassedCheckpoint > yCheckpointTracker.LastPassedCheckpoint)
+            if (xCheckpointTracker.LastPassedCheckpointNumber > yCheckpointTracker.LastPassedCheckpointNumber)
             {
                 return -1;
             }
-            else if (xCheckpointTracker.LastPassedCheckpoint < yCheckpointTracker.LastPassedCheckpoint)
+            else if (xCheckpointTracker.LastPassedCheckpointNumber < yCheckpointTracker.LastPassedCheckpointNumber)
             {
                 return 1;
             }
             else
             {
-                int nextCheckpointInd = xCheckpointTracker.LastPassedCheckpoint + 1;
+                int nextCheckpointInd = xCheckpointTracker.LastPassedCheckpointNumber + 1;
                 GameObject nextCheckpoint = _raceManager.Checkpoints[nextCheckpointInd].gameObject;
                 float xDist = (nextCheckpoint.transform.position - x.transform.position).magnitude;
                 float yDist = (nextCheckpoint.transform.position - y.transform.position).magnitude;

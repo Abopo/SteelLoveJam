@@ -17,16 +17,48 @@
 
 title: Jims_Race2
 ---
-Hey there! I suppose you want your compimentary drink?
-Coming right up!
+<<if $got_canteen_drink is false>>
+    Hey there! I suppose you want your compimentary drink?
+    Coming right up!
+    
+    <<set $got_canteen_drink to true>>
+    <<set $has_canteen_drink to true>>
+
+    <<get_item CanteenDrink>>
+<<else>>
+    How was your drink?
+    I hope it was good. I'm still kinda new at this.
+<<endif>>
 ===
 
 title: Jims_Race3
 ---
-Hey there! What can I getchya?
+<<if $got_canteen_drink is false>>
+    Hey there! I suppose you want your compimentary drink?
+    Coming right up!
+    
+    <<set $got_canteen_drink to true>>
+    <<set $has_canteen_drink to true>>
+
+    <<get_item CanteenDrink>>
+<<else>>
+    It's good, right?
+    I think I'm getting pretty good at this.
+<<endif>>
 ===
 
 title: Jims_Race4
 ---
-Hey there! What can I getchya?
+<<if $got_canteen_drink is false>>
+    Hey there! I suppose you want your compimentary drink?
+    Coming right up!
+    
+    <<set $got_canteen_drink to true>>
+    <<set $has_canteen_drink to true>>
+
+    <<get_item CanteenDrink>>
+<<else>>
+    How was your drink?
+    I put special care into making that one since it's the last race!
+<<endif>>
 ===

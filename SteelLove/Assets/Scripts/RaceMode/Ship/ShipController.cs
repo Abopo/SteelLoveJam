@@ -60,7 +60,9 @@ public class ShipController : MonoBehaviour {
     [SerializeField] private GameObject _shipModel;
 
     // accessors
+    public CharacterSO Character => m_Character;
     public float Health => _health;
+    public float MaxHealth => _maxHealth;
     public float BoostTank { get => _boostTank; }
     public GameObject ShipModel => _shipModel;
 
@@ -108,6 +110,61 @@ public class ShipController : MonoBehaviour {
     private void OnDisable()
     {
         _onCrossedNextCheckpoint.OnEventRaised -= CheckpointHeal;
+    }
+
+    private void InitUpgradesAndSabatoge() {
+        var upgrades = m_Character.upgrades;
+        var sabatoged = m_Character.sabotaged;
+        // Not the best way, but the easiest way
+        if (_sceneManager.previousScene != _breakRoomScene) {
+            upgrades = 5;
+            sabatoged = false;
+        }
+
+        if (upgrades > 0) {
+            // Handling increase
+            _rotForce = 0.7f;
+            _maxRotSpeed = 2f;
+        }
+        if (upgrades > 1) {
+            // Acceleration increase
+            _mainthrustForce = 17;
+            _reverseThrustForce = 12;
+            _horizontalThrustForce = 10;
+        }
+        if (upgrades > 2) {
+            // Health increase
+            _health = 125;
+        }
+        if (upgrades > 3) {
+            // Boost increase
+            _boostForceMultiplier = 4;
+            _maxSpeedBoostModifier = 1.75f;
+        }
+        if (upgrades > 4) {
+            // Top speed increase
+            _maxSpeed = 28;
+        }
+        if (upgrades > 5) {
+            // Overall increase
+            _rotForce = 0.8f;
+            _maxRotSpeed = 2.25f;
+            _mainthrustForce = 19;
+            _reverseThrustForce = 14;
+            _horizontalThrustForce = 12;
+            _health = 150;
+            _boostForceMultiplier = 5;
+            _maxSpeedBoostModifier = 1.9f;
+            _maxSpeed = 30;
+        }
+
+        if (sabatoged) {
+            // Force dumb ai
+            GetComponentInParent<SimpleShipAI>().difficulty = AI_DIFFICULTY.DUMB;
+
+            // Lower health
+            _health = 50;
+        }
     }
 
     private void FixedUpdate()
@@ -159,9 +216,7 @@ public class ShipController : MonoBehaviour {
             _health += amount;
             if (_health < 0)
             {
-                // TODO: Explode
                 _destructionParticles.Play();
-                _OnShipDestoryed.RaiseEvent(gameObject);
                 _shipModel.SetActive(false);
                 _rigidbody.velocity = Vector3.zero;
                 
@@ -170,6 +225,16 @@ public class ShipController : MonoBehaviour {
                 }
 
                 _health = 0;
+
+                // If easy mode, just respawn
+                if (GameManager.instance != null && GameManager.instance.easyMode) {
+                    StartCoroutine(Respawn());
+                } else {
+                    if(_shipAudio != null) {
+                        _shipAudio.PlayDeathClip();
+                    }
+                    _OnShipDestoryed.RaiseEvent(gameObject);
+                }
             }
 
             if (_health > _maxHealth)
@@ -182,6 +247,17 @@ public class ShipController : MonoBehaviour {
                 _onHealthLevelChanged.RaiseEvent(_health);
             }
         }
+    }
+
+    IEnumerator Respawn() {
+        yield return new WaitForSeconds(2.0f);
+
+        // Respawn at last checkpoint
+        _shipModel.SetActive(true);
+        _destructionParticles.Stop();
+        transform.position = GetComponent<CheckpointTracker>().LastPassedCheckpoint.transform.position;
+
+        ChangeHealth(_maxHealth);
     }
 
     public void RefillBoost(float fillSpeed)
@@ -264,67 +340,6 @@ public class ShipController : MonoBehaviour {
         _rigidbody.AddForce(transform.forward * boostPadForce * _mainthrustForce);
 
         StartCoroutine(DisableBoostPadBoost());
-    }
-
-    private void InitUpgradesAndSabatoge()
-    {
-        var upgrades = m_Character.upgrades;
-        var sabatoged = m_Character.sabotaged;
-        // Not the best way, but the easiest way
-        if (_sceneManager.previousScene != _breakRoomScene)
-        {
-            upgrades = 5;
-            sabatoged = false;
-        }
-
-        switch(upgrades)
-        {
-            case 1:
-                // Handling increase
-                _rotForce = 0.7f;
-                _maxRotSpeed = 2f;
-                break;
-            case 2:
-                // Acceleration increase
-                _mainthrustForce = 17;
-                _reverseThrustForce = 12;
-                _horizontalThrustForce = 10;
-                break;
-            case 3:
-                // Health increase
-                _health = 125;
-                break;
-            case 4:
-                // Boost increase
-                _boostForceMultiplier = 4;
-                _maxSpeedBoostModifier = 1.75f;
-                break;
-            case 5:
-                // Top speed increase
-                _maxSpeed = 28;
-                break;
-            case 6:
-                // Overall increase
-                _rotForce = 0.8f;
-                _maxRotSpeed = 2.25f;
-                _mainthrustForce = 19;
-                _reverseThrustForce = 14;
-                _horizontalThrustForce = 12;
-                _health = 150;
-                _boostForceMultiplier = 5;
-                _maxSpeedBoostModifier = 1.9f;
-                _maxSpeed = 30;
-                break;
-        }
-
-        if (sabatoged)
-        {
-            // Force dumb ai
-            GetComponentInParent<SimpleShipAI>().difficulty = AI_DIFFICULTY.DUMB;
-
-            // Lower health
-            _health = 50;
-        }
     }
 
     private void PerformMovement()

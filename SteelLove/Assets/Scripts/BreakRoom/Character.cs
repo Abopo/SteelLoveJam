@@ -18,6 +18,8 @@ public class Character : Interactable {
 
     bool _isSpeaking;
 
+    [SerializeField] private Collider2D _collider2D;
+
     PlayerController _playerController;
 
     void Awake() { 
@@ -32,6 +34,8 @@ public class Character : Interactable {
 
         // Move to proper position depending on what race is next
         FindPosition();
+
+        CheckCurrentRoom();
 
         _dialogueBubble.onDialogueComplete.AddListener(OnDialogueComplete);
         _dialogueBubble.onNodeComplete.AddListener(OnNodeComplete);
@@ -54,9 +58,25 @@ public class Character : Interactable {
         int nextRace = GameManager.instance.NextRace;
         if (nextRace < _posList.Length) {
             Vector3 position = _posList[nextRace - 1];
-            position.z = -1;
+            position.z = -2;
 
             transform.localPosition = position;
+        }
+    }
+
+    void CheckCurrentRoom() {
+        // Check if we are overlapped with any rooms (we should be obviously)
+        ContactFilter2D contactFilter = new ContactFilter2D();
+        contactFilter.useLayerMask = true;
+        contactFilter.useTriggers = true;
+        contactFilter.SetLayerMask(LayerMask.GetMask("InsideTrack"));
+        List<Collider2D> overlappingColliders = new List<Collider2D>();
+
+        _collider2D.OverlapCollider(contactFilter, overlappingColliders);
+
+        foreach (Collider2D collider in overlappingColliders) {
+            // Set our parent to the room
+            transform.parent = collider.transform.parent;
         }
     }
 
@@ -118,12 +138,12 @@ public class Character : Interactable {
 
     void OnDialogueComplete() {
         // Unfreeze player
-        //_playerController.Unfreeze();
+        _playerController.Unfreeze();
     }
 
     void OnNodeComplete(string node) {
         // Unfreeze player
-        _playerController.Unfreeze();
+        //_playerController.Unfreeze();
     }
 
     void OnTriggerExit2D(Collider2D collider) {

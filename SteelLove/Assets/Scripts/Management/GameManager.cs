@@ -21,6 +21,9 @@ public class GameManager : MonoBehaviour {
 
     public InMemoryVariableStorage yarnMemory;
 
+    GameAudio _gameAudio;
+    public GameAudio GameAudio => _gameAudio;
+
     public bool easyMode;
 
     // Singleton
@@ -35,11 +38,13 @@ public class GameManager : MonoBehaviour {
             StartGameInitialize();
 
             yarnMemory = GetComponentInChildren<InMemoryVariableStorage>();
+            _gameAudio = GetComponentInChildren<GameAudio>();
         }
     }
 
     public void StartGameInitialize() {
         // Player started game from main menu, so reset all data
+        nextRace = 1;
 
         // Character AI settings
         List<int> aiDifficulties;
@@ -130,6 +135,10 @@ public class GameManager : MonoBehaviour {
     }
 
     public STATE GetCharacterState(string charaName) {
+        if(charaName == "Jims") {
+            return STATE.NO_STATE;
+        }
+        
         // Make sure list is sorted
         SortRankList();
 

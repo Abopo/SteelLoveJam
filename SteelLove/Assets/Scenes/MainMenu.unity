@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18396598, g: 0.11492064, b: 0.27726778, a: 1}
+  m_IndirectSpecularColor: {r: 0.18396473, g: 0.114946745, b: 0.27726805, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -7187,6 +7187,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 8630cfd2995c59b4d9160d3ee14416b4,
         type: 2}
+    - target: {fileID: 2556727980536308479, guid: 9e76fe4fe5b38f349a6e0f952fea5156,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 2556727980536308479, guid: 9e76fe4fe5b38f349a6e0f952fea5156,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 1c8ae901b623d5e4298da92282eed848, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e76fe4fe5b38f349a6e0f952fea5156, type: 3}
 --- !u!114 &397685503 stripped
@@ -17671,11 +17681,11 @@ RectTransform:
   m_Children:
   - {fileID: 213521118}
   m_Father: {fileID: 710645053}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 343.323, y: -238.75}
+  m_AnchoredPosition: {x: 343.323, y: -431.25}
   m_SizeDelta: {x: 200, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &706253595
@@ -17815,8 +17825,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 842839937}
-  - {fileID: 706253594}
   - {fileID: 1903136794}
+  - {fileID: 706253594}
   - {fileID: 379025255}
   m_Father: {fileID: 1882099934}
   m_RootOrder: 0
@@ -51213,11 +51223,11 @@ RectTransform:
   m_Children:
   - {fileID: 1399941674}
   m_Father: {fileID: 710645053}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 343.323, y: -431.25}
+  m_AnchoredPosition: {x: 343.323, y: -238.75}
   m_SizeDelta: {x: 200, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1903136795

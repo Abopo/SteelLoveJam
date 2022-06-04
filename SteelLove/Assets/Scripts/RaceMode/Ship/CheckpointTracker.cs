@@ -17,11 +17,13 @@ public class CheckpointTracker : MonoBehaviour
     [SerializeField] private GameObjectEventChannelSO _onLapFinished = default;
     [SerializeField] private GameObjectEventChannelSO _onShipFinishedRace = default;
 
-    public int LastPassedCheckpoint => _lastPassedCheckpoint;
+    public int LastPassedCheckpointNumber => _lastPassedCheckpointNumber;
+    public Checkpoint LastPassedCheckpoint => _lastPassedCheckpoint;
     public int CurLap => _curLap;
     public bool FinishedRace => _finishedRace;
 
-    [SerializeField] private int _lastPassedCheckpoint = -1;
+    [SerializeField] private int _lastPassedCheckpointNumber = -1;
+    [SerializeField] private Checkpoint _lastPassedCheckpoint = null;
     private int _curLap = 0;
     private bool _finishedRace;
 
@@ -60,9 +62,10 @@ public class CheckpointTracker : MonoBehaviour
         if (other.tag == "Checkpoint")
         {
             var checkpoint = other.gameObject.GetComponent<Checkpoint>();
-            if(_lastPassedCheckpoint == checkpoint.CheckpointNumber - 1)
+            if(_lastPassedCheckpointNumber == checkpoint.CheckpointNumber - 1)
             {
-                _lastPassedCheckpoint = checkpoint.CheckpointNumber;
+                _lastPassedCheckpointNumber = checkpoint.CheckpointNumber;
+                _lastPassedCheckpoint = checkpoint;
                 _onCrossedNextCheckpoint.RaiseEvent(gameObject);
                 if (GetComponent<PlayerShipSetup>() != null)
                 {
@@ -75,7 +78,7 @@ public class CheckpointTracker : MonoBehaviour
         else if (other.tag == "CheckpointArea")
         {
             var checkpoint = other.gameObject.transform.parent.GetComponent<Checkpoint>();
-            if (_lastPassedCheckpoint == checkpoint.CheckpointNumber - 1)
+            if (_lastPassedCheckpointNumber == checkpoint.CheckpointNumber - 1)
             {
                 _nearbyCheckpoint = checkpoint.gameObject;
             }
@@ -84,7 +87,7 @@ public class CheckpointTracker : MonoBehaviour
 
     private void OnRaceStart()
     {
-        _lastPassedCheckpoint = -1;
+        _lastPassedCheckpointNumber = -1;
         _curLap = 0;
     }
 
@@ -92,7 +95,7 @@ public class CheckpointTracker : MonoBehaviour
     {
         if (shipObj == gameObject)
         {
-            _lastPassedCheckpoint = -1;
+            _lastPassedCheckpointNumber = -1;
             if (!_finishedRace)
             {
                 _curLap++;

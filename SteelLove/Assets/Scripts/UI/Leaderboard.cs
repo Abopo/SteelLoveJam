@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using LootLocker.Requests;
-using LootLocker.Admin;
 using TMPro;
 
 public class Leaderboard : MonoBehaviour {

@@ -49,6 +49,10 @@ Maybe I can make it on my own after all...
 
 title: Charlene_Race3_Mid3
 ---
+Well, that wasn't as bad as I thought it would be.
+I'm still not in the top 3 though...
+If only Gigantimous were here. He'd know what to do for sure. 
+<<jump Charlene_Quest>>
 ===
 
 title: Charlene_Race3_Bot3
@@ -72,10 +76,19 @@ Charlene and her giant robot sidekick! I like the sound of that.
 
 title: Charlene_Race4_Mid3
 ---
+Well, that wasn't as bad as I thought it would be.
+I'm still not in the top 3 though...
+If only Gigantimous were here. He'd know what to do for sure. 
+<<jump Charlene_Quest>>
 ===
 
 title: Charlene_Race4_Bot3
 ---
+*sigh* Still in last, as expected.
+At least regardless of how I do, there will be another giant robot.
+I don't know what the winners plan will be, but maybe it'll work out and I can still follow them.
+They'll probably never be like Gigantimous, but it's better than nothing I guess...
+<<jump Charlene_Quest>>
 ===
 
 title: Charlene_Quest

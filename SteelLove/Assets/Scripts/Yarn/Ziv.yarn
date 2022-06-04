@@ -33,7 +33,7 @@ title: Ziv_Race1
 <<set $has_dark_orb to false>>
 
 <<set $has_screwdriver to false>>
-<<set $ship_upgrade_parts to 5>>
+<<set $ship_upgrade_parts to 0>>
 
 I am Ziv Chromebeak. I unknowingly killed my brother.
 Somehow, he has been given a second chance.
@@ -105,16 +105,27 @@ And miracles have happened before...
 
 title: Ziv_Race4_Top3
 ---
+I'm so close now. Just one race left. 
+However, just being in the Top 3 isn't good enough. I
+ need to hold 1st place if I want to get to my brother. 
+ Everything lies on this last race. I should make sure to be as prepared as possible.
 <<set $got_canteen_drink to false>>
 ===
 
 title: Ziv_Race4_Mid3
 ---
+Here it is, the last race. 
+It's not impossible for me to jump to 1st place from my position, but I need to race perfectly and a whole lot of luck to pull it off. 
+The final track is sure to be the most treacherous. I must use that to my advantage.
 <<set $got_canteen_drink to false>>
 ===
 
 title: Ziv_Race4_Bot3
 ---
+Still in the bottom 3...it's hopeless at this point. 
+I wasn't good enough. 
+There's no way to win and see my brother again. 
+I'm still required to do the last race though...so let's just get this over with.
 <<set $got_canteen_drink to false>>
 ===
 

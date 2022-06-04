@@ -7,7 +7,7 @@ public class PlayerPrefManager : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         // TODO: Remove for final build
-        PlayerPrefs.SetInt("FirstTimePlaying", 0);
+        //PlayerPrefs.SetInt("FirstTimePlaying", 0);
 
         //Only run first time game is opened
         if (PlayerPrefs.GetInt("FirstTimePlaying", 0) == 0) {

@@ -57,6 +57,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: aae7d039b6fdeae4ebc4d4574bf06098, type: 2}
   - {fileID: 11400000, guid: 35aa3aac8fc6d9f41bdd9350040ad960, type: 2}
   yarnMemory: {fileID: 0}
+  easyMode: 0
 --- !u!114 &2556727979197640786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,7 +141,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.75
   m_Pitch: 1
   Loop: 1
   Mute: 0

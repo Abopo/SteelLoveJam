@@ -101,7 +101,7 @@ Sumiv's Ship
 
 title: Ship_Frieda
 ---
-Ms. Frieda's ship.
+Mrs. Frieda's ship.
 <<if $has_screwdriver is true>>
 -> Sabotage
     <<set $has_screwdriver to false>>
@@ -168,6 +168,7 @@ It's already open.
 title: Triks_Lockbox_Open
 ---
 <<if $got_screwdriver is false>>
+    The lockbox pops open.
     <<set $got_screwdriver to true>>
     <<set $has_screwdriver to true>>
     <<play_item_sound>>

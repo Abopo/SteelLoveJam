@@ -13,6 +13,7 @@ public class Room : MonoBehaviour {
     }
     // Start is called before the first frame update
     void Start() {
+        Exit();
     }
 
     // Update is called once per frame

@@ -12,6 +12,7 @@ public class ShipAudio : MonoBehaviour {
     private float _alarmTimer = 0f;
 
     [SerializeField] AudioSource _boostSound;
+    [SerializeField] AudioSource _deathClip;
 
     ShipController _ship;
 
@@ -56,5 +57,10 @@ public class ShipAudio : MonoBehaviour {
     }
     public void StopBoostSound() {
         StartCoroutine(AudioFadeOut.FadeOut(_boostSound, 1f));
+    }
+
+    public void PlayDeathClip() {
+        GameManager.instance.GameAudio.StopMusic();
+        _deathClip.Play();
     }
 }

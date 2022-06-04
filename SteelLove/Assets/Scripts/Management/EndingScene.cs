@@ -37,7 +37,7 @@ public class EndingScene : MonoBehaviour {
     IEnumerator LateStart() {
         yield return null;
 
-        // TODO: Set ending text based on Ziv's ranking
+        // Set ending text based on Ziv's ranking
         int zivPos = GameManager.instance.GetZivPosition();
 
         if(zivPos == 0) {

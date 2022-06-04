@@ -360,7 +360,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                     ""name"": ""Interact"",
                     ""type"": ""Value"",
                     ""id"": ""38948878-e5eb-4575-b9ff-f045d21824b0"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": ""Integer"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true

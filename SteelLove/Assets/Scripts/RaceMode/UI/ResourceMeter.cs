@@ -8,6 +8,8 @@ public class ResourceMeter : MonoBehaviour
     [Header("Listening To")]
     [SerializeField] private FloatEventChannelSO _onMeterValueChanged;
 
+    public float maxValue = 100;
+
     private void OnEnable()
     {
         _onMeterValueChanged.OnEventRaised += UpdateResourceMeter;
@@ -20,7 +22,7 @@ public class ResourceMeter : MonoBehaviour
 
     private void UpdateResourceMeter(float newLevel)
     {
-        var clampValue = Mathf.Clamp(newLevel / 100.0f, 0f, 1f);
+        var clampValue = Mathf.Clamp(newLevel / maxValue, 0f, 1f);
         _boostBarImage.fillAmount = clampValue;
     }
 }

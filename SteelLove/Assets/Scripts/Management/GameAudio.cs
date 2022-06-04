@@ -24,4 +24,8 @@ public class GameAudio : MonoBehaviour {
         _music.clip = _sceneManager.currentScene.sceneMusic;
         _music.Play();
     }
+
+    public void StopMusic() {
+        _music.Stop();
+    }
 }

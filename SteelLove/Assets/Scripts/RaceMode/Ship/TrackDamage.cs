@@ -70,7 +70,6 @@ public class TrackDamage : MonoBehaviour
 
     private void DealDamage()
     {
-        // TODO: 
         _ship.ChangeHealth(-_currOutTrackDamage);
         if (_offTrackDamageParticles.isPlaying == false)
         {

@@ -154,7 +154,7 @@ public class RaceManager : MonoBehaviour
 
         CheckpointTracker checkpointTracker = shipObj.GetComponent<CheckpointTracker>();
 
-        if (checkpointTracker.LastPassedCheckpoint == _checkpoints.Length - 1)
+        if (checkpointTracker.LastPassedCheckpointNumber == _checkpoints.Length - 1)
         {
             allCrossed = true;
         }

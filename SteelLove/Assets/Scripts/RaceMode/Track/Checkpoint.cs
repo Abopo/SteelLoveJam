@@ -64,13 +64,13 @@ public class Checkpoint : MonoBehaviour
         if (shipObj.GetComponent<PlayerShipSetup>() != null)
         {
             var checkPointTracker = shipObj.GetComponent<CheckpointTracker>();
-            if (checkPointTracker.LastPassedCheckpoint == _checkpointNumber)
+            if (checkPointTracker.LastPassedCheckpointNumber == _checkpointNumber)
             {
                 SetBannerMeshMat(_passedMaterial);
 
                 _audioSource.Play();
             }
-            else if(checkPointTracker.LastPassedCheckpoint == _checkpointNumber -1)
+            else if(checkPointTracker.LastPassedCheckpointNumber == _checkpointNumber -1)
             {
                 SetBannerMeshMat(_activeMaterial);
             }

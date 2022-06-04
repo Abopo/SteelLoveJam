@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.0471173, g: 0.06878268, b: 0.091467075, a: 1}
+  m_IndirectSpecularColor: {r: 0.047120586, g: 0.068796165, b: 0.09137932, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -420,22 +420,22 @@ PrefabInstance:
     - target: {fileID: 8928391151459758370, guid: deb7d8a23f723b24aa15197c38c0701f,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.849633
+      value: -0.18607867
       objectReference: {fileID: 0}
     - target: {fileID: 8928391151459758370, guid: deb7d8a23f723b24aa15197c38c0701f,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.067304894
+      value: -0.1708633
       objectReference: {fileID: 0}
     - target: {fileID: 8928391151459758370, guid: deb7d8a23f723b24aa15197c38c0701f,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.48210195
+      value: -0.9589959
       objectReference: {fileID: 0}
     - target: {fileID: 8928391151459758370, guid: deb7d8a23f723b24aa15197c38c0701f,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.20290789
+      value: 0.12848112
       objectReference: {fileID: 0}
     - target: {fileID: 8928391151459758370, guid: deb7d8a23f723b24aa15197c38c0701f,
         type: 3}
@@ -445,17 +445,22 @@ PrefabInstance:
     - target: {fileID: 8928391151459758370, guid: deb7d8a23f723b24aa15197c38c0701f,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -56.402
+      value: -199.221
       objectReference: {fileID: 0}
     - target: {fileID: 8928391151459758370, guid: deb7d8a23f723b24aa15197c38c0701f,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 17.122
       objectReference: {fileID: 0}
+    - target: {fileID: 8928391152363862275, guid: deb7d8a23f723b24aa15197c38c0701f,
+        type: 3}
+      propertyPath: far clip plane
+      value: 300
+      objectReference: {fileID: 0}
     - target: {fileID: 8928391152414819305, guid: deb7d8a23f723b24aa15197c38c0701f,
         type: 3}
       propertyPath: _checkpoints.Array.size
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 8928391152414819305, guid: deb7d8a23f723b24aa15197c38c0701f,
         type: 3}
@@ -496,22 +501,22 @@ PrefabInstance:
         type: 3}
       propertyPath: _checkpoints.Array.data[7]
       value: 
-      objectReference: {fileID: 1013628955}
+      objectReference: {fileID: 865382502}
     - target: {fileID: 8928391152414819305, guid: deb7d8a23f723b24aa15197c38c0701f,
         type: 3}
       propertyPath: _checkpoints.Array.data[8]
       value: 
-      objectReference: {fileID: 1977759443}
+      objectReference: {fileID: 1013628955}
     - target: {fileID: 8928391152414819305, guid: deb7d8a23f723b24aa15197c38c0701f,
         type: 3}
       propertyPath: _checkpoints.Array.data[9]
       value: 
-      objectReference: {fileID: 386108337}
+      objectReference: {fileID: 1977759443}
     - target: {fileID: 8928391152414819305, guid: deb7d8a23f723b24aa15197c38c0701f,
         type: 3}
       propertyPath: _checkpoints.Array.data[10]
       value: 
-      objectReference: {fileID: 1977759443}
+      objectReference: {fileID: 386108337}
     - target: {fileID: 8928391152414819305, guid: deb7d8a23f723b24aa15197c38c0701f,
         type: 3}
       propertyPath: _checkpoints.Array.data[11]
@@ -534,6 +539,18 @@ PrefabInstance:
       objectReference: {fileID: 1977759443}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: deb7d8a23f723b24aa15197c38c0701f, type: 3}
+--- !u!114 &865382502 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6601420877139768466, guid: 6f2986f2e7a4ee449b69e3de72eb0fac,
+    type: 3}
+  m_PrefabInstance: {fileID: 2581540651125560343}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90de1738a9d2297418110fc6a90920b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1013628955 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6601420877047071982, guid: 6f2986f2e7a4ee449b69e3de72eb0fac,

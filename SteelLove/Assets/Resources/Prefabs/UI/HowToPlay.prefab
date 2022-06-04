@@ -681,9 +681,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "The racers ships are built for speed, so don't have any protection from
-    space radiation. The track has a shield around it to protect the racers.\n If
-    you go off the track you will take damage! "
+  m_text: "The racers' ships are built for speed, so they don't have any protection
+    from space radiation. The track has a shield around it to protect the racers.\n
+    If you go off the track you will take damage! "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e87ce4ffebddb224c826b3b8c73e0804, type: 2}
   m_sharedMaterial: {fileID: -852475379320034306, guid: e87ce4ffebddb224c826b3b8c73e0804,

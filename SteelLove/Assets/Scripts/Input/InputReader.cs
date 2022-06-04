@@ -107,7 +107,7 @@ public class InputReader : DescriptionBaseSO, GameInput.IRacingActions, GameInpu
         MovementEvent.Invoke(context.ReadValue<Vector2>());
     }
     public void OnInteract(InputAction.CallbackContext context) {
-        if (context.performed) {
+        if (context.performed || context.canceled) {
             InteractEvent.Invoke(context.ReadValue<float>());
         }
     }

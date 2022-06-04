@@ -717,6 +717,7 @@ MonoBehaviour:
   showCharacterNameInLineView: 1
   characterNameText: {fileID: 0}
   useTypewriterEffect: 1
+  typewriterIsDone: 0
   onCharacterTyped:
     m_PersistentCalls:
       m_Calls: []
@@ -1386,6 +1387,7 @@ MonoBehaviour:
   - {x: 0, y: 0}
   - {x: 0, y: 0}
   curState: 0
+  _collider2D: {fileID: 8824941372972952047}
 --- !u!1 &8824941374067682327
 GameObject:
   m_ObjectHideFlags: 0

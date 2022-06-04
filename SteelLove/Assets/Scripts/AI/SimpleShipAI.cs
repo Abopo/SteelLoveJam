@@ -48,8 +48,8 @@ public class SimpleShipAI : MonoBehaviour {
     }
     // Start is called before the first frame update
     void Start() {
-        // TODO: Set this on game start
-        difficulty = (AI_DIFFICULTY)Random.Range(0, (int)AI_DIFFICULTY.NUM_DIFFICULTIES);
+        difficulty = _ship.Character.difficulty;
+        //difficulty = (AI_DIFFICULTY)Random.Range(0, (int)AI_DIFFICULTY.NUM_DIFFICULTIES);
         //difficulty = AI_DIFFICULTY.EXPERT;
         SetupViaDifficulty();
     }

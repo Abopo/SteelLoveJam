@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour {
 
     private SpriteRenderer _interactIcon;
 
-    private float _interactValue;
+    [SerializeField] private float _interactValue;
     public float InteractValue => _interactValue;
 
     MainUI _mainUI;
@@ -42,9 +42,6 @@ public class PlayerController : MonoBehaviour {
     void Start() {
         _inputReader.EnableAllInput();
 
-        // Ziv starts in his room, so make sure it is active
-        myRoom.Enter();
-
         CheckState();
 
         StartCoroutine(LateStart());
@@ -63,6 +60,9 @@ public class PlayerController : MonoBehaviour {
 
     IEnumerator LateStart() {
         yield return null;
+
+        // Ziv starts in his room, so make sure it is active
+        myRoom.Enter();
 
         // Say initial dialogue
         RunStartDialogue();
@@ -152,8 +152,10 @@ public class PlayerController : MonoBehaviour {
     private void Interact(float value) {
         _interactValue = value;
 
-        if (_inControl) {
-            CheckInteract();
+        if (value > 0) {
+            if (_inControl) {
+                CheckInteract();
+            }
         }
     }
 
@@ -176,7 +178,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void CheckInteract() {
-        // Check is we are overlapped with any interactables
+        // Check if we are overlapped with any interactables
         ContactFilter2D contactFilter = new ContactFilter2D();
         contactFilter.useLayerMask = true;
         contactFilter.useTriggers = true;

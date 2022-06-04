@@ -15,7 +15,7 @@ MonoBehaviour:
   description: 
   _shipPrefab: {fileID: 6567690924902640492, guid: 39729bb1ad3c842428f43d4389c006a7,
     type: 3}
-  seasonPoints: 11
+  seasonPoints: 0
   difficulty: 0
   sabotaged: 0
   upgrades: 0

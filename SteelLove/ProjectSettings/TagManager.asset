@@ -14,6 +14,7 @@ TagManager:
   - Checkpoint
   - FirstCheckpointAI
   - CheckpointArea
+  - Room
   layers:
   - Default
   - TransparentFX
