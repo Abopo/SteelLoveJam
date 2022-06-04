@@ -16,12 +16,14 @@ public class MainMenu : MonoBehaviour
     public void StartGameEasy()
     {
         GameManager.instance.easyMode = true;
+        GameManager.instance.StartGameInitialize();
         _sceneManager.LoadScene(_gameStartScene);
     }
 
     public void StartGameNormal()
     {
         GameManager.instance.easyMode = false;
+        GameManager.instance.StartGameInitialize();
         _sceneManager.LoadScene(_gameStartScene);
     }
 
