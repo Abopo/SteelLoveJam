@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField] GameObject _showOnPause;
-
+    [SerializeField] GameObject _restartButton;
+    
     [Header("Broadcasting On")]
     [SerializeField] private VoidEventChannelSO _onPauseEvent = default;
 
@@ -17,6 +18,9 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private VoidEventChannelSO _onRaceFinishedEvent = default;
 
     [SerializeField] private GameSceneSO _trackToLoad;
+
+    [SerializeField] private SceneManagerSO _sceneManager;
+    [SerializeField] private GameSceneSO _breakRoomScene;
 
     private bool _isPaused;
 
@@ -39,6 +43,11 @@ public class PauseMenu : MonoBehaviour
     private void Start()
     {
         _showOnPause.SetActive(false);
+        
+        if (_sceneManager.previousScene == _breakRoomScene)
+        {
+            _restartButton.SetActive(false);
+        }
     }
 
     public void Resume()

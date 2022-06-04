@@ -2341,11 +2341,34 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: f8a4abbfac411a64cb2230e90793360f,
         type: 2}
+    - target: {fileID: 7951533019200869097, guid: 6871a445789ce044fa3933974383a80d,
+        type: 3}
+      propertyPath: _sceneManager
+      value: 
+      objectReference: {fileID: 11400000, guid: 8630cfd2995c59b4d9160d3ee14416b4,
+        type: 2}
+    - target: {fileID: 7951533019200869097, guid: 6871a445789ce044fa3933974383a80d,
+        type: 3}
+      propertyPath: _restartButton
+      value: 
+      objectReference: {fileID: 5131584240354880208}
+    - target: {fileID: 7951533019200869097, guid: 6871a445789ce044fa3933974383a80d,
+        type: 3}
+      propertyPath: _breakRoomScene
+      value: 
+      objectReference: {fileID: 11400000, guid: 6edb2a8a7f2bd8043b0e911c0a8dfa4a,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6871a445789ce044fa3933974383a80d, type: 3}
 --- !u!224 &7682896516471647964 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4636920053621117788, guid: 6871a445789ce044fa3933974383a80d,
+    type: 3}
+  m_PrefabInstance: {fileID: 3082300071846886784}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5131584240354880208 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7922266292369774416, guid: 6871a445789ce044fa3933974383a80d,
     type: 3}
   m_PrefabInstance: {fileID: 3082300071846886784}
   m_PrefabAsset: {fileID: 0}
