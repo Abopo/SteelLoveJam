@@ -32,16 +32,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TrackTests/Track6.unity
     guid: 8aaa1e26efe85b24c853817cc89cc21d
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TrackTests/TrackDSD.unity
     guid: 8b86543f39b83474591e97c99666749d
   - enabled: 1
     path: Assets/Scenes/TrackTests/Track7.unity
     guid: 85efcc68b4e0cf7418e164fdb082feb8
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TrueEnding.unity
     guid: ae1248bba49984b4fbf15b1114578b87
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Credits.unity
     guid: a295673bc57af3a4f9473937009fd79b
   - enabled: 1

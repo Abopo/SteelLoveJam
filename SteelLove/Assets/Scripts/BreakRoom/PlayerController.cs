@@ -64,8 +64,10 @@ public class PlayerController : MonoBehaviour {
         // Ziv starts in his room, so make sure it is active
         myRoom.Enter();
 
-        // Say initial dialogue
-        RunStartDialogue();
+        if (GameManager.instance.NextRace < 5) {
+            // Say initial dialogue
+            RunStartDialogue();
+        }
     }
 
     // Plays a dialogue based on the Race# and Ziv's current rank

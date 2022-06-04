@@ -19,4 +19,4 @@ MonoBehaviour:
   difficulty: 4
   sabotaged: 0
   upgrades: 0
-  portrait: {fileID: 21300000, guid: 9795ae5754e07d8458d976b32cb0be67, type: 3}
+  portrait: {fileID: 21300000, guid: b399dbd68d78f8c4b80b7c4a05d42159, type: 3}
