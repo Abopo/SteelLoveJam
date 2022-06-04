@@ -44832,7 +44832,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b3db9cf215e5dfa4687746acaf54dfe9, type: 2}
   - {fileID: 11400000, guid: f8a4abbfac411a64cb2230e90793360f, type: 2}
   - {fileID: 11400000, guid: 2c074241b2d7e634aa0f95d3abb8a2b4, type: 2}
-  - {fileID: 11400000, guid: 6cd73fad941256244bcd7ad8a18c5802, type: 2}
   _dsdTrack: {fileID: 11400000, guid: 1a5463199286df84e90373727b6eb18d, type: 2}
   _levelSelectButtonParent: {fileID: 486114187}
   _levelPreviewParent: {fileID: 1652462320}

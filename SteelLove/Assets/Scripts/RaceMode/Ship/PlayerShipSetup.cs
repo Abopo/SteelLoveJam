@@ -71,8 +71,8 @@ public class PlayerShipSetup : MonoBehaviour
         if (_shipController.Health > 0)
         {
             SimpleShipAI simpleShipAI = GetComponent<SimpleShipAI>();
-            simpleShipAI.enabled = true;
             simpleShipAI.difficulty = AI_DIFFICULTY.HARD;
+            simpleShipAI.enabled = true;
             simpleShipAI.StartAI();
         }
     }

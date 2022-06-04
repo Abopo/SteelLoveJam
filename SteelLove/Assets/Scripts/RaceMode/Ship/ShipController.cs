@@ -8,6 +8,8 @@ public class ShipController : MonoBehaviour {
     public bool Boosting => _boosting;
 
     [SerializeField] CharacterSO m_Character;
+    [SerializeField] private SceneManagerSO _sceneManager;
+    [SerializeField] private GameSceneSO _breakRoomScene;
 
     [Header("Thruster Properties")]
     [SerializeField] private float _mainthrustForce;
@@ -93,51 +95,7 @@ public class ShipController : MonoBehaviour {
     }
 
     private void Start() {
-        // Set up parameters based on upgrades/sabotage
-        if(m_Character.upgrades > 0) {
-            // Handling increase
-            _rotForce = 0.7f;
-            _maxRotSpeed = 2f;
-        }
-        if (m_Character.upgrades > 1) {
-            // Acceleration increase
-            _mainthrustForce = 17;
-            _reverseThrustForce = 12;
-            _horizontalThrustForce = 10;
-        }
-        if (m_Character.upgrades > 2) {
-            // Health increase
-            _health = 125;
-        }
-        if (m_Character.upgrades > 3) {
-            // Boost increase
-            _boostForceMultiplier = 4;
-            _maxSpeedBoostModifier = 1.75f;
-        }
-        if(m_Character.upgrades > 4) {
-            // Top speed increase
-            _maxSpeed = 28;
-        }
-        if(m_Character.upgrades > 5) {
-            // Overall increase
-            _rotForce = 0.8f;
-            _maxRotSpeed = 2.25f;
-            _mainthrustForce = 19;
-            _reverseThrustForce = 14;
-            _horizontalThrustForce = 12;
-            _health = 150;
-            _boostForceMultiplier = 5;
-            _maxSpeedBoostModifier = 1.9f;
-            _maxSpeed = 30;
-        }
-
-        if(m_Character.sabotaged) {
-            // Force dumb ai
-            GetComponentInParent<SimpleShipAI>().difficulty = AI_DIFFICULTY.DUMB;
-
-            // Lower health
-            _health = 50;
-        }
+        InitUpgradesAndSabatoge();
 
         _maxHealth = _health;
     }
@@ -306,6 +264,67 @@ public class ShipController : MonoBehaviour {
         _rigidbody.AddForce(transform.forward * boostPadForce * _mainthrustForce);
 
         StartCoroutine(DisableBoostPadBoost());
+    }
+
+    private void InitUpgradesAndSabatoge()
+    {
+        var upgrades = m_Character.upgrades;
+        var sabatoged = m_Character.sabotaged;
+        // Not the best way, but the easiest way
+        if (_sceneManager.previousScene != _breakRoomScene)
+        {
+            upgrades = 5;
+            sabatoged = false;
+        }
+
+        switch(upgrades)
+        {
+            case 1:
+                // Handling increase
+                _rotForce = 0.7f;
+                _maxRotSpeed = 2f;
+                break;
+            case 2:
+                // Acceleration increase
+                _mainthrustForce = 17;
+                _reverseThrustForce = 12;
+                _horizontalThrustForce = 10;
+                break;
+            case 3:
+                // Health increase
+                _health = 125;
+                break;
+            case 4:
+                // Boost increase
+                _boostForceMultiplier = 4;
+                _maxSpeedBoostModifier = 1.75f;
+                break;
+            case 5:
+                // Top speed increase
+                _maxSpeed = 28;
+                break;
+            case 6:
+                // Overall increase
+                _rotForce = 0.8f;
+                _maxRotSpeed = 2.25f;
+                _mainthrustForce = 19;
+                _reverseThrustForce = 14;
+                _horizontalThrustForce = 12;
+                _health = 150;
+                _boostForceMultiplier = 5;
+                _maxSpeedBoostModifier = 1.9f;
+                _maxSpeed = 30;
+                break;
+        }
+
+        if (sabatoged)
+        {
+            // Force dumb ai
+            GetComponentInParent<SimpleShipAI>().difficulty = AI_DIFFICULTY.DUMB;
+
+            // Lower health
+            _health = 50;
+        }
     }
 
     private void PerformMovement()

@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 509a002669c61164e9a79c18e532b5c3
   - enabled: 1
@@ -35,6 +35,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Credits.unity
     guid: a295673bc57af3a4f9473937009fd79b
+  - enabled: 1
+    path: Assets/Scenes/TrackTests/Track7.unity
+    guid: 85efcc68b4e0cf7418e164fdb082feb8
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: c3e7daa8b814c324e98e63b4cac96e99,
       type: 2}

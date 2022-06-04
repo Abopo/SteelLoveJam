@@ -69,6 +69,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3710275133932983561, guid: b74bb24d507c32e4aaa80ef82a0486fb,
         type: 3}
+      propertyPath: _sceneManager
+      value: 
+      objectReference: {fileID: 11400000, guid: 8630cfd2995c59b4d9160d3ee14416b4,
+        type: 2}
+    - target: {fileID: 3710275133932983561, guid: b74bb24d507c32e4aaa80ef82a0486fb,
+        type: 3}
+      propertyPath: _breakRoomScene
+      value: 
+      objectReference: {fileID: 11400000, guid: 6edb2a8a7f2bd8043b0e911c0a8dfa4a,
+        type: 2}
+    - target: {fileID: 3710275133932983561, guid: b74bb24d507c32e4aaa80ef82a0486fb,
+        type: 3}
       propertyPath: _onRaceFinished
       value: 
       objectReference: {fileID: 11400000, guid: cfc78b7350bc8dd4e9a733b45bdb6aa7,
