@@ -3319,6 +3319,7 @@ MonoBehaviour:
   moveSpeed: 5
   _inputReader: {fileID: 11400000, guid: 3aad594c8fb5bb44cbff640004584d4d, type: 2}
   myRoom: {fileID: 719650191}
+  _interactValue: 0
   _curState: 0
 --- !u!50 &1687516215
 Rigidbody2D:
@@ -3703,7 +3704,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 13
-      m_TileSpriteIndex: 11
+      m_TileSpriteIndex: 13
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -3885,14 +3886,14 @@ Tilemap:
       type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 1
-    m_Data: {fileID: -3341493406044667183, guid: 84e2eaa5fd96ce740bab4a9507d52f95,
-      type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 6
     m_Data: {fileID: -3450666111393378271, guid: 84e2eaa5fd96ce740bab4a9507d52f95,
       type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: -3341493406044667183, guid: 84e2eaa5fd96ce740bab4a9507d52f95,
+      type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 3320966793625874393, guid: 84e2eaa5fd96ce740bab4a9507d52f95,
       type: 3}
@@ -4437,7 +4438,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Bif Chromebeak
+  m_text: Dark Shippie Dues
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f3ec182b30ffab849b7448f90fd9b60e, type: 2}
   m_sharedMaterial: {fileID: -2681286689711783085, guid: f3ec182b30ffab849b7448f90fd9b60e,
@@ -6421,6 +6422,7 @@ MonoBehaviour:
   - {x: 0, y: 0}
   - {x: 0, y: 0}
   curState: 0
+  _collider2D: {fileID: 0}
 --- !u!114 &8824941372813923247
 MonoBehaviour:
   m_ObjectHideFlags: 0
