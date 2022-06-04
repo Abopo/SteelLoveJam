@@ -32,6 +32,7 @@ public class StartLine : MonoBehaviour
             GameObject ship = Instantiate(polePositions[i].ShipPrefab);
             ship.transform.position = _startingPoints[i].position;
             ship.transform.rotation = _startingPoints[i].rotation;
+            ship.GetComponent<ShipController>().spawnPoint = _startingPoints[i];
             shipObjs.Add(ship);
         }
 
