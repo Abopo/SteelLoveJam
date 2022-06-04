@@ -95,7 +95,7 @@ public class MainUI : MonoBehaviour {
         FindObjectOfType<MainUI>().PlayGetSound();
         FindObjectOfType<MainUI>().DisplayDialogue(itemName);
 
-        if(itemName == "Dark Orb") {
+        if(itemName == "DarkOrb") {
             PlayerPrefs.SetInt("Has_DarkOrb", 1);
         }
     }

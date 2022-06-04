@@ -266,3 +266,8 @@ title: Dark_Shippie_Item
     <<get_item DarkOrb>>
 <<endif>>
 ===
+
+title: DarkOrb
+---
+< Got <color=orange>Dark Orb</color> >
+===
