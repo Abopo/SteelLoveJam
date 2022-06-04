@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour {
 
     public InMemoryVariableStorage yarnMemory;
 
+    public bool easyMode;
+
     // Singleton
     public static GameManager instance;
     bool _alive;
@@ -40,9 +42,19 @@ public class GameManager : MonoBehaviour {
         // Player started game from main menu, so reset all data
 
         // Character AI settings
-        List<int> aiDifficulties = new List<int>() {
-            0, 1, 1, 2, 2, 3, 3, 4
-        };
+        List<int> aiDifficulties;
+        if (easyMode)
+        {
+            aiDifficulties = new List<int>() {
+                0, 0, 1, 1, 2, 2, 2, 3
+            };
+        }
+        else
+        {
+            aiDifficulties = new List<int>() {
+                0, 1, 1, 2, 2, 3, 3, 4
+            };
+        }
         int rand = 0;
         foreach (CharacterSO character in _characterList) {
             rand = Random.Range(0, aiDifficulties.Count);
