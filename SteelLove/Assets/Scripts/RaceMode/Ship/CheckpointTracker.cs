@@ -44,7 +44,7 @@ public class CheckpointTracker : MonoBehaviour
 
     private void Update()
     {
-        if (_nearbyCheckpoint != null && _alertedAssistanceNeeded == false)
+        if (_nearbyCheckpoint != null && _alertedAssistanceNeeded == false && _finishedRace == false)
         {
             var distToCheckpoint = (_nearbyCheckpoint.transform.position - gameObject.transform.position).magnitude;
             if (distToCheckpoint >= _distanceToCheckpointAssist && GetComponent<PlayerShipSetup>() != null)

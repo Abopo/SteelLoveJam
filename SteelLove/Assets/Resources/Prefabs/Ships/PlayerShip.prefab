@@ -5707,6 +5707,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speedRequirement: 5
+  _collisionSlowdown: 5
   _collisionParticles: {fileID: 2518766124786432357, guid: eab1db538c7f3e0479f2d6d5218be03f,
     type: 3}
 --- !u!114 &731540414897390611

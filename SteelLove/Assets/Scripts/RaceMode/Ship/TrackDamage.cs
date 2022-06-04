@@ -36,7 +36,7 @@ public class TrackDamage : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (IsOffTrack() && !_finishedRace)
+        if (IsOffTrack() && !_finishedRace && _ship.Health > 0)
         {
             _currOutTrackDamage = Mathf.Lerp(0, _outsideTrackFullDamage, _currOutTrackTimer / _timeToFullDamage);
 
