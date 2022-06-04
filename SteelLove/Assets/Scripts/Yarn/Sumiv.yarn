@@ -130,7 +130,5 @@ Now i can finally -
 Oh, wait. It looks like these are the wrong size.
 Well, thanks anyway. Here, take this.
 Thank you for at least trying to help me.
-
-<Got <color=orange>Ship Upgrade Parts</color> >
-<<set $ship_upgrade_parts to $ship_upgrade_parts+1>>
+<<get_item Ship_Upgrade_Parts>>
 ===

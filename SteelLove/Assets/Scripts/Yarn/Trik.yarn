@@ -105,8 +105,6 @@ Every grazeloid in the galaxy dreams of a chance like this!
 
 title: Trik_Race4_Mid3
 ---
-title: Trik_Race2_Mid3
----
 <<if $has_grazeloid_translator == true>>
     Hooo... calm down Trik. It's OK. 
     You may be in the middle of the rankings, but 1st place isn't impossible. 
@@ -120,8 +118,6 @@ title: Trik_Race2_Mid3
 ===
 
 title: Trik_Race4_Bot3
----
-title: Trik_Race2_Bot3
 ---
 <<if $has_grazeloid_translator == true>>
     Shit shit shit! I'm seriously gonna lose! 
