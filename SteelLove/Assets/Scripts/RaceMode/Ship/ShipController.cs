@@ -59,6 +59,8 @@ public class ShipController : MonoBehaviour {
 
     [SerializeField] private GameObject _shipModel;
 
+    public Transform spawnPoint;
+
     // accessors
     public CharacterSO Character => m_Character;
     public float Health => _health;
@@ -255,7 +257,16 @@ public class ShipController : MonoBehaviour {
         // Respawn at last checkpoint
         _shipModel.SetActive(true);
         _destructionParticles.Stop();
-        transform.position = GetComponent<CheckpointTracker>().LastPassedCheckpoint.transform.position;
+        var lastCheckpoint = GetComponent<CheckpointTracker>().LastPassedCheckpoint;
+        if (lastCheckpoint != null)
+        {
+            transform.position = GetComponent<CheckpointTracker>().LastPassedCheckpoint.transform.position;
+        }
+        else
+        {
+            transform.position = spawnPoint.position;
+            transform.rotation = spawnPoint.rotation;
+        }
 
         ChangeHealth(_maxHealth);
     }
