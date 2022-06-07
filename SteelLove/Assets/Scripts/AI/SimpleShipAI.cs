@@ -49,8 +49,20 @@ public class SimpleShipAI : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         difficulty = _ship.Character.difficulty;
+
+        var sabatoged = _ship.Character.sabotaged;
+        if(sabatoged) {
+            difficulty = AI_DIFFICULTY.DUMB;
+        }
+
         //difficulty = (AI_DIFFICULTY)Random.Range(0, (int)AI_DIFFICULTY.NUM_DIFFICULTIES);
         //difficulty = AI_DIFFICULTY.EXPERT;
+        StartCoroutine(LateStart());
+    }
+
+    IEnumerator LateStart() {
+        yield return null;
+
         SetupViaDifficulty();
     }
 

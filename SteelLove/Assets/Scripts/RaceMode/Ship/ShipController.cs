@@ -161,9 +161,6 @@ public class ShipController : MonoBehaviour {
         }
 
         if (sabatoged) {
-            // Force dumb ai
-            GetComponentInParent<SimpleShipAI>().difficulty = AI_DIFFICULTY.DUMB;
-
             // Lower health
             _health = 50;
         }
