@@ -9,6 +9,8 @@ public class RaceManager : MonoBehaviour
     [SerializeField] private GameSceneSO _creditsScene = default;
     [SerializeField] private GameSceneSO _trueEndScene = default;
     [SerializeField] private RaceStateSO _RaceStateSO = default;
+    [SerializeField] private GameSceneSO _DSDMeetingScene = default;
+    [SerializeField] private GameSceneSO _mainMenu = default;
 
     [SerializeField] private InputReader _inputReader = default;
 
@@ -25,9 +27,14 @@ public class RaceManager : MonoBehaviour
     [SerializeField] private GameObjectEventChannelSO _onShipDestroyed = default;
     [SerializeField] private GameObjectsListEventChannelSO _onReportRaceResults = default;
 
+    [SerializeField] private AudioClip _victorySong;
+    [SerializeField] private AudioClip _menuSong;
+
     public Checkpoint[] Checkpoints => _checkpoints;
     [SerializeField] private Checkpoint[] _checkpoints;
     private int _activeCheckpoint = 0;
+
+    private bool _playerShipDestroyed;
 
     private void OnEnable()
     {
@@ -123,6 +130,11 @@ public class RaceManager : MonoBehaviour
     {
         if(ship.GetComponent<PlayerShipSetup>() != null)
         {
+           
+            if (GameManager.instance != null && !GameManager.instance.easyMode)
+            {
+                _playerShipDestroyed = true;
+            }
             _RaceStateSO.UpdateState(RaceStateSO.RaceState.RaceFinished);
         }
     }
@@ -135,6 +147,11 @@ public class RaceManager : MonoBehaviour
         // Let GameManager handle end of race
         if (GameManager.instance != null && _sceneManager.previousScene == _breakRoomScene) {
             GameManager.instance.RaceFinished();
+        }
+
+        if (_playerShipDestroyed == false)
+        {
+            GameManager.instance.PlaySongClipThenLoopSecondClip(_victorySong, _menuSong);
         }
     }
 
@@ -153,9 +170,14 @@ public class RaceManager : MonoBehaviour
                     _sceneManager.LoadScene(_creditsScene);
                 }
 
-            } else {
+            } else if(_sceneManager.previousScene != _DSDMeetingScene)
+            {
                 // send us to the previous scene. either break room or main menu.
                 _sceneManager.LoadPreviousScene();
+            }
+            else
+            {
+                _sceneManager.LoadScene(_mainMenu);
             }
         }
     }

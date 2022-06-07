@@ -63,6 +63,11 @@ public class EndingScene : MonoBehaviour {
         _inputReader.InteractEvent += Interact;
     }
 
+    private void OnDisable()
+    {
+        _inputReader.InteractEvent -= Interact;
+    }
+
     private void Update() {
     }
 

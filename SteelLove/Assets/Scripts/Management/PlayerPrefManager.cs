@@ -19,7 +19,7 @@ public class PlayerPrefManager : MonoBehaviour {
         PlayerPrefs.SetInt("Lockbox_0", 0);
         PlayerPrefs.SetInt("KnockLock_0", 0);
         PlayerPrefs.SetInt("SearchLock_0", 0);
-        PlayerPrefs.SetInt("Has_DarkOrb", 1);
+        PlayerPrefs.SetInt("Has_DarkOrb", 0);
     }
 
     void InitializeFirstTimePrefs() {
@@ -28,7 +28,7 @@ public class PlayerPrefManager : MonoBehaviour {
         PlayerPrefs.SetInt("Story Track 3 BestTime", 10000);
         PlayerPrefs.SetInt("Story Track 4 BestTime", 10000);
 
-        PlayerPrefs.SetInt("DarkShippieDues", 1);
-        PlayerPrefs.SetInt("Has_DarkOrb", 1);
+        PlayerPrefs.SetInt("DarkShippieDues", 0);
+        PlayerPrefs.SetInt("Has_DarkOrb", 0);
     }
 }
