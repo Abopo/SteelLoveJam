@@ -6,6 +6,7 @@ using UnityEngine;
 public class RacePositioning : MonoBehaviour
 {
     private List<GameObject> _positionOrder = new List<GameObject>();
+    private List<GameObject> _finishOrder = new List<GameObject>();
     private List<GameObject> _destroyedOder = new List<GameObject>();
 
     [Header("Broadcasting On")]
@@ -52,7 +53,6 @@ public class RacePositioning : MonoBehaviour
         {
             GetCurrentOrder();
 
-            // TODO: pass current order out
             _onRacePositionsUpdated.RaiseEvent(_positionOrder);
         }
     }
@@ -74,26 +74,16 @@ public class RacePositioning : MonoBehaviour
         
         for (int i = 0; i < _positionOrder.Count; ++i)
         {
-            if (_positionOrder[i] != null && _positionOrder[i].GetComponent<ShipController>().Health > 0)
+            if (_positionOrder[i] != null && _finishOrder.Contains(_positionOrder[i]) == false && _destroyedOder.Contains(_positionOrder[i]) == false)
             {
-                if (i < lockedPositions)
-                {
-                    lockedIn.Add(_positionOrder[i]);
-                }
-                else
-                {
-                    stillRacing.Add(_positionOrder[i]);
-                }
-            } else {
-                int x;
-                x = 1;
+                stillRacing.Add(_positionOrder[i]);
             }
         }
         
         stillRacing.Sort((x,y) => ComparePositions(x,y));
 
         _positionOrder.Clear();
-        _positionOrder.AddRange(lockedIn);
+        _positionOrder.AddRange(_finishOrder);
         _positionOrder.AddRange(stillRacing);
         _positionOrder.AddRange(_destroyedOder);
     }
@@ -149,12 +139,15 @@ public class RacePositioning : MonoBehaviour
 
     private void LockPosition(GameObject shipObj)
     {
-        lockedPositions++;
+        _finishOrder.Add(shipObj);
     }
 
     private void ShipDestroyed(GameObject shipObj)
     {
-        // insert at begining of list so earlier destroyed ships are put in last
-        _destroyedOder.Insert(0, shipObj);
+        if (GameManager.instance.easyMode == false)
+        {
+            // insert at begining of list so earlier destroyed ships are put in last
+            _destroyedOder.Insert(0, shipObj);
+        }
     }
 }
