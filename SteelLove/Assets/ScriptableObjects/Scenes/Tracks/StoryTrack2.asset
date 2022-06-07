@@ -20,7 +20,7 @@ MonoBehaviour:
     m_SubObjectType: 
     m_EditorAssetChanged: 0
   sceneMusic: {fileID: 8300000, guid: d7f4c28729fc1d14e9a86d986c221c32, type: 3}
-  volume: 0.4
+  volume: 0.45
   trackPreview: {fileID: 5145607299929115363, guid: 4c29cc8acae36b94a886ce96bcc0fa2c,
     type: 3}
   trackLeaderboardID: 3355

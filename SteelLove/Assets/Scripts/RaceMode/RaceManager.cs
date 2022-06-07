@@ -28,10 +28,13 @@ public class RaceManager : MonoBehaviour
     [SerializeField] private GameObjectsListEventChannelSO _onReportRaceResults = default;
 
     [SerializeField] private AudioClip _victorySong;
+    [SerializeField] private AudioClip _menuSong;
 
     public Checkpoint[] Checkpoints => _checkpoints;
     [SerializeField] private Checkpoint[] _checkpoints;
     private int _activeCheckpoint = 0;
+
+    private bool _playerShipDestroyed;
 
     private void OnEnable()
     {
@@ -127,6 +130,11 @@ public class RaceManager : MonoBehaviour
     {
         if(ship.GetComponent<PlayerShipSetup>() != null)
         {
+           
+            if (GameManager.instance != null && !GameManager.instance.easyMode)
+            {
+                _playerShipDestroyed = true;
+            }
             _RaceStateSO.UpdateState(RaceStateSO.RaceState.RaceFinished);
         }
     }
@@ -141,7 +149,10 @@ public class RaceManager : MonoBehaviour
             GameManager.instance.RaceFinished();
         }
 
-        GameManager.instance.PlaySongClip(_victorySong);
+        if (_playerShipDestroyed == false)
+        {
+            GameManager.instance.PlaySongClipThenLoopSecondClip(_victorySong, _menuSong);
+        }
     }
 
     private void ConfirmEndOfRace()

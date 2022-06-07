@@ -209,7 +209,8 @@ MonoBehaviour:
   _explosionSound: {fileID: 6527509703632789211}
   _offTrackAlarm: {fileID: 8533438513126681076}
   _boostSound: {fileID: 8712121910438377428}
-  _deathClip: {fileID: 6657305181391368007}
+  _deathClip: {fileID: 8300000, guid: 043c528e32823af4ab89247f29658b97, type: 3}
+  _menuClip: {fileID: 8300000, guid: 1c8ae901b623d5e4298da92282eed848, type: 3}
 --- !u!1 &1003135477916575640
 GameObject:
   m_ObjectHideFlags: 0
@@ -5562,6 +5563,7 @@ MonoBehaviour:
   _healthGainOnCheckpoint: 15
   _healthLossOnGeneralCollision: 5
   _shipModel: {fileID: 2293335431748937384}
+  spawnPoint: {fileID: 0}
   _reverseThrusterInputValue: 0
 --- !u!114 &229031514029795671
 MonoBehaviour:

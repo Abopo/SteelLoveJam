@@ -89,9 +89,9 @@ public class GameManager : MonoBehaviour {
         _characterList.Sort(RankCompare);
     }
 
-    public void PlaySongClip(AudioClip clip)
+    public void PlaySongClipThenLoopSecondClip(AudioClip clip, AudioClip secondClip)
     {
-        _gameAudio.PlaySongOnceThenReturn(clip);
+        _gameAudio.PlaySongOnceThenPlayNextSongForever(clip, secondClip);
     }
 
     void SingletonCheck() {

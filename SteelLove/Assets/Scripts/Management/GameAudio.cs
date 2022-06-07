@@ -45,6 +45,16 @@ public class GameAudio : MonoBehaviour {
         _isPlayingSongThenReturn = true;
     }
 
+    public void PlaySongOnceThenPlayNextSongForever(AudioClip firstClip, AudioClip secondClip)
+    {
+        _previousClip = secondClip;
+        _music.Stop();
+        _music.clip = firstClip;
+        _music.Play();
+        _music.loop = false;
+        _isPlayingSongThenReturn = true;
+    }
+
     void OnSceneLoaded(Scene oldScene, Scene newScene) {
         // Set music
         Debug.Log("Change music to: " + _sceneManager.currentScene.sceneMusic.ToString());

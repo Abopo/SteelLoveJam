@@ -1937,6 +1937,11 @@ PrefabInstance:
         type: 2}
     - target: {fileID: 8022852027729816625, guid: 1fedec1d9f29f5b4b88a90abc2c7d226,
         type: 3}
+      propertyPath: _menuSong
+      value: 
+      objectReference: {fileID: 8300000, guid: 1c8ae901b623d5e4298da92282eed848, type: 3}
+    - target: {fileID: 8022852027729816625, guid: 1fedec1d9f29f5b4b88a90abc2c7d226,
+        type: 3}
       propertyPath: _victorySong
       value: 
       objectReference: {fileID: 8300000, guid: 1f7b53ce6c44231409ebd206c1d12b3f, type: 3}
