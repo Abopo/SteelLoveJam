@@ -25,6 +25,7 @@ public class InputReader : DescriptionBaseSO, GameInput.IRacingActions, GameInpu
     // Break room
     public event UnityAction<Vector2> MovementEvent = delegate { };
     public event UnityAction<float> InteractEvent = delegate { };
+    public event UnityAction<Vector2> LookEvent = delegate { };
 
     // UI
     public event UnityAction<Vector2> MoveCursorEvent = delegate { };
@@ -114,6 +115,12 @@ public class InputReader : DescriptionBaseSO, GameInput.IRacingActions, GameInpu
         }
     }
 
+    public void OnLook(InputAction.CallbackContext context) {
+        if (context.performed) {
+            LookEvent.Invoke(context.ReadValue<Vector2>());
+        }
+    }
+
 #endregion
 
 #region UIInput
@@ -149,7 +156,7 @@ public class InputReader : DescriptionBaseSO, GameInput.IRacingActions, GameInpu
         }
 
     }
-    #endregion
+#endregion
 
     #region General
     public void OnPause(InputAction.CallbackContext context)

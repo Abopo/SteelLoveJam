@@ -364,6 +364,15 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Look"",
+                    ""type"": ""Button"",
+                    ""id"": ""51ab7663-86d0-4b70-948e-b92db9b24ebc"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -452,6 +461,17 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c7bf7e74-0186-4120-a536-e00d1a8c3d40"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -741,6 +761,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         m_BreakRoom = asset.FindActionMap("BreakRoom", throwIfNotFound: true);
         m_BreakRoom_Movement = m_BreakRoom.FindAction("Movement", throwIfNotFound: true);
         m_BreakRoom_Interact = m_BreakRoom.FindAction("Interact", throwIfNotFound: true);
+        m_BreakRoom_Look = m_BreakRoom.FindAction("Look", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Confirm = m_UI.FindAction("Confirm", throwIfNotFound: true);
@@ -910,12 +931,14 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
     private IBreakRoomActions m_BreakRoomActionsCallbackInterface;
     private readonly InputAction m_BreakRoom_Movement;
     private readonly InputAction m_BreakRoom_Interact;
+    private readonly InputAction m_BreakRoom_Look;
     public struct BreakRoomActions
     {
         private @GameInput m_Wrapper;
         public BreakRoomActions(@GameInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_BreakRoom_Movement;
         public InputAction @Interact => m_Wrapper.m_BreakRoom_Interact;
+        public InputAction @Look => m_Wrapper.m_BreakRoom_Look;
         public InputActionMap Get() { return m_Wrapper.m_BreakRoom; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -931,6 +954,9 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                 @Interact.started -= m_Wrapper.m_BreakRoomActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_BreakRoomActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_BreakRoomActionsCallbackInterface.OnInteract;
+                @Look.started -= m_Wrapper.m_BreakRoomActionsCallbackInterface.OnLook;
+                @Look.performed -= m_Wrapper.m_BreakRoomActionsCallbackInterface.OnLook;
+                @Look.canceled -= m_Wrapper.m_BreakRoomActionsCallbackInterface.OnLook;
             }
             m_Wrapper.m_BreakRoomActionsCallbackInterface = instance;
             if (instance != null)
@@ -941,6 +967,9 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
+                @Look.started += instance.OnLook;
+                @Look.performed += instance.OnLook;
+                @Look.canceled += instance.OnLook;
             }
         }
     }
@@ -1067,6 +1096,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+        void OnLook(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
