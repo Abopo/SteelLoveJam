@@ -971,7 +971,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inputReader: {fileID: 11400000, guid: 3aad594c8fb5bb44cbff640004584d4d, type: 2}
-  _mouseSensitivity: 0.5
+  _mouseSensitivity: 3
   acceleration: 1000
   invert_x: 0
   invert_y: 0

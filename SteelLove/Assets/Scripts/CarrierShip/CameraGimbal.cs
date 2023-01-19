@@ -32,7 +32,6 @@ public class CameraGimbal : MonoBehaviour {
     }
 
     void OnLook(Vector2 lookDelta) {
-        Debug.Log("Mouse delta: " + lookDelta.ToString());
 
         if (lookDelta.x != 0) {
             int dir = 1;
@@ -40,7 +39,7 @@ public class CameraGimbal : MonoBehaviour {
                 dir = -1;
             }
 
-            _xRot += dir * lookDelta.x * _mouseSensitivity;
+            _xRot += dir * lookDelta.x * _mouseSensitivity * Time.deltaTime;
             transform.localRotation = Quaternion.Euler(0, _xRot, 0);
         }
         if (lookDelta.y != 0) {
@@ -49,7 +48,7 @@ public class CameraGimbal : MonoBehaviour {
                 dir = 1;
             }
 
-            _yRot += dir * lookDelta.y * _mouseSensitivity;
+            _yRot += dir * lookDelta.y * _mouseSensitivity * Time.deltaTime;
             _yRot = Mathf.Clamp(_yRot, -60, 60);
             _innerGimbal.localRotation = Quaternion.Euler(_yRot, 0, 0);
         }
