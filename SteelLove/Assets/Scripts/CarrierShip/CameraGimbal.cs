@@ -8,7 +8,10 @@ public class CameraGimbal : MonoBehaviour {
 
     [SerializeField] float _mouseSensitivity = 1;
     float _xRot;
+    float _xLerp;
     float _yRot;
+    float _yLerp;
+    [SerializeField] float acceleration;
     [SerializeField] bool invert_x;
     [SerializeField] bool invert_y;
 
@@ -21,10 +24,16 @@ public class CameraGimbal : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        
+        //_xLerp = Mathf.MoveTowards(_xLerp, _xRot, acceleration * Time.deltaTime);
+        //transform.localRotation = Quaternion.Euler(0, _xLerp, 0);
+
+        //_yLerp = Mathf.MoveTowards(_yLerp, _yRot, acceleration * Time.deltaTime);
+        //_innerGimbal.localRotation = Quaternion.Euler(_yLerp, 0, 0);
     }
 
     void OnLook(Vector2 lookDelta) {
+        Debug.Log("Mouse delta: " + lookDelta.ToString());
+
         if (lookDelta.x != 0) {
             int dir = 1;
             if (invert_x) {
@@ -33,9 +42,6 @@ public class CameraGimbal : MonoBehaviour {
 
             _xRot += dir * lookDelta.x * _mouseSensitivity;
             transform.localRotation = Quaternion.Euler(0, _xRot, 0);
-
-            //transform.Rotate(Vector3.up, dir * lookDelta.x * _mouseSensitivity, Space.Self);
-			//rotate_object_local(Vector3.UP, dir* event.relative.x * mouse_sensitivity)
         }
         if (lookDelta.y != 0) {
             int dir = -1;
@@ -46,12 +52,6 @@ public class CameraGimbal : MonoBehaviour {
             _yRot += dir * lookDelta.y * _mouseSensitivity;
             _yRot = Mathf.Clamp(_yRot, -60, 60);
             _innerGimbal.localRotation = Quaternion.Euler(_yRot, 0, 0);
-
-            //float y_rot = Mathf.Clamp(lookDelta.y, -30, 30);
-            //_innerGimbal.Rotate(Vector3.right, dir * y_rot * _mouseSensitivity, Space.Self);
-            //float xClamp = ClampAngle(_innerGimbal.localEulerAngles.x, -75, 75);
-            //_innerGimbal.localEulerAngles = new Vector3(xClamp, _innerGimbal.localEulerAngles.y, _innerGimbal.localEulerAngles.z);
-			//$InnerGimbal.rotate_object_local(Vector3.RIGHT, dir * y_rotation * mouse_sensitivity);
         }
     }
 

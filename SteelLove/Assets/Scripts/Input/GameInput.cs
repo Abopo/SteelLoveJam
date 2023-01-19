@@ -367,12 +367,12 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Look"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""51ab7663-86d0-4b70-948e-b92db9b24ebc"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": ""Analog"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [

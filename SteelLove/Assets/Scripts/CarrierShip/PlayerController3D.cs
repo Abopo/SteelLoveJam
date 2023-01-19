@@ -6,13 +6,13 @@ public class PlayerController3D : MonoBehaviour {
 
     [SerializeField] private InputReader _inputReader = default;
 
-    [SerializeField] private float walkForce;
     [SerializeField] private float walkSpeed;
-    private Vector2 moveDir;
+    private Vector2 moveValue;
+    private Vector3 moveDir;
 
-    Rigidbody _rigidBody;
+    CharacterController _controller;
 
-    [SerializeField] private float _interactValue;
+    private float _interactValue;
     public float InteractValue => _interactValue;
 
     public bool InControl => _inControl;
@@ -22,7 +22,7 @@ public class PlayerController3D : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         _inputReader.EnableAllInput();
-        _rigidBody = GetComponent<Rigidbody>();
+        _controller = GetComponent<CharacterController>();
     }
 
     // Update is called once per frame
@@ -34,23 +34,20 @@ public class PlayerController3D : MonoBehaviour {
     }
     void PlayerMovement() {
         moveDir.Normalize();
-        _rigidBody.velocity = new Vector3(moveDir.x * walkSpeed, 0, moveDir.y * walkSpeed);
+
+        moveDir = transform.right * moveValue.x + transform.forward * moveValue.y;
+        _controller.Move(moveDir * walkSpeed * Time.deltaTime);
+
+        // Gravity
+        if (!_controller.isGrounded) {
+            _controller.Move(new Vector3(0f, -9f * Time.deltaTime, 0f));
+        }
     }
 
 #region Input Events
 
     private void Movement(Vector2 value) {
-        moveDir = value;
-        if (Mathf.Abs(moveDir.x) > 0.5f) {
-            moveDir.x = Mathf.Sign(moveDir.x) * 1f;
-        } else {
-            moveDir.x = 0f;
-        }
-        if (Mathf.Abs(moveDir.y) > 0.5f) {
-            moveDir.y = Mathf.Sign(moveDir.y) * 1f;
-        } else {
-            moveDir.y = 0f;
-        }
+        moveValue = value;
     }
 
     private void Interact(float value) {
