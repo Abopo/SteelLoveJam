@@ -43,6 +43,7 @@ public class PlayerShipSetup : MonoBehaviour
         _inputReader.BoostEvent += _shipController.Boost;
         _inputReader.BrakeEvent += _shipController.Brake;
         _inputReader.LookBehindEvent += _cameraController.LookBehind;
+        _inputReader.CameraChangeEvent += _cameraController.CyclePreset;
 
         _onRaceFinished.OnEventRaised += ActivateAutoPilot;
     }

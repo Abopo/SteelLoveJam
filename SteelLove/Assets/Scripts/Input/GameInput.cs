@@ -107,6 +107,15 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ChangeCamera"",
+                    ""type"": ""Button"",
+                    ""id"": ""0dc1368f-b55f-4d81-8bd6-88edc8c27290"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -338,6 +347,17 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""RaceSkip"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""287e9400-1d69-4d94-bb15-de8df6000085"",
+                    ""path"": ""<Gamepad>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChangeCamera"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -757,6 +777,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         m_Racing_Brake = m_Racing.FindAction("Brake", throwIfNotFound: true);
         m_Racing_LookBehind = m_Racing.FindAction("LookBehind", throwIfNotFound: true);
         m_Racing_RaceSkip = m_Racing.FindAction("RaceSkip", throwIfNotFound: true);
+        m_Racing_ChangeCamera = m_Racing.FindAction("ChangeCamera", throwIfNotFound: true);
         // BreakRoom
         m_BreakRoom = asset.FindActionMap("BreakRoom", throwIfNotFound: true);
         m_BreakRoom_Movement = m_BreakRoom.FindAction("Movement", throwIfNotFound: true);
@@ -841,6 +862,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_Racing_Brake;
     private readonly InputAction m_Racing_LookBehind;
     private readonly InputAction m_Racing_RaceSkip;
+    private readonly InputAction m_Racing_ChangeCamera;
     public struct RacingActions
     {
         private @GameInput m_Wrapper;
@@ -854,6 +876,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         public InputAction @Brake => m_Wrapper.m_Racing_Brake;
         public InputAction @LookBehind => m_Wrapper.m_Racing_LookBehind;
         public InputAction @RaceSkip => m_Wrapper.m_Racing_RaceSkip;
+        public InputAction @ChangeCamera => m_Wrapper.m_Racing_ChangeCamera;
         public InputActionMap Get() { return m_Wrapper.m_Racing; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -890,6 +913,9 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                 @RaceSkip.started -= m_Wrapper.m_RacingActionsCallbackInterface.OnRaceSkip;
                 @RaceSkip.performed -= m_Wrapper.m_RacingActionsCallbackInterface.OnRaceSkip;
                 @RaceSkip.canceled -= m_Wrapper.m_RacingActionsCallbackInterface.OnRaceSkip;
+                @ChangeCamera.started -= m_Wrapper.m_RacingActionsCallbackInterface.OnChangeCamera;
+                @ChangeCamera.performed -= m_Wrapper.m_RacingActionsCallbackInterface.OnChangeCamera;
+                @ChangeCamera.canceled -= m_Wrapper.m_RacingActionsCallbackInterface.OnChangeCamera;
             }
             m_Wrapper.m_RacingActionsCallbackInterface = instance;
             if (instance != null)
@@ -921,6 +947,9 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                 @RaceSkip.started += instance.OnRaceSkip;
                 @RaceSkip.performed += instance.OnRaceSkip;
                 @RaceSkip.canceled += instance.OnRaceSkip;
+                @ChangeCamera.started += instance.OnChangeCamera;
+                @ChangeCamera.performed += instance.OnChangeCamera;
+                @ChangeCamera.canceled += instance.OnChangeCamera;
             }
         }
     }
@@ -1091,6 +1120,7 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         void OnBrake(InputAction.CallbackContext context);
         void OnLookBehind(InputAction.CallbackContext context);
         void OnRaceSkip(InputAction.CallbackContext context);
+        void OnChangeCamera(InputAction.CallbackContext context);
     }
     public interface IBreakRoomActions
     {
