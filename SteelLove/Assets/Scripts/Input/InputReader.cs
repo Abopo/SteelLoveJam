@@ -21,6 +21,7 @@ public class InputReader : DescriptionBaseSO, GameInput.IRacingActions, GameInpu
     public event UnityAction<float> LookBehindEvent = delegate { };
     public event UnityAction RaceSkipEvent = delegate { };
     public event UnityAction PostRaceSkipEvent = delegate { };
+    public event UnityAction CameraChangeEvent = delegate { };
 
     // Break room
     public event UnityAction<Vector2> MovementEvent = delegate { };
@@ -99,6 +100,14 @@ public class InputReader : DescriptionBaseSO, GameInput.IRacingActions, GameInpu
     public void OnRaceSkip(InputAction.CallbackContext context) {
         if (context.performed) {
             RaceSkipEvent.Invoke();
+        }
+    }
+
+    public void OnChangeCamera(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            CameraChangeEvent.Invoke();
         }
     }
 
