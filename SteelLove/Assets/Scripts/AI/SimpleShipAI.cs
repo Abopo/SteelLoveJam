@@ -8,22 +8,21 @@ public class SimpleShipAI : MonoBehaviour {
 
     public AI_DIFFICULTY difficulty;
 
-    ShipController _ship;
-    Rigidbody _rigidbody;
-
     [SerializeField] AICheckpoint _firstCheckpoint;
     [SerializeField] AICheckpoint _nextCheckpoint;
 
     [SerializeField] float _rotSpeed;
 
-    [SerializeField] Vector2 _input;
-    Vector2 _rotInput;
+    [SerializeField] Vector2 _dirInput;
+    [SerializeField] float _rotInput;
 
     AICheckpoint[] _allCheckpoints;
     List<AICheckpoint> _hitCheckpoints = new List<AICheckpoint>();
 
     [SerializeField] private VoidEventChannelSO _onRaceStartEvent = default;
 
+    private ShipController _ship;
+    private Rigidbody _rigidbody;
     private Vector3 _averageTargetPt;
     private int _defaultLookForward = 4;
     private int _lookForwardAmount;
@@ -74,6 +73,34 @@ public class SimpleShipAI : MonoBehaviour {
         _onRaceStartEvent.OnEventRaised -= StartAI;
     }
 
+    private void FixedUpdate()
+    {
+        if (_nextCheckpoint != null && _raceStarted)
+        {
+            var toAvgPos = _averageTargetPt - transform.position;
+            var toAvgPosNorm = toAvgPos.normalized;
+
+            UpdateThrustDir(ref toAvgPosNorm);
+            UpdateThrustRot(toAvgPosNorm);
+
+            _dirInput.y = -1f;
+
+            if (toAvgPos.magnitude < 10)
+            {
+                FindCloseCheckpoint();
+            }
+
+            SendInputToShip();
+        }
+    }
+
+    public void StartAI()
+    {
+        _raceStarted = true;
+        _nextCheckpoint = _firstCheckpoint;
+        CalculateTargetPoint();
+    }
+
     private void BuildCheckpointList()
     {
         var curCheckpoint = _firstCheckpoint;
@@ -109,7 +136,7 @@ public class SimpleShipAI : MonoBehaviour {
         }
     }
 
-    void SetupViaDifficulty() {
+    private void SetupViaDifficulty() {
         switch(difficulty) {
             case AI_DIFFICULTY.DUMB:
                 _ship.AdjustShipParametersAI(0.5f, 0.5f, 0.5f);
@@ -129,92 +156,67 @@ public class SimpleShipAI : MonoBehaviour {
         }
     }
 
-    public void StartAI() {
-        _raceStarted = true;
-        _nextCheckpoint = _firstCheckpoint;
-        CalculateTargetPoint();
-    }
+    private void UpdateThrustDir(ref Vector3 toAvgPosNorm)
+    {
+        var velocityNorm = _rigidbody.velocity.normalized;
+        var angle = Vector3.SignedAngle(velocityNorm, toAvgPosNorm, transform.up);
 
-    // Update is called once per frame
-    void FixedUpdate() {
-        if (_nextCheckpoint != null && _raceStarted) {
-            // Aim joystick towards the next checkpoint
-            var toAvgPos = _averageTargetPt - transform.position;
-            var toAvgPosNorm =  toAvgPos.normalized;
-
-            var velocityNorm = _rigidbody.velocity.normalized;
-            var angle = Vector3.SignedAngle(velocityNorm, toAvgPosNorm, transform.up);
-
-            if (_rigidbody.velocity.magnitude > 10)
+        if (_rigidbody.velocity.magnitude > 10)
+        {
+            if (angle > -120 && angle < 120)
             {
-                if (angle > -120 && angle < 120)
-                {
-                    angle *= 1.25f;
-                    toAvgPosNorm = Quaternion.AngleAxis(angle, transform.up) * toAvgPosNorm;
+                angle *= 1.25f;
+                toAvgPosNorm = Quaternion.AngleAxis(angle, transform.up) * toAvgPosNorm;
 
-                    _input.x = -angle / 120f;
-                }
+                _dirInput.x = -angle / 120f;
             }
-
-            var orthoToAvgNorm = toAvgPosNorm;
-            var up = transform.up;
-            Vector3.OrthoNormalize(ref up, ref orthoToAvgNorm);
-
-            Quaternion fromTo = Quaternion.FromToRotation(_rigidbody.transform.forward, orthoToAvgNorm);
-            var newRot = Quaternion.Lerp(_rigidbody.rotation, fromTo * _rigidbody.rotation, Time.deltaTime * _rotSpeed);
-            _rigidbody.MoveRotation(newRot);
-
-            //var facingAngle = Vector3.SignedAngle(transform.forward, toAvgPosNorm, transform.up);
-
-            //_rigidbody.rotation *= Quaternion.Euler(transform.up * facingAngle);
-
-            //if (facingAngle < 25 && facingAngle > -25)
-            //{
-            //    _rotInput.x = Mathf.Clamp(facingAngle / 360f, -1f, 1f);
-            //}
-            //else
-            //{
-            //    _rotInput.x = Mathf.Clamp(facingAngle / 180f, -1f, 1f);
-            //}
-
-            //transform.rotation *= Quaternion.Euler(_attachToTrack.LatestNormal * facingAngle);
-
-            //transform.LookAt(transform.position + toAvgPosNorm, _attachToTrack.LatestNormal);
-
-            _input.y = -1f;
-
-            if (toAvgPos.magnitude < 10)
-            {
-                FindCloseCheckpoint();
-            }
-
-            SendInputToShip();
         }
     }
 
-    private void LateUpdate() {
-        // Force proper Y rotation
-        //transform.localRotation = Quaternion.Euler(transform.localRotation.x, 180, transform.localRotation.z);
+    private void UpdateThrustRot(Vector3 toAvgPosNorm)
+    {
+        var orthoToAvgNorm = toAvgPosNorm;
+        var up = transform.up;
+        Vector3.OrthoNormalize(ref up, ref orthoToAvgNorm);
+
+        Quaternion fromTo = Quaternion.FromToRotation(_rigidbody.transform.forward, orthoToAvgNorm);
+        float dot = Vector3.Dot(orthoToAvgNorm, _rigidbody.transform.forward);
+        float dir = orthoToAvgNorm.AngleDir(_rigidbody.transform.forward, up);
+
+        _rotInput = 0;
+        if (dot > 0)
+        {
+            _rotInput = dot * dir;
+        }
+        else if (dot < 0)
+        {
+            // max input in dir because goal is nearly behind us
+            _rotInput = dir;
+        }
+
+        var newRot = Quaternion.Lerp(_rigidbody.rotation, fromTo * _rigidbody.rotation, Time.deltaTime * _rotSpeed);
+        _rigidbody.MoveRotation(newRot);
     }
 
     // Send input to ship
-    void SendInputToShip() {
-        if (_input.y < 0) {
-            _ship.ThrustForward(Mathf.Abs(_input.y));
+    private void SendInputToShip() {
+        if (_dirInput.y < 0) {
+            _ship.ThrustForward(Mathf.Abs(_dirInput.y));
         } else {
-            _ship.ThrustBackwards(Mathf.Abs(_input.y));
+            _ship.ThrustBackwards(Mathf.Abs(_dirInput.y));
         }
 
-        if (_input.x > 0) {
-            _ship.ThrustRight(Mathf.Abs(_input.x));
+        if (_dirInput.x > 0) {
+            _ship.ThrustRight(Mathf.Abs(_dirInput.x));
         } else {
-            _ship.ThrustLeft(Mathf.Abs(_input.x));
+            _ship.ThrustLeft(Mathf.Abs(_dirInput.x));
         }
 
-        //if (_rotInput.x != 0)
-        //{
-        //    _ship.RotationThrust(_rotInput);
-        //}
+        if (_rotInput != 0)
+        {
+            Vector2 rotVec = new Vector2(_rotInput, 0f);
+            _ship.RotationThrust(rotVec);
+        }
     }
 
     private void OnTriggerEnter(Collider other) {
