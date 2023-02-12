@@ -7,9 +7,10 @@ public class CameraController : MonoBehaviour
     {
         public string name;
         public float speed;
+        public float lookAtSpeed;
         public float defaultFOV;
         public float boostFOV;
-        public float smoothTime;
+        public float boostSmoothTime;
         public Vector3 cameraLookAtForwardPos;
         public Vector3 cameraLookAtBackwardPos;
         public Vector3 cameraPosDefaultForward;
@@ -22,9 +23,10 @@ public class CameraController : MonoBehaviour
     [SerializeField] private GameObject _cameraLookAtForward;
     [SerializeField] private GameObject _cameraLookAtBehind;
     [SerializeField] private float _speed = 0;
+    [SerializeField] private float _lookAtSpeed = 10f;
     [SerializeField] private float _defaultFOV = 80;
     [SerializeField] private float _boostFOV = 110;
-    [SerializeField] private float _smoothTime = 1;
+    [SerializeField] private float _boostSmoothTime = 1;
 
     [SerializeField] private CameraPresets[] _cameraPresets;
 
@@ -93,18 +95,24 @@ public class CameraController : MonoBehaviour
         }
 
         transform.position = Vector3.Lerp(transform.position, cameraConstraint.position, Time.deltaTime * _speed);
-        transform.LookAt(lookAtPos, cameraConstraint.up);
+
+        // smoothly look at lookAtPos
+        var toLookAtPos = lookAtPos - transform.position;
+        toLookAtPos.Normalize();
+        var lookRot = Quaternion.LookRotation(toLookAtPos, _playerShipController.transform.up);
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRot, _lookAtSpeed * Time.deltaTime);
+
     }
 
     private void BoostFOV()
     {
         if (_playerShipController.Boosting)
         {
-            ourCamera.fieldOfView = Mathf.Lerp(ourCamera.fieldOfView, _boostFOV, Time.deltaTime * _smoothTime);
+            ourCamera.fieldOfView = Mathf.Lerp(ourCamera.fieldOfView, _boostFOV, Time.deltaTime * _boostSmoothTime);
         }
         else
         {
-            ourCamera.fieldOfView = Mathf.Lerp(ourCamera.fieldOfView, _defaultFOV, Time.deltaTime * _smoothTime);
+            ourCamera.fieldOfView = Mathf.Lerp(ourCamera.fieldOfView, _defaultFOV, Time.deltaTime * _boostSmoothTime);
         }
     }
 
@@ -112,9 +120,10 @@ public class CameraController : MonoBehaviour
     {
         var curPreset = _cameraPresets[currentPreset];
         _speed = curPreset.speed;
+        _lookAtSpeed = curPreset.lookAtSpeed;
         _defaultFOV = curPreset.defaultFOV;
         _boostFOV = curPreset.boostFOV;
-        _smoothTime = curPreset.smoothTime;
+        _boostSmoothTime = curPreset.boostSmoothTime;
         _cameraLookAtForward.transform.localPosition = curPreset.cameraLookAtForwardPos;
         _cameraLookAtBehind.transform.localPosition = curPreset.cameraLookAtBackwardPos;
         _cameraConstraintLookingForward.transform.localPosition = curPreset.cameraPosDefaultForward;

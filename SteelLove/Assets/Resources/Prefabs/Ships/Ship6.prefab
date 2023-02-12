@@ -207,7 +207,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5973692746636970258}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: f75e757e84267c9439dc12d8953a0bcf, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.1074414
@@ -303,6 +303,7 @@ MonoBehaviour:
   _healthGainOnCheckpoint: 25
   _healthLossOnGeneralCollision: 5
   _shipModel: {fileID: 2417316724817728671}
+  spawnPoint: {fileID: 0}
   _reverseThrusterInputValue: 0
 --- !u!114 &6567690924902640480
 MonoBehaviour:
@@ -400,7 +401,8 @@ MonoBehaviour:
   _onLapFinished: {fileID: 11400000, guid: 8d4ba15d737b5314cb786d8746b73182, type: 2}
   _onShipFinishedRace: {fileID: 11400000, guid: d37dd02d665681c4284c1eb3208ce6d3,
     type: 2}
-  _lastPassedCheckpoint: -1
+  _lastPassedCheckpointNumber: -1
+  _lastPassedCheckpoint: {fileID: 0}
 --- !u!114 &617153267668696769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -432,7 +434,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speedRequirement: 5
-  _collisionSlowdown: 5
   _collisionParticles: {fileID: 2518766124786432357, guid: eab1db538c7f3e0479f2d6d5218be03f,
     type: 3}
 --- !u!114 &-8543110650768697728
@@ -451,7 +452,8 @@ MonoBehaviour:
   _firstCheckpoint: {fileID: 0}
   _nextCheckpoint: {fileID: 0}
   _rotSpeed: 5
-  _input: {x: 0, y: 0}
+  _dirInput: {x: 0, y: 0}
+  _rotInput: 0
   _onRaceStartEvent: {fileID: 11400000, guid: eb9b51f329654b14a9f17e243030ca44, type: 2}
 --- !u!1 &7655909706860606621
 GameObject:
