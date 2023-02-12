@@ -7,8 +7,9 @@ public class AttachToTrack : MonoBehaviour
 {
     [SerializeField] private float _raycastDist;
     [SerializeField] private float _floatHight;
-    [SerializeField] private float _hightSmoothSpeed;
-    [SerializeField] private float _normalSmoothSpeed;
+    [SerializeField] private float _hightSmoothSpeed = 8;
+    [SerializeField] private float _velSmoothSpeed = 8;
+    [SerializeField] private float _normalSmoothSpeed = 8;
 
     [SerializeField] private List<Transform> _attachPoints;
 
@@ -80,7 +81,7 @@ public class AttachToTrack : MonoBehaviour
         var velMag = velocity.magnitude;
         Vector3.OrthoNormalize(ref normal, ref velocity);
 
-        _rigidBody.velocity = velocity * velMag;
+        _rigidBody.velocity = Vector3.Lerp(_rigidBody.velocity, velocity * velMag, _velSmoothSpeed * Time.deltaTime);
     }
 
     private void ContinueRotatingToNormal()

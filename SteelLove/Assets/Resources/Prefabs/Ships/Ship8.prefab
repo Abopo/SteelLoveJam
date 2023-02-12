@@ -377,8 +377,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _raycastDist: 2
   _floatHight: 0.5
-  _hightSmoothSpeed: 8
-  _normalSmoothSpeed: 8
+  _hightSmoothSpeed: 11
+  _velSmoothSpeed: 11
+  _normalSmoothSpeed: 11
   _attachPoints:
   - {fileID: 7404705120999445591}
   - {fileID: 381905313260728969}
