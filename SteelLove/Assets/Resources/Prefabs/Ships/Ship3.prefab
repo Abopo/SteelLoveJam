@@ -239,9 +239,14 @@ MonoBehaviour:
   _firstCheckpoint: {fileID: 0}
   _nextCheckpoint: {fileID: 0}
   _rotSpeed: 5
+  _minTankToBoost: 10
+  _nonStraightAngleLimit: 90
+  _minDistanceStraightForBoost: 40
+  _onRaceStartEvent: {fileID: 11400000, guid: eb9b51f329654b14a9f17e243030ca44, type: 2}
   _dirInput: {x: 0, y: 0}
   _rotInput: 0
-  _onRaceStartEvent: {fileID: 11400000, guid: eb9b51f329654b14a9f17e243030ca44, type: 2}
+  _isBoostInput: 0
+  _boostTankMirror: 0
 --- !u!1 &718393714094275683
 GameObject:
   m_ObjectHideFlags: 0

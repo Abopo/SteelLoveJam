@@ -13,13 +13,23 @@ public class SimpleShipAI : MonoBehaviour {
 
     [SerializeField] float _rotSpeed;
 
-    [SerializeField] Vector2 _dirInput;
-    [SerializeField] float _rotInput;
+    [SerializeField] float _minTankToBoost;
+
+    [SerializeField] float _nonStraightAngleLimit;
+    [SerializeField] int _minDistanceStraightForBoost;
 
     AICheckpoint[] _allCheckpoints;
     List<AICheckpoint> _hitCheckpoints = new List<AICheckpoint>();
 
+    [Header("Listening To")]
     [SerializeField] private VoidEventChannelSO _onRaceStartEvent = default;
+
+    #region InputValues
+    [Header("InputValues")]
+    [SerializeField] Vector2 _dirInput;
+    [SerializeField] float _rotInput;
+    [SerializeField] bool _isBoostInput;
+    #endregion
 
     private ShipController _ship;
     private Rigidbody _rigidbody;
@@ -82,6 +92,8 @@ public class SimpleShipAI : MonoBehaviour {
 
             UpdateThrustDir(ref toAvgPosNorm);
             UpdateThrustRot(toAvgPosNorm);
+
+            CheckForBoost();
 
             _dirInput.y = -1f;
 
@@ -217,6 +229,8 @@ public class SimpleShipAI : MonoBehaviour {
             Vector2 rotVec = new Vector2(_rotInput, 0f);
             _ship.RotationThrust(rotVec);
         }
+
+        _ship.Boost(_isBoostInput? 0f : 1f);
     }
 
     private void OnTriggerEnter(Collider other) {
@@ -274,5 +288,50 @@ public class SimpleShipAI : MonoBehaviour {
                 return;
             }
         }
+    }
+
+    /// <summary>
+    /// Check if we are in a situation where we should use boost
+    /// if so set input to boost
+    /// </summary>
+    private void CheckForBoost()
+    {
+        if (_ship.BoostTank >= _minTankToBoost &&
+            IsLongStraightPath())
+        {
+            _isBoostInput = true;
+        }
+        else
+        {
+            _isBoostInput = false;
+        }
+    }
+
+    private bool IsLongStraightPath()
+    {
+        AICheckpoint curCheckpoint = _nextCheckpoint;
+        float distanceChecked = 0;
+        Vector3 previousForward = _ship.transform.forward;
+        float accumulatedAngle = Vector3.Angle(previousForward, _nextCheckpoint.transform.position - _ship.transform.position);
+        
+        while (distanceChecked < _minDistanceStraightForBoost)
+        {
+            float distance = (curCheckpoint.transform.position - curCheckpoint.nextCheckpoint.transform.position).magnitude;
+            distanceChecked += distance;
+
+            Vector3 nextAngle = curCheckpoint.nextCheckpoint.transform.position - curCheckpoint.transform.position;
+            float angleCheck = Vector3.Angle(previousForward, nextAngle);
+            accumulatedAngle += angleCheck;
+
+            previousForward = nextAngle;
+            curCheckpoint = curCheckpoint.nextCheckpoint;
+
+            if (accumulatedAngle > _nonStraightAngleLimit)
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
 }
