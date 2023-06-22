@@ -41,7 +41,6 @@ public class PlayerShipSetup : MonoBehaviour
         _inputReader.RightThrustEvent += _shipController.ThrustRight;
         _inputReader.RotationThrustersEvent += _shipController.RotationThrust;
         _inputReader.BoostEvent += _shipController.Boost;
-        _inputReader.BrakeEvent += _shipController.Brake;
         _inputReader.LookBehindEvent += _cameraController.LookBehind;
         _inputReader.CameraChangeEvent += _cameraController.CyclePreset;
 
@@ -56,7 +55,6 @@ public class PlayerShipSetup : MonoBehaviour
         _inputReader.RightThrustEvent -= _shipController.ThrustRight;
         _inputReader.RotationThrustersEvent -= _shipController.RotationThrust;
         _inputReader.BoostEvent -= _shipController.Boost;
-        _inputReader.BrakeEvent -= _shipController.Brake;
         _inputReader.LookBehindEvent -= _cameraController.LookBehind;
         _onRaceFinished.OnEventRaised -= ActivateAutoPilot;
     }

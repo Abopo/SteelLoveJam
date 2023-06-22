@@ -11,32 +11,6 @@ public class ShipController : MonoBehaviour {
     [SerializeField] private SceneManagerSO _sceneManager;
     [SerializeField] private GameSceneSO _breakRoomScene;
 
-    [Header("Thruster Properties")]
-    [SerializeField] private float _mainthrustForce;
-    [SerializeField] private float _reverseThrustForce;
-    [SerializeField] private float _horizontalThrustForce;
-    [SerializeField] private float _brakeForce;
-    [SerializeField] private float _maxSpeed;
-
-    [Header("extreme direction change")]
-    [SerializeField] private float _extremeDirChangeAngle;
-    [SerializeField] private float _extremeDirChangeMult;
-
-    [Header("Turning")]
-    [SerializeField] private float _rotForce;
-    [SerializeField] private float _maxRotSpeed;
-
-    [Header("Boosting")]
-    [SerializeField] private float _boostForceMultiplier;
-    [SerializeField] private float _boostCost;
-    [SerializeField] private float _maxSpeedBoostModifier;
-
-    [Header("BoostPad")]
-    [SerializeField] private float _boostPadNoSpeedLimitTime;
-
-    [Header("Over Speed limit Slowdown")]
-    [SerializeField] private float _overSpeedLimitSlowdownForce;
-
     [Header("Broadcasting On")]
     [SerializeField] private GameObjectEventChannelSO _OnCrossedFinishLine = default;
     [SerializeField] private FloatEventChannelSO _onHealthLevelChanged = default;
@@ -51,11 +25,15 @@ public class ShipController : MonoBehaviour {
     [SerializeField] ParticleSystem _shipFireParticles;
 
     [Header("Ship Stats")]
-    [SerializeField] private float _health = 100.0f;
+    [SerializeField] private ShipStatsSO _shipStats;
     private float _maxHealth;
-    [SerializeField] private float _boostTank = 0f;
     [SerializeField] private float _healthGainOnCheckpoint;
     [SerializeField] private float _healthLossOnGeneralCollision;
+
+    private float _modifiedMaxSpeed;
+    private float _modifiedHorizontalThrustForce;
+    private float _curHealth;
+    private float _curBoostTank;
 
     [SerializeField] private GameObject _shipModel;
 
@@ -63,9 +41,9 @@ public class ShipController : MonoBehaviour {
 
     // accessors
     public CharacterSO Character => m_Character;
-    public float Health => _health;
+    public float Health => _curHealth;
     public float MaxHealth => _maxHealth;
-    public float BoostTank { get => _boostTank; }
+    public float BoostTank { get => _curBoostTank; }
     public GameObject ShipModel => _shipModel;
 
     // required components
@@ -101,7 +79,10 @@ public class ShipController : MonoBehaviour {
     private void Start() {
         InitUpgradesAndSabatoge();
 
-        _maxHealth = _health;
+        _maxHealth = _shipStats._startingHealth;
+        _curHealth = _shipStats._startingHealth;
+
+        _curBoostTank = _shipStats._startingBoostTank;
     }
 
     private void OnEnable()
@@ -114,61 +95,62 @@ public class ShipController : MonoBehaviour {
         _onCrossedNextCheckpoint.OnEventRaised -= CheckpointHeal;
     }
 
-    private void InitUpgradesAndSabatoge() {
-        var upgrades = m_Character.upgrades;
-        var sabatoged = m_Character.sabotaged;
-        // Not the best way, but the easiest way
-        if (_sceneManager.previousScene != _breakRoomScene) {
-            upgrades = 5;
-            sabatoged = false;
-        }
+    private void InitUpgradesAndSabatoge() {    
+        // TEMP: removing for balance testing
+        //var upgrades = m_Character.upgrades;
+        //var sabatoged = m_Character.sabotaged;
+        //// Not the best way, but the easiest way
+        //if (_sceneManager.previousScene != _breakRoomScene) {
+        //    upgrades = 5;
+        //    sabatoged = false;
+        //}
 
-        if (upgrades > 0) {
-            // Handling increase
-            _rotForce = 0.7f;
-            _maxRotSpeed = 2f;
-        }
-        if (upgrades > 1) {
-            // Acceleration increase
-            _mainthrustForce = 17;
-            _reverseThrustForce = 12;
-            _horizontalThrustForce = 10;
-        }
-        if (upgrades > 2) {
-            // Health increase
-            _health = 125;
-        }
-        if (upgrades > 3) {
-            // Boost increase
-            _boostForceMultiplier = 4;
-            _maxSpeedBoostModifier = 1.75f;
-        }
-        if (upgrades > 4) {
-            // Top speed increase
-            _maxSpeed = 28;
-        }
-        if (upgrades > 5) {
-            // Overall increase
-            _rotForce = 0.8f;
-            _maxRotSpeed = 2.25f;
-            _mainthrustForce = 19;
-            _reverseThrustForce = 14;
-            _horizontalThrustForce = 12;
-            _health = 150;
-            _boostForceMultiplier = 5;
-            _maxSpeedBoostModifier = 1.9f;
-            _maxSpeed = 30;
-        }
+        //if (upgrades > 0) {
+        //    // Handling increase
+        //    _rotForce = 0.7f;
+        //    _maxRotSpeed = 2f;
+        //}
+        //if (upgrades > 1) {
+        //    // Acceleration increase
+        //    _mainthrustForce = 17;
+        //    _reverseThrustForce = 12;
+        //    _horizontalThrustForce = 10;
+        //}
+        //if (upgrades > 2) {
+        //    // Health increase
+        //    _health = 125;
+        //}
+        //if (upgrades > 3) {
+        //    // Boost increase
+        //    _boostForceMultiplier = 4;
+        //    _maxSpeedBoostModifier = 1.75f;
+        //}
+        //if (upgrades > 4) {
+        //    // Top speed increase
+        //    _maxSpeed = 28;
+        //}
+        //if (upgrades > 5) {
+        //    // Overall increase
+        //    _rotForce = 0.8f;
+        //    _maxRotSpeed = 2.25f;
+        //    _mainthrustForce = 19;
+        //    _reverseThrustForce = 14;
+        //    _horizontalThrustForce = 12;
+        //    _health = 150;
+        //    _boostForceMultiplier = 5;
+        //    _maxSpeedBoostModifier = 1.9f;
+        //    _maxSpeed = 30;
+        //}
 
-        if (sabatoged) {
-            // Lower health
-            _health = 50;
-        }
+        //if (sabatoged) {
+        //    // Lower health
+        //    _health = 50;
+        //}
     }
 
     private void FixedUpdate()
     {
-        if (_health > 0)
+        if (_curHealth > 0)
         {
             PerformMovement();
 
@@ -192,7 +174,7 @@ public class ShipController : MonoBehaviour {
                 Debug.Log("Start fire");
                 _shipFireParticles.Play();
             }
-            Debug.Log("health: " + _health + " damage: " + collision.GetComponent<Hazard>().damage);
+            Debug.Log("health: " + _curHealth + " damage: " + collision.GetComponent<Hazard>().damage);
             ChangeHealth(-collision.GetComponent<Hazard>().damage);
         }
     }
@@ -212,8 +194,8 @@ public class ShipController : MonoBehaviour {
     {
         if (_shipModel.activeInHierarchy)
         {
-            _health += amount;
-            if (_health < 0)
+            _curHealth += amount;
+            if (_curHealth < 0)
             {
                 _destructionParticles.Play();
                 _shipModel.SetActive(false);
@@ -223,7 +205,7 @@ public class ShipController : MonoBehaviour {
                     _shipAudio.PlayExplosion();
                 }
 
-                _health = 0;
+                _curHealth = 0;
 
                 // If easy mode, just respawn
                 if (GameManager.instance != null && GameManager.instance.easyMode) {
@@ -236,14 +218,14 @@ public class ShipController : MonoBehaviour {
                 }
             }
 
-            if (_health > _maxHealth)
+            if (_curHealth > _maxHealth)
             {
-                _health = _maxHealth;
+                _curHealth = _maxHealth;
             }
 
             if (_onHealthLevelChanged != null)
             {
-                _onHealthLevelChanged.RaiseEvent(_health);
+                _onHealthLevelChanged.RaiseEvent(_curHealth);
             }
         }
     }
@@ -270,17 +252,17 @@ public class ShipController : MonoBehaviour {
 
     public void RefillBoost(float fillSpeed)
     {
-        if (_boostTank <= 100)
+        if (_curBoostTank <= 100)
         {
-            _boostTank += fillSpeed;
+            _curBoostTank += fillSpeed;
         }
         else
         {
-            _boostTank = 100;
+            _curBoostTank = 100;
         }
 
         if (_onBoostLevelChanged != null) {
-            _onBoostLevelChanged.RaiseEvent(_boostTank);
+            _onBoostLevelChanged.RaiseEvent(_curBoostTank);
         }
     }
 
@@ -315,7 +297,7 @@ public class ShipController : MonoBehaviour {
 
     public void Boost(float value)
     {
-        if (value > 0 && _boostTank > 0f)
+        if (value > 0 && _curBoostTank > 0f)
         {
             _boosting = true;
         }
@@ -325,63 +307,41 @@ public class ShipController : MonoBehaviour {
         }
     }
 
-    public void Brake(float value)
-    {
-        if (value > 0)
-        {
-            // Brake
-            _brake = true;
-        }
-        else
-        {
-            // Stop braking
-            _brake = false;
-        }
-    }
-
     public void BoostPadActivate(float boostPadForce)
     {
         _boostPadActive = true;
         _boostPadActiveCount++;
 
         _rigidbody.velocity = Vector3.zero;
-        _rigidbody.AddForce(transform.forward * boostPadForce * _mainthrustForce);
+        _rigidbody.AddForce(transform.forward * boostPadForce * _shipStats._mainthrustForce);
 
         StartCoroutine(DisableBoostPadBoost());
     }
 
     private void PerformMovement()
     {
-        if (_brake) 
+        float finalMainThrustForce = _shipStats._mainthrustForce;
+        float finalMainInputValue = _mainThrusterInputValue;
+        if (_boosting && _curBoostTank > 0f)
         {
-            // Brake in the opposite direction of our velocity
-            Vector3 brakeForce = (_rigidbody.velocity * -1) * _brakeForce;
-            _rigidbody.AddForce(brakeForce);
-        } 
-        else 
+            finalMainThrustForce *= _shipStats._boostForceMultiplier;
+            finalMainInputValue = 1f;
+            ReduceBoost(_shipStats._boostCost * Time.deltaTime);
+        } else if (_boosting && BoostTank <= 0f)
         {
-            float finalMainThrustForce = _mainthrustForce;
-            float finalMainInputValue = _mainThrusterInputValue;
-            if (_boosting && _boostTank > 0f)
-            {
-                finalMainThrustForce *= _boostForceMultiplier;
-                finalMainInputValue = 1f;
-                ReduceBoost(_boostCost * Time.deltaTime);
-            } else if (_boosting && BoostTank <= 0f)
-            {
-                _boosting = false;
-            }
-
-            _rigidbody.AddForce(CalculateThrustForce(transform.forward, finalMainThrustForce, finalMainInputValue));
-            _rigidbody.AddForce(CalculateThrustForce(-transform.forward, _reverseThrustForce, _reverseThrusterInputValue));
-            _rigidbody.AddForce(CalculateThrustForce(transform.right, _horizontalThrustForce, _leftThrusterInputValue));
-            _rigidbody.AddForce(CalculateThrustForce(-transform.right, _horizontalThrustForce, _rightThrusterInputValue));
-
-            // set animatior
-            _animator.SetFloat("LeftBoostInput", _leftThrusterInputValue);
-            _animator.SetFloat("RightBoostInput", _rightThrusterInputValue);
+            _boosting = false;
         }
-        _rigidbody.AddTorque(-transform.up * _rotForce * -_rotInputValue.x);
+
+        _rigidbody.AddForce(CalculateThrustForce(transform.forward, finalMainThrustForce, finalMainInputValue));
+        _rigidbody.AddForce(CalculateThrustForce(-transform.forward, _shipStats._reverseThrustForce, _reverseThrusterInputValue));
+        _rigidbody.AddForce(CalculateThrustForce(transform.right, _shipStats._horizontalThrustForce, _leftThrusterInputValue));
+        _rigidbody.AddForce(CalculateThrustForce(-transform.right, _shipStats._horizontalThrustForce, _rightThrusterInputValue));
+
+        // set animatior
+        _animator.SetFloat("LeftBoostInput", _leftThrusterInputValue);
+        _animator.SetFloat("RightBoostInput", _rightThrusterInputValue);
+
+        _rigidbody.AddTorque(-transform.up * _shipStats._rotForce * -_rotInputValue.x);
     }
 
     private Vector3 CalculateThrustForce(Vector3 dir, float thrusterForce, float inputValue)
@@ -391,10 +351,10 @@ public class ShipController : MonoBehaviour {
         {
             float angleBetween = Vector3.Angle(_rigidbody.velocity.normalized, dir.normalized);
             angleBetween = Mathf.Abs(angleBetween);
-            if (angleBetween > _extremeDirChangeAngle)
+            if (angleBetween > _shipStats._extremeDirChangeAngle)
             {
                 float dirMult = angleBetween / 180;
-                thrusterForce += thrusterForce * _extremeDirChangeMult * dirMult;
+                thrusterForce += thrusterForce * _shipStats._extremeDirChangeMult * dirMult;
             }
         }
 
@@ -429,12 +389,12 @@ public class ShipController : MonoBehaviour {
     /// </summary>
     private void LimitVelocity()
     {
-        float curMaxSpeed = _maxSpeed;
-        float curSlowdown = _overSpeedLimitSlowdownForce;
+        float curMaxSpeed = _shipStats._maxSpeed;
+        float curSlowdown = _shipStats._overSpeedLimitSlowdownForce;
         if (_boostPadActive || _boosting)
         {
-            curMaxSpeed *= _maxSpeedBoostModifier;
-            curSlowdown *= _boostForceMultiplier;
+            curMaxSpeed *= _shipStats._maxSpeedBoostModifier;
+            curSlowdown *= _shipStats._boostForceMultiplier;
         }
 
         if(_rigidbody.velocity.sqrMagnitude > curMaxSpeed * curMaxSpeed)
@@ -453,24 +413,24 @@ public class ShipController : MonoBehaviour {
 
     private void LimitRotation()
     {
-        if(Mathf.Abs(_rigidbody.angularVelocity.magnitude) > _maxRotSpeed)
+        if(Mathf.Abs(_rigidbody.angularVelocity.magnitude) > _shipStats._maxRotSpeed)
         {
-            _rigidbody.angularVelocity = _maxRotSpeed * _rigidbody.angularVelocity.normalized;
+            _rigidbody.angularVelocity = _shipStats._maxRotSpeed * _rigidbody.angularVelocity.normalized;
         }    
     }
 
     private void ReduceBoost(float cost)
     {
-        _boostTank -= cost;
+        _curBoostTank -= cost;
         if(_onBoostLevelChanged)
         {
-            _onBoostLevelChanged.RaiseEvent(_boostTank);
+            _onBoostLevelChanged.RaiseEvent(_curBoostTank);
         }
     }
 
     private IEnumerator DisableBoostPadBoost()
     {
-        yield return new WaitForSeconds(_boostPadNoSpeedLimitTime);
+        yield return new WaitForSeconds(_shipStats._boostPadNoSpeedLimitTime);
         _boostPadActiveCount--;
         if (_boostPadActiveCount <= 0)
         {
@@ -488,8 +448,8 @@ public class ShipController : MonoBehaviour {
     }
 
     public void AdjustShipParametersAI(float mainThrustMult, float horThrustMult, float maxSpeedMult) {
-        _mainThrusterInputValue *= mainThrustMult;
-        _horizontalThrustForce *= horThrustMult;
-        _maxSpeed *= maxSpeedMult;
+        //_mainThrusterInputValue *= mainThrustMult; // i dont think this does anything?
+        _modifiedHorizontalThrustForce *= horThrustMult;
+        _modifiedMaxSpeed *= maxSpeedMult;
     }
 }

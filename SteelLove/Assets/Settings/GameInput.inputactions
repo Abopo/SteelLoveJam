@@ -60,15 +60,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Brake",
-                    "type": "Button",
-                    "id": "c7bdc70d-01d6-42f9-b80b-79ac77233acd",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "LookBehind",
                     "type": "Button",
                     "id": "a801b9bc-0a36-402b-966e-1fa878f5506b",
@@ -248,28 +239,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Boost",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "8e765c15-1851-4bfa-9c54-7b52abc241ab",
-                    "path": "<Keyboard>/leftShift",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Brake",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "b7f80387-5620-4bf7-b993-e32e21f763bb",
-                    "path": "<Gamepad>/leftTrigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Brake",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

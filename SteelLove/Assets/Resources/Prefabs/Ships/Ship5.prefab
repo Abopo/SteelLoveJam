@@ -341,20 +341,6 @@ MonoBehaviour:
   m_Character: {fileID: 11400000, guid: cbd40ac4cb777c74a87cb513ec56f7f2, type: 2}
   _sceneManager: {fileID: 11400000, guid: 8630cfd2995c59b4d9160d3ee14416b4, type: 2}
   _breakRoomScene: {fileID: 11400000, guid: 6edb2a8a7f2bd8043b0e911c0a8dfa4a, type: 2}
-  _mainthrustForce: 17
-  _reverseThrustForce: 12
-  _horizontalThrustForce: 10
-  _brakeForce: 2.5
-  _maxSpeed: 28
-  _extremeDirChangeAngle: 75
-  _extremeDirChangeMult: 1.25
-  _rotForce: 0.7
-  _maxRotSpeed: 2
-  _boostForceMultiplier: 4
-  _boostCost: 25
-  _maxSpeedBoostModifier: 1.75
-  _boostPadNoSpeedLimitTime: 2
-  _overSpeedLimitSlowdownForce: 20
   _OnCrossedFinishLine: {fileID: 11400000, guid: cd09aa317b22bf64980d7bb094732930,
     type: 2}
   _onHealthLevelChanged: {fileID: 0}
@@ -364,8 +350,7 @@ MonoBehaviour:
     type: 2}
   _destructionParticles: {fileID: 4392296649732944715}
   _shipFireParticles: {fileID: 7758242682900943514}
-  _health: 100
-  _boostTank: 0
+  _shipStats: {fileID: 11400000, guid: cd24a403e5453de4cb1d366622aa090f, type: 2}
   _healthGainOnCheckpoint: 25
   _healthLossOnGeneralCollision: 5
   _shipModel: {fileID: 2417316724817728671}
@@ -526,7 +511,6 @@ MonoBehaviour:
   _dirInput: {x: 0, y: 0}
   _rotInput: 0
   _isBoostInput: 0
-  _boostTankMirror: 0
 --- !u!1 &7991582276730260066
 GameObject:
   m_ObjectHideFlags: 0

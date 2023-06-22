@@ -82,15 +82,6 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Brake"",
-                    ""type"": ""Button"",
-                    ""id"": ""c7bdc70d-01d6-42f9-b80b-79ac77233acd"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""LookBehind"",
                     ""type"": ""Button"",
                     ""id"": ""a801b9bc-0a36-402b-966e-1fa878f5506b"",
@@ -270,28 +261,6 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Boost"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""8e765c15-1851-4bfa-9c54-7b52abc241ab"",
-                    ""path"": ""<Keyboard>/leftShift"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Brake"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""b7f80387-5620-4bf7-b993-e32e21f763bb"",
-                    ""path"": ""<Gamepad>/leftTrigger"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Brake"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -774,7 +743,6 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         m_Racing_LeftThruster = m_Racing.FindAction("LeftThruster", throwIfNotFound: true);
         m_Racing_RightThruster = m_Racing.FindAction("RightThruster", throwIfNotFound: true);
         m_Racing_Boost = m_Racing.FindAction("Boost", throwIfNotFound: true);
-        m_Racing_Brake = m_Racing.FindAction("Brake", throwIfNotFound: true);
         m_Racing_LookBehind = m_Racing.FindAction("LookBehind", throwIfNotFound: true);
         m_Racing_RaceSkip = m_Racing.FindAction("RaceSkip", throwIfNotFound: true);
         m_Racing_ChangeCamera = m_Racing.FindAction("ChangeCamera", throwIfNotFound: true);
@@ -859,7 +827,6 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_Racing_LeftThruster;
     private readonly InputAction m_Racing_RightThruster;
     private readonly InputAction m_Racing_Boost;
-    private readonly InputAction m_Racing_Brake;
     private readonly InputAction m_Racing_LookBehind;
     private readonly InputAction m_Racing_RaceSkip;
     private readonly InputAction m_Racing_ChangeCamera;
@@ -873,7 +840,6 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         public InputAction @LeftThruster => m_Wrapper.m_Racing_LeftThruster;
         public InputAction @RightThruster => m_Wrapper.m_Racing_RightThruster;
         public InputAction @Boost => m_Wrapper.m_Racing_Boost;
-        public InputAction @Brake => m_Wrapper.m_Racing_Brake;
         public InputAction @LookBehind => m_Wrapper.m_Racing_LookBehind;
         public InputAction @RaceSkip => m_Wrapper.m_Racing_RaceSkip;
         public InputAction @ChangeCamera => m_Wrapper.m_Racing_ChangeCamera;
@@ -904,9 +870,6 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                 @Boost.started -= m_Wrapper.m_RacingActionsCallbackInterface.OnBoost;
                 @Boost.performed -= m_Wrapper.m_RacingActionsCallbackInterface.OnBoost;
                 @Boost.canceled -= m_Wrapper.m_RacingActionsCallbackInterface.OnBoost;
-                @Brake.started -= m_Wrapper.m_RacingActionsCallbackInterface.OnBrake;
-                @Brake.performed -= m_Wrapper.m_RacingActionsCallbackInterface.OnBrake;
-                @Brake.canceled -= m_Wrapper.m_RacingActionsCallbackInterface.OnBrake;
                 @LookBehind.started -= m_Wrapper.m_RacingActionsCallbackInterface.OnLookBehind;
                 @LookBehind.performed -= m_Wrapper.m_RacingActionsCallbackInterface.OnLookBehind;
                 @LookBehind.canceled -= m_Wrapper.m_RacingActionsCallbackInterface.OnLookBehind;
@@ -938,9 +901,6 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
                 @Boost.started += instance.OnBoost;
                 @Boost.performed += instance.OnBoost;
                 @Boost.canceled += instance.OnBoost;
-                @Brake.started += instance.OnBrake;
-                @Brake.performed += instance.OnBrake;
-                @Brake.canceled += instance.OnBrake;
                 @LookBehind.started += instance.OnLookBehind;
                 @LookBehind.performed += instance.OnLookBehind;
                 @LookBehind.canceled += instance.OnLookBehind;
@@ -1117,7 +1077,6 @@ public partial class @GameInput : IInputActionCollection2, IDisposable
         void OnLeftThruster(InputAction.CallbackContext context);
         void OnRightThruster(InputAction.CallbackContext context);
         void OnBoost(InputAction.CallbackContext context);
-        void OnBrake(InputAction.CallbackContext context);
         void OnLookBehind(InputAction.CallbackContext context);
         void OnRaceSkip(InputAction.CallbackContext context);
         void OnChangeCamera(InputAction.CallbackContext context);

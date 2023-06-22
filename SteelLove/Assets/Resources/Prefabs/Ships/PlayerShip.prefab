@@ -5533,20 +5533,6 @@ MonoBehaviour:
   m_Character: {fileID: 11400000, guid: 35aa3aac8fc6d9f41bdd9350040ad960, type: 2}
   _sceneManager: {fileID: 11400000, guid: 8630cfd2995c59b4d9160d3ee14416b4, type: 2}
   _breakRoomScene: {fileID: 11400000, guid: 6edb2a8a7f2bd8043b0e911c0a8dfa4a, type: 2}
-  _mainthrustForce: 14
-  _reverseThrustForce: 10
-  _horizontalThrustForce: 7
-  _brakeForce: 2.5
-  _maxSpeed: 25
-  _extremeDirChangeAngle: 75
-  _extremeDirChangeMult: 1.25
-  _rotForce: 0.5
-  _maxRotSpeed: 1.5
-  _boostForceMultiplier: 3
-  _boostCost: 25
-  _maxSpeedBoostModifier: 1.5
-  _boostPadNoSpeedLimitTime: 2
-  _overSpeedLimitSlowdownForce: 20
   _OnCrossedFinishLine: {fileID: 11400000, guid: cd09aa317b22bf64980d7bb094732930,
     type: 2}
   _onHealthLevelChanged: {fileID: 11400000, guid: 7e49fa6a67c1d1343b586bf2b6203354,
@@ -5558,8 +5544,7 @@ MonoBehaviour:
     type: 2}
   _destructionParticles: {fileID: 5615765042023534907}
   _shipFireParticles: {fileID: 3366724316438761608}
-  _health: 100
-  _boostTank: 0
+  _shipStats: {fileID: 11400000, guid: cd24a403e5453de4cb1d366622aa090f, type: 2}
   _healthGainOnCheckpoint: 15
   _healthLossOnGeneralCollision: 5
   _shipModel: {fileID: 2293335431748937384}
@@ -5731,9 +5716,13 @@ MonoBehaviour:
   _firstCheckpoint: {fileID: 0}
   _nextCheckpoint: {fileID: 0}
   _rotSpeed: 3
+  _minTankToBoost: 0
+  _nonStraightAngleLimit: 0
+  _minDistanceStraightForBoost: 0
+  _onRaceStartEvent: {fileID: 11400000, guid: eb9b51f329654b14a9f17e243030ca44, type: 2}
   _dirInput: {x: 0, y: 0}
   _rotInput: 0
-  _onRaceStartEvent: {fileID: 11400000, guid: eb9b51f329654b14a9f17e243030ca44, type: 2}
+  _isBoostInput: 0
 --- !u!1 &4087366569571933330
 GameObject:
   m_ObjectHideFlags: 0
