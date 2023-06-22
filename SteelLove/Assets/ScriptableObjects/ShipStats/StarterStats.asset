@@ -13,19 +13,18 @@ MonoBehaviour:
   m_Name: StarterStats
   m_EditorClassIdentifier: 
   description: idea for a ship with max stats
-  _mainthrustForce: 8
-  _reverseThrustForce: 6
-  _horizontalThrustForce: 6
-  _brakeForce: 2.5
-  _maxSpeed: 25
+  _mainthrustForce: 5.5
+  _reverseThrustForce: 4.5
+  _horizontalThrustForce: 4.5
+  _maxSpeed: 15
   _extremeDirChangeAngle: 60
-  _extremeDirChangeMult: 1.8
-  _rotForce: 0.6
-  _maxRotSpeed: 1.8
-  _boostForceMultiplier: 1.4
+  _extremeDirChangeMult: 1.2
+  _rotForce: 0.35
+  _maxRotSpeed: 1.2
+  _boostForceMultiplier: 1.1
   _boostCost: 25
-  _maxSpeedBoostModifier: 2
-  _boostPadNoSpeedLimitTime: 2
-  _overSpeedLimitSlowdownForce: 25
-  _health: 100
-  _boostTank: 0
+  _maxSpeedBoostModifier: 1.5
+  _boostPadNoSpeedLimitTime: 1.5
+  _overSpeedLimitSlowdownForce: 30
+  _startingHealth: 100
+  _startingBoostTank: 0
