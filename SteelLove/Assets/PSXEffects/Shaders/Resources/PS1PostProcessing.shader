@@ -91,9 +91,9 @@ Shader "Hidden/PS1PostProcessing"
 				uint index = (uint(pos.x) & 3) * 4 + (uint(pos.y) & 3);
 
 				#if defined(_SHADER_API_GLES3) || defined(_SHADER_API_METAL)
-				for (int x = 0; x < DITHER_COLORS; x++) {
+				for (uint x = 0; x < DITHER_COLORS; x++) {
 					if (x == index) {
-						c.rgb = clamp(x.rgb * (DITHER_COLORS - 1) + DITHER_THRESHOLDS[x] * (intensity * 100), fixed3(0, 0, 0), fixed3(DITHER_COLORS - 1, DITHER_COLORS - 1, DITHER_COLORS - 1));
+						c.rgb = clamp(x * (DITHER_COLORS - 1) + DITHER_THRESHOLDS[x] * (intensity * 100), fixed3(0, 0, 0), fixed3(DITHER_COLORS - 1, DITHER_COLORS - 1, DITHER_COLORS - 1));
 						break;
 					}
 				}
