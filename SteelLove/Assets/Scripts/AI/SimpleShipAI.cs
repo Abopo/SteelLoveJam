@@ -309,6 +309,8 @@ public class SimpleShipAI : MonoBehaviour {
 
     private bool IsLongStraightPath()
     {
+        bool isLongStraightPath = true;
+
         AICheckpoint curCheckpoint = _nextCheckpoint;
         float distanceChecked = 0;
         Vector3 previousForward = _ship.transform.forward;
@@ -316,10 +318,12 @@ public class SimpleShipAI : MonoBehaviour {
         
         while (distanceChecked < _minDistanceStraightForBoost)
         {
-            float distance = (curCheckpoint.transform.position - curCheckpoint.nextCheckpoint.transform.position).magnitude;
+            var startPointPos = curCheckpoint.transform.position;
+            var nextPointPos = curCheckpoint.nextCheckpoint.transform.position;
+            float distance = (startPointPos - nextPointPos).magnitude;
             distanceChecked += distance;
 
-            Vector3 nextAngle = curCheckpoint.nextCheckpoint.transform.position - curCheckpoint.transform.position;
+            Vector3 nextAngle = nextPointPos - startPointPos;
             float angleCheck = Vector3.Angle(previousForward, nextAngle);
             accumulatedAngle += angleCheck;
 
@@ -328,10 +332,16 @@ public class SimpleShipAI : MonoBehaviour {
 
             if (accumulatedAngle > _nonStraightAngleLimit)
             {
-                return false;
+                isLongStraightPath = false;
+                Debug.DrawLine(startPointPos, nextPointPos, Color.red, .2f);
+                break;
             }
+
+#if UNITY_EDITOR
+            Debug.DrawLine(startPointPos, nextPointPos, Color.green, .2f);
+#endif
         }
 
-        return true;
+        return isLongStraightPath;
     }
 }

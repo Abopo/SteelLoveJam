@@ -19,7 +19,16 @@ public class OffTrackWarning : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         if (_playerTrackDamage == null) {
-            _playerTrackDamage = FindObjectOfType<PlayerShipSetup>().GetComponent<TrackDamage>();
+            var playerShipObj = FindObjectOfType<PlayerShipSetup>();
+            if (playerShipObj != null)
+            {
+                _playerTrackDamage = playerShipObj.GetComponent<TrackDamage>();
+            }
+            else
+            {
+                Debug.LogWarning("player ship not found");
+                return;
+            }
         }
 
         if (_playerTrackDamage.IsOffTrack()) {
