@@ -55,7 +55,7 @@ public class SimpleShipAI : MonoBehaviour {
 
         _lookForwardAmount = _defaultLookForward;
     }
-    // Start is called before the first frame update
+
     void Start() {
         difficulty = _ship.Character.difficulty;
 
@@ -116,7 +116,7 @@ public class SimpleShipAI : MonoBehaviour {
     private void BuildCheckpointList()
     {
         var curCheckpoint = _firstCheckpoint;
-        var rayDir = new Vector3(0, 0, -1); // TODO: fix this. shouldnt be hardcoded. might need to be based on transform for first one.
+        var rayDir = -_firstCheckpoint.transform.right;
 
         for (int i = 0; i < _allCheckpoints.Length; i++)
         {

@@ -19,15 +19,11 @@ public class EndingScene : MonoBehaviour {
     [SerializeField] GameSceneSO _mainMenu;
     [SerializeField] GameSceneSO _dsdScene;
 
-    float _waitTime = 5.0f;
-    float _waitTimer = 0f;
-
     private void Awake() {
         _dialogueRunner = GetComponentInChildren<DialogueRunner>();
         _lineView = GetComponentInChildren<MyLineView>();
     }
 
-    // Start is called before the first frame update
     void Start() {
         _inputReader.EnableAllInput();
 
@@ -76,9 +72,7 @@ public class EndingScene : MonoBehaviour {
             if (PlayerPrefs.GetInt("Has_DarkOrb", 0) > 0) {
                 _sceneManager.LoadScene(_dsdScene);
             } else {
-                // Load the main menu
                 _sceneManager.LoadScene(_mainMenu);
-                //SceneManager.LoadScene(0);
             }
         }
     }

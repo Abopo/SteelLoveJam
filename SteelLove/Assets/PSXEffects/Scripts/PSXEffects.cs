@@ -257,34 +257,34 @@ public class PSXEffects : MonoBehaviour {
 	}
 
 	public void CheckForUpdates() {
-		StartCoroutine("CheckForUpdate");
+		//StartCoroutine("CheckForUpdate");
 	}
 
-	IEnumerator CheckForUpdate() {
-		cfuStatus = "Checking for updates...";
-		UnityWebRequest www = UnityWebRequest.Get("https://ckosmic.github.io/psfxredir.html");
-		yield return www.SendWebRequest();
+	//IEnumerator CheckForUpdate() {
+	//	cfuStatus = "Checking for updates...";
+	//	UnityWebRequest www = UnityWebRequest.Get("https://ckosmic.github.io/psfxredir.html");
+	//	yield return www.SendWebRequest();
 
-		if (www.isNetworkError || www.isHttpError) {
-			Debug.Log(www.error);
-		} else {
-			www = UnityWebRequest.Get(www.downloadHandler.text);
-			yield return www.SendWebRequest();
+	//	if (www.isNetworkError || www.isHttpError) {
+	//		Debug.Log(www.error);
+	//	} else {
+	//		www = UnityWebRequest.Get(www.downloadHandler.text);
+	//		yield return www.SendWebRequest();
 
-			if (www.isNetworkError || www.isHttpError) {
-				Debug.Log(www.error);
-			} else {
-				System.Version onlineVer = new System.Version(www.downloadHandler.text);
-				int comparison = onlineVer.CompareTo(version);
+	//		if (www.isNetworkError || www.isHttpError) {
+	//			Debug.Log(www.error);
+	//		} else {
+	//			System.Version onlineVer = new System.Version(www.downloadHandler.text);
+	//			int comparison = onlineVer.CompareTo(version);
 
-				if (comparison < 0) {
-					cfuStatus = "PSXEffects v" + version.ToString() + " - version ahead?!";
-				} else if (comparison == 0) {
-					cfuStatus = "PSXEffects v" + version.ToString() + " - up to date.";
-				} else {
-					cfuStatus = "PSXEffects v" + version.ToString() + " - update available (click to update).";
-				}
-			}
-		}
-	}
+	//			if (comparison < 0) {
+	//				cfuStatus = "PSXEffects v" + version.ToString() + " - version ahead?!";
+	//			} else if (comparison == 0) {
+	//				cfuStatus = "PSXEffects v" + version.ToString() + " - up to date.";
+	//			} else {
+	//				cfuStatus = "PSXEffects v" + version.ToString() + " - update available (click to update).";
+	//			}
+	//		}
+	//	}
+	//}
 }

@@ -22,8 +22,6 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private SceneManagerSO _sceneManager;
     [SerializeField] private GameSceneSO _breakRoomScene;
 
-    private bool _isPaused;
-
     private void OnEnable()
     {
         _onCountdownStateEvent.OnEventRaised += UnPause;
@@ -68,13 +66,11 @@ public class PauseMenu : MonoBehaviour
 
     private void UnPause()
     {
-        _isPaused = false;
         _showOnPause.SetActive(false);
     }
 
     private void Pause()
     {
-        _isPaused = true;
         _showOnPause.SetActive(true);
     }
 }

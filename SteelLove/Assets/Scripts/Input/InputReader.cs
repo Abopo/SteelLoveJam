@@ -126,7 +126,6 @@ public class InputReader : DescriptionBaseSO, GameInput.IRacingActions, GameInpu
 
     public void OnLook(InputAction.CallbackContext context) {
         if (context.performed) {
-            Debug.Log(context.ReadValue<Vector2>());
             LookEvent.Invoke(context.ReadValue<Vector2>());
         }
     }
